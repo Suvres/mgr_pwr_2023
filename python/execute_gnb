@@ -1,0 +1,21 @@
+import pandas as pd
+from azureml.core import Dataset, Run
+from gnb import simple_gnb
+from helper import print_stats
+
+def azureml_main(dataframe1 = None, dataframe2 = None, dataframe3 = None):
+   
+    run = Run.get_context(allow_offline=True)
+    #access to current workspace
+    ws = run.experiment.workspace
+    
+    dataset = Dataset.get_by_name(ws, name='dataset_test')
+    cols = dataset.to_pandas_dataframe()
+    
+    cols.columns = cols.iloc[0]
+
+    result, dataframe_score = simple_gnb(dataset=dataframe1[cols.columns], dataset_test=dataframe2[cols.columns])
+    
+    print_stats(result)
+   
+    return dataframe_score
