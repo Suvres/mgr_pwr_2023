@@ -1,1 +1,34 @@
 \chapter{Wstęp}
+
+\section{Wprowadzenie i uzasadnienie tematu pracy}
+Klasyfikacja danych tabelarycznych jest zagadnieniem, które na codzień dostarcza wyzwań jej twórcom z powodu mnogości danych, a także mnogości cech, a także z nierzadko małą ilością próbek. Jednym z problemów jest między innymi dobór odpowiedniego algorytmu do problemu. Dane tebalryczne występują w każdej dziedzinie, przez co raz na jakiś czas proponowane są nowe rozwiązania i algorytmy mające rozwiązać problem klasyfikacji w sposób lepszy i wydajny. Częśc twórców próbuje podchodzić do tego w sposób innowacyjny, lecz nie zawsze to wychodzi z powodu chociażby dosotoswania algorytmu pod konkretną strukturę danych, co powoduje problemy z wykorzystaniem rozwiązania dla innych danych.
+\\ \\
+Obecnie jednymi z najpopularniejszych algorytmów do klasyfikacji danych są logiczna regresja\trans{ang. logistic regression}, drzewo decyzyjne\trans{ang. decision tree}, losowy las\trans{ang. random forest}, maszyna wektorów nośnych\trans{ang. support vector machine}, naiwny bayes\trans{ang. Naive Bayes}. Dlatego też bardzo ważne jest porównanie wytworzonego wcześniej rozwiązania z grupą innych algorymów, które próbują przetworzyć ten sam zestaw danych.
+\\ \\
+W dzisiejszych czasach próba taka jest bardzo uproszczona chociażby przez takie platformy jak \textit{Machine Learning Studio}, które pozwalają na wykorzystanie mocy obliczeniowej sklasteryzowanych jednostek wirtualnych do wykonywania obliczeń na odpowiednich maszynach wirtualnych, a także do budowania skomplikowanych zautomatyzowanych procesów złożonych z wielu zadań\trans{ang. pipeline}. W związku z czym możliwośc wykorzystania platformy chmurowej pozwoli na zautomatyzowanie procesu porównawczego oraz oddelegowanie zadań od chmury obliczeniowej co pozwoli na uniezależnienie powodzenia doświadczenia od mocy obliczeniowej komputera lokalnego, a także na ukazanie całościowo procesu porównania algorytmów klasyfikacyjnych.
+
+\section{Cel pracy dyplomowej}
+Celem niniejszej pracy dyplomowej jest porównanie algorytmu klasyfikacji danych tabelarycznych wypracowanego w trakcie pisania pracy inżynierskiej, do algorytmów dostępnych w aplikacji \textit{Machine Learning Studio} znajdującej się na platformie \textit{Microsoft Azure}.
+
+\section{Założenie techniczne}
+
+Dane prezentowane w \refsource{tabeli}{tab:technical} określają podstawowe założenia techniczne przyjęte w trakcie wykonywania analizy porównawczej. Dane te dotyczą między innymi środowiska, w którym wykonane było doświadczenie. Dodatkowo uwzględniono zestaw danych oraz biblioteki użyte w trakcie tworzenia doświadczenia.
+
+\begin{table}[H]
+    \centering
+    \captionsource{Założenia techniczne pracy dyplomowej}{Opracowanie własne}
+    \label{tab:technical}
+    \begin{tabular}{|l|l|}
+        \hline
+        \textbf{Środowisko uruchomieniowe} & Machine Learning Studio\cite{azureml} \\ \hline
+        \textbf{Język oporogramowania} & Python 3.x \\ \hline
+        \multirow{3}*{\textbf{Wykorzystane biblioteki}} & scikit-learn~\cite{sckit-learn} \\
+        \cline{2-2}
+        & Numpy~\cite{Harris2019} \\
+        \cline{2-2}
+        & Pandas~\cite{pandas, McKinney2010} \\
+        \hline
+        \textbf{Wykorzystane dane} & CICDS2017~\cite{cicds2017kaggle} \\
+        \hline
+    \end{tabular}
+\end{table}

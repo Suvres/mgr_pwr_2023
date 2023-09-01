@@ -98,7 +98,7 @@
 
 \RequirePackage[all,defaultlines=2]{nowidow} % Kontrola sierot i wdów - działa lepiej niż \widowpenalty i \clubpenalty
 \brokenpenalty=10000\relax
-
+\setlength\parindent{0pt}
 % =============================================================================
 % SEC:   Polecenia wymagane m.in. do generowania strony tytułowej
 % =============================================================================
@@ -496,4 +496,9 @@
 		\vspace{-10pt}
 		\caption*{Źródło: #2}
 	}
+}
+
+\newcommand*{\refsource}[2]{%
+\textbf{#1}\
+\ref{#2}
 }
