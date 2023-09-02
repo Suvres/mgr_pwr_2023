@@ -499,6 +499,6 @@
 }
 
 \newcommand*{\refsource}[2]{%
-\textbf{#1}\
-\ref{#2}
+\textbf{#1}\;
+\textbf{\ref{#2}}
 }

@@ -1,4 +1,9 @@
 #!/bin/bash
+
+if [ -d _tex ]; then
+  rm -rf tex;
+fi
+
 mkdir -p _tex
 
 if ! [ -d _tex ]; then

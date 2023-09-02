@@ -1,0 +1,8 @@
+TY  - DICT
+A1  - Oxford English Dictionary
+DB  - Oxford English Dictionary
+PB  - Oxford University Press
+T1  - intelligence, n., sense 1
+UR  - https://doi.org/10.1093/OED/3757635879
+PY  - July 2023
+ER  - 

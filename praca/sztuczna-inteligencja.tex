@@ -1,0 +1,109 @@
+\chapter{Sztuczna inteligencja}
+Według słownika \textit{Oxford English Dictionary} słowo ''\textbf{inteligencja}'' oznacza zdolność do rozumienia, a analizy i dostosowania się do zmian\cite{OxfordJuly2023}.
+\\ \\
+Sztuczna inteligencja\trans{ang. Artificial Intelligence} (\textbf{AI}) jest wykorzystywana na wiele sposobów podczas prowadzenia badań naukowych: od stawiania hipotez oraz budowania twierdzeń matematycznych, tworzenia i monitorowania badań, zbierania danych i wielu innych czynności towarzyszącymi podczas badań. Najpopularniejszymi zastosowaniami jest między innymi uczenie nienadzorowane oraz wykrywanie anomalii\cite{AiScience, Mahesh2018}. Schemat podziału sztucznej inteligencji pokazano na \refsource{obrazie}{fig:si-schema}.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{images/si}
+    \captionsource{Graficzne przedstawienie podziałów sztucznej inteligencji}{\cite{LinkedInSi}}
+    \label{fig:si-schema}
+\end{figure}
+
+\section{Uczenie maszynowe}
+Uczenie maszynowe\trans{ang. Machine Learning} (\textbf{ML}) jest to dziedzina nauki nad algorytmami oraz modelami statystycznymi, które mogą być wykorzystywane do specyficznych zadań na przykład klasyfikacji, rozpoznawania obrazów bądź mowy, a dodatkowo nie są zaprogramowane specyficznie pod konkretne zadanie, a jedynie pod grupę zadań tak jak pokazano na \refsource{obrazie}{fig:ml-schema}. Dlatego też nie ma jednego najlepszego rozwiązania, które można wykorzystać w każdym przypadku. Wykorzystanie konkretnego algorytmu determinuje typ zadania jaki ma być rozwiązany.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{images/ml-przyklady}
+    \captionsource{Podział uczenia maszynowego}{\cite{Mahesh2018}}
+    \label{fig:ml-schema}
+\end{figure}
+    \subsection{Uczenie nadzorowane} - w trakcie tego uczenia stosuje się zbiór posiadający etykiety. Model uczy się przyporządkowywać określone cechy do konkretnych kategori. Dane wejściowe dzielone są na dane treningowe i dane testowe. Zbiór treningowy jest wykorzystywany do trenowania modelu, a zbió testowy do sprawdzenia rezultatu, na bazie którego może nastąpić korekta uczeniam zilustrowano to \refsource{obrazem}{fig:spervised}. Algorytmy uczenia nadzorowanego można zastosować między innymi do weryfikacji ruchu sieciowego w celu określenia czy ruch bezpieczny, przez co można to zastosować w systemach wykrywania intruzów\trans{ang. Intrusion Detection System} (\textbf{IDS}). Algorytmy wchodzące w skład uczenia nadzorowanego to między innymi klasyfikacja naiwna bayesa, drzewa decyzyjne, maszyny wektorów nośnych\cite{AiScience, Mahesh2018}.
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.75\textwidth]{images/supervised}
+        \captionsource{Uczenie nadzorowane}{\cite{Mahesh2018}}
+        \label{fig:spervised}
+    \end{figure}
+
+    \subsection{Uczenie nienadzorowane} - w tym przypadku nie wykorzystuje się zbioru oznaczonego, algorytm sam próbuje odkryć prawidłową odpowiedź. Dzieję się tak, w danych, których nie da się nazwać albo doprecyzować. Wykorzystuje się to do między innymi detekcji anomalii, co pozwoli do na przykład wykrycia zbyt dużego zużycia prądu w pokoju domu studenckiego dzieki czemu uda się wyłapać nieautoryzowaną koparkę kryptowalut. Dodatkowo można wykorzystać je do szukanai wzorców, albo zarządzania magazynem. W skład takich algorytmów wchodzi: K-średnie, klasteryzacja. Schemat uczenia nienadzorowanego poprzez klasteryzację jest pokazany na \refsource{obrazie}{fig:unspervised}.
+
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.5\textwidth]{images/unsupervised}
+        \captionsource{Uczenie nienadzorowane}{Opracowanie własne}
+        \label{fig:unspervised}
+    \end{figure}
+
+    \subsection{Uczenie przez wzmocnienie} - jest to uczenie poprzez nagradzanie dobrych rozwiązań, a karanie złych, potocznie mówiąc jest to metoda ''\textit{kija i marchewki}''. Wykorzystywana w trenowaniu pojazdów autonomicznych pozwala na nagradzanie pojazdów za wybór lepszych tras przykładowo za wybór dróg asfaltowych zamiast polnych. Skupia się w dużym stopniu na agencie i jego decyzjach w danym środowisku co pokazano na \refsource{schemacie}{fig:reinforcemenet}. Należy do jednych z trzech głównych paradygmatów obok uczenia nadzorowanego i nienadzorowanego.
+
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.5\textwidth]{images/reinforcemen}
+        \captionsource{Uczenie przez wzmocnienie}{\cite{Mahesh2018}}
+        \label{fig:reinforcemenet}
+    \end{figure}
+
+    \subsection{Uczenie częściowo nadzorowane} - do trenowania takich modeli stosuje się niewielkie zbiory oznaczone, oraz większe zbiory nieoznaczone, dzięki którym można próbować rozpoznać rozległe zbiory danych na podstawie pewnych cech wspólnych. Stosuje się to ze względu na mnogość danych na świecie, których opisanie byłoby niemożliwe oraz albo zbyt kosztowne. Przykładowo można znaleźć zastosowanie tych algorytmó w bankowości albo klasyfikowaniu stron internetowych poprzez wyszukiwanie treści na stronie i kategoryzowaniu ich\cite{semiLinkedin}. Jest to połączenie uczenia nadzorowanego i nienadzorowanego\cite{Mahesh2018}.
+
+\section{Sieć neuronowa}
+\label{sec:snn}
+Ludzki mózg jest najbardziej złożonym organem znany ludziom. Badacze zainspirowani jego strukturą składającą się z połączonych ze sobą komórek neuronowych, które przetwarzają równolegle wiele informacji, próbują przenieść pewien poziom inteligencji do komputerów. Przykładem tego jest wiele algorytmów, wchodzących w skład sztucznych sieci neuronowych\trans{ang. artificial neural network} (\textbf{ANN}), między innymi sieci Kohonena, sieci Hopfielda, sieci konwolucyjne. Sieci te próbują w pewien sposób odwzorować próbę na przykład klasyfikacji danych przez jednostkę wzorowaną na ludzkim mózgu, pomimo tych osiągnięć symulacja ludzkiej świadomości oraz emocji wciąż jest jedynie w sferach fantazji naukowych\cite{Wang2003}.
+\\ \\
+Sieć neuronowa jest zbudowana z połaczonych ze sobą warstw neuronów tak jak na \refsource{rysunku}{fig:neural-network}, które w pewien sposób mają wykonać zadania uczenia maszynowego. Najprostszym przykładem sieci neuronowej jest pojedynczy neuron, który może służyć do prostych zadań klasyfikacyjnych: \refsource{schemat}{fig:neuron}. Sieć ta potrafi się dostosowywać do danych wejściowych tak aby uzyskać odpowiedni wynik, wykonuje w tedy proces uczenia stosując do tego na przykład algorytm wstecznej propagacji wag. W zależności od problemu istnieje wiele różnych sieci, które można zastosować. Jednym z trudniejszych rzeczy w doborze sieci jest dobór warstw ukrytych oraz ilości neuronów, ponieważ w tym celu twórca możę opierać się jedynie na własnej wiedzy i doświadczeniu. Podstawy teorii sieci neuronowych zostały stworzone w połowie XX wieku. Złota era uczenia maszynowego rozpoczęła się dopiero na początku XXI wieku, kiedy to jednocześnie pojawiły się takie trendy jak: Big Data, redukcja kosztów obliczeń równoległych, oraz pierwsze badania nad głębokimi sieciami neuronowymi\trans{ang. Deep Neural Network} (\textbf{DNN}). Największe zastosowanie DNN miało miejsce dopiero w ostatniej dekadzie kiedy to pojawiły się:
+\begin{itemize}
+    \item \textbf{Google Braine} - grupa badawcza założona w 2011 roku, zajmująca się badaniami nad sztuczną inteligencja
+    \item \textbf{DeepFace} - rozwiązanie stworzone przez firmę Facebook w 2014 roku, służące do rozpoznawania twarzy na zdjęciu \cite{Koch2022, Fradkov2020}.
+\end{itemize}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{images/neuron}
+    \begin{itemize}
+        \item[] $\Sigma$: sumator
+        \item[] $f(x)$: funkcja aktywacyjna
+        \item[] $w_x \  \forall x \in [1, 2, ..., n]$: wagi
+        \item[] $x_x \  \forall x \in [1, 2, ..., n]$: wejścia
+    \end{itemize}
+    \captionsource{Schemat neuronu}{Opracowanie własne}
+    \label{fig:neuron}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\textwidth]{images/neural-network}
+    \begin{itemize}
+    \item[] $i_x \ \forall x \in [1, 2, 3]$: dane wejściowe
+    \item[] $v_x \ \forall x \in [1, 2, 3, 4]$: neurony w warstwie ukrytej
+    \item[] $o_x \ \forall x \in [1, 2]$: dane wyjściowe
+    \end{itemize}
+    \captionsource{Schemat sieci neuronowej}{Opracowanie własne}
+    \label{fig:neural-network}
+\end{figure}
+
+Sieci neuronowe możemy podzielić na wiele rodzajów, do których możemy zaliczyć między innymi:
+\begin{itemize}
+    \item \textbf{perceptron} - jest to najstarszy przykład sieci neuronowej złożonej z jednego perceptronu (neuronu). Można je zastosować w problemach klasyfikacji;
+    \item \textbf{sieci wielowarstwowe perceptronowe} - jest to sieć złożona z wielu warstw połączonych ze sobą neuronów, najprostszy model sieci zaprezentowany na \refsource{rysunku}{fig:neural-network}. Składa się z warstwy wejściowej, warstw (jednej bądź wielu) ukrytych oraz warstwy wyjściowej. W neurony w tej sieci w porównaniu do perceptronów, mają funkcję aktywacyjną sigmoidalną, ze względu na rozwiązywanie problemów nieliniowych (posiadających więcej rozwiązań niż dwa 0/1). Można je zastosować na przykład do klasyfikacji danych;
+    \item \textbf{sieci konwolucyjne (CNN)} - są to sieci służące do rozpoznawania obrazów, nazwa wzięła się od wykonywanej na obrazie operacji konwolucji (splotu). Sieci te posiadają dodatkowe warstwy konwolucyjne oraz spłaszczania, które pozwalają zamienić reprezentację obrazu w pojedyncz;
+    \item \textbf{sieci rekurencyjne} - charakteryzują się pętlą zwrotną w warstwie ukrytej. Mogą być wykorzystane do generowania tekstu, tłumaczen maszynowych, a także na przykład przewidywania cen rynkowych;
+    \item \textbf{sieci samoorganizujące się} - wykorzystuje uczenie nienadzorowane oraz. Składają sie jedynie z warstwy wejściwej i wyjściowej. Zaś cechą charakterystyczną jest to, że neurony określające podobne klasy znajdują się obok siebie. Sieci te mogą być wykrozystywane do podziału klientów na odpowiednie grupy bądź do wskazania jakim klientom zaproponować karty kredytowe \cite{IBMNetwork, BartosSOM}.
+\end{itemize}
+
+\subsection{Głębokie uczenie}
+Jest to podkategoria uczenia maszynowego polegająca na tworzeniu wielowarstwowych sieci neuronowych. W porównaniu do podstawowych sieci neuronowych potrzebuje ogromnych zbiorów danych do utworzenia modelu predykcyjnego. Potrzebuje również dużo więcej mocy obliczeniowej przez wzgląd na ilość warstw ukrytych, których może być dużo więcej, przykładem najprosztszej sieci głębokiej jest \refsource{obraz}{fig:deep-learn}.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\textwidth]{images/deep-neural-network}
+    \begin{itemize}
+        \item[] $i_x \  \forall x \in [1, 2, 3]$: dane wejściowe
+        \item[] $v_x \ \forall x \in [11, 12, 13, 21, 22, 23, 31, 32, 33]$: neurony w warstwie ukrytej
+        \item[] $o_x \ \forall x \in [1, 2]$: dane wyjściowe
+    \end{itemize}
+    \captionsource{Schemat prostej głębokiej sieci neuronowej}{Opracowanie własne}
+    \label{fig:deep-learn}
+\end{figure}
+
+Warstwa wyjściowa DNN może dostarczać dane róznego formatu, może to być na przykłąd, tekst, liczba bądź dźwięk. Posiada również bardzo dużo zastosowań w któych skład wchodzi generowanie treści, Deepfake, analiza obrazów, wskazywanie obiektów na obrazach, projektowanie leków, czatboty. Jest to udoskonalenie podstawowych sieci neuronowych. Tak więc częśc typów sieci opisanych w \refsource{sekcji}{sec:snn} będzie odnosić się do głębokich sieci neuronowych, należy do nich CNN\cite{MicrosoftDepp2023}.
