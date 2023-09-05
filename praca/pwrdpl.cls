@@ -26,7 +26,6 @@
 \RequirePackage{xstring}
 
 % \show\pwrdpl@language
-
 \newcommand{\ThesisLanguage}{pl}
 \IfStrEqCase{\pwrdpl@language}{%
 	{en}{\renewcommand{\ThesisLanguage}{en}}%
@@ -83,6 +82,10 @@
 \RequirePackage{subcaption}
 \RequirePackage{enumerate}
 \RequirePackage{enumitem}
+\RequirePackage{colortbl}
+\RequirePackage{hhline}
+\newcolumntype{P}[1]{>{\centering\arraybackslash}p{#1}}
+\newcolumntype{M}[1]{>{\centering\arraybackslash}m{#1}}
 
 \setlist[enumerate]{itemsep=-2pt}
 \setlist[itemize]{itemsep=-2pt}
@@ -431,7 +434,8 @@
 \definecolor{lightblue}{RGB}{181 212 239}
 \definecolor{strongorange}{RGB}{247 148  30}
 \definecolor{lighteryellow}{RGB}{242 245 205}
-
+\definecolor{lightred}{RGB}{252 134 134}
+\definecolor{lightgreen}{RGB}{134 252 167}
 % =============================================================================
 % SEC:   Niestandardowe środowiska
 % =============================================================================
@@ -500,5 +504,4 @@
 
 \newcommand*{\refsource}[2]{%
 \textbf{#1}\;
-\textbf{\ref{#2}}
-}
+\textbf{\ref{#2}}}

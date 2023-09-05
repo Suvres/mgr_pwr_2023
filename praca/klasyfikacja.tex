@@ -1,6 +1,60 @@
 \chapter{Klasyfikacja danych}
 
-% klasyfikacja danych tabelarycznych
-% opis czym są podstawy sieci neuronowych
-% perceptrony / neutrony, trochę matmy
-% opis algorytmów w przeglądzie
+Klasyfikacja jest to próba rozpoznania obiektów na bazie ich cech. Jest to jedna z pierwszych rzeczy jaką uczą się niemowlęta, zaczynając od rozpoznania rodziców, próby rozróżnienia kształtów, kolorów, rzeczy. W otaczającym świecie istnieje wiele mechanizmów mających sklasyfikować rzeczy. Należą do nich katalogi biblioteczne, klasyfikacja trunków, kaw, pojazdów, produktów spożywczych i wielu innych rzeczy. Człowiek od zawsze próbuję skategoryzować i uporządkować posiadaną wiedzę w zbiory ułatwiające obcowanie z tą wiedzą.
+\\ \\
+W uczeniu maszynowym klasyfikacja jest to metoda uczenia nadzorowanego, podczas której model próbuje przewidzieć etykietę obiektu na podstawie jego cech. Proces uczenia modelu klasyfikacji jest oparty o dwa zbiory, treningowy i testowy, z czego zbiór treningowy powinien być mniejszy od zbioru testowego. Po udanym procesie trenowania modelu, następuje proces testowania na podstawie któego wylicza się odpowiednie metryki pozwalające na ewaluacje modelu. W pracy magisterskiej wykorzystano zbor danych, który posiada dwa typy etykiet [0, 1], dlatego też na tej podstawie zbudowano macierz pomyłek.
+
+\section{Metryki}
+W trakcie ewaluacji algorytmu służącego do klasyfikacji wykorzystuje się metryki bazujące na macierzy pomyłek, która zostałą opisana w \refsource{tabeli}{tab:matrix-tn}
+\begin{table}[H]
+    \centering
+    \captionsource{Macierz pomyłek}{Opracowanie własne}
+    \label{tab:matrix-tn}
+    \begin{tabular}{|c|c|M{16mm}|M{16mm}|}
+        \hline
+         & & \multicolumn{2}{c|}{\textbf{Prawdziwe wartości}} \\ \hline
+         & & \textbf{1} & \textbf{0} \\ \hline
+        \rule{0pt}{13mm} \multirow{2}{*}{\rotatebox[origin=c]{90}{\parbox{18mm}{\textbf{Przewidziane wartości}}}} & \textbf{1} & \cellcolor{lightgreen}TP & \cellcolor{lightred}FN \\ \cline{2-4}
+        \rule{0pt}{13mm} & \textbf{0} & \cellcolor{lightred}FP & \cellcolor{lightgreen}TN \\ \hline
+    \end{tabular}
+
+    \begin{itemize}
+        \item  \textbf{TP} - prawdziwie pozytywny
+        \item \textbf{FN} - fałszywie negatywny
+        \item \textbf{FP} - fałszywie pozytywny
+        \item \textbf{TN} - prawdziwie negatywny
+    \end{itemize}
+\end{table}
+
+\subsection{Dokładnośc}
+\begin{equation}\label{math:acc}
+    \frac{TP + TN}{TP + TN + FP + FN}
+\end{equation}
+Stosunek wszystkich dobrze oznaczonych obiektów do liczby wszystkich prób.
+
+\subsection{Precyzja}
+\begin{equation}\label{math:prec}
+    \frac{TP}{TP + FP}
+\end{equation}
+Stosunek poprawnie wybranych obiektów klasy ''\textit{1}'', do wszystkich wybranych obiektów tej klasy.
+
+\subsection{Czułość}
+\begin{equation}\label{math:rec}
+    \frac{TP}{TP + FN}
+\end{equation}
+Stosunek poprawnie sklasyfikowanych obiektów klasy ''\textit{1}'', do wszystkich obiektów, które powinny być w tej klasie.
+
+\subsection{F1}
+\begin{equation}\label{math:f1}
+   \frac{2*x*y}{x + y}
+\end{equation}
+Jest średnia harmoniczna precyzji (\textit{x}) i czułości (\textit{y});
+
+
+\subsection{AUC}
+AUC - (\textit{Area Under Roc Curve}) - Jest to pole pod krzywą ROC pokazuje sprawność klasyfikatora. Im wyższa wartość AUC tym lepiej. Wynik AUC jest z zakresu <0, 1>:
+\begin{itemize}
+    \item AUC = 1 - klasyfikator idealny,
+    \item AUC = 0,5 - klasyfikator losowy,
+    \item AUC < 0,5 - klasyfikator gorszy niż losowy\cite{Algolytics}.
+\end{itemize}
