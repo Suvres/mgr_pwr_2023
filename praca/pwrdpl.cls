@@ -106,8 +106,6 @@
 % SEC:   Polecenia wymagane m.in. do generowania strony tytułowej
 % =============================================================================
 
-\def\shorttitlePL#1   {\gdef\@shorttitlePL{#1}}
-\def\shortauthor#1    {\gdef\@shortauthor{#1}}
 \def\titlePL#1        {\gdef\@titlePL{#1}}
 \def\faculty#1      {\gdef\@faculty{#1}}
 \def\thesistype#1   {\gdef\@thesistype{#1}}
@@ -117,20 +115,6 @@
 \def\degreeprogramme#1 {\gdef\@degreeprogramme{#1}}
 
 %------------------------------------------------------------------------------
-
-\IfStrEqCase{\ThesisLanguage}{
-	{pl}{%
-		\def\thesisheaders{
-			\fancyfoot[LE,RO]{\small \@shortauthor\quad\textit{\@shorttitlePL}}
-		}
-	}
-	{en}{%
-		\def\thesisheaders{
-			\fancyfoot[LE,RO]{\small \@shortauthor\quad\textit{\@shorttitleEN}}
-		}
-	}%
-}
-
 \newcommand{\titlepages}{%
 
 	\titlepage
@@ -196,17 +180,20 @@
 \RequirePackage{fancyhdr}
 
 \pagestyle{fancy}
-\renewcommand{\chaptermark}[1]{\markboth{\thechapter.\ #1}{}}
-\renewcommand{\sectionmark}[1]{\markright{\thesection.\ #1}}
 
-\renewcommand{\headrulewidth}{0.5pt}
-\renewcommand{\footrulewidth}{0.5pt}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0.25pt}
 \fancyhf{}
 \fancyhead{}
-\fancyhead[RE,LO]{\slshape{\small \rightmark}}
-\fancyhead[RO,LE]{\bfseries \thepage}
+\fancyfoot{}
+\fancyfoot[RO,LE]{\bfseries \thepage}
 
-\thesisheaders
+\fancypagestyle{plain}{%
+	\fancyhf{}
+	\fancyhead{}
+	\fancyfoot{}
+	\fancyfoot[RO,LE]{\bfseries \thepage}
+}
 
 \frenchspacing
 \sloppy 
@@ -402,7 +389,8 @@
 		\fancyhf{}
 		% Usuń linie.
 		\renewcommand{\headrulewidth}{0pt}
-		\renewcommand{\footrulewidth}{0pt}
+		\fancyfoot{}
+		\fancyfoot[RO,LE]{\bfseries \thepage}
 	}
 }
 
