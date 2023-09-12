@@ -84,8 +84,10 @@
 \RequirePackage{enumitem}
 \RequirePackage{colortbl}
 \RequirePackage{hhline}
+
 \newcolumntype{P}[1]{>{\centering\arraybackslash}p{#1}}
 \newcolumntype{M}[1]{>{\centering\arraybackslash}m{#1}}
+\newcolumntype{L}[1]{>{\raggedright\arraybackslash}m{#1}}
 
 \setlist[enumerate]{itemsep=-2pt}
 \setlist[itemize]{itemsep=-2pt}
