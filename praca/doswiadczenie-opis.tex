@@ -63,13 +63,25 @@ Całe doświadczenie zostało odwzorowane w graficznym potoku narzędzia ''\text
 \end{landscape}
 
 \section{Algorytmy}
-
+W trakcie eksperymenty zastosowano różne algorytmy klasyfikacji danych. Charakterystyczną cechą tych algorytmów jest klasyfikacja ukierunkowana na 2 kategorie wejściowe. W tym wypadku są to kategorie ruchu sieciowego: [\textbf{BENIGN} \trans{pl. życzliwy}, \textbf{Other} \trans{pl. inne}], gdzie inne to pozostałe typy ruchu sieciowego.
 \subsection{Two-Class Support Vector Machine}
+
+Algorytm SVM ma za zadanie znaleźć hiperpłąszczyznę w przestrzeni K-wymiarowej (K - liczba cech), która rozdziela zbiory punktów odpowiadających różnym klasom. W pierwszej kolejności szuka się separatora między klasami, a następnie przekształca się dane w taki sposób, by można przekształcić separator w hiperpłaszczyznę\cite{IBM}. Sposób działania został zobrazowany za pomocą \refsource{wykresów}{fig:svm-schem}. Część \refsource{potoku}{fig:pipeline} odpowiedzialnego za SVM to \refsource{schemat}{fig:svm-pipe}.
+
 \begin{figure}[H]
-    \centering
-    \includegraphics[width=0.4\textwidth]{images/svm_pipe}
-    \captionsource{Potok zadań dla modelu \textit{Two-Class Support Vector Machine}}{Opracowanie własne}
-    \label{fig:svm-pipe}
+    \begin{subfigure}[m]{0.45\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{images/svm_pipe}
+        \captionsource{Potok zadań dla modelu \textit{Two-Class Support Vector Machine}}{Opracowanie własne}
+        \label{fig:svm-pipe}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[m]{0.45\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{images/svm}
+        \captionsource{Schemat SVM}{\cite{Statsoft}}
+        \label{fig:svm-schem}
+    \end{subfigure}
 \end{figure}
 
 \subsection{Two-Class Boosted Decision Tree}
