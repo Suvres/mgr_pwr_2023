@@ -64,9 +64,10 @@ Całe doświadczenie zostało odwzorowane w graficznym potoku narzędzia ''\text
 
 \section{Algorytmy}
 W trakcie eksperymenty zastosowano różne algorytmy klasyfikacji danych. Charakterystyczną cechą tych algorytmów jest klasyfikacja ukierunkowana na 2 kategorie wejściowe. W tym wypadku są to kategorie ruchu sieciowego: [\textbf{BENIGN} \trans{pl. życzliwy}, \textbf{Other} \trans{pl. inne}], gdzie inne to pozostałe typy ruchu sieciowego.
+
 \subsection{Two-Class Support Vector Machine}
 
-Algorytm SVM ma za zadanie znaleźć hiperpłąszczyznę w przestrzeni K-wymiarowej (K - liczba cech), która rozdziela zbiory punktów odpowiadających różnym klasom. W pierwszej kolejności szuka się separatora między klasami, a następnie przekształca się dane w taki sposób, by można przekształcić separator w hiperpłaszczyznę\cite{IBM}. Sposób działania został zobrazowany za pomocą \refsource{wykresów}{fig:svm-schem}. Część \refsource{potoku}{fig:pipeline} odpowiedzialnego za SVM to \refsource{schemat}{fig:svm-pipe}.
+Algorytm SVM ma za zadanie znaleźć hiperpłaszczyznę w przestrzeni K-wymiarowej (K - liczba cech), która rozdziela zbiory punktów odpowiadających różnym klasom. W pierwszej kolejności szuka się separatora między klasami, a następnie przekształca się dane w taki sposób, by można przekształcić separator w hiperpłaszczyznę\cite{IBM}. Sposób działania został zobrazowany za pomocą \refsource{wykresów}{fig:svm-schem}. Część \refsource{potoku}{fig:pipeline} odpowiedzialnego za SVM to \refsource{schemat}{fig:svm-pipe}.
 
 \begin{figure}[H]
     \begin{subfigure}[m]{0.45\textwidth}
@@ -85,6 +86,8 @@ Algorytm SVM ma za zadanie znaleźć hiperpłąszczyznę w przestrzeni K-wymiaro
 \end{figure}
 
 \subsection{Two-Class Boosted Decision Tree}
+
+
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.4\textwidth]{images/dt_pipe}
@@ -125,11 +128,28 @@ Algorytm SVM ma za zadanie znaleźć hiperpłąszczyznę w przestrzeni K-wymiaro
 \end{figure}
 
 \subsection{DANet}
+Twórcy tego algorytmu wprowadzają dodatkową warstwę abstrakcyjną o nazwie ''\textit{Abstract Layer}''. Wartswy te budują sieć o nazwie ''\textit{Deep Abstract Network}'' (DANet). Zadanie dodatkowych warstw jest grupowanie cech w skorelowanych zbiorach. Zbiory te budują sieć powiązań między sobą w formie sieci semantycznej. Gdy sieć semantyczna jest zbudowana w ostatnim kroku wykonywana jest klasyfikacja w trzywarstwowej sieci perceptronów \trans{ang. Multilayer Perceptron network} (MLP)\cite{Chen2022, Danet}.
+
 \begin{figure}[H]
-    \centering
-    \includegraphics[width=0.4\textwidth]{images/danet}
-    \captionsource{Potok zadań dla modelu \textit{DANet}}{Opracowanie własne}
-    \label{fig:danet-pipe}
+    \begin{subfigure}[m]{0.49\textwidth}
+        \centering
+        \includegraphics[width=0.4\textwidth]{images/danet}
+        \captionsource{Potok zadań dla modelu \textit{DANet}}{Opracowanie własne}
+        \label{fig:danet-pipe}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[m]{0.49\textwidth}
+        \begin{subfigure}[m]{\textwidth}
+            \centering
+            \includegraphics[width=\textwidth]{images/danet_1}
+        \end{subfigure}
+        \begin{subfigure}[m]{\textwidth}
+            \centering
+            \includegraphics[width=\textwidth]{images/danet_2}
+        \end{subfigure}
+        \label{fig:danet-abst}
+        \captionsource{Sposób działania DANet}{\cite{Chen2022}}
+    \end{subfigure}
 \end{figure}
 
 
