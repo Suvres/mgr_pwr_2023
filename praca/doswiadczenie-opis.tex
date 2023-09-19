@@ -1,4 +1,5 @@
-\chapter{Doświadczenie}
+\chapter{Opis doświadczenia}
+\label{cha:dos}
 Przeprowadzone doświadczenie polega na porównaniu dostępnych w środowisku Microsoft Azure algorytmów klasyfikacji danych dwu-klasowych wraz z algorytmem stworzonym na potrzeby pracy inżynierskiej o tytule ''\textit{Wykorzystanie algorytmów genetycznych w systemach wykrywania intruzów w sieciach komputerowych}''\cite{Blyszcz2022} oraz z algorytmem DANet\cite{Chen2022}. Doświadczenie przebiegało według \refsource{schematu}{fig:sch-prac}.
 
 \begin{figure}[H]
@@ -7,43 +8,6 @@ Przeprowadzone doświadczenie polega na porównaniu dostępnych w środowisku Mi
     \captionsource{Schemat przebiegu doświadczenia}{Opracowanie własne}
     \label{fig:sch-prac}
 \end{figure}
-
-\section{Metodologia badwcza}
-Przyjęta w projekcie metodologia badawcza została określona w poniższej \refsource{tabeli}{tab:met-bad}. Przyjęta metodologia ma za zadanie określić jakoś porównywanego algorytmu.
-
-\begin{table}[H]
-    \centering
-    \captionsource{Metodologia badawcza}{Opracowanie własne}
-    \begin{tabular}{|L{\textwidth}|}
-        \hline
-        \textbf{Problem badawczy:} \\
-        Czy algorytm klasyfikacji danych utworzony w ramach pracy inżynierskiej może konkurować z rozwiązaniami dostępnymi w środowiskach komercyjnych \\ \hline
-
-        \textbf{Pytania badawcze:} \\
-        \begin{enumerate}
-            \item Czy algorytm jest konkurencyjny pod względem wybranych metry:
-            \begin{itemize}
-                \item dokładność algorytmu
-                \item czas działania
-                \item precyzja
-                \item czułość
-                \item f1
-                \item auc
-            \end{itemize}
-        \end{enumerate} \\ \hline
-
-        \textbf{Hipotezy:} \\
-        \begin{enumerate}
-            \item Nie ma istotnej różnicy w uzyskanej ''\textit{dokładności}'' między algorytmami.
-            \item Nie ma istotnej różnicy w uzyskanej ''\textit{czułości}'' między algorytmami.
-            \item Nie ma istotnej różnicy w uzyskanej ''\textit{precyzji}'' między algorytmami.
-            \item Nie ma istotnej różnicy w uzyskanym ''\textit{auc}'' między algorytmami.
-            \item Nie ma istotnej różnicy w uzyskanej ''\textit{f1}'' między algorytmami.
-            \item Nie ma istotnej różnicy w uzyskanym ''\textit{czasie działania}'' między algorytmami.
-        \end{enumerate} \\ \hline
-    \end{tabular}
-    \label{tab:met-bad}
-\end{table}
 
 \section{Dane}
 Zbiór danych został przygotowany przez Kanadyjski Instytut Cyberbezpieczeństwa działający przy Uniwersytecie Nowy Brunszwik za pomocą narzędzia CICFlowMeter\cite{Ahlashkari2022}. Zbiór zawiera 79 cech ruchu sieciowego do których zaliczyć można: etykietę, czas trwania przesyłu, minimalną długość pakietu zwrotnego, maksymalną długość pakietu zwrotnego, port docelowy, długość pakietów. Zbiór pozwala na określenie czy ruch sieciowy jest życzliwy \trans{ang. BENING}, czy nieżyczliwy (różne możliwe formy ataku na sieć). Dodatkowo zbiór został podzielony na pięć dni roboczych: poniedziałek 3.07.2017 - piątek 7.07.2017. Dane z poniedziałku zawierają jedynie ruch życzliwy, zaś w pozostałe dni zostały zasymulowane ataki na sieć komputerową\cite{Blyszcz2022, unbkaggle}.
@@ -54,6 +18,7 @@ Jako środowisko programistyczne zostało wybrane Azure Machine Learning Studio 
 Całe doświadczenie zostało odwzorowane w graficznym potoku narzędzia ''\textit{Projektant}'' oraz przedstawione na \refsource{zdjęciu}{fig:pipeline}.
 
 \begin{landscape}
+    \centering
 \begin{figure}[H]
     \centering
     \includegraphics[height=0.9\textwidth]{images/pipeline}
@@ -63,6 +28,7 @@ Całe doświadczenie zostało odwzorowane w graficznym potoku narzędzia ''\text
 \end{landscape}
 
 \section{Algorytmy}
+\label{sec:alg}
 W trakcie eksperymenty zastosowano różne algorytmy klasyfikacji danych. Charakterystyczną cechą tych algorytmów jest klasyfikacja ukierunkowana na 2 kategorie wejściowe. W tym wypadku są to kategorie ruchu sieciowego: [\textbf{BENIGN} \trans{pl. życzliwy}, \textbf{Other} \trans{pl. inne}], gdzie inne to pozostałe typy ruchu sieciowego.
 
 \subsection{Two-Class Support Vector Machine}
@@ -115,7 +81,6 @@ Las decyzyjny to algorytm którego wynik opiera się o agregację wyników wielu
     \captionsource{Potok zadań dla modelu \textit{Two-Class Decision Forest}}{Opracowanie własne}
     \label{fig:df-pipe}
 \end{figure}
-
 
 
 \subsection{Two-class Neural Network}
