@@ -101,6 +101,21 @@ Kolejną częścią zadań jest zebranie wyników poszczególnych algorytmów or
 \end{figure}
 
 \section{Weryfikacja potoku}
+Aby zweryfikować działanie całego procesu wykorzystano znormalizowane dane treningowe do wytrenowania oraz przetestowania działania algorytmów klasyfikacyjnych. Cały proces trwał ''\textbf{1 dzień 10 godzin 55 minut 53 sekundy}''. Wyniki tych działań widać na \refsource{rysunku}{fig:predict-same}. Analizując wykres można zauważyć, że uzyskane wyniki znajdują się w przedziale $[94\%, 100\%]$ w każdej metryce co pokazuje jakość każdego z algorytmów, a także to, że algorytmy poradziły sobie niemal bezbłędnie w rozpoznawaniu ruchu sieciowego, na którym były uczone. Zbiór, który wykorzystano do trenowania oraz testowania danych zawierał w sobie 225805 wpisów z czego 97718 należało do klasy ''\textbf{1}'', zaś 128087 należało do klasy ''\textbf{0}''.
+
+\begin{table}[H]
+    \centering
+    \captionsource{Liczba elementów przynależących do danej klasy w zniorze treningowym}{Opracowanie własne}
+    \label{tab:trening-data-label}
+    \begin{tabular}{|c|r|} \hline
+        \textbf{Klasa} & \textbf{Liczba wystąpień} \\ \hline
+        1 & 97718 \\ \hline
+        0 & 128027 \\ \hline
+        \textbf{Suma} & 225805 \\ \hline
+    \end{tabular}
+\end{table}
+
+Bazując na tym zbiorze oraz uzyskanych wynikach udało się udowodnić poprawność działania procesu klasyfikacji wieloma algorytmami genetycznymi.
 
 \begin{landscape}
     \vspace*{\fill}
@@ -115,6 +130,21 @@ Kolejną częścią zadań jest zebranie wyników poszczególnych algorytmów or
 \end{landscape}
 
 \section{Próba badawcza}
+Aby uzyskać realne wyniki podczas porównywania poszczególnych algorytmów zastosowano zbiór treningowy opisany w \refsource{tabeli}{tab:trening-data-label} oraz zbiór testowy, który zawierał 2273097 wpisów należących do klasy ''\textbf{1}'' oraz 557646 wpisów należących do klasy ''\textbf{0}'' co sumarycznie daje: 2830743 wpisów tak jak to zostało pokazane w \refsource{tabel}{tab:res-test}.
+
+\begin{table}[H]
+    \centering
+    \captionsource{Liczba elementów przynależących do danej klasy w zbiorze testowym}{Opracowanie własne}
+    \label{tab:res-test}
+    \begin{tabular}{|c|r|} \hline
+        \textbf{Klasa} & \textbf{Liczba wystąpień} \\ \hline
+        1 & 2273097 \\ \hline
+        0 & 557646 \\ \hline
+        \textbf{Suma} & 2830743 \\ \hline
+    \end{tabular}
+\end{table}
+
+Podczas analizy można zauważyć fakt, że algorytm DANet odstaje od pozostałych algorytmów w rezultatach mierzonych większością metryk. Dokładność na poziomie $19,9691\%$ pokazuje fakt, że algorytm poprawnie zaklasyfikował jedynie $565273$ wpisów. Wynik taki pokazuje, że ten algorytm jest niewystarczający do tego problemu dlatego został wykluczony z dalszych porównań.
 
 \begin{landscape}
     \vspace*{\fill}
