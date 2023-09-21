@@ -146,6 +146,24 @@ Aby uzyskać realne wyniki podczas porównywania poszczególnych algorytmów zas
 
 Podczas analizy można zauważyć fakt, że algorytm DANet odstaje od pozostałych algorytmów w rezultatach mierzonych większością metryk. Dokładność na poziomie $19,9691\%$ pokazuje fakt, że algorytm poprawnie zaklasyfikował jedynie $565273$ wpisów. Wynik taki pokazuje, że ten algorytm jest niewystarczający do tego problemu dlatego został wykluczony z dalszych porównań.
 
+\subsection{Dopasowanie}
+Wśród pozostałych algorytmów najlepsze dopasowanie uzyskał algorytm: ''\textit{Two-Class Average Perceptron}'', którzy uzyskał wynik na poziomie $85,776\%$, zaś najgorzej poradził sobie ''\textit{Two-Class Support Vector Machine}'' uzyskując $80,3002\%$ w teście. Mimo tego te 6 algorytmó uzyskało podobne wyniki mieszczące się w granicy 3 punktów procentowych różnicy od średniego dopasowania. Algorytm autora (''\textit{Gaussian Naive Base - with GA}'') (GAGNB) uzyskał w tym teście $80,3004\%$. Wyniki zostały przedstawione w \refsource{tabeli}{tab:acc-res} oraz na \refsource{wykresie}{fig:acc-res}.
+
+\begin{table}[H]
+    \centering
+    \captionsource{Wynik dopasowania algorytmów}{Opracowanie własne}
+    \begin{tabular}{|l|r|} \hline
+        \textbf{Algorytm} & \textbf{Wartość} \\ \hline
+        Two-Class Support Vector Machine & $80,3002\%$ \\ \hline
+        Two-Class Boosted Decision Tree & $83,8482\%$ \\ \hline
+        Two-Class Decision Forest & $83,1725\%$ \\ \hline
+        Two-Class Neural Network & $84,7332\%$ \\ \hline
+        Two-Class Average Perceptron & $85,7768\%$ \\ \hline
+        Gaussian Naive Base - with GA & $80,3004\%$ \\ \hline
+        \end{tabular}
+    \label{tab:acc-res}
+\end{table}
+
 \begin{landscape}
     \vspace*{\fill}
     \begin{figure}[H]
@@ -157,6 +175,113 @@ Podczas analizy można zauważyć fakt, że algorytm DANet odstaje od pozostały
     \vfill
 \end{landscape}
 
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{images/acc-res}
+    \captionsource{Dokładność algorytmów}{Opracowanie własne}
+    \label{fig:acc-res}
+\end{figure}
+
+\subsection{Precyzja}
+Najlepszy wynik precyzji uzyskał algorytm ''\textit{Two-Class Neural Network}'' ($85,9776\%$) co oznacza, że najlepiej poradził sobie z dopasowaniem ruchu klasy ''\textbf{1}''. Najsłabszy wynik uzyskał ''\textit{Two-Class Support Vector Machine}'' ($80,3003\%$). GAGNB uzyskał $80,3004\%$ precyzji. Wyniki są opisane w \refsource{tabeli}{tab:acc-prec} oraz na \refsource{wykresie}{fig:acc-prec}.
+
+\begin{table}[H]
+    \centering
+    \captionsource{Wynik precyzji algorytmów}{Opracowanie własne}
+    \begin{tabular}{|l|r|} \hline
+    \textbf{Algorytm} & \textbf{Wartość} \\ \hline
+    Two-Class Support Vector Machine & $80,3003\%$ \\ \hline
+    Two-Class Boosted Decision Tree & $83,5016\%$ \\ \hline
+    Two-Class Decision Forest & $82,6752\%$ \\ \hline
+    Two-Class Neural Network & $85,9776\%$ \\ \hline
+    Two-Class Average Perceptron & $84,9806\%$ \\ \hline
+    Gaussian Naive Base - with GA & $85,7768\%$ \\ \hline
+    \end{tabular}
+    \label{tab:acc-prec}
+\end{table}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{images/prec-res}
+    \captionsource{Precyzja algorytmów}{Opracowanie własne}
+    \label{fig:acc-prec}
+\end{figure}
+
+\subsection{Czułośc}
+Wszystkie wpisy klasy ''\textbf{1}'' zostały poprawnie sklasyfikowane przez algorytm ''\textit{Gaussian Naive Base - with GA}'' ($100\%$), najsłabiej poradził sobie ''\textit{Two-Class Neural Network}'' ($96,7705\%$). Wartości zostały przedstawione w \refsource{tabeli}{tab:rec-res} oraz na \refsource{wykresie}{fig:rec-res}.
+
+\begin{table}[H]
+    \centering
+    \captionsource{Wynik czułości algorytmów}{Opracowanie własne}
+    \begin{tabular}{|l|r|} \hline
+    \textbf{Algorytm} & \textbf{Wartość} \\ \hline
+    Two-Class Support Vector Machine & $99,9998\%$ \\ \hline
+    Two-Class Boosted Decision Tree & $99,5563\%$ \\ \hline
+    Two-Class Decision Forest & $99,9996\%$ \\ \hline
+    Two-Class Neural Network & $96,7705\%$ \\ \hline
+    Two-Class Average Perceptron & $99,9531\%$ \\ \hline
+    Gaussian Naive Base - with GA & $100\%$ \\ \hline
+    \end{tabular}
+    \label{tab:acc-rec}
+\end{table}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{images/rec-res}
+    \captionsource{Czułość algorytmów}{Opracowanie własne}
+    \label{fig:rec-res}
+\end{figure}
+
+\subsection{F1}
+Największą wartość F1 uzyskał ''\textit{Two-Class Average Perceptron}'' ($91,8608\%$). Najmniejszą uzyskał ''\textit{Two-Class Support Vector Machine}'' ($89,0739\%$). GAGNB w tym teście uzyskał $89,0740\%$. Wyniki zostały przedstawione w \refsource{tabeli}{tab:acc-f1} oraz na \refsource{wykresie}{fig:f1-res}.
+
+\begin{table}[H]
+    \centering
+    \captionsource{Wynik F1 algorytmów}{Opracowanie własne}
+    \begin{tabular}{|l|r|} \hline
+    \textbf{Algorytm} & \textbf{Wartość} \\ \hline
+    Two-Class Support Vector Machine & $89,0739\%$ \\ \hline
+    Two-Class Boosted Decision Tree & $90,8249\%$ \\ \hline
+    Two-Class Decision Forest & $90,5159\%$ \\ \hline
+    Two-Class Neural Network & $91,0553\%$ \\ \hline
+    Two-Class Average Perceptron & $91,8608\%$ \\ \hline
+    Gaussian Naive Base - with GA & $89,0740\%$ \\ \hline
+    \end{tabular}
+    \label{tab:acc-f1}
+\end{table}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{images/f1-res}
+    \captionsource{F1 algorytmów}{Opracowanie własne}
+    \label{fig:f1-res}
+\end{figure}
+
+\subsection{AUC}
+Analizując wynik AUC, można zauważyć, że najlepsza sprawność również uzyskał algorytm ''\textit{Two-Class Average Perceptron}'' ($79,1292\%$). Najgorszy algorytm to znów algorytm wykorzystujący SVM ($49,9999\%$), wynik wskazał na to, że algorytm ten miał niższą sprawność niż próba losowa. W tym teście sprawność algorytmu GAGNB wyniosła $50\%$. Wyniki przedstawiono w \refsource{tabeli}{tab:acc-auc} oraz na \refsource{wykresie}{fig:auc-res}.
+
+\begin{table}[H]
+    \centering
+    \captionsource{Wynik czułości algorytmów}{Opracowanie własne}
+    \begin{tabular}{|l|r|} \hline
+    \textbf{Algorytm} & \textbf{Wartość} \\ \hline
+    Two-Class Support Vector Machine & $49,9999\%$ \\ \hline
+    Two-Class Boosted Decision Tree & $69,9089\%$ \\ \hline
+    Two-Class Decision Forest & $63,5244\%$ \\ \hline
+    Two-Class Neural Network & $72,1864\%$ \\ \hline
+    Two-Class Average Perceptron & $79,1892\%$ \\ \hline
+    Gaussian Naive Base - with GA & $50\%$ \\ \hline
+    \end{tabular}
+    \label{tab:acc-auc}
+\end{table}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{images/auc-res}
+    \captionsource{AUC algorytmów}{Opracowanie własne}
+    \label{fig:auc-res}
+\end{figure}
 
 \section{Wnioski}
 
