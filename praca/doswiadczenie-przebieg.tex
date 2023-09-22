@@ -285,3 +285,9 @@ Analizując wynik AUC, można zauważyć, że najlepsza sprawność również uz
 
 \section{Wnioski}
 
+Microsoft Wyszedł na przeciw potrzebom użytkowników dlatego przygotował zestaw prekonfigurowanych algorytmów klasyfikacyjnych, dzięki czemu możliwości narzędzia Azure ML pozwalają na odpowiadanie na konkretne potrzeby przy relatywnie niewielkich kosztach. Jednakże to nie oznacza, że tworzenie autorskich rozwiązań mija się z celem. Jak ukazano na \refsource{wykresie}{fig:predict-result} autorskie rozwiązania również mają rację bytu. Wykorzystanie połączenia algorytmu genetycznego i klasyfikatora naiwnego Bayesa z rozkładem normalnym pozwala na uzyskanie zbliżonych wyników co algorytmu utworzone przez giganta technologicznego. Różnica około 5 punktó procentywych między najlepszym algorytmem a algorytmem GAGNB ukazuje niewielką różnicę w jakości algorytmu. Dodatkowo wciąż trudno korzysta się z rozwiązań takich jak DANet, któe są nieprzetestowe na różnorakich zbiorach lecz na tych wcześniej specjalnie spreparowanych.
+\\ \\
+Dodatkowo korzystanie z tego typu prostych rozwiązań autorskich pozwala na prototypownie rozwiązań biznesowych opartych o klasyfikację danych. Samo wykorzystanie algorytmu genetycznego z algorytmem GNB umożliwia skupienie się na tworzenie ugólnego rozwiązania bez wcześniejszej znajomości zbioru oraz korzystając z programów lokalnie nie ponosząc kosztów wykorzystania platformy chmurowej. Kolejnym atutem utworzonego przez autora rozwiązania jest zmniejszenie kosztów lokalnego użytkowania poprzez zmniejszenie wymiarowości zbioru danych do klasyfikacji poprzez wykorzystanie jedynei wytypowanych kolumn.
+\\ \\
+Doświadczenie to ukazuje, że wciąż należy próbować tworzyć wydajniejsze i dokładniejsze rozwiązania, lecz nie zaprzecza faktu iż rozwiązania ogólnie dostępne są na bardzo wysokim poziomie. Uzyskano dokładność z zakresu $[80\%, 85\%]$ przy czym plik testowy był 12 krotnie większy od pliku treningowego.
+
