@@ -44,8 +44,8 @@ def predict(dataframe1, dataframe2):
     dataframe1 = dataframe1.replace([np.inf, -np.inf], np.nan)
     dataframe1 = dataframe1.fillna(0)
 
-    dataframe2 = dataframe1.replace([np.inf, -np.inf], np.nan)
-    dataframe2 = dataframe1.fillna(0)
+    dataframe2 = dataframe2.replace([np.inf, -np.inf], np.nan)
+    dataframe2 = dataframe2.fillna(0)
 
     dataframe1, dataframe1_valid = np.split(dataframe1, [int(.1*len(dataframe1))])
 
