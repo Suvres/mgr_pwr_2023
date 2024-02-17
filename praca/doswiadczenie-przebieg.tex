@@ -29,13 +29,9 @@ Przyjęta w projekcie metodologia badawcza została określona w poniższej \ref
 
         \textbf{Hipotezy:}                                                                                                                             \\
         \begin{enumerate}
-            \item Nie ma istotnej różnicy w wynikach próby testowej i treningowej.
-            \item Nie ma istotnej różnicy w uzyskanej ''\textit{dokładności}'' między algorytmami.
-            \item Nie ma istotnej różnicy w uzyskanej ''\textit{czułości}'' między algorytmami.
-            \item Nie ma istotnej różnicy w uzyskanej ''\textit{precyzji}'' między algorytmami.
-            \item Nie ma istotnej różnicy w uzyskanym ''\textit{auc}'' między algorytmami.
-            \item Nie ma istotnej różnicy w uzyskanej ''\textit{f1}'' między algorytmami.
-            \item Nie ma istotnej różnicy w uzyskanym ''\textit{czasie działania}'' między algorytmami.
+            \item Nie ma istotnej różnicy pomiędzy wynikami próby testowej i treningowej.
+            \item Nie ma istotnej różnicy pomiędzy wynikami prób testowych.
+            \item Wynik dopasowania algorytmów nie przekracza dolnej granicy przedziału ufności dla próby testowej
         \end{enumerate}                                                                                                                                \\ \hline
     \end{tabular}
     \label{tab:met-bad}
@@ -163,7 +159,7 @@ Aby uzyskać realne wyniki podczas porównywania poszczególnych algorytmów zas
 Poniżej zostały przedstawione wyniki zbiorcze dla poszczególnych metryk.\ Dodatkowo przedstawiono również wynik pomiaru treningowego, który w większości przypadków jest wyższy od danych testowych.\ Co prawdopodobnie jest spowodowane różnicą w ilości danych testowych i treningowych.\ Dodatkowo w każdej kolumnie oznaczono kolorem zielonym najwyższy wynik dla danej metryki, a kolorem czerwonym najniższy wynik dla danej metryki.
 
 \subsection{Dopasowanie}
-Najlepszy wynik dopasowania dla danych treningowych uzyskał algorytm \textit{Two-Class Average Perceptron}, który poprawnie rozpoznał $85,7768\%$ próbek.\ Najgorszy wynik uzyskał algorytm \textit{DANet} z dopasowaniem rzędu: $19,9691\%$.\ Dla próby treningowej najlepszy wynik uzyskał \textit{Two-Class Boosted Decision Tree} z wynikiem $100,00\%$, a najgorszy \textit{Two-Class Average Perceptron} z wynikiem $97,4502\%$.\ Wyniki dopasowania dla poszczególnych prób zostały przedstawione na \refsource{tabeli}{tab:acc-res} oraz na wykresie \refsource{wykresie}{fig:acc-res}
+Najlepszy wynik dopasowania dla danych testowych uzyskał algorytm \textit{Two-Class Average Perceptron}, który poprawnie rozpoznał $85,7768\%$ próbek.\ Najgorszy wynik uzyskał algorytm \textit{DANet} z dopasowaniem rzędu: $19,9691\%$.\ Dla próby treningowej najlepszy wynik uzyskał \textit{Two-Class Boosted Decision Tree} z wynikiem $100,00\%$, a najgorszy \textit{Two-Class Average Perceptron} z wynikiem $97,4502\%$.\ Wyniki dopasowania dla poszczególnych prób zostały przedstawione na \refsource{tabeli}{tab:acc-res} oraz na wykresie \refsource{wykresie}{fig:acc-res}.
 
 \begin{table}[H]
     \centering
@@ -190,7 +186,7 @@ Najlepszy wynik dopasowania dla danych treningowych uzyskał algorytm \textit{Tw
 \end{figure}
 
 \subsection{Precyzja}
-Najlepszy wynik precyzji uzyskał algorytm ''\textit{Two-Class Neural Network}'' ($85,9776\%$) co oznacza, że najlepiej poradził sobie z dopasowaniem ruchu klasy ''\textbf{1}''. Najsłabszy wynik uzyskał ''\textit{Two-Class Support Vector Machine}'' ($80,3003\%$). GAGNB uzyskał $80,3004\%$ precyzji. Wyniki są opisane w \refsource{tabeli}{tab:acc-prec} oraz na \refsource{wykresie}{fig:acc-prec}.
+Najlepszy wynik precyzji dla danych testowych uzyskał algorytm \textit{Two-Class Neural Network} ($85,9776\%$).\ Najgorszy wynik uzyskał algorytm \textit{Two-Class Support Vector Machine} ($80,3003\%$).\ Dla próby treningowej najlepszy wynik uzyskał \textit{Two-Class Boosted Decision Tree} ($100\%$), a najgorszy \textit{Two-Class Average Perceptron} ($94,5\%$).\ Wyniki precyzji dla poszczególnych prób zostały przedstawione w \refsource{tabeli}{tab:acc-prec} oraz na wykresie \refsource{wykresie}{fig:prec-res}.
 
 \begin{table}[H]
     \centering
@@ -214,11 +210,11 @@ Najlepszy wynik precyzji uzyskał algorytm ''\textit{Two-Class Neural Network}''
     \centering
     \includegraphics[width=\textwidth]{images/prec-res}
     \captionsource{Precyzja algorytmów}{Opracowanie własne}
-    \label{fig:acc-prec}
+    \label{fig:prec-res}
 \end{figure}
 
 \subsection{Czułośc}
-Wszystkie wpisy klasy ''\textbf{1}'' zostały poprawnie sklasyfikowane przez algorytm ''\textit{Gaussian Naive Base - with GA}'' ($100\%$), najsłabiej poradził sobie ''\textit{Two-Class Neural Network}'' ($96,7705\%$). Wartości zostały przedstawione w \refsource{tabeli}{tab:rec-res} oraz na \refsource{wykresie}{fig:rec-res}.
+Najlepszy wynik czułości dla danych testowych uzyskał algorytm \textit{Gaussian Naive Base - with GA} ($100,00\%$).\ Najgorszy wynik uzyskał algorytm \textit{DANet} ($0,4239\%$).\ Dla próby treningowej najlepszy wynik uzyskał \textit{Two-Class Boosted Decision Tree} oraz \textit{Two-Class Decision Forest} ($100\%$), a najgorszy \textit{Gaussian Naive Base - with GA} ($97,3741\%$).\ Wyniki czułości dla poszczególnych prób zostały przedstawione w \refsource{tabeli}{tab:acc-rec} oraz na wykresie \refsource{wykresie}{fig:rec-res}.
 
 \begin{table}[H]
     \centering
@@ -246,7 +242,7 @@ Wszystkie wpisy klasy ''\textbf{1}'' zostały poprawnie sklasyfikowane przez alg
 \end{figure}
 
 \subsection{F1}
-Największą wartość F1 uzyskał ''\textit{Two-Class Average Perceptron}'' ($91,8608\%$). Najmniejszą uzyskał ''\textit{Two-Class Support Vector Machine}'' ($89,0739\%$). GAGNB w tym teście uzyskał $89,0740\%$. Wyniki zostały przedstawione w \refsource{tabeli}{tab:acc-f1} oraz na \refsource{wykresie}{fig:f1-res}.
+Najlepszy wynik F1 dla danych testowych uzyskał algorytm \textit{Two-Class Average Perceptron} ($91,8606\%$).\ Najgorszy wynik uzyskał algorytm \textit{DANet} ($0,8434\%$).\ Dla próby treningowej najlepszy wynik uzyskał \textit{Two-Class Boosted Decision Tree} ($100\%$), a najgorszy \textit{Two-Class Average Perceptron} ($97,1370\%$).\ Wyniki precyzji dla poszczególnych prób zostały przedstawione w \refsource{tabeli}{tab:acc-f1} oraz na wykresie \refsource{wykresie}{fig:f1-res}.
 
 \begin{table}[H]
     \centering
@@ -274,7 +270,7 @@ Największą wartość F1 uzyskał ''\textit{Two-Class Average Perceptron}'' ($9
 \end{figure}
 
 \subsection{AUC}
-Analizując wynik AUC, można zauważyć, że najlepsza sprawność również uzyskał algorytm ''\textit{Two-Class Average Perceptron}'' ($79,1292\%$). Najgorszy algorytm to znów algorytm wykorzystujący SVM ($49,9999\%$), wynik wskazał na to, że algorytm ten miał niższą sprawność niż próba losowa. W tym teście sprawność algorytmu GAGNB wyniosła $50\%$. Wyniki przedstawiono w \refsource{tabeli}{tab:acc-auc} oraz na \refsource{wykresie}{fig:auc-res}.
+Najlepszy wynik precyzji dla danych testowych uzyskał algorytm \textit{Two-Class AveragePerceptron} ($79,1892\%$).\ Najgorszy wynik uzyskał algorytm \textit{Two-Class Support Vector Machine} ($49,999\%$).\ Dla próby treningowej najlepszy wynik uzyskał \textit{Two-Class Boosted Decision Tree} oraz \textit{Two-Class Decision Forest} ($100\%$), a najgorszy \textit{Gaussiaon Naive Base - with GA} ($99,9437\%$).\ Wyniki precyzji dla poszczególnych prób zostały przedstawione w \refsource{tabeli}{tab:acc-auc} oraz na wykresie \refsource{wykresie}{fig:auc-res}.
 
 \begin{table}[H]
     \centering
@@ -303,8 +299,45 @@ Analizując wynik AUC, można zauważyć, że najlepsza sprawność również uz
 
 
 \section{Analiza wyników}
+Wszystkie poniższe testy statystyczne zostały wykonane dla założeń z \refsource{tabel}{tab:stat}:
 
-Przedział ufności dla dokładności algorytmów wyniósł $17,7218$ dla $\alpha = 0.05$.\ Biorąc pod uwagę ten fakt można stwierdzić, że dokładność algorytmu DANet jest poniżej dolnej granicy.\ Dolna granica przedziału ufności wynosi $56,2925\%$, zaś DANet uzyskał $19,9691\%$ oraz poprawnie zaklasyfikował jedynie $565273$ wpisów.
+\begin{table}[H]
+    \centering
+    \captionsource{Założenia wykorzystywane do analizy statystycznej danych}{Opracowanie własne}
+    \begin{tabular}{|l|c|} \hline
+        \textbf{Założenie} & \textbf{Wartość} \\ \hline
+        Przedział ufności & $95\%$ \\ \hline
+        $\alpha$ & $0,05$ \\ \hline
+        Liczba elementów & $7$ \\ \hline
+    \end{tabular}
+    \label{tab:stat}
+\end{table}
+
+\subsection{Hipoteza $H_0$: Nie ma istotnej różnicy pomiędzy wynikami ''dopasowania'' próby testowej i treningowej}
+
+Wykorzystując statystyczny test t Studenta dla prób zależnych dla danych z \refsource{tabeli}{tab:acc-res} oraz założenia z \refsource{tabeli}{tab:stat} określono, że wartość $p-value = 0,0163$.\ Oznacza to, że zmienna $p-value < \alpha$, dzięki czemu można odrzucić hipotezę $H_0$.\ Wyniki tej analizy określają, że widać istotne różnice pomiędzy danymi z próby testowej i treningowej.\ Największą różnicę widać w rezultacie algorytmu \textit{DANet}, który uzyskał w próbie testowej $19,9691\%$ dopasowania, a w próbie treningowej $99,9823\%$.\\
+
+\subsection{Hipoteza $H_0$: Nie ma istotnej różnicy pomiędzy wynikami ''dopasowania'' prób testowych}
+
+Za pomocą testu t Studenta dla prób zależnych określono porównano dane w próbach testowych z \refsource{tabeli}{tab:acc-res}.\ Uzyskane wyniki, przedstawione w \refsource{tabeli}{tab:acc-p-stat}, pozwalają zachować Hipotezę $H_0$, stwierdzającą, że pomiędzy danymi w poszczególnych próbach testowych nie ma istotnych różnic.
+
+\begin{table}[H]
+    \centering
+    \captionsource{Wyniki testu t Studenta dla poszczególnych prób testowych}{Opracowanie własne}
+   \begin{tabular}{|c|c|c|} \hline
+       \multicolumn{3}{|c|}{$H_0$ Brak istotnych różnic między wynikami dla $\alpha = 0,05$} \\ \hline
+       \textbf{Relacja} & \textbf{P-value} & \textbf{Rezultat} \\\hline
+       Próba 2 $\leftrightarrow$ Próba 3 & $0,5 > \alpha$ & Brak istotnych różnic \\ \hline
+       Próba 2 $\leftrightarrow$ Próba 1 & $0,5 > \alpha$ & Brak istotnych różnic \\ \hline
+       Próba 3 $\leftrightarrow$ Próba 1 & $0,5 > \alpha$ & Brak istotnych różnic \\ \hline
+   \end{tabular}
+    \label{tab:acc-p-stat}
+\end{table}
+
+\subsection{Hipoteza $H_0$: Wynik dopasowania algorytmów nie przekracza dolnej granicy przedziału ufności}
+
+
+Przedział ufności dla dokładności algorytmów wyniósł $17,7218$ dla $\alpha = 0.05$.\ Biorąc pod uwagę ten fakt można stwierdzić, że dokładność algorytmu DANet jest poniżej dolnej granicy.\ Dolna granica przedziału ufności wynosi $56,2925\%$, zaś DANet uzyskał $19,9691\%$ oraz poprawnie zaklasyfikował jedynie $565273$ wpisów.\ Oznacza to, że można odrzucić $H_0$, ponieważ jeden algorytm przekracza dolny próg granicy ufności
 
 
 \section{Wnioski}
