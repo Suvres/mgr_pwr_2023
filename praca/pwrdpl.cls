@@ -6,21 +6,20 @@
 % 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\message{*** [pwrdpl.cls] ---  (PK, GJN, MSz)  v4.0 <2020-11-03>  ***}       
+\message{*** [pwrdpl.cls] ---  (PK, GJN, MSz)  v4.0 <2020-11-03>  ***}
 
 \newif\ifpdflatex\pdflatexfalse
 \NeedsTeXFormat{LaTeX2e} % 
-\ProvidesClass{pwrdpl} 
+\ProvidesClass{pwrdpl}
 \RequirePackage{mmap}
 \RequirePackage{kvoptions}
 \RequirePackage{csvsimple}
 \RequirePackage{lscape}
-
 \DeclareStringOption[pl]{language}
 \ProcessKeyvalOptions*
 
 \DeclareOption{pdflatex}{\pdflatextrue}
-\DeclareOption*{\PassOptionsToClass{\CurrentOption}{report}} 
+\DeclareOption*{\PassOptionsToClass{\CurrentOption}{report}}
 \ProcessOptions\LoadClass[a4paper,twoside,openright]{report}
 
 \RequirePackage{xstring}
@@ -65,6 +64,8 @@
 \RequirePackage{titlesec}
 \RequirePackage{tocloft}
 \RequirePackage{float}
+
+\RequirePackage{nicematrix}
 
 \RequirePackage{pgfplots}
 \RequirePackage{tikz}
@@ -120,7 +121,7 @@
 \newcommand{\titlepages}{%
 
 	\titlepage
-	
+
 	\begin{center}
 		{\Large{\bfseries{Politechnika Wrocławska}}}\linebreak
 		\vspace*{1mm}
@@ -140,7 +141,7 @@
 		\vspace*{25mm}
 		{\Huge\scshape{\@thesistype}}
 		\vspace*{25mm}
-		
+
 		{\LARGE
 			\IfStrEqCase{\ThesisLanguage}{%
 				{pl}{\textbf{\@titlePL}}
@@ -161,15 +162,15 @@
 	\hrule
 	\vspace*{1mm}
 	\centerline{\small WROCŁAW, \@date}
-	
-	\clearpage
-	\thispagestyle{empty} 
-	
+
 	\clearpage
 	\thispagestyle{empty}
-	
+
+	\clearpage
+	\thispagestyle{empty}
+
 	~ \newpage
-	
+
 	% Obecna strona będzie mieć nr 5.
 	\setcounter{page}{3}
 }
@@ -198,7 +199,7 @@
 }
 
 \frenchspacing
-\sloppy 
+\sloppy
 \flushbottom
 
 
@@ -347,7 +348,7 @@
            {Ź}{{\'Z}}1
            {Ż}{{\.Z}}1,
 		   captionpos=b,
-    % backgroundcolor=\color{lstBackground},   
+    % backgroundcolor=\color{lstBackground},
     commentstyle=\ttfamily\itshape\color{gray},
     tabsize = 4, %% set tab space width
     showstringspaces = false, %% prevent space marking in strings, string is defined as the text that is generally printed directly to the console
@@ -490,6 +491,16 @@
 		\vspace{-10pt}
 		\caption*{Źródło: #2}
 	}
+}
+
+\newcommand*{\captionsourceb}[3]{%
+\caption{#1}
+{
+\vspace{-10pt}
+\caption*{#2}
+\vspace{-10pt}
+\caption*{Źródło: #3}
+}
 }
 
 \newcommand*{\refsource}[2]{%

@@ -1,6 +1,7 @@
 \chapter{Przebieg badań}
 Doświadczenie polegało na analizie porównawczej sprawności algorytmów opisanych w \refsource{rozdziale}{cha:dos} w \refsource{sekcji}{sec:alg}. Celem doświadczenia było określenie jakości algorytmu utworzonego w ramach pracy inżynierskiej autora\cite{Blyszcz2022}. Szczegółowa metodologia badawcza została określona w \refsource{podrozdziale}{sec:met}.
 
+
 \section{Metodologia badawcza}
 \label{sec:met}
 Przyjęta w projekcie metodologia badawcza została określona w poniższej \refsource{tabeli}{tab:met-bad}. Przyjęta metodologia ma za zadanie określić jakoś porównywanego algorytmu.
@@ -10,10 +11,10 @@ Przyjęta w projekcie metodologia badawcza została określona w poniższej \ref
     \captionsource{Metodologia badawcza}{Opracowanie własne}
     \begin{tabular}{|L{\textwidth}|}
         \hline
-        \textbf{Problem badawczy:} \\
+        \textbf{Problem badawczy:}                                                                                                                     \\
         Czy algorytm klasyfikacji danych utworzony w ramach pracy inżynierskiej może konkurować z rozwiązaniami dostępnymi w środowiskach komercyjnych \\ \hline
 
-        \textbf{Pytania badawcze:} \\
+        \textbf{Pytania badawcze:}                                                                                                                     \\
         \begin{enumerate}
             \item Czy algorytm jest konkurencyjny pod względem wybranych metry:
             \begin{itemize}
@@ -24,20 +25,22 @@ Przyjęta w projekcie metodologia badawcza została określona w poniższej \ref
                 \item f1
                 \item auc
             \end{itemize}
-        \end{enumerate} \\ \hline
+        \end{enumerate}                                                                                                                                \\ \hline
 
-        \textbf{Hipotezy:} \\
+        \textbf{Hipotezy:}                                                                                                                             \\
         \begin{enumerate}
+            \item Nie ma istotnej różnicy w wynikach próby testowej i treningowej.
             \item Nie ma istotnej różnicy w uzyskanej ''\textit{dokładności}'' między algorytmami.
             \item Nie ma istotnej różnicy w uzyskanej ''\textit{czułości}'' między algorytmami.
             \item Nie ma istotnej różnicy w uzyskanej ''\textit{precyzji}'' między algorytmami.
             \item Nie ma istotnej różnicy w uzyskanym ''\textit{auc}'' między algorytmami.
             \item Nie ma istotnej różnicy w uzyskanej ''\textit{f1}'' między algorytmami.
             \item Nie ma istotnej różnicy w uzyskanym ''\textit{czasie działania}'' między algorytmami.
-        \end{enumerate} \\ \hline
+        \end{enumerate}                                                                                                                                \\ \hline
     \end{tabular}
     \label{tab:met-bad}
 \end{table}
+
 
 \section{Przygotowanie platformy}
 Do badań wykorzystano narzędzie ''\textit{Projektant}'' znajdujące się na platformie ''\textit{Azure Machine Learning Studio}'' (Azure ML). Narzędzie to umożliwiło utworzenie interaktywnego potoku zadań. Potok ten składa się z kilku części:
@@ -89,7 +92,6 @@ Potok zadań dla algorytmów niestandardowych został ukazany na \refsource{rysu
     \label{fig:au-pipe}
 \end{figure}
 
-
 \subsection{Utworzenie tabeli porównawczej}
 Kolejną częścią zadań jest zebranie wyników poszczególnych algorytmów oraz połączenie ich w jedną całość. Wykorzystano do tego moduły języka Pyton, które zwracają przetwożone wyniki oraz łączą je w jedną tabelę zbiorczą, co pokazano na \refsource{rysunku}{fig:pipe-4}.
 
@@ -100,6 +102,7 @@ Kolejną częścią zadań jest zebranie wyników poszczególnych algorytmów or
     \label{fig:pipe-4}
 \end{figure}
 
+
 \section{Weryfikacja potoku}
 Aby zweryfikować działanie całego procesu wykorzystano znormalizowane dane treningowe do wytrenowania oraz przetestowania działania algorytmów klasyfikacyjnych. Cały proces trwał ''\textbf{1 dzień 10 godzin 55 minut 53 sekundy}''. Wyniki tych działań widać na \refsource{rysunku}{fig:predict-same}. Analizując wykres można zauważyć, że uzyskane wyniki znajdują się w przedziale $[94\%, 100\%]$ w każdej metryce co pokazuje jakość każdego z algorytmów, a także to, że algorytmy poradziły sobie niemal bezbłędnie w rozpoznawaniu ruchu sieciowego, na którym były uczone. Zbiór, który wykorzystano do trenowania oraz testowania danych zawierał w sobie 225805 wpisów z czego 97718 należało do klasy ''\textbf{1}'', zaś 128087 należało do klasy ''\textbf{0}''.
 
@@ -107,11 +110,12 @@ Aby zweryfikować działanie całego procesu wykorzystano znormalizowane dane tr
     \centering
     \captionsource{Liczba elementów przynależących do danej klasy w zniorze treningowym}{Opracowanie własne}
     \label{tab:trening-data-label}
-    \begin{tabular}{|c|r|} \hline
+    \begin{tabular}{|c|r|}
+        \hline
         \textbf{Klasa} & \textbf{Liczba wystąpień} \\ \hline
-        1 & 97718 \\ \hline
-        0 & 128027 \\ \hline
-        \textbf{Suma} & 225805 \\ \hline
+        1              & 97718                     \\ \hline
+        0              & 128027                    \\ \hline
+        \textbf{Suma}  & 225805                    \\ \hline
     \end{tabular}
 \end{table}
 
@@ -125,43 +129,24 @@ Bazując na tym zbiorze oraz uzyskanych wynikach udało się udowodnić poprawno
         \captionsource{Wyniki testów algorytmów klasyfikacyjnych na danych treningowych}{Opracowanie własne}
         \label{fig:predict-same}
     \end{figure}
-\vfill
-
+    \vfill
 \end{landscape}
 
+
 \section{Próba badawcza}
-Aby uzyskać realne wyniki podczas porównywania poszczególnych algorytmów zastosowano zbiór treningowy opisany w \refsource{tabeli}{tab:trening-data-label} oraz zbiór testowy, który zawierał 2273097 wpisów należących do klasy ''\textbf{1}'' oraz 557646 wpisów należących do klasy ''\textbf{0}'' co sumarycznie daje: 2830743 wpisów tak jak to zostało pokazane w \refsource{tabel}{tab:res-test}.
+Aby uzyskać realne wyniki podczas porównywania poszczególnych algorytmów zastosowano zbiór treningowy opisany w \refsource{tabeli}{tab:trening-data-label} oraz zbiór testowy, który zawierał 2273097 wpisów należących do klasy ''\textbf{1}'' oraz 557646 wpisów należących do klasy ''\textbf{0}'' co sumarycznie daje: 2830743 wpisów tak jak to zostało pokazane w \refsource{tabel}{tab:res-test}.\ Pomiary testowe powtórzono 2 razy dzięki czemu uzyskano 3 próby badawcze.
 
 \begin{table}[H]
     \centering
     \captionsource{Liczba elementów przynależących do danej klasy w zbiorze testowym}{Opracowanie własne}
     \label{tab:res-test}
-    \begin{tabular}{|c|r|} \hline
+    \begin{tabular}{|c|r|}
+        \hline
         \textbf{Klasa} & \textbf{Liczba wystąpień} \\ \hline
-        1 & 2273097 \\ \hline
-        0 & 557646 \\ \hline
-        \textbf{Suma} & 2830743 \\ \hline
+        1              & 2273097                   \\ \hline
+        0              & 557646                    \\ \hline
+        \textbf{Suma}  & 2830743                   \\ \hline
     \end{tabular}
-\end{table}
-
-Podczas analizy można zauważyć fakt, że algorytm DANet odstaje od pozostałych algorytmów w rezultatach mierzonych większością metryk. Dokładność na poziomie $19,9691\%$ pokazuje fakt, że algorytm poprawnie zaklasyfikował jedynie $565273$ wpisów. Wynik taki pokazuje, że ten algorytm jest niewystarczający do tego problemu dlatego został wykluczony z dalszych porównań.
-
-\subsection{Dopasowanie}
-Wśród pozostałych algorytmów najlepsze dopasowanie uzyskał algorytm: ''\textit{Two-Class Average Perceptron}'', którzy uzyskał wynik na poziomie $85,776\%$, zaś najgorzej poradził sobie ''\textit{Two-Class Support Vector Machine}'' uzyskując $80,3002\%$ w teście. Mimo tego te 6 algorytmó uzyskało podobne wyniki mieszczące się w granicy 3 punktów procentowych różnicy od średniego dopasowania. Algorytm autora (''\textit{Gaussian Naive Base - with GA}'') (GAGNB) uzyskał w tym teście $80,3004\%$. Wyniki zostały przedstawione w \refsource{tabeli}{tab:acc-res} oraz na \refsource{wykresie}{fig:acc-res}.
-
-\begin{table}[H]
-    \centering
-    \captionsource{Wynik dopasowania algorytmów}{Opracowanie własne}
-    \begin{tabular}{|l|r|} \hline
-        \textbf{Algorytm} & \textbf{Wartość} \\ \hline
-        Two-Class Support Vector Machine & $80,3002\%$ \\ \hline
-        Two-Class Boosted Decision Tree & $83,8482\%$ \\ \hline
-        Two-Class Decision Forest & $83,1725\%$ \\ \hline
-        Two-Class Neural Network & $84,7332\%$ \\ \hline
-        Two-Class Average Perceptron & $85,7768\%$ \\ \hline
-        Gaussian Naive Base - with GA & $80,3004\%$ \\ \hline
-        \end{tabular}
-    \label{tab:acc-res}
 \end{table}
 
 \begin{landscape}
@@ -175,6 +160,27 @@ Wśród pozostałych algorytmów najlepsze dopasowanie uzyskał algorytm: ''\tex
     \vfill
 \end{landscape}
 
+Poniżej zostały przedstawione wyniki zbiorcze dla poszczególnych metryk.\ Dodatkowo przedstawiono również wynik pomiaru treningowego, który w większości przypadków jest wyższy od danych testowych.\ Co prawdopodobnie jest spowodowane różnicą w ilości danych testowych i treningowych.\ Dodatkowo w każdej kolumnie oznaczono kolorem zielonym najwyższy wynik dla danej metryki, a kolorem czerwonym najniższy wynik dla danej metryki.
+
+\subsection{Dopasowanie}
+Najlepszy wynik dopasowania dla danych treningowych uzyskał algorytm \textit{Two-Class Average Perceptron}, który poprawnie rozpoznał $85,7768\%$ próbek.\ Najgorszy wynik uzyskał algorytm \textit{DANet} z dopasowaniem rzędu: $19,9691\%$.\ Dla próby treningowej najlepszy wynik uzyskał \textit{Two-Class Boosted Decision Tree} z wynikiem $100,00\%$, a najgorszy \textit{Two-Class Average Perceptron} z wynikiem $97,4502\%$.\ Wyniki dopasowania dla poszczególnych prób zostały przedstawione na \refsource{tabeli}{tab:acc-res} oraz na wykresie \refsource{wykresie}{fig:acc-res}
+
+\begin{table}[H]
+    \centering
+    \captionsourceb{Wynik dopasowania algorytmów.}{Kolorem zielonym określono najlepszy wynik w kolumnie.\ Kolorem czerwonym określono najgorszy wynik w kolumnie.}{Opracowanie własne}
+    \begin{NiceTabular}{|l|r|r|r||r|}[hvlines]
+        & \multicolumn{4}{c|}{\textbf{Wynik dopasowania}} \\
+        \textbf{Algorytm}                & \textbf{Próba 1}                  & \textbf{Próba 2}                  & \textbf{Próba 3}                  & \textbf{Próba testowa}             \\
+        Two-Class Support Vector Machine & $80,3002\%$                       & $80,3002\%$                       & $80,3002\%$                       & $99,9167\%$                        \\
+        Two-Class Boosted Decision Tree  & $83,8482\%$                       & $83,8482\%$                       & $83,8482\%$                       & \cellcolor{lightgreen}$100,0000\%$ \\
+        Two-Class Decision Forest        & $83,1725\%$                       & $83,1725\%$                       & $83,1725\%$                       & $99,9960\%$                        \\
+        Two-Class Neural Network         & $84,7332\%$                       & $84,7332\%$                       & $84,7332\%$                       & $99,2682\%$                        \\
+        Two-Class Average Perceptron     & \cellcolor{lightgreen}$85,7768\%$ & \cellcolor{lightgreen}$85,7768\%$      & \cellcolor{lightgreen}$85,7768\%$       & \cellcolor{lightred}$97,4502\%$             \\
+        Gaussian Naive Base - with GA    & $80,3004\%$                       & $80,3004\%$                       & $80,3004\%$                       & $98,8013\%$                        \\
+        DANet                            & \cellcolor{lightred}$19,9691\%$   & \cellcolor{lightred}$19,7899\%$   & \cellcolor{lightred}$19,7899\%$      & $99,9823\%$            \\
+    \end{NiceTabular}
+    \label{tab:acc-res}
+\end{table}
 
 \begin{figure}[H]
     \centering
@@ -188,16 +194,19 @@ Najlepszy wynik precyzji uzyskał algorytm ''\textit{Two-Class Neural Network}''
 
 \begin{table}[H]
     \centering
-    \captionsource{Wynik precyzji algorytmów}{Opracowanie własne}
-    \begin{tabular}{|l|r|} \hline
-    \textbf{Algorytm} & \textbf{Wartość} \\ \hline
-    Two-Class Support Vector Machine & $80,3003\%$ \\ \hline
-    Two-Class Boosted Decision Tree & $83,5016\%$ \\ \hline
-    Two-Class Decision Forest & $82,6752\%$ \\ \hline
-    Two-Class Neural Network & $85,9776\%$ \\ \hline
-    Two-Class Average Perceptron & $84,9806\%$ \\ \hline
-    Gaussian Naive Base - with GA & $85,7768\%$ \\ \hline
-    \end{tabular}
+    \captionsourceb{Wynik precyzji algorytmów.}{Kolorem zielonym określono najlepszy wynik w kolumnie.\ Kolorem czerwonym określono najgorszy wynik w kolumnie.}{Opracowanie własne}
+    \begin{NiceTabular}{|l|r|r|r||r|}[hvlines]
+        \hline
+        & \multicolumn{4}{c|}{\textbf{Wynik precyzji}} \\
+        \textbf{Algorytm}                & \textbf{Próba 1}                  & \textbf{Próba 2}                  & \textbf{Próba 3}                  & \textbf{Próba testowa}             \\
+        Two-Class Support Vector Machine & \cellcolor{lightred}$80,3003\%$   & \cellcolor{lightred}$80,3003\%$   & \cellcolor{lightred}$80,3003\%$   & $99,8742\%$            \\
+        Two-Class Boosted Decision Tree  & $83,5016\%$                       & $83,5016\%$                       & $83,5016\%$                       & \cellcolor{lightgreen}$100,0000\%$ \\
+        Two-Class Decision Forest        & $82,6752\%$                       & $82,6752\%$                       & $82,6752\%$                       & $99,9908\%$                        \\
+        Two-Class Neural Network         & \cellcolor{lightgreen}$85,9776\%$ & \cellcolor{lightgreen}$85,9776\%$ & \cellcolor{lightgreen}$85,9776\%$ & $99,8972\%$            \\
+        Two-Class Average Perceptron     & $84,9806\%$                       & $84,9806\%$                       & $84,9806\%$                       & \cellcolor{lightred}$94,5000\%$    \\
+        Gaussian Naive Base - with GA    & $85,7768\%$                       & $80,3004\%$                       & $80,3004\%$                       & $99,8531\%$                        \\
+        DANet                            & $82,7536\%$                       & $85,9516\%$                       & $85,9516\%$                       & $99,9887\%$                        \\
+    \end{NiceTabular}
     \label{tab:acc-prec}
 \end{table}
 
@@ -213,16 +222,19 @@ Wszystkie wpisy klasy ''\textbf{1}'' zostały poprawnie sklasyfikowane przez alg
 
 \begin{table}[H]
     \centering
-    \captionsource{Wynik czułości algorytmów}{Opracowanie własne}
-    \begin{tabular}{|l|r|} \hline
-    \textbf{Algorytm} & \textbf{Wartość} \\ \hline
-    Two-Class Support Vector Machine & $99,9998\%$ \\ \hline
-    Two-Class Boosted Decision Tree & $99,5563\%$ \\ \hline
-    Two-Class Decision Forest & $99,9996\%$ \\ \hline
-    Two-Class Neural Network & $96,7705\%$ \\ \hline
-    Two-Class Average Perceptron & $99,9531\%$ \\ \hline
-    Gaussian Naive Base - with GA & $100\%$ \\ \hline
-    \end{tabular}
+    \captionsourceb{Wynik czułości algorytmów.}{Kolorem zielonym określono najlepszy wynik w kolumnie.\ Kolorem czerwonym określono najgorszy wynik w kolumnie.}{Opracowanie własne}
+    \begin{NiceTabular}{|l|r|r|r||r|}[hvlines]
+
+        & \multicolumn{4}{c|}{\textbf{Wynik czułości}} \\
+        \textbf{Algorytm}                & \textbf{Próba 1}                   & \textbf{Próba 2}                   & \textbf{Próba 3}                   & \textbf{Próba testowa}             \\
+        Two-Class Support Vector Machine & $99,9998\%$                        & $99,9998\%$                        & $99,9998\%$                        & $99,9335\%$                        \\
+        Two-Class Boosted Decision Tree  & $99,5563\%$                        & $99,5563\%$                        & $99,5563\%$                        & \cellcolor{lightgreen}$100,0000\%$ \\
+        Two-Class Decision Forest        & $99,9996\%$                        & $99,9996\%$                        & $99,9996\%$                        & \cellcolor{lightgreen}$100,0000\%$ \\
+        Two-Class Neural Network         & $96,7705\%$                        & $96,7705\%$                        & $96,7705\%$                        & $98,4107\%$                        \\
+        Two-Class Average Perceptron     & $99,9531\%$                        & $99,9531\%$                        & $99,9531\%$                        & $99,9253\%$                        \\
+        Gaussian Naive Base - with GA    & \cellcolor{lightgreen}$100,0000\%$ & \cellcolor{lightgreen}$100,0000\%$ & \cellcolor{lightgreen}$100,0000\%$ & \cellcolor{lightred}$97,3741\%$            \\
+        DANet                            & \cellcolor{lightred}$0,4239\%$     & \cellcolor{lightred}$0,1343\%$     & \cellcolor{lightred}$0,1343\%$     & $99,9703\%$            \\
+    \end{NiceTabular}
     \label{tab:acc-rec}
 \end{table}
 
@@ -238,16 +250,19 @@ Największą wartość F1 uzyskał ''\textit{Two-Class Average Perceptron}'' ($9
 
 \begin{table}[H]
     \centering
-    \captionsource{Wynik F1 algorytmów}{Opracowanie własne}
-    \begin{tabular}{|l|r|} \hline
-    \textbf{Algorytm} & \textbf{Wartość} \\ \hline
-    Two-Class Support Vector Machine & $89,0739\%$ \\ \hline
-    Two-Class Boosted Decision Tree & $90,8249\%$ \\ \hline
-    Two-Class Decision Forest & $90,5159\%$ \\ \hline
-    Two-Class Neural Network & $91,0553\%$ \\ \hline
-    Two-Class Average Perceptron & $91,8608\%$ \\ \hline
-    Gaussian Naive Base - with GA & $89,0740\%$ \\ \hline
-    \end{tabular}
+    \captionsourceb{Wynik F1 algorytmów.}{Kolorem zielonym określono najlepszy wynik w kolumnie.\ Kolorem czerwonym określono najgorszy wynik w kolumnie.}{Opracowanie własne}
+    \begin{NiceTabular}{|l|r|r|r||r|}[hvlines]
+
+        & \multicolumn{4}{c|}{\textbf{Wynik F1}} \\
+        \textbf{Algorytm}                & \textbf{Próba 1}                  & \textbf{Próba 2}                  & \textbf{Próba 3}                  & \textbf{Próba testowa}             \\
+        Two-Class Support Vector Machine & $89,0739\%$                       & $89,0739\%$                       & $89,0739\%$                       & $99,9038\%$                        \\
+        Two-Class Boosted Decision Tree  & $90,8249\%$                       & $90,8249\%$                       & $90,8249\%$                       & \cellcolor{lightgreen}$100,0000\%$ \\
+        Two-Class Decision Forest        & $90,5159\%$                       & $90,5159\%$                       & $90,5159\%$                       & $99,9954\%$                        \\
+        Two-Class Neural Network         & $91,0553\%$                       & $91,0553\%$                       & $91,0553\%$                       & $99,1484\%$                        \\
+        Two-Class Average Perceptron     & \cellcolor{lightgreen}$91,8608\%$ & \cellcolor{lightgreen}$91,8608\%$ & \cellcolor{lightgreen}$91,8608\%$ & \cellcolor{lightred}$97,1370\%$            \\
+        Gaussian Naive Base - with GA    & $89,0740\%$                       & $89,0740\%$                       & $89,0740\%$                       & $98,5980\%$                        \\
+        DANet                            & \cellcolor{lightred}$0,8434\%$    & \cellcolor{lightred}$0,2682\%$    & \cellcolor{lightred}$0,2682\%$    & $99,9795\%$            \\
+    \end{NiceTabular}
     \label{tab:acc-f1}
 \end{table}
 
@@ -263,16 +278,19 @@ Analizując wynik AUC, można zauważyć, że najlepsza sprawność również uz
 
 \begin{table}[H]
     \centering
-    \captionsource{Wynik czułości algorytmów}{Opracowanie własne}
-    \begin{tabular}{|l|r|} \hline
-    \textbf{Algorytm} & \textbf{Wartość} \\ \hline
-    Two-Class Support Vector Machine & $49,9999\%$ \\ \hline
-    Two-Class Boosted Decision Tree & $69,9089\%$ \\ \hline
-    Two-Class Decision Forest & $63,5244\%$ \\ \hline
-    Two-Class Neural Network & $72,1864\%$ \\ \hline
-    Two-Class Average Perceptron & $79,1892\%$ \\ \hline
-    Gaussian Naive Base - with GA & $50\%$ \\ \hline
-    \end{tabular}
+    \captionsourceb{Wynik AUC algorytmów.}{Kolorem zielonym określono najlepszy wynik w kolumnie.\ Kolorem czerwonym określono najgorszy wynik w kolumnie.}{Opracowanie własne}
+    \begin{NiceTabular}{|l|r|r|r||r|}[hvlines]
+
+        & \multicolumn{4}{c|}{\textbf{Wynik AUC}} \\
+        \textbf{Algorytm}                & \textbf{Próba 1}                  & \textbf{Próba 2}                  & \textbf{Próba 3}                  & \textbf{Próba testowa} \\
+        Two-Class Support Vector Machine & \cellcolor{lightred}$49,9999\%$   & \cellcolor{lightred}$49,9999\%$ & \cellcolor{lightred}$49,9999\%$     & $99,9974\%$            \\
+        Two-Class Boosted Decision Tree  & $69,9089\%$                       & $69,9089\%$                       & $69,9089\%$                       & \cellcolor{lightgreen}$100,0000\%$           \\
+        Two-Class Decision Forest        & $63,5244\%$                       & $63,5244\%$                       & $63,5244\%$                       & \cellcolor{lightgreen}$100,0000\%$           \\
+        Two-Class Neural Network         & $72,1864\%$                       & $72,1864\%$                       & $72,1864\%$                       & $99,9867\%$            \\
+        Two-Class Average Perceptron     & \cellcolor{lightgreen}$79,1892\%$ & \cellcolor{lightgreen}$79,1892\%$ & \cellcolor{lightgreen}$79,1892\%$ & $99,9808\%$            \\
+        Gaussian Naive Base - with GA    & $50,0000\%$                       & $50,0000\%$                       & $50,0000\%$                       & \cellcolor{lightred}$99,9437\%$            \\
+        DANet                            & $50,4435\%$                       & $76,7282\%$                       & $76,7282\%$                       & $99,9993\%$            \\
+    \end{NiceTabular}
     \label{tab:acc-auc}
 \end{table}
 
@@ -282,6 +300,12 @@ Analizując wynik AUC, można zauważyć, że najlepsza sprawność również uz
     \captionsource{AUC algorytmów}{Opracowanie własne}
     \label{fig:auc-res}
 \end{figure}
+
+
+\section{Analiza wyników}
+
+Przedział ufności dla dokładności algorytmów wyniósł $17,7218$ dla $\alpha = 0.05$.\ Biorąc pod uwagę ten fakt można stwierdzić, że dokładność algorytmu DANet jest poniżej dolnej granicy.\ Dolna granica przedziału ufności wynosi $56,2925\%$, zaś DANet uzyskał $19,9691\%$ oraz poprawnie zaklasyfikował jedynie $565273$ wpisów.
+
 
 \section{Wnioski}
 
