@@ -1,10 +1,10 @@
 \chapter{Przebieg badań}
-Doświadczenie polegało na analizie porównawczej sprawności algorytmów opisanych w \refsource{rozdziale}{cha:dos} w \refsource{sekcji}{sec:alg}. Celem doświadczenia było określenie jakości algorytmu utworzonego w ramach pracy inżynierskiej autora\cite{Blyszcz2022}. Szczegółowa metodologia badawcza została określona w \refsource{podrozdziale}{sec:met}.
+Doświadczenie polegało na analizie porównawczej sprawności algorytmów opisanych w \refsource{rozdziale}{cha:dos} w \refsource{sekcji}{sec:alg}.\ Celem doświadczenia było określenie jakości algorytmu utworzonego w ramach pracy inżynierskiej autora~\cite{Blyszcz2022}.\ Szczegółowa metodologia badawcza została określona w \refsource{podrozdziale}{sec:met}.
 
 
 \section{Metodologia badawcza}
 \label{sec:met}
-Przyjęta w projekcie metodologia badawcza została określona w poniższej \refsource{tabeli}{tab:met-bad}. Przyjęta metodologia ma za zadanie określić jakoś porównywanego algorytmu.
+Przyjęta w projekcie metodologia badawcza została określona w poniższej \refsource{tabeli}{tab:met-bad}.\ Przyjęta metodologia ma za zadanie określić jakoś porównywanego algorytmu.
 
 \begin{table}[H]
     \centering
@@ -37,9 +37,11 @@ Przyjęta w projekcie metodologia badawcza została określona w poniższej \ref
     \label{tab:met-bad}
 \end{table}
 
+\vfill
+\pagebreak
 
 \section{Przygotowanie platformy}
-Do badań wykorzystano narzędzie ''\textit{Projektant}'' znajdujące się na platformie ''\textit{Azure Machine Learning Studio}'' (Azure ML). Narzędzie to umożliwiło utworzenie interaktywnego potoku zadań. Potok ten składa się z kilku części:
+Do badań wykorzystano narzędzie ,,\textit{Projektant}'' znajdujące się na platformie ,,\textit{Azure Machine Learning Studio}'' (Azure ML).\ Narzędzie to umożliwiło utworzenie interaktywnego potoku zadań.\ Potok ten składa się z kilku części:
 \begin{itemize}
     \item Przygotowanie i obróbka zbiorów danych
     \item Trenowanie oraz testowanie algorytmów klasyfikacji danych
@@ -47,7 +49,7 @@ Do badań wykorzystano narzędzie ''\textit{Projektant}'' znajdujące się na pl
 \end{itemize}
 
 \subsection{Przygotowanie danych}
-W pierwszym kroku dane zostały znormalizowane za pomocą metody \textbf{MinMax}, która przekształca dane numeryczne do wartości w zakresie ${0, 1}$. W następnym kroku za pomocą języka Python oraz biblioteką Pandas oraz Numpy zostają zamienione etykiety słowne na wartości \textbf{0} i \textbf{1} oraz następuje zamiana wartości $[NaN, -inf, inf]$ na cyfrę $0$. Cały proces został zobrazowany na \refsource{diagramie}{fig:norm}
+W pierwszym kroku dane zostały znormalizowane za pomocą metody \textbf{MinMax}, która przekształca dane numeryczne do wartości w zakresie ${0, 1}$.\ W następnym kroku za pomocą języka Python oraz biblioteką Pandas oraz Numpy zostają zamienione etykiety słowne na wartości \textbf{0} i \textbf{1} oraz następuje zamiana wartości $[NaN, -inf, inf]$ na cyfrę $0$.\ Cały proces został zobrazowany na \refsource{diagramie}{fig:norm}
 
 \begin{figure}[H]
     \centering
@@ -56,8 +58,11 @@ W pierwszym kroku dane zostały znormalizowane za pomocą metody \textbf{MinMax}
     \label{fig:norm}
 \end{figure}
 
+\vfill
+\pagebreak
+
 \subsection{Trenowanie oraz testowanie algorytmów}
-Kolejną grupą zadań widoczną w potoku są te związane z trenowaniem i testowaniem poszczególnych algorytmów opisanych w \refsource{rozdziale}{cha:dos}. Każdy test składa się 3 kafelek. W przypadku algorytmów dostarczonych wraz z platformą Azure ML są to:
+Kolejną grupą zadań widoczną w potoku są te związane z trenowaniem i testowaniem poszczególnych algorytmów opisanych w \refsource{rozdziale}{cha:dos}.\ Każdy test składa się 3 kafelek.\ W przypadku algorytmów dostarczonych wraz z platformą Azure ML są to:
 \begin{itemize}
     \item \textbf{model klasyfikujący} - odpowiada za przygotowanie algorytmu klasyfikacyjnego
     \item \textbf{blok treningowy} - tworzy wytrenowany model, za pomocą połączonego zbioru danych
@@ -89,7 +94,7 @@ Potok zadań dla algorytmów niestandardowych został ukazany na \refsource{rysu
 \end{figure}
 
 \subsection{Utworzenie tabeli porównawczej}
-Kolejną częścią zadań jest zebranie wyników poszczególnych algorytmów oraz połączenie ich w jedną całość. Wykorzystano do tego moduły języka Pyton, które zwracają przetwożone wyniki oraz łączą je w jedną tabelę zbiorczą, co pokazano na \refsource{rysunku}{fig:pipe-4}.
+Kolejną częścią zadań jest zebranie wyników poszczególnych algorytmów oraz połączenie ich w jedną całość.\ Wykorzystano do tego moduły języka Pyton, które zwracają przetworzone wyniki oraz łączą je w jedną tabelę zbiorczą, co pokazano na \refsource{rysunku}{fig:pipe-4}.
 
 \begin{figure}[H]
     \centering
@@ -100,7 +105,7 @@ Kolejną częścią zadań jest zebranie wyników poszczególnych algorytmów or
 
 
 \section{Weryfikacja potoku}
-Aby zweryfikować działanie całego procesu wykorzystano znormalizowane dane treningowe do wytrenowania oraz przetestowania działania algorytmów klasyfikacyjnych. Cały proces trwał ''\textbf{1 dzień 10 godzin 55 minut 53 sekundy}''. Wyniki tych działań widać na \refsource{rysunku}{fig:predict-same}. Analizując wykres można zauważyć, że uzyskane wyniki znajdują się w przedziale $[94\%, 100\%]$ w każdej metryce co pokazuje jakość każdego z algorytmów, a także to, że algorytmy poradziły sobie niemal bezbłędnie w rozpoznawaniu ruchu sieciowego, na którym były uczone. Zbiór, który wykorzystano do trenowania oraz testowania danych zawierał w sobie 225805 wpisów z czego 97718 należało do klasy ''\textbf{1}'', zaś 128087 należało do klasy ''\textbf{0}''.
+Aby zweryfikować działanie całego procesu wykorzystano znormalizowane dane treningowe do wytrenowania oraz przetestowania działania algorytmów klasyfikacyjnych.\ Cały proces trwał ,,\textbf{1 dzień 10 godzin 55 minut 53 sekundy}''.\ Wyniki tych działań widać na \refsource{rysunku}{fig:predict-same}.\ Analizując wykres można zauważyć, że uzyskane wyniki znajdują się w przedziale $[94\%, 100\%]$ w każdej metryce co pokazuje jakość każdego z algorytmów, a także to, że algorytmy poradziły sobie niemal bezbłędnie w rozpoznawaniu ruchu sieciowego, na którym były uczone.\ Zbiór, który wykorzystano do trenowania oraz testowania danych zawierał w sobie 225805 wpisów z czego 97718 należało do klasy ,,\textbf{1}'', zaś 128087 należało do klasy ,,\textbf{0}''.
 
 \begin{table}[H]
     \centering
@@ -130,7 +135,7 @@ Bazując na tym zbiorze oraz uzyskanych wynikach udało się udowodnić poprawno
 
 
 \section{Próba badawcza}
-Aby uzyskać realne wyniki podczas porównywania poszczególnych algorytmów zastosowano zbiór treningowy opisany w \refsource{tabeli}{tab:trening-data-label} oraz zbiór testowy, który zawierał 2273097 wpisów należących do klasy ''\textbf{1}'' oraz 557646 wpisów należących do klasy ''\textbf{0}'' co sumarycznie daje: 2830743 wpisów tak jak to zostało pokazane w \refsource{tabel}{tab:res-test}.\ Pomiary testowe powtórzono 2 razy dzięki czemu uzyskano 3 próby badawcze.
+Aby uzyskać realne wyniki podczas porównywania poszczególnych algorytmów zastosowano zbiór treningowy opisany w \refsource{tabeli}{tab:trening-data-label} oraz zbiór testowy, który zawierał 2273097 wpisów należących do klasy ,,\textbf{1}'' oraz 557646 wpisów należących do klasy ,,\textbf{0}''.\ Sumarycznie ilość wpisów wynosi: 2830743, co zostało pokazane w \refsource{tabel}{tab:res-test}.\ Pomiary testowe powtórzono 2 razy dzięki czemu uzyskano 3 próby badawcze.
 
 \begin{table}[H]
     \centering
@@ -145,6 +150,8 @@ Aby uzyskać realne wyniki podczas porównywania poszczególnych algorytmów zas
     \end{tabular}
 \end{table}
 
+Poniżej zostały przedstawione wyniki zbiorcze dla poszczególnych metryk.\ Dodatkowo przedstawiono również wynik pomiaru treningowego, który w większości przypadków jest wyższy od danych testowych.\ Co prawdopodobnie jest spowodowane różnicą w ilości danych testowych i treningowych.\ Dodatkowo w każdej kolumnie oznaczono kolorem zielonym najwyższy wynik dla danej metryki, a kolorem czerwonym najniższy wynik dla danej metryki.
+
 \begin{landscape}
     \vspace*{\fill}
     \begin{figure}[H]
@@ -156,14 +163,13 @@ Aby uzyskać realne wyniki podczas porównywania poszczególnych algorytmów zas
     \vfill
 \end{landscape}
 
-Poniżej zostały przedstawione wyniki zbiorcze dla poszczególnych metryk.\ Dodatkowo przedstawiono również wynik pomiaru treningowego, który w większości przypadków jest wyższy od danych testowych.\ Co prawdopodobnie jest spowodowane różnicą w ilości danych testowych i treningowych.\ Dodatkowo w każdej kolumnie oznaczono kolorem zielonym najwyższy wynik dla danej metryki, a kolorem czerwonym najniższy wynik dla danej metryki.
-
 \subsection{Dopasowanie}
-Najlepszy wynik dopasowania dla danych testowych uzyskał algorytm \textit{Two-Class Average Perceptron}, który poprawnie rozpoznał $85,7768\%$ próbek.\ Najgorszy wynik uzyskał algorytm \textit{DANet} z dopasowaniem rzędu: $19,9691\%$.\ Dla próby treningowej najlepszy wynik uzyskał \textit{Two-Class Boosted Decision Tree} z wynikiem $100,00\%$, a najgorszy \textit{Two-Class Average Perceptron} z wynikiem $97,4502\%$.\ Wyniki dopasowania dla poszczególnych prób zostały przedstawione na \refsource{tabeli}{tab:acc-res} oraz na wykresie \refsource{wykresie}{fig:acc-res}.
+Najlepszy wynik dopasowania dla danych testowych uzyskał algorytm \textit{Two-Class Average Perceptron}, który poprawnie rozpoznał $85,7768\%$ próbek.\ Najgorszy wynik uzyskał algorytm \textit{DANet} z dopasowaniem rzędu: $19,9691\%$.\ Dla próby treningowej najlepszy wynik uzyskał \textit{Two-Class Boosted Decision Tree} z wynikiem $100,00\%$, a najgorszy \textit{Two-Class Average Perceptron} z wynikiem $97,4502\%$.\ Wyniki dopasowania dla poszczególnych prób zostały przedstawione na \refsource{tabeli}{tab:acc-res} oraz na \refsource{wykresie}{fig:acc-res}.
 
 \begin{table}[H]
     \centering
     \captionsourceb{Wynik dopasowania algorytmów.}{Kolorem zielonym określono najlepszy wynik w kolumnie.\ Kolorem czerwonym określono najgorszy wynik w kolumnie.}{Opracowanie własne}
+    \resizebox{\textwidth}{!}{%
     \begin{NiceTabular}{|l|r|r|r||r|}[hvlines]
         & \multicolumn{4}{c|}{\textbf{Wynik dopasowania}} \\
         \textbf{Algorytm}                & \textbf{Próba 1}                  & \textbf{Próba 2}                  & \textbf{Próba 3}                  & \textbf{Próba testowa}             \\
@@ -174,7 +180,8 @@ Najlepszy wynik dopasowania dla danych testowych uzyskał algorytm \textit{Two-C
         Two-Class Average Perceptron     & \cellcolor{lightgreen}$85,7768\%$ & \cellcolor{lightgreen}$85,7768\%$      & \cellcolor{lightgreen}$85,7768\%$       & \cellcolor{lightred}$97,4502\%$             \\
         Gaussian Naive Base - with GA    & $80,3004\%$                       & $80,3004\%$                       & $80,3004\%$                       & $98,8013\%$                        \\
         DANet                            & \cellcolor{lightred}$19,9691\%$   & \cellcolor{lightred}$19,7899\%$   & \cellcolor{lightred}$19,7899\%$      & $99,9823\%$            \\
-    \end{NiceTabular}
+    \end{NiceTabular}%
+    }
     \label{tab:acc-res}
 \end{table}
 
@@ -191,6 +198,7 @@ Najlepszy wynik precyzji dla danych testowych uzyskał algorytm \textit{Two-Clas
 \begin{table}[H]
     \centering
     \captionsourceb{Wynik precyzji algorytmów.}{Kolorem zielonym określono najlepszy wynik w kolumnie.\ Kolorem czerwonym określono najgorszy wynik w kolumnie.}{Opracowanie własne}
+    \resizebox{\textwidth}{!}{%
     \begin{NiceTabular}{|l|r|r|r||r|}[hvlines]
         \hline
         & \multicolumn{4}{c|}{\textbf{Wynik precyzji}} \\
@@ -202,7 +210,8 @@ Najlepszy wynik precyzji dla danych testowych uzyskał algorytm \textit{Two-Clas
         Two-Class Average Perceptron     & $84,9806\%$                       & $84,9806\%$                       & $84,9806\%$                       & \cellcolor{lightred}$94,5000\%$    \\
         Gaussian Naive Base - with GA    & $85,7768\%$                       & $80,3004\%$                       & $80,3004\%$                       & $99,8531\%$                        \\
         DANet                            & $82,7536\%$                       & $85,9516\%$                       & $85,9516\%$                       & $99,9887\%$                        \\
-    \end{NiceTabular}
+    \end{NiceTabular}%
+    }
     \label{tab:acc-prec}
 \end{table}
 
@@ -219,6 +228,7 @@ Najlepszy wynik czułości dla danych testowych uzyskał algorytm \textit{Gaussi
 \begin{table}[H]
     \centering
     \captionsourceb{Wynik czułości algorytmów.}{Kolorem zielonym określono najlepszy wynik w kolumnie.\ Kolorem czerwonym określono najgorszy wynik w kolumnie.}{Opracowanie własne}
+    \resizebox{\textwidth}{!}{%
     \begin{NiceTabular}{|l|r|r|r||r|}[hvlines]
 
         & \multicolumn{4}{c|}{\textbf{Wynik czułości}} \\
@@ -230,7 +240,8 @@ Najlepszy wynik czułości dla danych testowych uzyskał algorytm \textit{Gaussi
         Two-Class Average Perceptron     & $99,9531\%$                        & $99,9531\%$                        & $99,9531\%$                        & $99,9253\%$                        \\
         Gaussian Naive Base - with GA    & \cellcolor{lightgreen}$100,0000\%$ & \cellcolor{lightgreen}$100,0000\%$ & \cellcolor{lightgreen}$100,0000\%$ & \cellcolor{lightred}$97,3741\%$            \\
         DANet                            & \cellcolor{lightred}$0,4239\%$     & \cellcolor{lightred}$0,1343\%$     & \cellcolor{lightred}$0,1343\%$     & $99,9703\%$            \\
-    \end{NiceTabular}
+    \end{NiceTabular}%
+    }
     \label{tab:acc-rec}
 \end{table}
 
@@ -247,6 +258,7 @@ Najlepszy wynik F1 dla danych testowych uzyskał algorytm \textit{Two-Class Aver
 \begin{table}[H]
     \centering
     \captionsourceb{Wynik F1 algorytmów.}{Kolorem zielonym określono najlepszy wynik w kolumnie.\ Kolorem czerwonym określono najgorszy wynik w kolumnie.}{Opracowanie własne}
+    \resizebox{\textwidth}{!}{%
     \begin{NiceTabular}{|l|r|r|r||r|}[hvlines]
 
         & \multicolumn{4}{c|}{\textbf{Wynik F1}} \\
@@ -258,7 +270,8 @@ Najlepszy wynik F1 dla danych testowych uzyskał algorytm \textit{Two-Class Aver
         Two-Class Average Perceptron     & \cellcolor{lightgreen}$91,8608\%$ & \cellcolor{lightgreen}$91,8608\%$ & \cellcolor{lightgreen}$91,8608\%$ & \cellcolor{lightred}$97,1370\%$            \\
         Gaussian Naive Base - with GA    & $89,0740\%$                       & $89,0740\%$                       & $89,0740\%$                       & $98,5980\%$                        \\
         DANet                            & \cellcolor{lightred}$0,8434\%$    & \cellcolor{lightred}$0,2682\%$    & \cellcolor{lightred}$0,2682\%$    & $99,9795\%$            \\
-    \end{NiceTabular}
+    \end{NiceTabular}%
+    }
     \label{tab:acc-f1}
 \end{table}
 
@@ -275,6 +288,7 @@ Najlepszy wynik precyzji dla danych testowych uzyskał algorytm \textit{Two-Clas
 \begin{table}[H]
     \centering
     \captionsourceb{Wynik AUC algorytmów.}{Kolorem zielonym określono najlepszy wynik w kolumnie.\ Kolorem czerwonym określono najgorszy wynik w kolumnie.}{Opracowanie własne}
+    \resizebox{\textwidth}{!}{%
     \begin{NiceTabular}{|l|r|r|r||r|}[hvlines]
 
         & \multicolumn{4}{c|}{\textbf{Wynik AUC}} \\
@@ -286,7 +300,8 @@ Najlepszy wynik precyzji dla danych testowych uzyskał algorytm \textit{Two-Clas
         Two-Class Average Perceptron     & \cellcolor{lightgreen}$79,1892\%$ & \cellcolor{lightgreen}$79,1892\%$ & \cellcolor{lightgreen}$79,1892\%$ & $99,9808\%$            \\
         Gaussian Naive Base - with GA    & $50,0000\%$                       & $50,0000\%$                       & $50,0000\%$                       & \cellcolor{lightred}$99,9437\%$            \\
         DANet                            & $50,4435\%$                       & $76,7282\%$                       & $76,7282\%$                       & $99,9993\%$            \\
-    \end{NiceTabular}
+    \end{NiceTabular}%
+    }
     \label{tab:acc-auc}
 \end{table}
 
@@ -342,9 +357,9 @@ Przedział ufności dla dokładności algorytmów wyniósł $17,7218$ dla $\alph
 
 \section{Wnioski}
 
-Microsoft Wyszedł na przeciw potrzebom użytkowników dlatego przygotował zestaw prekonfigurowanych algorytmów klasyfikacyjnych, dzięki czemu możliwości narzędzia Azure ML pozwalają na odpowiadanie na konkretne potrzeby przy relatywnie niewielkich kosztach. Jednakże to nie oznacza, że tworzenie autorskich rozwiązań mija się z celem. Jak ukazano na \refsource{wykresie}{fig:predict-result} autorskie rozwiązania również mają rację bytu. Wykorzystanie połączenia algorytmu genetycznego i klasyfikatora naiwnego Bayesa z rozkładem normalnym pozwala na uzyskanie zbliżonych wyników co algorytmu utworzone przez giganta technologicznego. Różnica około 5 punktó procentywych między najlepszym algorytmem a algorytmem GAGNB ukazuje niewielką różnicę w jakości algorytmu. Dodatkowo wciąż trudno korzysta się z rozwiązań takich jak DANet, któe są nieprzetestowe na różnorakich zbiorach lecz na tych wcześniej specjalnie spreparowanych.
+Microsoft Wyszedł naprzeciw potrzebom użytkowników przygotowując zestaw prekonfigurowanych algorytmów klasyfikacyjnych.\ Możliwości narzędzia Azure ML pozwalają na odpowiadanie na konkretne potrzeby przy relatywnie niewielkich kosztach.\ To nie oznacza jednak, że tworzenie autorskich rozwiązań mija się z celem.\ Jak ukazano na \refsource{wykresie}{fig:predict-result} autorskie rozwiązania również mają rację bytu.\ Wykorzystanie połączenia algorytmu genetycznego i klasyfikatora naiwnego Bayesa z rozkładem normalnym pozwala na uzyskanie zbliżonych wyników do algorytmu utworzone przez giganta technologicznego.\ Różnica około 5 punktów procentowych między najlepszym algorytmem a algorytmem GAGNB ukazuje niewielką różnicę w jakości algorytmu.\ Dodatkowo wciąż trudno korzysta się z rozwiązań takich jak DANet, które są nieprzetestowane na innych zbiorach niż tych przygotowanych z algorytmem.
 \\ \\
-Dodatkowo korzystanie z tego typu prostych rozwiązań autorskich pozwala na prototypownie rozwiązań biznesowych opartych o klasyfikację danych. Samo wykorzystanie algorytmu genetycznego z algorytmem GNB umożliwia skupienie się na tworzenie ugólnego rozwiązania bez wcześniejszej znajomości zbioru oraz korzystając z programów lokalnie nie ponosząc kosztów wykorzystania platformy chmurowej. Kolejnym atutem utworzonego przez autora rozwiązania jest zmniejszenie kosztów lokalnego użytkowania poprzez zmniejszenie wymiarowości zbioru danych do klasyfikacji poprzez wykorzystanie jedynei wytypowanych kolumn.
+Dodatkowo korzystanie z tego typu prostych rozwiązań autorskich pozwala na prototypownie rozwiązań biznesowych opartych o klasyfikację danych.\ Samo wykorzystanie algorytmu genetycznego z algorytmem GNB umożliwia skupienie się na tworzenie ogólnego rozwiązania.\ Nie wymaga to wcześniejszej znajomości zbioru oraz pozwala na korzystanie z programów klasyfikacyjnych lokalnie nie ponosząc kosztów wykorzystania platformy chmurowej.\ Kolejnym atutem utworzonego przez autora rozwiązania jest zmniejszenie kosztów lokalnego użytkowania.\ Co zostało spowodowane zmniejszeniem wymiarowości zbioru danych do klasyfikacji poprzez wykorzystanie jedynie wytypowanych kolumn.
 \\ \\
-Doświadczenie to ukazuje, że wciąż należy próbować tworzyć wydajniejsze i dokładniejsze rozwiązania, lecz nie zaprzecza faktu iż rozwiązania ogólnie dostępne są na bardzo wysokim poziomie. Uzyskano dokładność z zakresu $[80\%, 85\%]$ przy czym plik testowy był 12 krotnie większy od pliku treningowego.
+Doświadczenie to ukazuje, że wciąż należy próbować tworzyć wydajniejsze i dokładniejsze rozwiązania, lecz nie zaprzecza faktu iż rozwiązania ogólnie dostępne są na bardzo wysokim poziomie.\ Uzyskano dokładność z zakresu $[80\%, 85\%]$ przy czym plik testowy był 12 krotnie większy od pliku treningowego.
 

@@ -1,6 +1,6 @@
 \chapter{Opis doświadczenia}
 \label{cha:dos}
-Przeprowadzone doświadczenie polega na porównaniu dostępnych w środowisku Microsoft Azure algorytmów klasyfikacji danych dwu-klasowych wraz z algorytmem stworzonym na potrzeby pracy inżynierskiej o tytule ''\textit{Wykorzystanie algorytmów genetycznych w systemach wykrywania intruzów w sieciach komputerowych}''\cite{Blyszcz2022} oraz z algorytmem DANet\cite{Chen2022}. Doświadczenie przebiegało według \refsource{schematu}{fig:sch-prac}.
+Przeprowadzone doświadczenie polega na porównaniu dostępnych w środowisku Microsoft Azure algorytmów klasyfikacji danych dwuklasowych wraz z algorytmem stworzonym na potrzeby pracy inżynierskiej o tytule ,,\textit{Wykorzystanie algorytmów genetycznych w systemach wykrywania intruzów w sieciach komputerowych}''~\cite{Blyszcz2022} oraz z algorytmem DANet~\cite{Chen2022}.\ Doświadczenie przebiegało według \refsource{schematu}{fig:sch-prac}.
 
 \begin{figure}[H]
     \centering
@@ -9,13 +9,26 @@ Przeprowadzone doświadczenie polega na porównaniu dostępnych w środowisku Mi
     \label{fig:sch-prac}
 \end{figure}
 
+\vfill
+\pagebreak
+
 \section{Dane}
-Zbiór danych został przygotowany przez Kanadyjski Instytut Cyberbezpieczeństwa działający przy Uniwersytecie Nowy Brunszwik za pomocą narzędzia CICFlowMeter\cite{Ahlashkari2022}. Zbiór zawiera 79 cech ruchu sieciowego do których zaliczyć można: etykietę, czas trwania przesyłu, minimalną długość pakietu zwrotnego, maksymalną długość pakietu zwrotnego, port docelowy, długość pakietów. Zbiór pozwala na określenie czy ruch sieciowy jest życzliwy \trans{ang. BENING}, czy nieżyczliwy (różne możliwe formy ataku na sieć). Dodatkowo zbiór został podzielony na pięć dni roboczych: poniedziałek 3.07.2017 - piątek 7.07.2017. Dane z poniedziałku zawierają jedynie ruch życzliwy, zaś w pozostałe dni zostały zasymulowane ataki na sieć komputerową\cite{Blyszcz2022, unbkaggle}.
+Zbiór danych został przygotowany przez Kanadyjski Instytut Cyberbezpieczeństwa działający przy Uniwersytecie Nowy Brunszwik.\ Został wykonany za pomocą narzędzia CICFlowMeter
+~\cite{Ahlashkari2022}.\ Zbiór zawiera 79 cech ruchu sieciowego, do których zaliczyć można:
+\begin{enumerate}
+    \item etykietę,
+    \item czas trwania przesyłu,
+    \item minimalną długość pakietu zwrotnego,
+    \item maksymalną długość pakietu zwrotnego,
+    \item port docelowy,
+    \item długość pakietów.
+\end{enumerate}
+Zbiór pozwala na określenie czy ruch sieciowy jest życzliwy \trans{ang. BENING}, czy nieżyczliwy (różne możliwe formy ataku na sieć).\ Dodatkowo zbiór został podzielony na pięć dni roboczych: poniedziałek 3.07.2017 - piątek 7.07.2017.\ Dane z poniedziałku zawierają jedynie ruch życzliwy.\ W pozostałe dni zostały zasymulowane ataki na sieć komputerową~\cite{Blyszcz2022, unbkaggle}.
 
 \section{Środowisko programistyczne}
-Jako środowisko programistyczne zostało wybrane Azure Machine Learning Studio z powodu możliwości uniezależnienia obliczeń od komputera lokalnego, dodatkowo platforma umożliwia łatwy sposób na tworzenie skomplikowanych potoków zadań, które składają się z komponentów wielokrotnego użytku. Każdy komponent uruchamia się w środowisku odizolowanym od pozostałych operacji. Dzieje się tak dzięki wykorzystaniu wielo węzłowych klastrów obliczeniowych, bazujących na oprogramowaniu Docker, klastry te mogą skalować się w zależności od potrzeb oraz dostępnej jednostki\cite{MicrosoftLearn2023}.
+Jako środowisko programistyczne zostało wybrane Azure Machine Learning Studio.\ Zostało to spowodowane możliwością uniezależnienia obliczeń od komputera lokalnego.\ Platforma umożliwia łatwy sposób na tworzenie skomplikowanych potoków zadań, które składają się z komponentów wielokrotnego użytku.\ Każdy komponent uruchamia się w środowisku odizolowanym od pozostałych operacji.\ Dzieje się tak dzięki wykorzystaniu wielowęzłowych klastrów obliczeniowych, bazujących na oprogramowaniu Docker.\ Klastry te mogą skalować się w zależności od potrzeb oraz dostępnej jednostki~\cite{MicrosoftLearn2023}.
 \\ \\
-Całe doświadczenie zostało odwzorowane w graficznym potoku narzędzia ''\textit{Projektant}'' oraz przedstawione na \refsource{zdjęciu}{fig:pipeline}.
+Całe doświadczenie zostało odwzorowane w graficznym potoku narzędzia ,,\textit{Projektant}'' oraz przedstawione na \refsource{zdjęciu}{fig:pipeline}.
 
 \begin{landscape}
     \centering
@@ -29,10 +42,10 @@ Całe doświadczenie zostało odwzorowane w graficznym potoku narzędzia ''\text
 
 \section{Algorytmy}
 \label{sec:alg}
-W trakcie eksperymenty zastosowano różne algorytmy klasyfikacji danych. Charakterystyczną cechą tych algorytmów jest klasyfikacja ukierunkowana na 2 kategorie wejściowe. W tym wypadku są to kategorie ruchu sieciowego: [\textbf{BENIGN} \trans{pl. życzliwy}, \textbf{Other} \trans{pl. inne}], gdzie inne to pozostałe typy ruchu sieciowego.
+W trakcie eksperymenty zastosowano różne algorytmy klasyfikacji danych.\ Charakterystyczną cechą tych algorytmów jest klasyfikacja ukierunkowana na 2 kategorie wejściowe.\ W tym wypadku są to kategorie ruchu sieciowego: [\textbf{BENIGN} \trans{pl. życzliwy}, \textbf{OTHER} \trans{pl. inne}], gdzie inne to pozostałe typy ruchu sieciowego.
 
 \subsection{Two-Class Support Vector Machine}
-Algorytm SVM ma za zadanie znaleźć hiperpłaszczyznę w przestrzeni K-wymiarowej (K - liczba cech), która rozdziela zbiory punktów odpowiadających różnym klasom. W pierwszej kolejności szuka się separatora między klasami, a następnie przekształca się dane w taki sposób, by można przekształcić separator w hiperpłaszczyznę\cite{IBM}. Sposób działania został zobrazowany za pomocą \refsource{wykresów}{fig:svm-schem}. Część \refsource{potoku}{fig:pipeline} odpowiedzialnego za SVM to \refsource{schemat}{fig:svm-pipe}.
+Algorytm SVM ma za zadanie znaleźć hiperpłaszczyznę w przestrzeni K-wymiarowej (K - liczba cech), która rozdziela zbiory punktów odpowiadających różnym klasom.\ W pierwszej kolejności szuka się separatora między klasami, a następnie przekształca się dane w taki sposób, by można przekształcić separator w hiperpłaszczyznę~\cite{IBM}.\ Sposób działania został zobrazowany za pomocą \refsource{wykresów}{fig:svm-schem}.\ Część \refsource{potoku}{fig:pipeline} odpowiedzialnego za SVM to \refsource{schemat}{fig:svm-pipe}.
 
 \begin{figure}[H]
     \begin{subfigure}[m]{0.45\textwidth}
@@ -50,8 +63,11 @@ Algorytm SVM ma za zadanie znaleźć hiperpłaszczyznę w przestrzeni K-wymiarow
     \end{subfigure}
 \end{figure}
 
+\vfill
+\pagebreak
+
 \subsection{Two-Class Boosted Decision Tree}
-Jest to algorytm drzewa decyzyjnego oparty o algorytm LightGBM. Dzięki zastosowaniu tego podejścia algorytm oparty o drzewo decyzyjne działa szybciej oraz ma mniejszą złożoność obliczeniową. Algorytm ten działa na zasadzie doboru odpowiedniego liścia zamiast jak w przypadku klasyzcnych algorytmów opartych na drzewie, wyboru odpowiedniej warstwy warstwy\cite{LightGBM}. Sposób podejścia liściastego został ukazany na \refsource{schemacie}{fig:leaf}. Model wykorzystywany w Azure ML został ukazany na \refsource{rysunku}{fig:dt-pipe}.
+Jest to algorytm drzewa decyzyjnego oparty o algorytm LightGBM.\ Dzięki zastosowaniu tego podejścia algorytm oparty o drzewo decyzyjne działa szybciej oraz ma mniejszą złożoność obliczeniową.\ Algorytm ten działa na zasadzie doboru odpowiedniego liścia, zamiast jak w przypadku klasycznych algorytmów opartych na drzewie, wyboru odpowiedniej warstwy~\cite{LightGBM}.\ Sposób podejścia liściastego został ukazany na \refsource{schemacie}{fig:leaf}.\ Model wykorzystywany w Azure ML został ukazany na \refsource{rysunku}{fig:dt-pipe}.
 \begin{figure}[H]
     \begin{subfigure}[m]{0.3\textwidth}
         \centering
@@ -71,9 +87,11 @@ Jest to algorytm drzewa decyzyjnego oparty o algorytm LightGBM. Dzięki zastosow
         \label{fig:leaf}
     \end{subfigure}
 \end{figure}
+\vfill
+\pagebreak
 
 \subsection{Two-Class Decision Forest}
-Las decyzyjny to algorytm którego wynik opiera się o agregację wyników wielu drzew decyzyjnych. Uzyskanie wyniku zależy od algorytmu trenowania lasu. Przykładowo w klasyfikacji losowym lasem wieloklasowym \trans{ang. Multi-class random forest classification}, każde drzewo głosuje na jedną klasę i ta, która zostanie wybrana większością głosów zostaje uznana za wynikową\cite{Google}. Model wykorzystany w Azure ML jest pokazany na \refsource{modelu}{fig:df-pipe}
+Las decyzyjny to algorytm, którego wynik opiera się o agregację wyników wielu drzew decyzyjnych.\ Uzyskanie wyniku zależy od algorytmu trenowania lasu.\ Przykładowo w klasyfikacji losowym lasem wieloklasowym \trans{ang. Multi-class random forest classification}, każde drzewo głosuje na jedną klasę.\ Klasa, która zostanie wybrana większością głosów, zostaje uznana za wynikową~\cite{Google}.\ Model wykorzystany w Azure ML pokazano na \refsource{modelu}{fig:df-pipe}
 
 \begin{figure}[H]
     \centering
@@ -82,9 +100,11 @@ Las decyzyjny to algorytm którego wynik opiera się o agregację wyników wielu
     \label{fig:df-pipe}
 \end{figure}
 
+\vfill
+\pagebreak
 
 \subsection{Two-class Neural Network}
-Jest to sieć neuronowa składająca się w tym wypadku z warstwy wejściowej, trzech warstw ukrytych każda po 100 węzłów, oraz z warstwy wyjściowej. Przykładowa sieć neuronowa została zobrazowana na \refsource{schemacie}{fig:neural-network}. Moduł wykrozystany w Azure ML ukazano na \refsource{rysunku}{fig:nn-pipe}.
+Jest to sieć neuronowa, która składa się z warstwy wejściowej, trzech warstw ukrytych (każda posiada po 100 węzłów), oraz z warstwy wyjściowej.\ Przykładowa sieć neuronowa została zobrazowana na \refsource{schemacie}{fig:neural-network}.\ Moduł wykorzystany w Azure ML ukazano na \refsource{rysunku}{fig:nn-pipe}.
 
 \begin{figure}[H]
     \centering
@@ -93,8 +113,12 @@ Jest to sieć neuronowa składająca się w tym wypadku z warstwy wejściowej, t
     \label{fig:nn-pipe}
 \end{figure}
 
+\vfill
+\pagebreak
+
 \subsection{Two-Class Average Perceptron}
-Jest to najprostsza odmiana sieci neuronowej czyli pojedynczy perceptron, który jest matematycznym modelem neuronu. Składa się on z \textit{n} wejść, takiej samej ilości wag, progu $\Theta$, sumatora, funkcji aktywującej i wyjścia. Został zobrazowany na \refsource{schemacie}{fig:neuron}. Może służyć za prosty klasyfikator binarny, albo za regresor. Model wykorzystany w Azure ML ukazano na \refsource{zdjęciu}{fig:ap-pipe}.
+Jest to najprostsza odmiana sieci neuronowej, czyli pojedynczy perceptron, który jest matematycznym modelem neuronu.\ Składa się on z \textit{n} wejść, takiej samej ilości wag, progu $\Theta$, sumatora, funkcji aktywującej i wyjścia.\ Został zobrazowany na \refsource{schemacie}{fig:neuron}.\ Może służyć za prosty klasyfikator binarny albo za regresor.\ Model wykorzystany w Azure ML ukazano na \refsource{zdjęciu}{fig:ap-pipe}.
+
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.3\textwidth]{images/ap_pipe}
@@ -102,8 +126,11 @@ Jest to najprostsza odmiana sieci neuronowej czyli pojedynczy perceptron, który
     \label{fig:ap-pipe}
 \end{figure}
 
-\subsection{Autorskie rozwiązanie}
-Algorytm ten polega na połączeniu algorytmu genetycznego (GA) wraz z klasyfikatorem naiwnym Bayesa wykorzystującego rozkład Gaussa (GNB). Zadaniem algorytmu genetycznego jest znalezienie naistotniejszych cech w zbiorze tabelarycznym, które pozwolą na zmniejszenie wymiarowości danych, oraz na zmniejszenie kosztów obsługi samego klasyfikatora w późniejszych etapach testowania, ze względu na zmniejszoną ilość danych wymaganych do przetworzenia. GA wykrozystywał w metodzie \textbf{fitness} algorytm GNB w celu określenia dopasowania danych. Zadaniem GNB było znalezienie najlepszej dostępnej kombinacji cech, któe pozwalały na uzyskanie najlepszego dopasowania \cite{Blyszcz2022}. Model wykorzystywany w Azure ML różni się od gootwych modeli tym, że dołączono do niego bibliotekę napisaną w języku python, która zawiera kod wykorzystywany w pracy inżynierskiej autora\cite{Suvres2023}.
+\vfill
+\pagebreak
+
+\subsection{Gausian Naive Bayes - with GA}
+Algorytm ten polega na połączeniu algorytmu genetycznego (GA) wraz z klasyfikatorem naiwnym Bayesa wykorzystującego rozkład Gaussa (GNB).\ Zadaniem algorytmu genetycznego jest znalezienie najistotniejszych cech w zbiorze tabelarycznym.\ Poszukiwane cechy powinny pozwolić na zmniejszenie wymiarowości danych oraz na zmniejszenie kosztów obsługi samego klasyfikatora.\ Co może zostać uzyskane późniejszych etapach testowania, ze względu na zmniejszoną ilość danych wymaganych do przetworzenia.\ GA wykorzystywał w metodzie \textbf{fitness} algorytm GNB w celu określenia dopasowania danych.\ Zadaniem GNB było znalezienie najlepszej dostępnej kombinacji cech, które pozwalały na uzyskanie najlepszego dopasowania~\cite{Blyszcz2022}.\ Model wykorzystywany w Azure ML różni się od gotowych modeli tym, że dołączono do niego bibliotekę napisaną w języku python, która zawiera kod wykorzystywany w pracy inżynierskiej autora~\cite{Suvres2023}.
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.3\textwidth]{images/ga_pipe}
@@ -111,8 +138,11 @@ Algorytm ten polega na połączeniu algorytmu genetycznego (GA) wraz z klasyfika
     \label{fig:ga-pipe}
 \end{figure}
 
+\vfill
+\pagebreak
+
 \subsection{DANet}
-Twórcy tego algorytmu wprowadzają dodatkową warstwę abstrakcyjną o nazwie ''\textit{Abstract Layer}''. Wartswy te budują sieć o nazwie ''\textit{Deep Abstract Network}'' (DANet). Zadanie dodatkowych warstw jest grupowanie cech w skorelowanych zbiorach. Zbiory te budują sieć powiązań między sobą w formie sieci semantycznej. Gdy sieć semantyczna jest zbudowana w ostatnim kroku wykonywana jest klasyfikacja w trzywarstwowej sieci perceptronów \trans{ang. Multilayer Perceptron network} (MLP)\cite{Chen2022, Danet}. Model znajdujący się z Azure ML został przedstawiony na \refsource{zdjęciu}{fig:danet-pipe}, zaś sposób działania ukazano na \refsource{schematach}{fig:danet-abst}.
+Twórcy tego algorytmu wprowadzają dodatkową warstwę abstrakcyjną o nazwie ,,\textit{Abstract Layer}''.\ Warstwy te budują sieć o nazwie ,,\textit{Deep Abstract Network}'' (DANet).\ Zadanie dodatkowych warstw jest grupowanie cech w skorelowanych zbiorach.\ Zbiory te budują sieć powiązań między sobą w formie sieci semantycznej.\ Gdy sieć semantyczna jest zbudowana, to w ostatnim kroku wykonywana jest klasyfikacja w trzywarstwowej sieci perceptronów \trans{ang. Multilayer Perceptron network} (MLP)~\cite{Chen2022, Danet}.\ Model znajdujący się z Azure ML został przedstawiony na \refsource{zdjęciu}{fig:danet-pipe}, zaś sposób działania ukazano na \refsource{schematach}{fig:danet-abst}.
 
 \begin{figure}[H]
     \begin{subfigure}[m]{0.49\textwidth}
