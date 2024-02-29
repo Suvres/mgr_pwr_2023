@@ -1,34 +1,27 @@
 \chapter{Wstęp}
 
 \section{Wprowadzenie i uzasadnienie tematu pracy}
-Klasyfikacja danych tabelarycznych jest zagadnieniem, które dostarcza wyzwań jej twórcom z powodu mnogości danych, a także mnogości cech, a także z nierzadko małą ilością próbek.\ Jednym z problemów jest między innymi dobór odpowiedniego algorytmu do problemu.\ Dane tabelaryczne występują w każdej dziedzinie, przez co raz na jakiś czas proponowane są nowe rozwiązania i algorytmy mające rozwiązać problem klasyfikacji w sposób lepszy i wydajny.\ Część twórców próbuje podchodzić do tego w sposób innowacyjny, lecz nie zawsze to wychodzi z powodu, chociażby dostosowania algorytmu pod konkretną strukturę danych, co powoduje problemy z wykorzystaniem rozwiązania dla innych danych.
+Klasyfikacja danych tabelarycznych jest trudnym zagadnieniem do analizy, z powodu bardzo dużej ilości nieuporządkowanych danych, które zawierają wiele cech.\ To proces organizowania danych w tabeli w celu ich łatwiejszej analizy, interpretacji czy dalszego przetwarzania.\ Podczas takiej kategoryzacji danych ważne jest właściwe dobranie algorytmu, ze względu na typ danych.\ Przykładowo zbiór danych tekstowych można klasyfikować za pomocą jednokierunkowej sieci neuronowej, a obrazy za pomocą sieci konwolucyjnej.\
 \\ \\
-Obecnie jednymi z najpopularniejszych algorytmów do klasyfikacji danych są logiczna regresja \trans{ang. logistic regression}, drzewo decyzyjne \trans{ang. decision tree}, losowy las \trans{ang. random forest}, maszyna wektorów nośnych \trans{ang. support vector machine}, naiwny Bayes \trans{ang. Naive Bayes}.\ Dlatego też bardzo ważne jest porównanie wytworzonego wcześniej rozwiązania z grupą innych algorytmów, które próbują przetworzyć ten sam zestaw danych.
+Obecnie istnieje wiele różnych algorytmów do klasyfikacji danych tabelarycznych.\ Jednymi z popularniejszych są: regresja logistyczna \trans{ang. logistic regression}, drzewo decyzyjne \trans{ang. decision tree}, las losowy \trans{ang. random forest}, maszyna wektorów nośnych \trans{ang. support vector machine}, naiwny klasyfikator Bayesowski \trans{ang. Naive Bayes classifier}.\ Przy wykorzystaniu tych algorytmów do kategoryzacji, ważne jest właściwe wybranie algorytmu, czyli rozpoznanie z jakimi danymi mamy do czynienia oraz porównanie wyników klasyfikacji, w celu wybrania najlepszego dopasowania.
 \\ \\
-W dzisiejszych czasach próba taka jest bardzo uproszczona, chociażby przez takie platformy jak \textit{Machine Learning Studio}, które pozwalają na wykorzystanie mocy obliczeniowej sklasteryzowanych jednostek wirtualnych do wykonywania obliczeń na odpowiednich maszynach wirtualnych, a także do budowania skomplikowanych zautomatyzowanych procesów złożonych z wielu zadań \trans{ang. pipeline}.\ W związku, z czym możliwość wykorzystania platformy chmurowej pozwoli na zautomatyzowanie procesu porównawczego oraz oddelegowanie zadań od chmury obliczeniowej co pozwoli na uniezależnienie powodzenia doświadczenia od mocy obliczeniowej komputera lokalnego, a także na ukazanie całościowo procesu porównania algorytmów klasyfikacyjnych.
+Dane tabelaryczne występują w każdej dziedzinie, duże zestawy danych można spotkać w medycynie, nauce czy w finansach.\ Rosnąca liczba danych oraz ich zmienna struktura wymaga opracowywania coraz lepszych algorytmów klasyfikacji.\ Jednakże wyjątkowość danych sprawia, że trudno opracować uniwersalny algorytm klasyfikacji.\ Wiele rozwiązań jest tworzonych dla konkretnej struktury danych, co powoduje niemożność ich wykorzystania dla innych danych.
+\\ \\
+Przy rosnącej liczbie danych do analizy, rozwijają się metody ułatwiające ich klasyfikację. Coraz częściej wykorzystuje się rozwiązania z zakresu sztucznej inteligencji czy obliczeń chmurowych. Jednym z przykładów jest aplikacja \textit{Machine Learning Studio},  dostarczana przez \textit{Microsoft Azure}. Zawiera ona zestaw narzędzi, umożliwiających łatwiejsze kategoryzowanie danych czy tworzenie algorytmów klasyfikacji i ich porównywanie. Użycie chmury pozwala na wykorzystanie mocy obliczeniowej sklasteryzowanych jednostek wirtualnych do wykonywania obliczeń na odpowiednich maszynach wirtualnych czy do budowania skomplikowanych zautomatyzowanych procesów złożonych z wielu zadań \trans{ang. pipeline}. Natomiast wykorzystanie sztucznej inteligencji pozwala na wprowadzenie elementu uczenia się w celu lepszego rozpoznawania danych.
+\\ \\
+Zastosowanie tych narzędzi umożliwia automatyzację procesu badawczego, porównanie wyników działania różnych algorytmów oraz znaczne przyspieszenie badań.\ Ma to znaczenie przy rosnącym zaprotrzebowaniu na analizę dużych zestawów danych.
 
-\section{Cel pracy dyplomowej}
-Celem niniejszej pracy dyplomowej jest porównanie algorytmu klasyfikacji danych tabelarycznych wypracowanego w trakcie pisania pracy inżynierskiej, do algorytmów dostępnych w aplikacji \textit{Machine Learning Studio} znajdującej się na platformie \textit{Microsoft Azure}.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section{Założenie techniczne}
 
-Dane prezentowane w \refsource{tabeli}{tab:technical} określają podstawowe założenia techniczne przyjęte w trakcie wykonywania analizy porównawczej.\ Dane te dotyczą między innymi środowiska, w którym wykonane było doświadczenie.\ Dodatkowo uwzględniono zestaw danych oraz biblioteki użyte w trakcie tworzenia doświadczenia.
+!!!!!!!!!!!!!!!!!!
+OPISAĆ COŚ O PROBLEMACH WYKRYWANIA INTRUZÓW W SIECIACH KOMPUTEROWYCH I DLACZEGO SIECI ORAZ ALGORYTMY KLASYFIKACJI SĄ WAŻNE
+!!!!!!!!!!!!!!!!!!!!!!!!
 
-\begin{table}[H]
-    \centering
-    \captionsource{Założenia techniczne pracy dyplomowej}{Opracowanie własne}
-    \label{tab:technical}
-    \begin{tabular}{|l|l|}
-        \hline
-        \textbf{Środowisko uruchomieniowe} & Machine Learning Studio\cite{azureml} \\ \hline
-        \textbf{Język programowania} & Python 3.x \\ \hline
-        \multirow{3}*{\textbf{Wykorzystane biblioteki}} & scikit-learn~\cite{scikit-learn} \\
-        \cline{2-2}
-        & Numpy~\cite{Harris2019} \\
-        \cline{2-2}
-        & Pandas~\cite{pandas, McKinney2010} \\
-        \hline
-        \textbf{Wykorzystane dane} & CICDS2017~\cite{cicds2017kaggle} \\
-        \hline
-    \end{tabular}
-\end{table}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Cel i zakres pracy}
+Celem niniejszej pracy dyplomowej jest ocena jakości opracowanego w pracy inżynierskiej autorskiego sposobu klasyfikacji danych tabelarycznych, wykorzystującego algorytm genetyczny oraz Klasyfikator Naiwny Bayesa.\ W tym celu dokonano analizy porównawczej rozwiązania wraz z algortymami dostępnymi w aplikacji \textit{Machine Learning Studio}. Algorytmy opisano w Podrozdziale~\ref{sec:alg}.
+\\ \\
+Praca składa się z 2 częsci. W części teoretycznej (Rozdziały 2 - 5) dokonano przeglądu dostępnych rozwiązań chmurowych (podejścia low-code/no-code). Oprócz tego opisano zagadnienia związane ze sztuczną inteligencją. W części badawczej (Rozdziały 6 - 8) przygotowano programistyczne stanowisko badawcze. W tym celu scharakteryzowano metryki jakościowe i opracowano eksperyment. Wykonano analizę porównawczą i statystyczną otrzymanych wyników. Dane wykorzystane do badań pochodziły z Instytutu Cyberbezpieczeństwa, działającego przy Instytucie Nowy Brunszwik.

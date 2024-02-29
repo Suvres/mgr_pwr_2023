@@ -1,4 +1,4 @@
-\chapter{Przebieg badań}
+\chapter{Przebieg eksperymentu}
 Doświadczenie polegało na analizie porównawczej sprawności algorytmów opisanych w \refsource{rozdziale}{cha:dos} w \refsource{sekcji}{sec:alg}.\ Celem doświadczenia było określenie jakości algorytmu utworzonego w ramach pracy inżynierskiej autora~\cite{Blyszcz2022}.\ Szczegółowa metodologia badawcza została określona w \refsource{podrozdziale}{sec:met}.
 
 
@@ -40,7 +40,7 @@ Przyjęta w projekcie metodologia badawcza została określona w poniższej \ref
 \vfill
 \pagebreak
 
-\section{Przygotowanie platformy}
+\section{Przygotowanie platformy badawczej}
 Do badań wykorzystano narzędzie ,,\textit{Projektant}'' znajdujące się na platformie ,,\textit{Azure Machine Learning Studio}'' (Azure ML).\ Narzędzie to umożliwiło utworzenie interaktywnego potoku zadań.\ Potok ten składa się z kilku części:
 \begin{itemize}
     \item Przygotowanie i obróbka zbiorów danych
@@ -163,7 +163,7 @@ Poniżej zostały przedstawione wyniki zbiorcze dla poszczególnych metryk.\ Dod
     \vfill
 \end{landscape}
 
-\subsection{Dopasowanie}
+\subsection{Wyniki dopasowania}
 Najlepszy wynik dopasowania dla danych testowych uzyskał algorytm \textit{Two-Class Average Perceptron}, który poprawnie rozpoznał $85,7768\%$ próbek.\ Najgorszy wynik uzyskał algorytm \textit{DANet} z dopasowaniem rzędu: $19,9691\%$.\ Dla próby treningowej najlepszy wynik uzyskał \textit{Two-Class Boosted Decision Tree} z wynikiem $100,00\%$, a najgorszy \textit{Two-Class Average Perceptron} z wynikiem $97,4502\%$.\ Wyniki dopasowania dla poszczególnych prób zostały przedstawione na \refsource{tabeli}{tab:acc-res} oraz na \refsource{wykresie}{fig:acc-res}.
 
 \begin{table}[H]
@@ -192,7 +192,7 @@ Najlepszy wynik dopasowania dla danych testowych uzyskał algorytm \textit{Two-C
     \label{fig:acc-res}
 \end{figure}
 
-\subsection{Precyzja}
+\subsection{Wyniki precyzji}
 Najlepszy wynik precyzji dla danych testowych uzyskał algorytm \textit{Two-Class Neural Network} ($85,9776\%$).\ Najgorszy wynik uzyskał algorytm \textit{Two-Class Support Vector Machine} ($80,3003\%$).\ Dla próby treningowej najlepszy wynik uzyskał \textit{Two-Class Boosted Decision Tree} ($100\%$), a najgorszy \textit{Two-Class Average Perceptron} ($94,5\%$).\ Wyniki precyzji dla poszczególnych prób zostały przedstawione w \refsource{tabeli}{tab:acc-prec} oraz na wykresie \refsource{wykresie}{fig:prec-res}.
 
 \begin{table}[H]
@@ -222,7 +222,7 @@ Najlepszy wynik precyzji dla danych testowych uzyskał algorytm \textit{Two-Clas
     \label{fig:prec-res}
 \end{figure}
 
-\subsection{Czułośc}
+\subsection{Wyniki czułości}
 Najlepszy wynik czułości dla danych testowych uzyskał algorytm \textit{Gaussian Naive Base - with GA} ($100,00\%$).\ Najgorszy wynik uzyskał algorytm \textit{DANet} ($0,4239\%$).\ Dla próby treningowej najlepszy wynik uzyskał \textit{Two-Class Boosted Decision Tree} oraz \textit{Two-Class Decision Forest} ($100\%$), a najgorszy \textit{Gaussian Naive Base - with GA} ($97,3741\%$).\ Wyniki czułości dla poszczególnych prób zostały przedstawione w \refsource{tabeli}{tab:acc-rec} oraz na wykresie \refsource{wykresie}{fig:rec-res}.
 
 \begin{table}[H]
@@ -252,7 +252,7 @@ Najlepszy wynik czułości dla danych testowych uzyskał algorytm \textit{Gaussi
     \label{fig:rec-res}
 \end{figure}
 
-\subsection{F1}
+\subsection{Wyniki f1}
 Najlepszy wynik F1 dla danych testowych uzyskał algorytm \textit{Two-Class Average Perceptron} ($91,8606\%$).\ Najgorszy wynik uzyskał algorytm \textit{DANet} ($0,8434\%$).\ Dla próby treningowej najlepszy wynik uzyskał \textit{Two-Class Boosted Decision Tree} ($100\%$), a najgorszy \textit{Two-Class Average Perceptron} ($97,1370\%$).\ Wyniki precyzji dla poszczególnych prób zostały przedstawione w \refsource{tabeli}{tab:acc-f1} oraz na wykresie \refsource{wykresie}{fig:f1-res}.
 
 \begin{table}[H]
@@ -282,7 +282,7 @@ Najlepszy wynik F1 dla danych testowych uzyskał algorytm \textit{Two-Class Aver
     \label{fig:f1-res}
 \end{figure}
 
-\subsection{AUC}
+\subsection{Wyniki AUC}
 Najlepszy wynik precyzji dla danych testowych uzyskał algorytm \textit{Two-Class AveragePerceptron} ($79,1892\%$).\ Najgorszy wynik uzyskał algorytm \textit{Two-Class Support Vector Machine} ($49,999\%$).\ Dla próby treningowej najlepszy wynik uzyskał \textit{Two-Class Boosted Decision Tree} oraz \textit{Two-Class Decision Forest} ($100\%$), a najgorszy \textit{Gaussiaon Naive Base - with GA} ($99,9437\%$).\ Wyniki precyzji dla poszczególnych prób zostały przedstawione w \refsource{tabeli}{tab:acc-auc} oraz na wykresie \refsource{wykresie}{fig:auc-res}.
 
 \begin{table}[H]

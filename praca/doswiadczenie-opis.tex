@@ -12,6 +12,29 @@ Przeprowadzone doświadczenie polega na porównaniu dostępnych w środowisku Mi
 \vfill
 \pagebreak
 
+\section{Założenie techniczne}
+
+Dane prezentowane w \refsource{Tabeli}{tab:technical} określają podstawowe założenia techniczne przyjęte w trakcie wykonywania analizy porównawczej.\ Dane te dotyczą między innymi środowiska, w którym wykonane było doświadczenie.\ Dodatkowo uwzględniono zestaw danych oraz biblioteki użyte w trakcie tworzenia doświadczenia.
+
+\begin{table}[H]
+    \centering
+    \captionsource{Założenia techniczne pracy dyplomowej}{Opracowanie własne}
+    \label{tab:technical}
+    \begin{tabular}{|l|l|}
+        \hline
+        \textbf{Środowisko uruchomieniowe} & Machine Learning Studio\cite{azureml} \\ \hline
+        \textbf{Język programowania} & Python 3.x \\ \hline
+        \multirow{3}*{\textbf{Wykorzystane biblioteki}} & scikit-learn~\cite{scikit-learn} \\
+        \cline{2-2}
+        & Numpy~\cite{Harris2019} \\
+        \cline{2-2}
+        & Pandas~\cite{pandas, McKinney2010} \\
+        \hline
+        \textbf{Wykorzystane dane} & CICDS2017~\cite{cicds2017kaggle} \\
+        \hline
+    \end{tabular}
+\end{table}
+
 \section{Dane}
 Zbiór danych został przygotowany przez Kanadyjski Instytut Cyberbezpieczeństwa działający przy Uniwersytecie Nowy Brunszwik.\ Został wykonany za pomocą narzędzia CICFlowMeter
 ~\cite{Ahlashkari2022}.\ Zbiór zawiera 79 cech ruchu sieciowego, do których zaliczyć można:
@@ -25,7 +48,7 @@ Zbiór danych został przygotowany przez Kanadyjski Instytut Cyberbezpieczeństw
 \end{enumerate}
 Zbiór pozwala na określenie czy ruch sieciowy jest życzliwy \trans{ang. BENING}, czy nieżyczliwy (różne możliwe formy ataku na sieć).\ Dodatkowo zbiór został podzielony na pięć dni roboczych: poniedziałek 3.07.2017 - piątek 7.07.2017.\ Dane z poniedziałku zawierają jedynie ruch życzliwy.\ W pozostałe dni zostały zasymulowane ataki na sieć komputerową~\cite{Blyszcz2022, unbkaggle}.
 
-\section{Środowisko programistyczne}
+\section{Programistyczne środowisko badawcze}
 Jako środowisko programistyczne zostało wybrane Azure Machine Learning Studio.\ Zostało to spowodowane możliwością uniezależnienia obliczeń od komputera lokalnego.\ Platforma umożliwia łatwy sposób na tworzenie skomplikowanych potoków zadań, które składają się z komponentów wielokrotnego użytku.\ Każdy komponent uruchamia się w środowisku odizolowanym od pozostałych operacji.\ Dzieje się tak dzięki wykorzystaniu wielowęzłowych klastrów obliczeniowych, bazujących na oprogramowaniu Docker.\ Klastry te mogą skalować się w zależności od potrzeb oraz dostępnej jednostki~\cite{MicrosoftLearn2023}.
 \\ \\
 Całe doświadczenie zostało odwzorowane w graficznym potoku narzędzia ,,\textit{Projektant}'' oraz przedstawione na \refsource{zdjęciu}{fig:pipeline}.
@@ -130,7 +153,7 @@ Jest to najprostsza odmiana sieci neuronowej, czyli pojedynczy perceptron, któr
 \pagebreak
 
 \subsection{Gausian Naive Bayes - with GA}
-Algorytm ten polega na połączeniu algorytmu genetycznego (GA) wraz z klasyfikatorem naiwnym Bayesa wykorzystującego rozkład Gaussa (GNB).\ Zadaniem algorytmu genetycznego jest znalezienie najistotniejszych cech w zbiorze tabelarycznym.\ Poszukiwane cechy powinny pozwolić na zmniejszenie wymiarowości danych oraz na zmniejszenie kosztów obsługi samego klasyfikatora.\ Co może zostać uzyskane późniejszych etapach testowania, ze względu na zmniejszoną ilość danych wymaganych do przetworzenia.\ GA wykorzystywał w metodzie \textbf{fitness} algorytm GNB w celu określenia dopasowania danych.\ Zadaniem GNB było znalezienie najlepszej dostępnej kombinacji cech, które pozwalały na uzyskanie najlepszego dopasowania~\cite{Blyszcz2022}.\ Model wykorzystywany w Azure ML różni się od gotowych modeli tym, że dołączono do niego bibliotekę napisaną w języku python, która zawiera kod wykorzystywany w pracy inżynierskiej autora~\cite{Suvres2023}.
+Algorytm ten polega na połączeniu algorytmu genetycznego (GA) wraz z klasyfikatorem naiwnym Bayesa wykorzystującego rozkład Gaussa (GNB).\ Zadaniem algorytmu genetycznego jest znalezienie najistotniejszych cech w zbiorze tabelarycznym.\ Poszukiwane cechy powinny pozwolić na zmniejszenie wymiarowości danych oraz na zmniejszenie kosztów obsługi samego klasyfikatora.\ Co może zostać uzyskane późniejszych etapach testowania, ze względu na zmniejszoną ilość danych wymaganych do przetworzenia.\ GA wykorzystywał w metodzie \textbf{fitness} algorytm GNB w celu określenia dopasowania danych.\ Zadaniem GNB było znalezienie najlepszej dostępnej kombinacji cech, które pozwalały na uzyskanie najlepszego dopasowania~\cite{Blyszcz2022}.\ Model wykorzystywany w Azure ML różni się od gotowych modeli tym, że dołączono do niego bibliotekę napisaną w języku Python, która zawiera kod wykorzystywany w pracy inżynierskiej autora~\cite{Suvres2023}.
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.3\textwidth]{images/ga_pipe}

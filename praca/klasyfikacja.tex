@@ -1,13 +1,13 @@
 \chapter{Klasyfikacja danych}
 
-Klasyfikacja jest to próba rozpoznania obiektów na bazie ich cech.\ Jest to jedna z pierwszych rzeczy, jaką uczą się niemowlęta, zaczynając od rozpoznania rodziców, próby rozróżnienia kształtów, kolorów, rzeczy.\ W otaczającym świecie istnieje wiele mechanizmów mających sklasyfikować przedmioty.\ Należą do nich między innymi katalogi biblioteczne, klasyfikacja trunków, kaw, pojazdów, produktów spożywczych.\ Człowiek od zawsze próbuje skategoryzować i uporządkować posiadaną wiedzę w zbiory pozwalające na łatwy dostęp do przechowywanych informacji.
+Klasyfikacja jest to próba rozpoznania obiektów na bazie ich cech.\ Jest to jedna z pierwszych rzeczy, jaką uczą się niemowlęta, zaczynając od rozpoznania rodziców, próby rozróżnienia kształtów, kolorów, rzeczy.\ W otaczającym świecie istnieje wiele mechanizmów mających sklasyfikować przedmioty.\ Należą do nich między innymi katalogi biblioteczne, klasyfikacja trunków, kaw, pojazdów, produktów spożywczych.\ Człowiek od zawsze próbuje skategoryzować i uporządkować posiadaną wiedzę w zbiory pozwalające na łatwy dostęp do przechowywanych informacji na przykład w sposób tabelaryczny.
 \\ \\
 W uczeniu maszynowym klasyfikacja jest to metoda uczenia nadzorowanego, podczas której model próbuje przewidzieć etykietę obiektu na podstawie jego cech.\ Proces uczenia modelu klasyfikacji jest oparty o dwa zbiory, treningowy i testowy.\ Zbiór treningowy powinien być mniejszy od zbioru testowego.\ Po udanym procesie trenowania modelu następuje proces testowania, na podstawie którego wylicza się odpowiednie metryki pozwalające na ewaluacje modelu.\ W pracy magisterskiej wykorzystano zbiór danych, który posiada dwa typy etykiet [0, 1], dlatego też na tej podstawie zbudowano macierz pomyłek.
 
 \vfill
 \pagebreak
 
-\section{Metryki}
+\section{Metryki jakościowe}
 W trakcie ewaluacji algorytmu służącego do klasyfikacji wykorzystuje się metryki bazujące na macierzy pomyłek, która zostałą opisana w \refsource{tabeli}{tab:matrix-tn}
 \begin{table}[H]
     \centering
@@ -29,7 +29,7 @@ W trakcie ewaluacji algorytmu służącego do klasyfikacji wykorzystuje się met
     \end{itemize}
 \end{table}
 
-\subsection{Dokładnośc}
+\subsection{Dokładność}
 \begin{equation}\label{math:acc}
     \frac{TP + TN}{TP + TN + FP + FN}
 \end{equation}

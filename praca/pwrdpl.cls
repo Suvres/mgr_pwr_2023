@@ -6,7 +6,7 @@
 % 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\message{*** [pwrdpl.cls] ---  (PK, GJN, MSz)  v4.0 <2020-11-03>  ***}
+\message{*** [pwrdpl.cls] ---  (BB)  v1.0 <2024-02-29>  ***}
 
 \newif\ifpdflatex\pdflatexfalse
 \NeedsTeXFormat{LaTeX2e} % 
@@ -20,7 +20,7 @@
 
 \DeclareOption{pdflatex}{\pdflatextrue}
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{report}}
-\ProcessOptions\LoadClass[a4paper,twoside,openright]{report}
+\ProcessOptions\LoadClass[a4paper,twoside,openany]{report}
 
 \RequirePackage{xstring}
 
@@ -210,7 +210,7 @@
 \titleformat{\chapter}[block]
 {\bfseries\LARGE}{\filright \LARGE\thechapter. }{0ex}{}
 %odstępy: lewy, góra, dół
-\titlespacing{\chapter}{0pt}{17mm}{19mm}
+\titlespacing{\chapter}{0pt}{8mm}{8mm}
 \titleformat{\section}[block]
 {\bfseries\Large}{\filright \Large\thesection. }{0ex}{}
 \titlespacing{\section}{7mm}{8mm plus 0mm minus 1mm}{4mm plus 0mm minus 1mm}
