@@ -1,10 +1,70 @@
 \chapter{Algorytm klasyfikacyjny opracowany w ramach pracy inżynierskiej}
-Algorytm opracowany w ramach pracy inżynierskiej zakładał wykorzystanie algorytmu genetycznego oraz klasyfikatora naiwnego Bayesa.\ Algorytm genetyczny przygotował dane w postaci ciągu cyfr 0 i 1. Ciąg ten odpowiadał wybranym kolumnom w tabeli.\ Kolumny oznaczone jako 1 były brane pod uwagę przez algorytm klasyfikatora w procesie ewaluacji danych.\ Cały proces trwał do 1000 iteracji bądź dopasowaniu minimum $90\%$.\ Wynikiem działania jest zbiór kolumn istotnych w procesie klasyfikowania.
+W ramach pracy inżynierskiej opracowano autorski algorytm, wykorzystujący algorytm genetyczny oraz klasyfikator Naiwny Bayesa.\ Celem algorytmu była redukcja wymiarowości danych tabelarycznych, by zwiększyć jakość klasyfikacji danych. Algorytm genetyczny zastosowano w celu przygotowania zbioru prawdopodobnie istotnych kolumn poprzez oznaczenie ich pozycji za pomocą ciągu cyfr 0 i 1.  \ Kolumny oznaczone cyfrą 1 były brane pod uwagę w procesie ewaluacji za pomocą klasyfikatora Naiwnego Bayesa. Cały proces trwał maksymalnie 1000 iteracji lub do momentu uzyskania minimum $90\%$ dopasowania.\ Wynikiem działania autorskiego algorytmu jest zbiór kolumn istotnych w procesie klasyfikowania.
 
-\section{Algorytm genetyczny}
+\section{Rezultat pracy inżynierskiej}
+W pracy inżynierskiej opracowano autorski algorytm klasyfikacji. Do badań wykorzystno dane uzyskane z Instytutu Cyberbezpieczeństwa, działającego przy Uniwersytecie Nowy Brunszwik.\ Zbiór danych został opisany w \refsource{sekcji}{sec:data}.
+
+\ Celem badań było zmniejszenie wymiarowości danych w celu zwiększenie dokładności klasyfikacji danych.\ Uzyskano to poprzez wyznaczenie najistotniejszych cech zbioru.\ By sprawdzić jakość własnego rozwiązania wykorzystano też poniższe metody statystyczne:
+\begin{itemize}
+    \item \textbf{metoda ANOVA} - analiza wariancji,
+    \item \textbf{współczynnik korelacji Pearsona} - współczynnik określający zależność liniową pomiędzy zmiennymi losowymi,
+    \item \textbf{współczynnik korelacji rang Spearmana} - współczynnik korelacji rang Pearsona, dla danych po ustaleniu rang.
+\end{itemize}
+
+Analiza wykazała, że wyniki uzyskane za pomocą metod statystycznych były gorsze niż autorskiego algorytmu.\ Rezultaty badań przedstawia \refsource{tabela}{tab:monday-workingHours} oraz \refsource{wykres}{fig:mond}.\
+
+\begin{table}[H]
+    \centering
+    \captionsource{Klasyfikacja zbioru danych: Monday-WorkingHours}{\cite{Blyszcz2022}}
+    \resizebox{\textwidth}{!}{
+    \begin{tabular}{|l|r|r|r|r|r|r|r|}
+        \hline
+        \multicolumn{8}{|c|}{\textbf{Klasyfikacja: Monday-WorkingHours}} \\ \hline
+        \multirow{2}*{} & \multirow{2}*{\textbf{Podstawowa}} & \multicolumn{3}{c|}{\textbf{Zoptymalizowana GA}} & \multicolumn{3}{c|}{\textbf{Zoptymalizowana Statystycznie}} \\
+        \cline{3-8}
+        & & \textbf{1} & \textbf{2} & \textbf{3} & \textbf{ANOVA} & \textbf{PEARSON} & \textbf{SPEARMAN} \\ \hline
+        \textbf{Rozmiar danych [MB]} & 347,19 & 197.60 & 181,43 & 189,51 & \multicolumn{3}{c|}{197,60}\\ \hline
+        \textbf{Ilość linii [-]} & \multicolumn{7}{c|}{529 918} \\ \hline
+        \textbf{Czas operacji [s]} & 2,68 & 1,84 & 1,77 & 2,23 & 1,89 & 1,83 & 1,91 \\ \hline
+        \textbf{Dokładność [\%]} & 45,89 & 81,71 & 85,47 & 88,67 & 39,32 & 36,34 & 37,77 \\ \hline
+        \textbf{Precyzja [\%]} & \multicolumn{7}{c|}{100} \\ \hline
+        \textbf{Czułość [\%]} & 45,89 & 81,71 & 85,47 & 88,67 & 39,32 & 36,34 & 37,77 \\ \hline
+        \textbf{F1 [\%]} & 62,91 & 89,94 & 92,16 & 93,99 & 56,45 & 53,31 & 54,83 \\ \hline
+        \textbf{Zużycie pamięci [MB]} & 1853,44 & 980,06 & 885,42 & 932,74 & \multicolumn{3}{c|}{980,06} \\ \hline
+    \end{tabular}}
+    \label{tab:monday-workingHours}
+\end{table}
+
+\refsource{Wykres}{fig:mond}.\ przedstawia wyniki dokładności.\ Zastosowano następujące opisy:
+\begin{itemize}
+    \item \textbf{GNB} - dopasowanie danych w podstawowym zbiorze;
+    \item \textbf{GA\_GNB 1} - dopasowanie danych w pierwszej próbie wykorzystania algorytmu autora;
+    \item \textbf{GA\_GNB 2} - dopasowanie danych w drugiej próbie wykorzystania algorytmu autora;
+    \item \textbf{GA\_GNB 3} - dopasowanie danych w trzeciej próbie wykorzystania algorytmu autora;
+    \item \textbf{ANOVA} - dopasowanie danych z wykorzystaniem cech uzyskanych metodą ANOVA;
+    \item \textbf{PEARSON} - dopasowanie danych z wykorzystaniem cech uzyskanych metodą współczynników korelacji Pearsona;
+    \item \textbf{SPEARMAN} - dopasowanie danych w zbiorze zmodyfikowanym o rozwiązanie uzyskane metodą  współczynników korelacji rang Spearmana.
+\end{itemize}
+
+
 \begin{figure}[H]
     \centering
-    \resizebox{0.6\textwidth}{!}{
+    \includegraphics[width=\textwidth]{images/Monday-WorkingHours_cmp}
+    \captionsource{Klasyfikacja zbioru danych: Monday-WorkingHours}{\cite{Blyszcz2022}}
+    \label{fig:mond}
+\end{figure}
+
+Analizując powyższe wyniki można zauważyć, że najwyższe dopasowanie uzyskał autorski algorytm a najniższe - zbiór kolumn wyznaczonych metodą współczynników korelacji Pearsona.\ Świadczy to o wysokiej jakości, opracowanego w pracy inżynierskiej, algorytmu.
+
+
+\section{Algorytm genetyczny}
+Algorytm genetyczny, który został zastosowany w autorskim rozwiązaniu, to algorytm, który przeszukuje przestrzeń alternatywnych rozwiązań dla danego problemu, by znaleźć najlepszy
+wynik~\cite{Kusiak2021}.\ Działanie algorytmu genetycznego jest inspirowane m.in. ewolucją biologiczną, stąd też pochodzą nazwy kolejnych kroków, które zostały przedstawione na \refsource{rysunku}{fig:GA}.
+
+
+\begin{figure}[H]
+    \centering
+    \resizebox{0.4\textwidth}{!}{
     \begin{tikzpicture}[node distance={2cm}]
         \node (start) [startstop] {Start};
         \node (init) [process, below of=start] {Inicjalizacja};
@@ -28,8 +88,7 @@ Algorytm opracowany w ramach pracy inżynierskiej zakładał wykorzystanie algor
     \captionsource{Schemat algorytmu genetycznego}{Opracowanie własne na podstawie:~\cite{Sastry2005,Kusiak2021, Blyszcz2022}}
     \label{fig:GA}
 \end{figure}
-
-\refsource{Rysunek}{fig:GA} przedstawia poszczególne kroki dla algorytmu genetycznego, które opisano poniżej:\
+Poniżej opisano przebieg algorytmu:
 \begin{enumerate}
     \item \textbf{Inicjalizacja} - metoda inicjująca populację losowych osobników, wykorzystywanych podczas obliczeń;
     \item \textbf{Ewaluacja} - etap sprawdzenia jakości wygenerowanych danych;
@@ -39,8 +98,10 @@ Algorytm opracowany w ramach pracy inżynierskiej zakładał wykorzystanie algor
     \item \textbf{Zamiana} - miejsce wymiany starej populacji na nową~\cite{Sastry2005, Kusiak2021, Blyszcz2022}.
 \end{enumerate}
 
-\section{Klasyfikator}
-Algorytm w etapie ewaluacji wykorzystuje naiwny klasyfikator Bayesa oparty o rozkład normalny Gausa \trans{ang. Gaussian Naive Bayes} (GNB).\ Równanie klasyfikatora oparte jest o twierdzenie Bayesa.\ Opisuje ono prawdopodobieństwo wystąpienia zdarzenia na podstawie znajomości warunków zdarzenia~\cite{Joyce2003}.\ Twierdzenie zostało przedstawione na \refsource{równaniu}{math:bayes}.
+
+
+\section{Klasyfikator Naiwny Bayesa}
+Autorski algorytm w etapie ewaluacji wykorzystuje naiwny klasyfikator Bayesa oparty o rozkład normalny Gausa (\textit{ang. Gaussian Naive Bayes, GNB}).\ Równanie klasyfikatora oparte jest o twierdzenie Bayesa.\ Opisuje ono prawdopodobieństwo wystąpienia zdarzenia na podstawie znajomości warunków zdarzenia~\cite{Joyce2003}.\ Twierdzenie zostało przedstawione na \refsource{równaniu}{math:bayes}.
 
 \begin{equation}\label{math:bayes}
 P(H|X) = \frac{P(X|H) P(H)}{P(X)}
@@ -65,52 +126,3 @@ gdzie:
         \item[] \textbf{$\sigma_{k}$} - odchylenie standardowe danych w kolumnie,
         \item[] \textbf{$\mu$} - średnia wartość w kolumnie~\cite{Leung2007}.
 \end{itemize}
-
-\section{Rezultat pracy inżynierskiej}
-W pracy inżynierskiej w celu weryfikacji algorytmu, porównano go z trzema metodami wyznaczania najistotniejszych cech:
-\begin{itemize}
-    \item \textbf{metoda ANOVA} - analiza wariancji,
-    \item \textbf{współczynnik korelacji Pearsona} - określa zależność liniową pomiędzy zmiennymi losowymi,
-    \item \textbf{współczynnik korelacji rang Spearmana} - jest to współczynnik korelacji rang Pearsona, dla danych po ustaleniu rang.
-\end{itemize}
-
-W pracy inżynierskiej zostało wykazane, że algorytmy wyznaczania najistotniejszych cech wypadły gorzej niż algorytm opracowany przez autora pracy.\ Zbiór danych wykorzystany w pracy inżynierskiej jest tym samym zbiorem, który został opisany w \refsource{sekcji}{sec:data}.\ Zostało to przedstawione w \refsource{tabeli}{tab:monday-workingHours} oraz na \refsource{wykresie}{fig:mond}.\ Na wykresie zastosowano następujące opisy:
-\begin{itemize}
-    \item \textbf{GNB} - dopasowanie danych w podstawowym zbiorze;
-    \item \textbf{GA\_GNB 1} - dopasowanie danych w pierwszej próbie wykorzystania algorytmu autora;
-    \item \textbf{GA\_GNB 2} - dopasowanie danych w drugiej próbie wykorzystania algorytmu autora;
-    \item \textbf{GA\_GNB 3} - dopasowanie danych w trzeciej próbie wykorzystania algorytmu autora;
-    \item \textbf{ANOVA} - dopasowanie danych z wykorzystaniem cech uzyskanych metodą ANOVA;
-    \item \textbf{PEARSON} - dopasowanie danych z wykorzystaniem cech uzyskanych metodą współczynników korelacji Pearsona;
-    \item \textbf{SPEARMAN} - dopasowanie danych w zbiorze zmodyfikowanym o rozwiązanie uzyskane metodą  współczynników korelacji rang Spearmana.
-\end{itemize}
-\vfill
-\clearpage
-\begin{table}[H]
-    \centering
-    \captionsource{Klasyfikacja zbioru danych: Monday-WorkingHours}{\cite{Blyszcz2022}}
-    \resizebox{\textwidth}{!}{
-    \begin{tabular}{|l|r|r|r|r|r|r|r|}
-        \hline
-        \multicolumn{8}{|c|}{\textbf{Klasyfikacja: Monday-WorkingHours}} \\ \hline
-        \multirow{2}*{} & \multirow{2}*{\textbf{Podstawowa}} & \multicolumn{3}{c|}{\textbf{Zoptymalizowana GA}} & \multicolumn{3}{c|}{\textbf{Zoptymalizowana Statystycznie}} \\
-        \cline{3-8}
-        & & \textbf{1} & \textbf{2} & \textbf{3} & \textbf{ANOVA} & \textbf{PEARSON} & \textbf{SPEARMAN} \\ \hline
-        \textbf{Rozmiar danych [MB]} & 347,19 & 197.60 & 181,43 & 189,51 & \multicolumn{3}{c|}{197,60}\\ \hline
-        \textbf{Ilość linii [-]} & \multicolumn{7}{c|}{529 918} \\ \hline
-        \textbf{Czas operacji [s]} & 2,68 & 1,84 & 1,77 & 2,23 & 1,89 & 1,83 & 1,91 \\ \hline
-        \textbf{Dokładność [\%]} & 45,89 & 81,71 & 85,47 & 88,67 & 39,32 & 36,34 & 37,77 \\ \hline
-        \textbf{Precyzja [\%]} & \multicolumn{7}{c|}{100} \\ \hline
-        \textbf{Czułość [\%]} & 45,89 & 81,71 & 85,47 & 88,67 & 39,32 & 36,34 & 37,77 \\ \hline
-        \textbf{F1 [\%]} & 62,91 & 89,94 & 92,16 & 93,99 & 56,45 & 53,31 & 54,83 \\ \hline
-        \textbf{Zużycie pamięci [MB]} & 1853,44 & 980,06 & 885,42 & 932,74 & \multicolumn{3}{c|}{980,06} \\ \hline
-    \end{tabular}}
-    \label{tab:monday-workingHours}
-\end{table}
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=\textwidth]{images/Monday-WorkingHours_cmp}
-    \captionsource{Klasyfikacja zbioru danych: Monday-WorkingHours}{\cite{Blyszcz2022}}
-    \label{fig:mond}
-\end{figure}

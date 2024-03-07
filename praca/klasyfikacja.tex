@@ -4,9 +4,6 @@ Klasyfikacja jest to próba rozpoznania obiektów na bazie ich cech.\ Jest to je
 \\ \\
 W uczeniu maszynowym klasyfikacja jest to metoda uczenia nadzorowanego, podczas której model próbuje przewidzieć etykietę obiektu na podstawie jego cech.\ Proces uczenia modelu klasyfikacji jest oparty o dwa zbiory, treningowy i testowy.\ Zbiór treningowy powinien być mniejszy od zbioru testowego.\ Po udanym procesie trenowania modelu następuje proces testowania, na podstawie którego wylicza się odpowiednie metryki pozwalające na ewaluacje modelu.\ W pracy magisterskiej wykorzystano zbiór danych, który posiada dwa typy etykiet [0, 1], dlatego też na tej podstawie zbudowano macierz pomyłek.
 
-\vfill
-\pagebreak
-
 \section{Metryki jakościowe}
 W trakcie ewaluacji algorytmu służącego do klasyfikacji wykorzystuje się metryki bazujące na macierzy pomyłek, która zostałą opisana w \refsource{tabeli}{tab:matrix-tn}
 \begin{table}[H]
@@ -46,9 +43,6 @@ Stosunek poprawnie wybranych obiektów klasy ,,\textit{1}'', do wszystkich wybra
     \frac{TP}{TP + FN}
 \end{equation}
 Stosunek poprawnie sklasyfikowanych obiektów klasy ,,\textit{1}'', do wszystkich obiektów, które powinny być w tej klasie.
-
-\vfill
-\pagebreak
 
 \subsection{F1}
 \begin{equation}\label{math:f1}
