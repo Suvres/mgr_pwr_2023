@@ -1,11 +1,11 @@
 \chapter{Klasyfikacja danych}
 
-Klasyfikacja jest to próba rozpoznania obiektów na bazie ich cech.\ Jest to jedna z pierwszych rzeczy, jaką uczą się niemowlęta, zaczynając od rozpoznania rodziców, próby rozróżnienia kształtów, kolorów, rzeczy.\ W otaczającym świecie istnieje wiele mechanizmów mających sklasyfikować przedmioty.\ Należą do nich między innymi katalogi biblioteczne, klasyfikacja trunków, kaw, pojazdów, produktów spożywczych.\ Człowiek od zawsze próbuje skategoryzować i uporządkować posiadaną wiedzę w zbiory pozwalające na łatwy dostęp do przechowywanych informacji na przykład w sposób tabelaryczny.
+ Człowiek od zawsze próbuje skategoryzować i uporządkować posiadaną wiedzę w zbiory pozwalające na łatwy dostęp do przechowywanych informacji na przykład w sposób tabelaryczny.\ Klasyfikacja to proces rozpoznawania obiektów na bazie analizy ich cech.\ Jest to jedna z pierwszych rzeczy, której uczą się niemowlęta: rozróżniania kształtów, kolorów czy własnych rodziców. \ W póżniejszych latach te umiejętności są bardzo ważne, ponieważ w otaczającym świecie wiele rzeczy jest sklasyfikowanych.\ Np książki w katalogach bibliotecznych czy produkty spoźywcze według jakości produkcji.
 \\ \\
 W uczeniu maszynowym klasyfikacja jest to metoda uczenia nadzorowanego, podczas której model próbuje przewidzieć etykietę obiektu na podstawie jego cech.\ Proces uczenia modelu klasyfikacji jest oparty o dwa zbiory, treningowy i testowy.\ Zbiór treningowy powinien być mniejszy od zbioru testowego.\ Po udanym procesie trenowania modelu następuje proces testowania, na podstawie którego wylicza się odpowiednie metryki pozwalające na ewaluacje modelu.\ W pracy magisterskiej wykorzystano zbiór danych, który posiada dwa typy etykiet [0, 1], dlatego też na tej podstawie zbudowano macierz pomyłek.
 
 \section{Metryki jakościowe}
-W trakcie ewaluacji algorytmu służącego do klasyfikacji wykorzystuje się metryki bazujące na macierzy pomyłek, która zostałą opisana w \refsource{tabeli}{tab:matrix-tn}
+W trakcie ewaluacji algorytmu służącego do klasyfikacji wykorzystuje się metryki bazujące na macierzy pomyłek, która została przedstawiona w \refsource{tabeli}{tab:matrix-tn}
 \begin{table}[H]
     \centering
     \captionsource{Macierz pomyłek}{Opracowanie własne}
@@ -17,6 +17,8 @@ W trakcie ewaluacji algorytmu służącego do klasyfikacji wykorzystuje się met
         \rule{0pt}{13mm} \multirow{2}{*}{\rotatebox[origin=c]{90}{\parbox{18mm}{\textbf{Przewidziane wartości}}}} & \textbf{1} & \cellcolor{lightgreen}TP & \cellcolor{lightred}FN \\ \cline{2-4}
         \rule{0pt}{13mm} & \textbf{0} & \cellcolor{lightred}FP & \cellcolor{lightgreen}TN \\ \hline
     \end{tabular}
+\end{table}
+    Macierz pomyłek pokazuje jakie wyniki możemy otrzymać w procesie klasyfikacji. Wyróżniamy 4 rodzaje rezultatów:
 
     \begin{itemize}
         \item  \textbf{TP} - prawdziwie pozytywny
@@ -24,7 +26,7 @@ W trakcie ewaluacji algorytmu służącego do klasyfikacji wykorzystuje się met
         \item \textbf{FP} - fałszywie pozytywny
         \item \textbf{TN} - prawdziwie negatywny
     \end{itemize}
-\end{table}
+Powyższe wartościpozwalają ocenić jakość algorytmów klasyfikujących dane.
 
 \subsection{Dokładność}
 \begin{equation}\label{math:acc}

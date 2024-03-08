@@ -1,10 +1,79 @@
-\chapter{Algorytm klasyfikacyjny opracowany w ramach pracy inżynierskiej}
-W ramach pracy inżynierskiej opracowano autorski algorytm, wykorzystujący algorytm genetyczny oraz klasyfikator Naiwny Bayesa.\ Celem algorytmu była redukcja wymiarowości danych tabelarycznych, by zwiększyć jakość klasyfikacji danych. Algorytm genetyczny zastosowano w celu przygotowania zbioru prawdopodobnie istotnych kolumn poprzez oznaczenie ich pozycji za pomocą ciągu cyfr 0 i 1.  \ Kolumny oznaczone cyfrą 1 były brane pod uwagę w procesie ewaluacji za pomocą klasyfikatora Naiwnego Bayesa. Cały proces trwał maksymalnie 1000 iteracji lub do momentu uzyskania minimum $90\%$ dopasowania.\ Wynikiem działania autorskiego algorytmu jest zbiór kolumn istotnych w procesie klasyfikowania.
+\chapter{Podsumowanie pracy inżynierskiej}
+W ramach pracy inżynierskiej opracowano autorski algorytm, wykorzystujący algorytm genetyczny oraz klasyfikator Naiwny Bayesa.\ Do badań wykorzystano dane uzyskane z Instytutu Cyberbezpieczeństwa, działającego przy Uniwersytecie Nowy Brunszwik.\ Dane użyto też w niniejszej pracy dyplomowej.\ Zbiór danych został opisany w \refsource{sekcji}{sec:data}.\
 
-\section{Rezultat pracy inżynierskiej}
-W pracy inżynierskiej opracowano autorski algorytm klasyfikacji. Do badań wykorzystno dane uzyskane z Instytutu Cyberbezpieczeństwa, działającego przy Uniwersytecie Nowy Brunszwik.\ Zbiór danych został opisany w \refsource{sekcji}{sec:data}.
+\section{Algorytm genetyczny}
+Algorytm genetyczny, który został zastosowany w autorskim rozwiązaniu, to algorytm, który przeszukuje przestrzeń alternatywnych rozwiązań dla danego problemu, by znaleźć najlepszy
+wynik~\cite{Kusiak2021}.\ Działanie algorytmu genetycznego jest inspirowane m.in. ewolucją biologiczną, stąd też pochodzą nazwy kolejnych kroków, które zostały przedstawione na \refsource{rysunku}{fig:GA}.
 
-\ Celem badań było zmniejszenie wymiarowości danych w celu zwiększenie dokładności klasyfikacji danych.\ Uzyskano to poprzez wyznaczenie najistotniejszych cech zbioru.\ By sprawdzić jakość własnego rozwiązania wykorzystano też poniższe metody statystyczne:
+
+\begin{figure}[H]
+    \centering
+    \resizebox{0.6\textwidth}{!}{
+    \begin{tikzpicture}[node distance={2cm}]
+        \node (start) [startstop] {Start};
+        \node (init) [process, below of=start] {Inicjalizacja};
+        \node (eval) [process, below of=init] {Ewaluacja};
+        \node (opt) [decision, below of=eval, aspect=3, yshift=-5mm] {Czy wynik\\jest optymalny};
+        \node (select) [process, below of=opt, yshift=-10mm] {Selekcja};
+        \node (rec) [process, below of=select] {Rekombinacja};
+        \node (mut) [process, below of=rec] {Mutacja};
+        \node (rep) [process, below of=mut] {Zamiana};
+        \node (end) [startstop, below left of=opt, xshift=-4.5cm] {Koniec};
+        \draw [arrow] (start) -- (init);
+        \draw [arrow] (init) -- (eval);
+        \draw [arrow] (eval) -- (opt);
+        \draw [backarrow] (end) |- node[anchor=south, darkgreen, xshift=2mm] {tak} (opt);
+        \draw [arrow] (opt) -- node[anchor=east, red] {nie} (select);
+        \draw [arrow] (select) -- (rec);
+        \draw [arrow] (rec) -- (mut);
+        \draw [arrow] (mut) -- (rep);
+        \draw [arrow] (rep.east) -| ++(3, 11.5) -- (eval.east);
+    \end{tikzpicture}}
+    \captionsource{Schemat algorytmu genetycznego}{Opracowanie własne na podstawie:~\cite{Sastry2005,Kusiak2021, Blyszcz2022}}
+    \label{fig:GA}
+\end{figure}
+Poniżej opisano przebieg algorytmu:
+\begin{enumerate}
+    \item \textbf{Inicjalizacja} - metoda inicjująca populację losowych osobników, wykorzystywanych podczas obliczeń;
+    \item \textbf{Ewaluacja} - etap sprawdzenia jakości wygenerowanych danych;
+    \item \textbf{Selekcja} - część algorytmu skupiająca się na wybraniu $n$ najlepszych rozwiązań, które przejdą do następnej populacji;
+    \item \textbf{Rekombinacja} - element tworzący nową populację na bazie poprzedniej populacji.\ Wykorzystuje do tego mechanizm krzyżowania rodziców;
+    \item \textbf{Mutacja} - metoda wprowadzająca zmianę w $n$ losowych miejsc w genomie;
+    \item \textbf{Zamiana} - miejsce wymiany starej populacji na nową~\cite{Sastry2005, Kusiak2021, Blyszcz2022}.
+\end{enumerate}
+
+
+\section{Klasyfikator Naiwny Bayesa}
+Autorski algorytm w etapie ewaluacji wykorzystuje naiwny klasyfikator Bayesa oparty o rozkład normalny Gausa (\textit{ang. Gaussian Naive Bayes, GNB}).\ Równanie klasyfikatora oparte jest o twierdzenie Bayesa.\ Opisuje ono prawdopodobieństwo wystąpienia zdarzenia na podstawie znajomości warunków zdarzenia~\cite{Joyce2003}.\ Twierdzenie zostało przedstawione na \refsource{równaniu}{math:bayes}.
+
+\begin{equation}\label{math:bayes}
+P(H|X) = \frac{P(X|H) P(H)}{P(X)}
+\end{equation}
+gdzie:
+\begin{itemize}
+    \item $H$ oraz $X$ są różnymi zdarzeniami;
+    \item $P(X) \neq 0$;
+    \item $P(H|X)$ - prawdopodobieństwo wystąpienia zdarzenia $H$ jeśli zdarzenie $X$ jest prawdziwe;
+    \item $P(X|H)$ - prawdopodobieństwo wystąpienia zdarzenia $X$ jeśli zdarzenie $H$ jest prawdziwe;
+    \item $P(H)$ oraz $P(X)$ to prawdopodobieństwa zaobserwowane, bez żadnych warunków~\cite{Leung2007}.
+\end{itemize}
+
+Równanie wykorzystujące rozkład normalny Gaussa zostało przedstawione na \refsource{równaniu}{math:gnb}.\ W kodzie wykorzystano bibliotekę sckit-learn~\cite{scikit-learn}.\ Posiada ona implementację GNB.
+
+\begin{equation}\label{math:gnb}
+    P(x_{i}|y) = \frac{1}{\sqrt{2\pi\sigma_{k}}}e^{-\frac{(x_{i}-\mu_{k})^2}{2\sigma_{k}^{2}}}
+\end{equation}
+gdzie:
+\begin{itemize}
+        \item[] \textbf{$\sigma_{k}^{2}$} - wariancja danych w kolumnie,
+        \item[] \textbf{$\sigma_{k}$} - odchylenie standardowe danych w kolumnie,
+        \item[] \textbf{$\mu$} - średnia wartość w kolumnie~\cite{Leung2007}.
+\end{itemize}
+
+\section{Systemy wykrywania intruzów}
+
+\section{Autorski algorytm opracowany w ramach pracy inżynierskiej}
+Celem algorytmu była redukcja wymiarowości danych tabelarycznych, by zwiększyć jakość klasyfikacji danych.\ Uzyskano to poprzez wyznaczenie najistotniejszych cech zbioru.\ Algorytm genetyczny zastosowano w celu przygotowania zbioru prawdopodobnie istotnych kolumn poprzez oznaczenie ich pozycji za pomocą ciągu cyfr 0 i 1.  \ Kolumny oznaczone cyfrą 1 były brane pod uwagę w procesie ewaluacji za pomocą klasyfikatora Naiwnego Bayesa. Cały proces trwał maksymalnie 1000 iteracji lub do momentu uzyskania minimum $90\%$ dopasowania.\ Wynikiem działania autorskiego algorytmu jest zbiór kolumn istotnych w procesie klasyfikowania.W celu sprawdzenia jakości  własnego rozwiązania wykorzystano następujące metody statystyczne:
 \begin{itemize}
     \item \textbf{metoda ANOVA} - analiza wariancji,
     \item \textbf{współczynnik korelacji Pearsona} - współczynnik określający zależność liniową pomiędzy zmiennymi losowymi,
@@ -49,80 +118,10 @@ Analiza wykazała, że wyniki uzyskane za pomocą metod statystycznych były gor
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=\textwidth]{images/Monday-WorkingHours_cmp}
+    \includegraphics[width=0.7\textwidth]{images/Monday-WorkingHours_cmp}
     \captionsource{Klasyfikacja zbioru danych: Monday-WorkingHours}{\cite{Blyszcz2022}}
     \label{fig:mond}
 \end{figure}
 
 Analizując powyższe wyniki można zauważyć, że najwyższe dopasowanie uzyskał autorski algorytm a najniższe - zbiór kolumn wyznaczonych metodą współczynników korelacji Pearsona.\ Świadczy to o wysokiej jakości, opracowanego w pracy inżynierskiej, algorytmu.
 
-
-\section{Algorytm genetyczny}
-Algorytm genetyczny, który został zastosowany w autorskim rozwiązaniu, to algorytm, który przeszukuje przestrzeń alternatywnych rozwiązań dla danego problemu, by znaleźć najlepszy
-wynik~\cite{Kusiak2021}.\ Działanie algorytmu genetycznego jest inspirowane m.in. ewolucją biologiczną, stąd też pochodzą nazwy kolejnych kroków, które zostały przedstawione na \refsource{rysunku}{fig:GA}.
-
-
-\begin{figure}[H]
-    \centering
-    \resizebox{0.4\textwidth}{!}{
-    \begin{tikzpicture}[node distance={2cm}]
-        \node (start) [startstop] {Start};
-        \node (init) [process, below of=start] {Inicjalizacja};
-        \node (eval) [process, below of=init] {Ewaluacja};
-        \node (opt) [decision, below of=eval, aspect=3, yshift=-5mm] {Czy wynik\\jest optymalny};
-        \node (select) [process, below of=opt, yshift=-10mm] {Selekcja};
-        \node (rec) [process, below of=select] {Rekombinacja};
-        \node (mut) [process, below of=rec] {Mutacja};
-        \node (rep) [process, below of=mut] {Zamiana};
-        \node (end) [startstop, below left of=opt, xshift=-4.5cm] {Koniec};
-        \draw [arrow] (start) -- (init);
-        \draw [arrow] (init) -- (eval);
-        \draw [arrow] (eval) -- (opt);
-        \draw [backarrow] (end) |- node[anchor=south, darkgreen, xshift=2mm] {tak} (opt);
-        \draw [arrow] (opt) -- node[anchor=east, red] {nie} (select);
-        \draw [arrow] (select) -- (rec);
-        \draw [arrow] (rec) -- (mut);
-        \draw [arrow] (mut) -- (rep);
-        \draw [arrow] (rep.east) -| ++(3, 11.5) -- (eval.east);
-    \end{tikzpicture}}
-    \captionsource{Schemat algorytmu genetycznego}{Opracowanie własne na podstawie:~\cite{Sastry2005,Kusiak2021, Blyszcz2022}}
-    \label{fig:GA}
-\end{figure}
-Poniżej opisano przebieg algorytmu:
-\begin{enumerate}
-    \item \textbf{Inicjalizacja} - metoda inicjująca populację losowych osobników, wykorzystywanych podczas obliczeń;
-    \item \textbf{Ewaluacja} - etap sprawdzenia jakości wygenerowanych danych;
-    \item \textbf{Selekcja} - część algorytmu skupiająca się na wybraniu $n$ najlepszych rozwiązań, które przejdą do następnej populacji;
-    \item \textbf{Rekombinacja} - element tworzący nową populację na bazie poprzedniej populacji.\ Wykorzystuje do tego mechanizm krzyżowania rodziców;
-    \item \textbf{Mutacja} - metoda wprowadzająca zmianę w $n$ losowych miejsc w genomie;
-    \item \textbf{Zamiana} - miejsce wymiany starej populacji na nową~\cite{Sastry2005, Kusiak2021, Blyszcz2022}.
-\end{enumerate}
-
-
-
-\section{Klasyfikator Naiwny Bayesa}
-Autorski algorytm w etapie ewaluacji wykorzystuje naiwny klasyfikator Bayesa oparty o rozkład normalny Gausa (\textit{ang. Gaussian Naive Bayes, GNB}).\ Równanie klasyfikatora oparte jest o twierdzenie Bayesa.\ Opisuje ono prawdopodobieństwo wystąpienia zdarzenia na podstawie znajomości warunków zdarzenia~\cite{Joyce2003}.\ Twierdzenie zostało przedstawione na \refsource{równaniu}{math:bayes}.
-
-\begin{equation}\label{math:bayes}
-P(H|X) = \frac{P(X|H) P(H)}{P(X)}
-\end{equation}
-gdzie:
-\begin{itemize}
-    \item $H$ oraz $X$ są różnymi zdarzeniami;
-    \item $P(X) \neq 0$;
-    \item $P(H|X)$ - prawdopodobieństwo wystąpienia zdarzenia $H$ jeśli zdarzenie $X$ jest prawdziwe;
-    \item $P(X|H)$ - prawdopodobieństwo wystąpienia zdarzenia $X$ jeśli zdarzenie $H$ jest prawdziwe;
-    \item $P(H)$ oraz $P(X)$ to prawdopodobieństwa zaobserwowane, bez żadnych warunków~\cite{Leung2007}.
-\end{itemize}
-
-Równanie wykorzystujące rozkład normalny Gaussa zostało przedstawione na \refsource{równaniu}{math:gnb}.\ W kodzie wykorzystano bibliotekę sckit-learn~\cite{scikit-learn}.\ Posiada ona implementację GNB.
-
-\begin{equation}\label{math:gnb}
-    P(x_{i}|y) = \frac{1}{\sqrt{2\pi\sigma_{k}}}e^{-\frac{(x_{i}-\mu_{k})^2}{2\sigma_{k}^{2}}}
-\end{equation}
-gdzie:
-\begin{itemize}
-        \item[] \textbf{$\sigma_{k}^{2}$} - wariancja danych w kolumnie,
-        \item[] \textbf{$\sigma_{k}$} - odchylenie standardowe danych w kolumnie,
-        \item[] \textbf{$\mu$} - średnia wartość w kolumnie~\cite{Leung2007}.
-\end{itemize}
