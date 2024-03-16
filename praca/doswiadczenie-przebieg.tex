@@ -94,7 +94,7 @@ Potok zadań dla algorytmów niestandardowych został ukazany na \refsource{rysu
 \end{figure}
 
 \subsection{Utworzenie tabeli porównawczej}
-Kolejną częścią zadań jest zebranie wyników poszczególnych algorytmów oraz połączenie ich w jedną całość.\ Wykorzystano do tego moduły języka Pyton, które zwracają przetworzone wyniki oraz łączą je w jedną tabelę zbiorczą, co pokazano na \refsource{rysunku}{fig:pipe-4}.
+Kolejną częścią zadań jest zebranie wyników poszczególnych algorytmów oraz połączenie ich w jedną całość.\ Wykorzystano do tego moduły języka Python, które zwracają przetworzone wyniki oraz łączą je w jedną tabelę zbiorczą, co pokazano na \refsource{rysunku}{fig:pipe-4}.
 
 \begin{figure}[H]
     \centering
@@ -109,7 +109,7 @@ Aby zweryfikować działanie całego procesu wykorzystano znormalizowane dane tr
 
 \begin{table}[H]
     \centering
-    \captionsource{Liczba elementów przynależących do danej klasy w zniorze treningowym}{Opracowanie własne}
+    \captionsource{Liczba elementów przynależnych do danej klasy w zbiorze treningowym}{Opracowanie własne}
     \label{tab:trening-data-label}
     \begin{tabular}{|c|r|}
         \hline
@@ -139,7 +139,7 @@ Aby uzyskać realne wyniki podczas porównywania poszczególnych algorytmów zas
 
 \begin{table}[H]
     \centering
-    \captionsource{Liczba elementów przynależących do danej klasy w zbiorze testowym}{Opracowanie własne}
+    \captionsource{Liczba elementów przynależnych do danej klasy w zbiorze testowym}{Opracowanie własne}
     \label{tab:res-test}
     \begin{tabular}{|c|r|}
         \hline
@@ -328,11 +328,12 @@ Wszystkie poniższe testy statystyczne zostały wykonane dla założeń z \refso
     \label{tab:stat}
 \end{table}
 
-\subsection{Hipoteza $H_0$: Nie ma istotnej różnicy pomiędzy wynikami ''dopasowania'' próby testowej i treningowej}
+\begin{itemize}
+\item \textbf{Hipoteza $H_0$: Nie ma istotnej różnicy pomiędzy wynikami ''dopasowania'' próby testowej i treningowej}
 
 Wykorzystując statystyczny test t Studenta dla prób zależnych dla danych z \refsource{tabeli}{tab:acc-res} oraz założenia z \refsource{tabeli}{tab:stat} określono, że wartość $p-value = 0,0163$.\ Oznacza to, że zmienna $p-value < \alpha$, dzięki czemu można odrzucić hipotezę $H_0$.\ Wyniki tej analizy określają, że widać istotne różnice pomiędzy danymi z próby testowej i treningowej.\ Największą różnicę widać w rezultacie algorytmu \textit{DANet}, który uzyskał w próbie testowej $19,9691\%$ dopasowania, a w próbie treningowej $99,9823\%$.\\
 
-\subsection{Hipoteza $H_0$: Nie ma istotnej różnicy pomiędzy wynikami ''dopasowania'' prób testowych}
+ \item \textbf{Hipoteza $H_0$: Nie ma istotnej różnicy pomiędzy wynikami ''dopasowania'' prób testowych}
 
 Za pomocą testu t Studenta dla prób zależnych określono porównano dane w próbach testowych z \refsource{tabeli}{tab:acc-res}.\ Uzyskane wyniki, przedstawione w \refsource{tabeli}{tab:acc-p-stat}, pozwalają zachować Hipotezę $H_0$, stwierdzającą, że pomiędzy danymi w poszczególnych próbach testowych nie ma istotnych różnic.
 
@@ -349,12 +350,12 @@ Za pomocą testu t Studenta dla prób zależnych określono porównano dane w pr
     \label{tab:acc-p-stat}
 \end{table}
 
-\subsection{Hipoteza $H_0$: Wynik dopasowania algorytmów nie przekracza dolnej granicy przedziału ufności}
+\item \textbf{Hipoteza $H_0$: Wynik dopasowania algorytmów nie przekracza dolnej granicy przedziału ufności}
 
 
 Przedział ufności dla dokładności algorytmów wyniósł $17,7218$ dla $\alpha = 0.05$.\ Biorąc pod uwagę ten fakt można stwierdzić, że dokładność algorytmu DANet jest poniżej dolnej granicy.\ Dolna granica przedziału ufności wynosi $56,2925\%$, zaś DANet uzyskał $19,9691\%$ oraz poprawnie zaklasyfikował jedynie $565273$ wpisów.\ Oznacza to, że można odrzucić $H_0$, ponieważ jeden algorytm przekracza dolny próg granicy ufności
 
-
+\end{itemize}
 \section{Wnioski}
 
 Microsoft Wyszedł naprzeciw potrzebom użytkowników przygotowując zestaw prekonfigurowanych algorytmów klasyfikacyjnych.\ Możliwości narzędzia Azure ML pozwalają na odpowiadanie na konkretne potrzeby przy relatywnie niewielkich kosztach.\ To nie oznacza jednak, że tworzenie autorskich rozwiązań mija się z celem.\ Jak ukazano na \refsource{wykresie}{fig:predict-result} autorskie rozwiązania również mają rację bytu.\ Wykorzystanie połączenia algorytmu genetycznego i klasyfikatora naiwnego Bayesa z rozkładem normalnym pozwala na uzyskanie zbliżonych wyników do algorytmu utworzone przez giganta technologicznego.\ Różnica około 5 punktów procentowych między najlepszym algorytmem a algorytmem GAGNB ukazuje niewielką różnicę w jakości algorytmu.\ Dodatkowo wciąż trudno korzysta się z rozwiązań takich jak DANet, które są nieprzetestowane na innych zbiorach niż tych przygotowanych z algorytmem.

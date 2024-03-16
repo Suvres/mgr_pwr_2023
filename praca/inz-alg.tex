@@ -44,7 +44,7 @@ Poniżej opisano przebieg algorytmu:
 
 
 \section{Klasyfikator Naiwny Bayesa}
-Autorski algorytm w etapie ewaluacji wykorzystuje naiwny klasyfikator Bayesa oparty o rozkład normalny Gausa (\textit{ang. Gaussian Naive Bayes, GNB}).\ Równanie klasyfikatora oparte jest o twierdzenie Bayesa.\ Opisuje ono prawdopodobieństwo wystąpienia zdarzenia na podstawie znajomości warunków zdarzenia~\cite{Joyce2003}.\ Twierdzenie zostało przedstawione na \refsource{równaniu}{math:bayes}.
+Autorski algorytm w etapie ewaluacji wykorzystuje naiwny klasyfikator Bayesa oparty o rozkład normalny Gaussa (\textit{ang. Gaussian Naive Bayes, GNB}).\ Równanie klasyfikatora oparte jest o twierdzenie Bayesa.\ Opisuje ono prawdopodobieństwo wystąpienia zdarzenia na podstawie znajomości warunków zdarzenia~\cite{Joyce2003}.\ Twierdzenie zostało przedstawione na \refsource{równaniu}{math:bayes}.
 
 \begin{equation}\label{math:bayes}
 P(H|X) = \frac{P(X|H) P(H)}{P(X)}
@@ -58,7 +58,7 @@ gdzie:
     \item $P(H)$ oraz $P(X)$ to prawdopodobieństwa zaobserwowane, bez żadnych warunków~\cite{Leung2007}.
 \end{itemize}
 
-Równanie wykorzystujące rozkład normalny Gaussa zostało przedstawione na \refsource{równaniu}{math:gnb}.\ W kodzie wykorzystano bibliotekę sckit-learn~\cite{scikit-learn}.\ Posiada ona implementację GNB.
+Równanie wykorzystujące rozkład normalny Gaussa zostało przedstawione na \refsource{równaniu}{math:gnb}.\ W kodzie wykorzystano bibliotekę scikit-learn~\cite{scikit-learn}.\ Posiada ona implementację GNB.
 
 \begin{equation}\label{math:gnb}
     P(x_{i}|y) = \frac{1}{\sqrt{2\pi\sigma_{k}}}e^{-\frac{(x_{i}-\mu_{k})^2}{2\sigma_{k}^{2}}}
