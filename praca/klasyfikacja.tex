@@ -4,8 +4,11 @@
 \\ \\
 W uczeniu maszynowym klasyfikacja jest to metoda uczenia nadzorowanego, podczas której model próbuje przewidzieć etykietę obiektu na podstawie jego cech.\ Proces uczenia modelu klasyfikacji jest oparty o dwa zbiory, treningowy i testowy.\ Zbiór treningowy powinien być mniejszy od zbioru testowego.\ Po udanym procesie trenowania modelu następuje proces testowania, na podstawie którego wylicza się odpowiednie metryki pozwalające na ewaluacje modelu.\ W pracy magisterskiej wykorzystano zbiór danych, który posiada dwa typy etykiet [0, 1], dlatego też na tej podstawie zbudowano macierz pomyłek.
 
-\section{Metryki jakościowe}
-W trakcie ewaluacji algorytmu służącego do klasyfikacji wykorzystuje się metryki bazujące na macierzy pomyłek, która została przedstawiona w \refsource{tabeli}{tab:matrix-tn}
+\section{Metryki klasyfikacji danych}
+W trakcie ewaluacji algorytmu służącego do klasyfikacji wykorzystuje się metryki klasyfikacji.\ Służą one do przewidywanie etykiet klas na podstawie danych wejściowych.\ W zależności od ilości klas wyjściowych rozróżniamy klasyfikację binarną i wieloklasową.\ W klasyfikacji binarnej występują tylko dwie klasy wyjściowe, a w klasyfikacji wieloklasowej już tych klas jest więcej.\ Przykładem klasyfikacji binarnej jest np. wykrywanie niechcianych wiadomości w skrzynce mailowej.\ Wiadomość przychodzącą możemy w tedy określić jako 1 - \textit{,,pozytywną''}, bądź 0 - \textit{,,negatywną''}.\ Istnieje wiele sposobów na oceny klasyfikacji, do których zaliczamy m.in. dokładność, macierz pomyłek czy precyzję~\cite{Agrawal2024}.
+\\ \\
+Macierz pomyłek pokazuje jakie wyniki możemy otrzymać w procesie klasyfikacji.\ Macierz ta została przedstawiona w \refsource{tabeli}{tab:matrix-tn}.\ Jest to miara wydajności problemów klasyfikacji.
+
 \begin{table}[H]
     \centering
     \captionsource{Macierz pomyłek}{Opracowanie własne}
@@ -18,15 +21,15 @@ W trakcie ewaluacji algorytmu służącego do klasyfikacji wykorzystuje się met
         \rule{0pt}{13mm} & \textbf{0} & \cellcolor{lightred}FP & \cellcolor{lightgreen}TN \\ \hline
     \end{tabular}
 \end{table}
-    Macierz pomyłek pokazuje jakie wyniki możemy otrzymać w procesie klasyfikacji. Wyróżniamy 4 rodzaje rezultatów:
-
+    Wyróżniamy 4 rodzaje rezultatów:
     \begin{itemize}
-        \item  \textbf{TP} - prawdziwie pozytywny
-        \item \textbf{FN} - fałszywie negatywny
-        \item \textbf{FP} - fałszywie pozytywny
-        \item \textbf{TN} - prawdziwie negatywny
+        \item  \textbf{TP} - prawdziwie pozytywny - przewidywano pozytywny wynik i otrzymano pozytywny wynik,
+        \item \textbf{FN} - fałszywie negatywny - przewidziano negatywny wynik, a otrzymano pozytywny wynik,
+        \item \textbf{FP} - fałszywie pozytywny - przewidziano pozytywny wynik, a otrzymano negatywny wynik,
+        \item \textbf{TN} - prawdziwie negatywny - przewidziano negatywny wynik i otrzymano negatywny wynik.
     \end{itemize}
-Powyższe wartościpozwalają ocenić jakość algorytmów klasyfikujących dane.
+
+Powyższe wartości pozwalają ocenić jakość algorytmów klasyfikujących dane.
 
 \subsection{Dokładność}
 \begin{equation}\label{math:acc}
