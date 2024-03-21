@@ -29,37 +29,65 @@ Macierz pomyłek pokazuje jakie wyniki możemy otrzymać w procesie klasyfikacji
         \item \textbf{TN} - prawdziwie negatywny - przewidziano negatywny wynik i otrzymano negatywny wynik.
     \end{itemize}
 
-Powyższe wartości pozwalają ocenić jakość algorytmów klasyfikujących dane.
+Opierając się o macierz pomyłek można wyznaczyć następujące metryki:
+\begin{itemize}
+    \item dokładność,
+    \item precyzja,
+    \item czułość,
+    \item F1
+    \item swoistość
+    \item ROC - AUC~\cite{Agrawal2024}
+\end{itemize}
 
 \subsection{Dokładność}
 \begin{equation}\label{math:acc}
     \frac{TP + TN}{TP + TN + FP + FN}
 \end{equation}
-Stosunek wszystkich dobrze oznaczonych obiektów do liczby wszystkich prób.
+Dokładność określa częstość poprawnego przewidywania klasyfikatora.\ Jest to stosunek wszystkich dobrze oznaczonych obiektów do liczby wszystkich prób~\cite{Agrawal2024, Blyszcz2022, Kulkarni2020}.
 
 \subsection{Precyzja}
 \begin{equation}\label{math:prec}
     \frac{TP}{TP + FP}
 \end{equation}
-Stosunek poprawnie wybranych obiektów klasy ,,\textit{1}'', do wszystkich wybranych obiektów tej klasy.
+Precyzja wyjaśnia ile z prawidłowo przewidzianych przypadków jest poprawnych.\ Jest to stosunek poprawnie wybranych obiektów klasy ,,\textit{1}'', do wszystkich wybranych obiektów tej klasy.\ Znajduje zastosowanie w przypadkach gdy wynik fałszywie dodatni jest większym problemem niż fałszywie ujemny~\cite{Agrawal2024, Blyszcz2022, Kulkarni2020}.
 
 \subsection{Czułość}
 \begin{equation}\label{math:rec}
     \frac{TP}{TP + FN}
 \end{equation}
-Stosunek poprawnie sklasyfikowanych obiektów klasy ,,\textit{1}'', do wszystkich obiektów, które powinny być w tej klasie.
+Czułość określia ile rzeczywistych pozytywnych przypadków byliśmy w stanie poprawnie przewidzieć za pomocą naszego modelu.\ Jest to stosunek poprawnie sklasyfikowanych obiektów klasy ,,\textit{1}'', do wszystkich obiektów, które powinny być w tej klasie.\ Czułość jest przydatną metryką w przypadkach gdy wynik fałszywie ujemny ma większe znaczenie niż wynik fałszywie dodatni~\cite{Agrawal2024, Blyszcz2022, Kulkarni2020}.
+
+\subsection{Swoistość}
+\begin{equation}\label{math:swo}
+    \frac{TN}{TN + FP}
+\end{equation}
+Swoistość lub specyficzność pozwala określić ile rzeczywiście uzyskało się przypadków negatywnych.\ Jest to stosunek poprawnie zaklasyfikowanych obiektów klasy ,,\textit{0}'', do wszystkich obiektów, które powinny być w tej klasie~\cite{Agrawal2024}.
 
 \subsection{F1}
 \begin{equation}\label{math:f1}
    \frac{2*x*y}{x + y}
 \end{equation}
-Jest średnia harmoniczna precyzji (\textit{x}) i czułości (\textit{y});
-
-
-\subsection{AUC}
-AUC - (\textit{Area Under Roc Curve}) - Jest to pole pod krzywą ROC, pokazuje sprawność klasyfikatora.\ Im wyższa wartość AUC tym lepiej.\ Wynik AUC jest z zakresu <0, 1>:
+Parametr F1 pozwala na połączoną ocenę precyzji i czułości.\ Jest to średnia harmoniczna precyzji (\textit{x}) i czułości (\textit{y}). PArametr F1 może być skuteczną metryką oceny w następujących przypadkach:
 \begin{itemize}
-    \item AUC = 1 - klasyfikator idealny,
-    \item AUC = 0,5 - klasyfikator losowy,
-    \item AUC < 0,5 - klasyfikator gorszy niż losowy~\cite{Algolytics}.
+    \item wyniki fałszywie pozytywne i fałszywie negatywne sąą równie kosztowne
+    \item zwiększenie ilości danych nie zmienia skuteczności wyniku
+    \item wynik prawdziwie ujemny jest wysoki~\cite{Agrawal2024}.
+\end{itemize}
+
+\subsection{ROC - AUC}
+Krzywa ROC-AUC przedstawiona na \refsource{rysunku}{fig:roc-auc}, pozwala na ocenę sprawności klasyfikatora.\ ROC jest krzywą prawdopodobieństwa, którą wykreśla czułość w stosunku do swoistości.\ Wykres przedstawia wydajność (dokładność predykcji) modelu klasyfikacji.\ AUC \textit{(ang. Area Under Roc Curve)} jest to pole pod krzywą ROC.\ AUC to miara zdolności klasyfikatora do rozróżniania klas.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{images/roc-auc}
+    \captionsource{Przykład krzywej ROC}{Opracowanie własne}
+    \label{fig:roc-auc}
+\end{figure}
+
+Im większa jest wartość AUC tym lepsza wydajność modelu w rozróżnianiu klas pozytywnych i negatywnych.\ Wynik AUC jest z zakresu <0, 1>:
+\begin{itemize}
+    \item AUC = 1 - klasyfikator idealny, który rozróżnia wszystkie punkty,
+    \item 0,5 < AUC < 1 - klasyfikator prawie idealny, czyli z dużym prawdopodobieństwem sklasyfikuje poprawnie obiekty
+    \item AUC = 0,5 - klasyfikator losowy, oznacza to, że nie ma pewności czy klasyfikator jest w stanie rozpoznać cechy, czy może przypisuje je losowo,
+    \item AUC < 0,5 - klasyfikator gorszy niż klasyfikator losowy~\cite{Algolytics, Agrawal2024}.
 \end{itemize}
