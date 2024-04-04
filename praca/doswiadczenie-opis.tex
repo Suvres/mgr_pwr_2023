@@ -1,16 +1,56 @@
-\chapter{Opis doświadczenia}
+\chapter{Doświadczenie}
 \label{cha:dos}
-Przeprowadzone doświadczenie polega na porównaniu dostępnych w środowisku Microsoft Azure algorytmów klasyfikacji danych dwuklasowych wraz z algorytmem stworzonym na potrzeby pracy inżynierskiej o tytule ,,\textit{Wykorzystanie algorytmów genetycznych w systemach wykrywania intruzów w sieciach komputerowych}''~\cite{Blyszcz2022} oraz z algorytmem DANet~\cite{Chen2022}.\ Doświadczenie przebiegało według \refsource{schematu}{fig:sch-prac}.
+W ramach niniejszej pracy dyplomowej przeprowadzono doświadczenie polegające na porównaniu autorskiego algorytmu klasyfikacji (stworzonego w ramach pracy inżynierskiej pt. „Wykorzystanie algorytmów genetycznych w systemach wykrywania intruzów w sieciach komputerowych”~\cite{Blyszcz2022}) wraz z:
+\begin{itemize}
+    \item algorytmami klasyfikacji danych dwuklasowych dostępnymi w środowisku Microsoft Azure,
+    \item algorytmem DANet~\cite{Danet, Chen2022}
+\end{itemize}
+Algorytmy opisano w kolejnych podrozdziałach.\ Doświadczenie przeprowadzono w następujących etapach:
+\begin{enumerate}
+    \item Określenie założeń technicznych
+    \item Wybór danych i algorytmów klasyfikacji
+    \item Konfiguracja programistycznego środowiska badawczego
+    \item Utworzenie doświadczenia
+    \item Przeprowadzenie badań
+    \item Analiza wyników.
+\end{enumerate}
 
-\begin{figure}[H]
+
+\section{Metodologia badawcza}
+\label{sec:met}
+W celu oceny jakości algorytmów klasyfikacji określono następujący protokół metodologii badawczej, który został przedstawiony w \refsource{tabeli}{tab:met-bad}.\ Na początku zdefiniowano problem badawczy, określono do niego pytania badawcze oraz postawiono przewidywane hipotezy.
+
+\begin{table}[H]
     \centering
-    \includegraphics[width=0.9\textwidth]{images/schemat_pracy}
-    \captionsource{Schemat przebiegu doświadczenia}{Opracowanie własne}
-    \label{fig:sch-prac}
-\end{figure}
+    \captionsource{Metodologia badawcza}{Opracowanie własne}
+    \begin{tabular}{|L{\textwidth}|}
+        \hline
+        \textbf{Problem badawczy:}                                                                                                                     \\
+        Czy algorytm klasyfikacji danych utworzony w ramach pracy inżynierskiej może konkurować z rozwiązaniami dostępnymi w środowiskach komercyjnych \\ \hline
 
-\vfill
-\pagebreak
+        \textbf{Pytania badawcze:}                                                                                                                     \\
+        \begin{enumerate}
+            \item Czy algorytm jest konkurencyjny pod względem wybranych metry:
+            \begin{itemize}
+                \item dokładność algorytmu
+                \item czas działania
+                \item precyzja
+                \item czułość
+                \item f1
+                \item auc
+            \end{itemize}
+        \end{enumerate}                                                                                                                                \\ \hline
+
+        \textbf{Hipotezy:}                                                                                                                             \\
+        \begin{enumerate}
+            \item Nie ma istotnej różnicy pomiędzy wynikami próby testowej i treningowej.
+            \item Nie ma istotnej różnicy pomiędzy wynikami prób testowych.
+            \item Wynik dopasowania algorytmów nie przekracza dolnej granicy przedziału ufności dla próby testowej
+        \end{enumerate}                                                                                                                                \\ \hline
+    \end{tabular}
+    \label{tab:met-bad}
+\end{table}
+
 
 \section{Założenie techniczne}
 
@@ -22,18 +62,19 @@ Dane prezentowane w \refsource{Tabeli}{tab:technical} określają podstawowe za�
     \label{tab:technical}
     \begin{tabular}{|l|l|}
         \hline
-        \textbf{Środowisko uruchomieniowe} & Machine Learning Studio\cite{azureml} \\ \hline
-        \textbf{Język programowania} & Python 3.x \\ \hline
-        \multirow{3}*{\textbf{Wykorzystane biblioteki}} & scikit-learn~\cite{scikit-learn} \\
+        \textbf{Środowisko uruchomieniowe}              & Machine Learning Studio\cite{azureml} \\ \hline
+        \textbf{Język programowania}                    & Python 3.x                            \\ \hline
+        \multirow{3}*{\textbf{Wykorzystane biblioteki}} & scikit-learn~\cite{scikit-learn}      \\
         \cline{2-2}
-        & Numpy~\cite{Harris2019} \\
+        & Numpy~\cite{Harris2019}               \\
         \cline{2-2}
-        & Pandas~\cite{pandas, McKinney2010} \\
+        & Pandas~\cite{pandas, McKinney2010}    \\
         \hline
-        \textbf{Wykorzystane dane} & CICDS2017~\cite{cicds2017kaggle} \\
+        \textbf{Wykorzystane dane}                      & CICDS2017~\cite{cicds2017kaggle}      \\
         \hline
     \end{tabular}
 \end{table}
+
 
 \section{Dane}
 \label{sec:data}
@@ -47,82 +88,97 @@ Zbiór danych został przygotowany przez Kanadyjski Instytut Cyberbezpieczeństw
     \item port docelowy,
     \item długość pakietów.
 \end{enumerate}
-Zbiór pozwala na określenie czy ruch sieciowy jest życzliwy \trans{ang. BENING}, czy nieżyczliwy (różne możliwe formy ataku na sieć).\ Dodatkowo zbiór został podzielony na pięć dni roboczych: poniedziałek 3.07.2017 - piątek 7.07.2017.\ Dane z poniedziałku zawierają jedynie ruch życzliwy.\ W pozostałe dni zostały zasymulowane ataki na sieć komputerową~\cite{Blyszcz2022, unbkaggle}.
+Zbiór pozwala na określenie czy ruch sieciowy jest życzliwy \trans{ang. BENING}, czy nieżyczliwy (różne możliwe formy ataku na sieć).\ Dodatkowo dane zostały podzielone na pięć dni roboczych: poniedziałek 3.07.2017 - piątek 7.07.2017.\ Dane z poniedziałku zawierają jedynie ruch życzliwy.\ W pozostałe dni zostały zasymulowane ataki na sieć komputerową~\cite{Blyszcz2022, unbkaggle}.
 
-\section{Programistyczne środowisko badawcze}
-Jako środowisko programistyczne zostało wybrane Azure Machine Learning Studio.\ Zostało to spowodowane możliwością uniezależnienia obliczeń od komputera lokalnego.\ Platforma umożliwia łatwy sposób na tworzenie skomplikowanych potoków zadań, które składają się z komponentów wielokrotnego użytku.\ Każdy komponent uruchamia się w środowisku odizolowanym od pozostałych operacji.\ Dzieje się tak dzięki wykorzystaniu wielowęzłowych klastrów obliczeniowych, bazujących na oprogramowaniu Docker.\ Klastry te mogą skalować się w zależności od potrzeb oraz dostępnej jednostki~\cite{MicrosoftLearn2023}.
-\\ \\
-Całe doświadczenie zostało odwzorowane w graficznym potoku narzędzia ,,\textit{Projektant}'' oraz przedstawione na \refsource{zdjęciu}{fig:pipeline}.
-
-\begin{landscape}
-    \centering
-\begin{figure}[H]
-    \centering
-    \includegraphics[height=0.9\textwidth]{images/pipeline}
-    \captionsource{Potok zadań}{Opracowanie własne}
-    \label{fig:pipeline}
-\end{figure}
-\end{landscape}
 
 \section{Algorytmy wykorzystane w doświadczeniu}
 \label{sec:alg}
-W trakcie eksperymentu zastosowano różne algorytmy klasyfikacji danych.\ Charakterystyczną cechą tych algorytmów jest klasyfikacja ukierunkowana na 2 kategorie wejściowe.\ W tym wypadku są to kategorie ruchu sieciowego: [\textbf{BENIGN} \trans{pl. życzliwy}, \textbf{OTHER} \trans{pl. inne}], gdzie inne to pozostałe typy ruchu sieciowego.
+W trakcie eksperymentu zastosowano różne algorytmy klasyfikacji danych, by móc ocenić jakość autorskiego rozwiązania Gausian Naive Bayes - with GA. Do porównania wykorzystano następujące algorytmy takie jak:
+\begin{enumerate}
+    \item Two-Class Support Vector Machine
+    \item Two-Class Boosted Decision Tree
+    \item Two-Class Decision Forest
+    \item Two-class Neural Network
+    \item Two-Class Average Perceptron
+    \item DANet.
+\end{enumerate}
+Algorytmy 1 - 5 są dostępne na platformie Microsoft Azure, natomiast algorytm 6 to rozwiązanie udostępnione przez jednego z autorów pracy na platformie Github~\cite{Danet}.
 
-\subsection{Two-Class Support Vector Machine}
-Algorytm SVM ma za zadanie znaleźć hiperpłaszczyznę w przestrzeni K-wymiarowej (K - liczba cech), która rozdziela zbiory punktów odpowiadających różnym klasom.\ W pierwszej kolejności szuka się separatora między klasami, a następnie przekształca się dane w taki sposób, by można przekształcić separator w hiperpłaszczyznę~\cite{IBM}.\ Sposób działania został zobrazowany za pomocą \refsource{wykresów}{fig:svm-schem}.\ Część \refsource{potoku}{fig:pipeline} odpowiedzialnego za SVM to \refsource{schemat}{fig:svm-pipe}.
+Charakterystyczną cechą tych algorytmów jest klasyfikacja ukierunkowana na 2 kategorie wejściowe.\ W tym wypadku są to kategorie ruchu sieciowego:
+\begin{itemize}
+    \item \textbf{BENIGN} \trans{pl. życzliwy},
+    \item \textbf{OTHER} \trans{pl. inne}, gdzie inne to pozostałe typy ruchu sieciowego.
+\end{itemize}
+
+W kolejnych podrozdziałach pokrótce scharakteryzowano zastosowane rozwiązania.
+
+\subsection{Two-Class Support Vector Machine}\label{subsec:svm}
+Algorytm SVM ma za zadanie znaleźć hiperpłaszczyznę w przestrzeni K-wymiarowej (gdzie K - liczba cech), która rozdziela zbiory punktów odpowiadające różnym klasom.\ W pierwszej kolejności SVM szuka separatora między klasami, a następnie przekształca się dane w taki sposób, by móc przekształcić separator w hiperpłaszczyznę~\cite{IBM}.\ Sposób działania został zobrazowany za pomocą \refsource{wykresów}{fig:svm}.
 
 \begin{figure}[H]
     \begin{subfigure}[m]{0.45\textwidth}
         \centering
-        \includegraphics[width=\textwidth]{images/svm_pipe}
-        \captionsource{Potok zadań dla modelu \textit{Two-Class Support Vector Machine}}{Opracowanie własne}
-        \label{fig:svm-pipe}
+        \includegraphics[width=\textwidth]{images/svm_1}
     \end{subfigure}
     \hfill
     \begin{subfigure}[m]{0.45\textwidth}
         \centering
-        \includegraphics[width=\textwidth]{images/svm}
-        \captionsource{Schemat SVM}{\cite{Statsoft}}
-        \label{fig:svm-schem}
+        \includegraphics[width=\textwidth]{images/svm_1}
     \end{subfigure}
+    \captionsource{Schemat SVM}{\cite{Statsoft}}
+    \label{fig:svm}
 \end{figure}
+
+Implementacja algorytmu w Azure Machine Learning zostałą przedstawiona na \refsource{rysunku}{fig:svm-pipe}.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{images/svm_pipe}
+    \captionsource{Potok zadań dla modelu \textit{Two-Class Support Vector Machine}}{Opracowanie własne}
+    \label{fig:svm-pipe}
+\end{figure}
+
+Jest to część potoku, która obrazuje schemat działania procesu trenowania i sprawdzania algorytmu.\ Pierwszy kafelek obrazuje model SVM, który jest podłączony do elementu odpowiadającego za trening modelu.\ Do tego samego miejsca sa podłączone dane treningowe.\ Po wykonaniu zadania trenowania następuje przejście do zadania oceniającego model.\ Do tego zadania podłączone są dane testowe.\ Przy pomocy danych testowych następuje ewaluacja modelu.\ Wyniki ewaluacji są przekazywane do zbiorczej tabeli.
 
 \vfill
 \pagebreak
 
 \subsection{Two-Class Boosted Decision Tree}
-Jest to algorytm drzewa decyzyjnego oparty o algorytm LightGBM.\ Dzięki zastosowaniu tego podejścia algorytm oparty o drzewo decyzyjne działa szybciej oraz ma mniejszą złożoność obliczeniową.\ Algorytm ten działa na zasadzie doboru odpowiedniego liścia, zamiast jak w przypadku klasycznych algorytmów opartych na drzewie, wyboru odpowiedniej warstwy~\cite{LightGBM}.\ Sposób podejścia liściastego został ukazany na \refsource{schemacie}{fig:leaf}.\ Model wykorzystywany w Azure ML został ukazany na \refsource{rysunku}{fig:dt-pipe}.
+Jest to algorytm drzewa decyzyjnego oparty o algorytm LightGBM.\ Dzięki zastosowaniu takiego podejścia algorytm działa szybciej oraz ma mniejszą złożoność obliczeniową.\ Algorytm ten działa na zasadzie doboru odpowiedniego liścia, zamiast jak w przypadku klasycznych algorytmów opartych na drzewie, wyboru odpowiedniej warstwy~\cite{LightGBM}.\ Sposób podejścia liściastego został ukazany na \refsource{schemacie}{fig:leaf}.
+
 \begin{figure}[H]
-    \begin{subfigure}[m]{0.3\textwidth}
-        \centering
-        \includegraphics[width=\textwidth]{images/dt_pipe}
-        \captionsource{Potok zadań dla modelu \textit{Two-Class Boosted Decision Tree}}{Opracowanie własne}
-        \label{fig:dt-pipe}
+    \begin{subfigure}[m]{\textwidth}
+        \includegraphics[width=\textwidth]{images/level-wise}
     \end{subfigure}
-    \hfill
-    \begin{subfigure}[m]{0.66\textwidth}
-        \begin{subfigure}[m]{\textwidth}
-            \includegraphics[width=\textwidth]{images/level-wise}
-        \end{subfigure}
-        \begin{subfigure}[m]{\textwidth}
-            \includegraphics[width=\textwidth]{images/leaf-wise}
-        \end{subfigure}
-        \captionsource{Sposób działania algorytmu}{\cite{LightGBM}}
-        \label{fig:leaf}
+    \begin{subfigure}[m]{\textwidth}
+        \includegraphics[width=\textwidth]{images/leaf-wise}
     \end{subfigure}
+    \captionsource{Sposób działania algorytmu}{\cite{LightGBM}}
+    \label{fig:leaf}
 \end{figure}
-\vfill
-\pagebreak
+
+Model wykorzystywany w Azure ML został ukazany na \refsource{rysunku}{fig:dt-pipe}.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{images/dt_pipe}
+    \captionsource{Potok zadań dla modelu \textit{Two-Class Boosted Decision Tree}}{Opracowanie własne}
+    \label{fig:dt-pipe}
+\end{figure}
+
+Potok jest zbudowany analogicznie do potoku opisanego w \refsource{podsekcji}{subsec:svm}.\ Do bloku treningowego został podłączony model wzmocnionego drzewa decyzyjnego.
 
 \subsection{Two-Class Decision Forest}
 Las decyzyjny to algorytm, którego wynik opiera się o agregację wyników wielu drzew decyzyjnych.\ Uzyskanie wyniku zależy od algorytmu trenowania lasu.\ Przykładowo w klasyfikacji losowym lasem wieloklasowym \trans{ang. Multi-class random forest classification}, każde drzewo głosuje na jedną klasę.\ Klasa, która zostanie wybrana większością głosów, zostaje uznana za wynikową~\cite{Google}.\ Model wykorzystany w Azure ML pokazano na \refsource{modelu}{fig:df-pipe}
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.3\textwidth]{images/df_pipe}
+    \includegraphics[width=0.6\textwidth]{images/df_pipe}
     \captionsource{Potok zadań dla modelu \textit{Two-Class Decision Forest}}{Opracowanie własne}
     \label{fig:df-pipe}
 \end{figure}
+
+Potok został zbudowany analogicznie do potoku opisanego w \refsource{podsekcji}{subsec:svm}.\ Do bloku treningowego został podłączony model lasu decyzyjnego.
 
 \vfill
 \pagebreak
@@ -132,10 +188,12 @@ Jest to sieć neuronowa, która składa się z warstwy wejściowej, trzech warst
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.3\textwidth]{images/nn_pipe}
+    \includegraphics[width=0.6\textwidth]{images/nn_pipe}
     \captionsource{Potok zadań dla modelu \textit{Two-Class Neural Network}}{Opracowanie własne}
     \label{fig:nn-pipe}
 \end{figure}
+
+Potok jest zbudowany analogicznie do potoku opisanego w \refsource{podsekcji}{subsec:svm}.\ Do bloku treningowego został podłączony model sieci neuronowej.
 
 \vfill
 \pagebreak
@@ -145,10 +203,12 @@ Jest to najprostsza odmiana sieci neuronowej, czyli pojedynczy perceptron, któr
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.3\textwidth]{images/ap_pipe}
+    \includegraphics[width=0.6\textwidth]{images/ap_pipe}
     \captionsource{Potok zadań dla modelu \textit{Two-Class Average Perceptron}}{Opracowanie własne}
     \label{fig:ap-pipe}
 \end{figure}
+
+Potok jest zbudowany analogicznie do potoku opisanego w \refsource{podsekcji}{subsec:svm}.\ Do bloku treningowego został podłączony model klasycznego perceptronu.
 
 \vfill
 \pagebreak
@@ -157,39 +217,447 @@ Jest to najprostsza odmiana sieci neuronowej, czyli pojedynczy perceptron, któr
 Algorytm ten polega na połączeniu algorytmu genetycznego (GA) wraz z klasyfikatorem naiwnym Bayesa wykorzystującego rozkład Gaussa (GNB).\ Zadaniem algorytmu genetycznego jest znalezienie najistotniejszych cech w zbiorze tabelarycznym.\ Poszukiwane cechy powinny pozwolić na zmniejszenie wymiarowości danych oraz na zmniejszenie kosztów obsługi samego klasyfikatora.\ Co może zostać uzyskane późniejszych etapach testowania, ze względu na zmniejszoną ilość danych wymaganych do przetworzenia.\ GA wykorzystywał w metodzie \textbf{fitness} algorytm GNB w celu określenia dopasowania danych.\ Zadaniem GNB było znalezienie najlepszej dostępnej kombinacji cech, które pozwalały na uzyskanie najlepszego dopasowania~\cite{Blyszcz2022}.\ Model wykorzystywany w Azure ML różni się od gotowych modeli tym, że dołączono do niego bibliotekę napisaną w języku Python, która zawiera kod wykorzystywany w pracy inżynierskiej autora~\cite{Suvres2023}.
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.3\textwidth]{images/ga_pipe}
+    \includegraphics[width=0.6\textwidth]{images/ga_pipe}
     \captionsource{Potok zadań dla modelu}{Opracowanie własne}
     \label{fig:ga-pipe}
+\end{figure}
+
+Potok został stworzony przy wykorzystaniu 3 głównych elementów:
+\begin{itemize}
+    \item \textbf{my\_lib} - jest to blok danych zawierających archiwum \textit{.zip}, w którym znajduje się biblioteka odpowiadająca za algorytm wykorzystywany w doświadczeniu,
+    \item \textbf{Execute Python Script} (\textit{execute\_python\_script\_3}) blok wykonuję operację trenowania znajdującą się w bibliotece dołączonej do bloku.\ Do tego celu potrzeba było podłączyć dane testujące i treningowe do pierwszego bloku, by przekazać je dalej wraz z wytrenowanym modelem.
+    \item \textbf{Execute Python Script} (\textit{execute\_python\_script\_4}) zadanie wykonuje operację testowania modelu, która znajduje się również w dołączonej bibliotece.\ Wynikiem obliczeń jest tabela z obliczonymi metrykami, która zostaje przekazana i dołączona do tabeli zbiorczej.
+\end{itemize}
+\vfill
+\pagebreak
+
+\subsection{DANet}
+Twórcy tego algorytmu wprowadzają dodatkową warstwę abstrakcyjną o nazwie ,,\textit{Abstract Layer}''.\ Warstwy te budują sieć o nazwie ,,\textit{Deep Abstract Network}'' (DANet).\ Zadanie dodatkowych warstw jest grupowanie cech w skorelowanych zbiorach.\ Zbiory te budują sieć powiązań między sobą w formie sieci semantycznej.\ Gdy sieć semantyczna jest zbudowana, to w ostatnim kroku wykonywana jest klasyfikacja w trzywarstwowej sieci perceptronów \trans{ang. Multilayer Perceptron network, MLP}~\cite{Chen2022, Danet}.\ Sposób działania przedstawiono na \refsource{schemacie}{fig:danet-abst}.
+
+
+\begin{figure}[H]
+    \hfill
+    \begin{subfigure}[m]{\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{images/danet_1}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[m]{\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{images/danet_2}
+    \end{subfigure}
+    \captionsource{Sposób działania DANet}{\cite{Chen2022}}
+    \label{fig:danet-abst}
+\end{figure}
+
+Model znajdujący się z Azure ML został przedstawiony na \refsource{zdjęciu}{fig:danet-pipe}.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{images/danet}
+    \captionsource{Potok zadań dla modelu \textit{DANet}}{Opracowanie własne}
+    \label{fig:danet-pipe}
+\end{figure}
+
+
+\section{Programistyczne środowisko badawcze}
+Analizę porównawczą algorytmów wykonano na platformie Microsoft Azure.\ Wykorzystano usługę Azure Machine Learning Studio.\ Wybrano to rozwiązanie, ponieważ umożliwia uniezależnienie obliczeń od komputera lokalnego.\ Dodatkowo, w łatwy sposób pozwala tworzyć skomplikowane potoki zadań, składające się z komponentów wielokrotnego użytku.\ Każdy komponent uruchamia się w środowisku odizolowanym od pozostałych operacji.\ Dzieje się tak dzięki wykorzystaniu wielowęzłowych klastrów obliczeniowych, bazujących na oprogramowaniu Docker.\ Klastry te mogą skalować się w zależności od potrzeb oraz dostępnej jednostki~\cite{MicrosoftLearn2023}.
+\\ \\
+Całe doświadczenie zostało odwzorowane w graficznym potoku narzędzia ,,\textit{Projektant}'' oraz przedstawione na \refsource{zdjęciu}{fig:pipeline}.
+
+\begin{landscape}
+    \centering
+    \begin{figure}[H]
+        \centering
+        \includegraphics[height=0.9\textwidth]{images/pipeline}
+        \captionsource{Potok zadań}{Opracowanie własne}
+        \label{fig:pipeline}
+    \end{figure}
+\end{landscape}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\section{Przebieg eksperymentu}
+
+,,\textit{Projektant}'', dostępny w Azure Machine Learning umożliwił utworzenie interaktywnego potoku zadań.\ Potok ten składa się z kilku części:
+\begin{itemize}
+    \item Przygotowanie i obróbka zbiorów danych
+    \item Trenowanie oraz testowanie algorytmów klasyfikacji danych
+    \item Utworzenie tabeli porównawczej dla wyników poszczególnych algorytmów (\refsource{obraz}{fig:pipeline}).
+\end{itemize}
+
+Poszczególne kroki przebiegu eksperymentu zostały opisane na kolejnych stronach.
+
+\subsection{Przygotowanie danych}
+W pierwszym kroku dane zostały znormalizowane za pomocą metody \textbf{MinMax}, która przekształca dane numeryczne do wartości w zakresie ${0, 1}$.\ W następnym kroku za pomocą języka Python oraz biblioteką Pandas oraz Numpy zostają zamienione etykiety słowne na wartości \textbf{0} i \textbf{1} oraz następuje zamiana wartości $[NaN, -inf, inf]$ na cyfrę $0$.\ Cały proces został zobrazowany na \refsource{diagramie}{fig:norm}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{images/norm}
+    \captionsource{Potok normalizacji danych}{Opracowanie własne}
+    \label{fig:norm}
 \end{figure}
 
 \vfill
 \pagebreak
 
-\subsection{DANet}
-Twórcy tego algorytmu wprowadzają dodatkową warstwę abstrakcyjną o nazwie ,,\textit{Abstract Layer}''.\ Warstwy te budują sieć o nazwie ,,\textit{Deep Abstract Network}'' (DANet).\ Zadanie dodatkowych warstw jest grupowanie cech w skorelowanych zbiorach.\ Zbiory te budują sieć powiązań między sobą w formie sieci semantycznej.\ Gdy sieć semantyczna jest zbudowana, to w ostatnim kroku wykonywana jest klasyfikacja w trzywarstwowej sieci perceptronów \trans{ang. Multilayer Perceptron network} (MLP)~\cite{Chen2022, Danet}.\ Model znajdujący się z Azure ML został przedstawiony na \refsource{zdjęciu}{fig:danet-pipe}, zaś sposób działania ukazano na \refsource{schematach}{fig:danet-abst}.
+\subsection{Trenowanie oraz testowanie algorytmów}
+Kolejną grupą zadań widoczną w potoku są te związane z trenowaniem i testowaniem poszczególnych algorytmów opisanych w \refsource{rozdziale}{cha:dos}.\ Każdy test składa się 3 kafelek.\ W przypadku algorytmów dostarczonych wraz z platformą Azure ML są to:
+\begin{itemize}
+    \item \textbf{model klasyfikujący} - odpowiada za przygotowanie algorytmu klasyfikacyjnego
+    \item \textbf{blok treningowy} - tworzy wytrenowany model, za pomocą połączonego zbioru danych
+    \item \textbf{blok ewaluacyjny} - sprawdza wcześniej wytrenowany model za pomocą powiązanego zbioru danych.
+\end{itemize}
+Potok zadań wykorzystujący algorytmy dostarczone przez Microsoft Azure został ukazany na \refsource{schemacie}{fig:ms-pipe}
 
 \begin{figure}[H]
-    \begin{subfigure}[m]{0.49\textwidth}
-        \centering
-        \includegraphics[width=0.4\textwidth]{images/danet}
-        \captionsource{Potok zadań dla modelu \textit{DANet}}{Opracowanie własne}
-        \label{fig:danet-pipe}
-    \end{subfigure}
-    \hfill
-    \begin{subfigure}[m]{0.49\textwidth}
-        \begin{subfigure}[m]{\textwidth}
-            \centering
-            \includegraphics[width=\textwidth]{images/danet_1}
-        \end{subfigure}
-        \begin{subfigure}[m]{\textwidth}
-            \centering
-            \includegraphics[width=\textwidth]{images/danet_2}
-        \end{subfigure}
-        \captionsource{Sposób działania DANet}{\cite{Chen2022}}
-        \label{fig:danet-abst}
-    \end{subfigure}
-
+    \centering
+    \includegraphics[width=\textwidth]{images/ms_pipe}
+    \captionsource{Potok zadań dla algorytmów klasyfikacyjnych}{Opracowanie własne}
+    \label{fig:ms-pipe}
 \end{figure}
+
+Algorytmy dostarczone w ramach pracy badawczej składają się z:
+\begin{itemize}
+    \item \textbf{biblioteka Python} - archiwum o rozszerzeniu \textbf{.zip}, które zawiera w sobie odpowiednie pliki napisane w języku Python
+    \item \textbf{blok treningowy} - wykorzystuje dostarczoną bibliotekę do wytrenowania modelu oraz zapisania na platformie Azure najlepszego uzyskanego wyniku za pomocą powiązanego zbioru danych
+    \item \textbf{blok ewaluacyjny} - wykorzystuje dostarczoną bibliotekę do ewaluacji algorytmu za pomocą połączonego zbioru danych
+\end{itemize}
+
+Potok zadań dla algorytmów niestandardowych został ukazany na \refsource{rysunku}{fig:au-pipe}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{images/au-pipe}
+    \captionsource{Potok zadań dla algorytmów klasyfikacyjnych}{Opracowanie własne}
+    \label{fig:au-pipe}
+\end{figure}
+
+\subsection{Utworzenie tabeli porównawczej}
+Kolejną częścią zadań jest zebranie wyników poszczególnych algorytmów oraz połączenie ich w jedną całość.\ Wykorzystano do tego moduły języka Python, które zwracają przetworzone wyniki oraz łączą je w jedną tabelę zbiorczą, co pokazano na \refsource{rysunku}{fig:pipe-4}.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{images/pipe-csv}
+    \captionsource{Moduły odpowiedzialne za przetworzenie wyników}{Opracowanie własne}
+    \label{fig:pipe-4}
+\end{figure}
+
+\subsection{Wyniki danych treningowych}
+Aby zweryfikować działanie całego procesu klasyfikacji wykorzystano znormalizowane dane treningowe do wytrenowania oraz przetestowania działania algorytmów klasyfikacyjnych.\ Cały proces trwał ,,\textbf{1 dzień 10 godzin 55 minut 53 sekundy}''.\ Wyniki tych działań widać na \refsource{rysunku}{fig:predict-same}.\ Wykres przedstawia wyniki dla metryk klasyfikacyjnych jak:
+\begin{itemize}
+    \item dokładność
+    \item precyzja
+    \item czułość
+    \item F1
+    \item AUC.
+\end{itemize}
+
+
+Analizując wykres można zauważyć, że uzyskane wyniki znajdują się w przedziale $[94\%, 100\%]$ w każdej metryce co pokazuje jakość każdego z algorytmów, a także to, że algorytmy poradziły sobie niemal bezbłędnie w rozpoznawaniu ruchu sieciowego, na którym były uczone.\ Zbiór, który wykorzystano do trenowania oraz testowania danych zawierał w sobie 225805 wpisów z czego 97718 należało do klasy ,,\textbf{1}'', zaś 128087 należało do klasy ,,\textbf{0}''.\ Liczba klas wyjściowych wynosi \textit{2}, przez wzgląd na to, że jest to klasyfikacja binarna, która klasyfikuje dane jako \textit{1} albo \textit{0}.
+
+\begin{table}[H]
+    \centering
+    \captionsource{Liczba elementów należących do danej klasy w zbiorze treningowym}{Opracowanie własne}
+    \label{tab:trening-data-label}
+    \begin{tabular}{|c|r|}
+        \hline
+        \textbf{Klasa} & \textbf{Liczba wystąpień} \\ \hline
+        1              & 97718                     \\ \hline
+        0              & 128027                    \\ \hline
+        \textbf{Suma}  & 225805                    \\ \hline
+    \end{tabular}
+\end{table}
+
+Bazując na tym zbiorze oraz uzyskanych wynikach udało się udowodnić poprawność działania procesu klasyfikacji wieloma algorytmami genetycznymi.
+
+\begin{landscape}
+    \vspace*{\fill}
+    \begin{figure}[H]
+        \centering
+        \includegraphics[height=0.8\textwidth]{images/predict_same}
+        \captionsource{Wyniki testów algorytmów klasyfikacyjnych na danych treningowych}{Opracowanie własne}
+        \label{fig:predict-same}
+    \end{figure}
+    \vfill
+\end{landscape}
+
+
+\section{Wyniki danych testowych}
+Aby uzyskać realne wyniki podczas porównywania poszczególnych algorytmów zastosowano zbiór treningowy opisany w \refsource{tabeli}{tab:trening-data-label} oraz zbiór testowy, który zawierał 2273097 wpisów należących do klasy ,,\textbf{1}'' oraz 557646 wpisów należących do klasy ,,\textbf{0}''.\ Sumarycznie ilość wpisów wynosi: 2830743, co zostało pokazane w \refsource{tabel}{tab:res-test}.\ Pomiary testowe powtórzono 2 razy dzięki czemu uzyskano 3 próby badawcze.
+
+\begin{table}[H]
+    \centering
+    \captionsource{Liczba elementów należących do danej klasy w zbiorze testowym}{Opracowanie własne}
+    \label{tab:res-test}
+    \begin{tabular}{|c|r|}
+        \hline
+        \textbf{Klasa} & \textbf{Liczba wystąpień} \\ \hline
+        1              & 2273097                   \\ \hline
+        0              & 557646                    \\ \hline
+        \textbf{Suma}  & 2830743                   \\ \hline
+    \end{tabular}
+\end{table}
+
+W analizie porównawczej algorytmów zastosowano następujące metryki klasyfikacji jak:
+\begin{itemize}
+    \item dopasowanie
+    \item precyzja
+    \item czułość
+    \item f1
+    \item AUC
+\end{itemize}
+
+Poniżej na \refsource{rysunku}{fig:predict-result} zostały przedstawione wyniki zbiorcze dla poszczególnych metryk.\ Dodatkowo przedstawiono również wynik pomiaru treningowego, który w większości przypadków jest wyższy od danych testowych.\ Co prawdopodobnie jest spowodowane różnicą w ilości danych testowych i treningowych.\ Dodatkowo w każdej kolumnie oznaczono kolorem zielonym najwyższy wynik dla danej metryki, a kolorem czerwonym najniższy wynik dla danej metryki.
+
+\begin{landscape}
+    \vspace*{\fill}
+    \begin{figure}[H]
+        \centering
+        \includegraphics[height=0.8\textwidth]{images/predict_result}
+        \captionsource{Wyniki testów algorytmów klasyfikacyjnych na danych testowych}{Opracowanie własne}
+        \label{fig:predict-result}
+    \end{figure}
+    \vfill
+\end{landscape}
+
+\section{Analiza uzyskanych wyników}
+Aby uzyskać realne wyniki podczas porównywania poszczególnych algorytmów zastosowano zbiór treningowy opisany w \refsource{tabeli}{tab:trening-data-label} oraz zbiór testowy opisany w \refsource{tabeli}{tab:res-test}.
+
+\subsection{Wyniki dopasowania}
+Najlepszy wynik dopasowania dla danych testowych uzyskał algorytm \textit{Two-Class Average Perceptron}, który poprawnie rozpoznał $85,7768\%$ próbek.\ Najgorszy wynik uzyskał algorytm \textit{DANet} z dopasowaniem rzędu: $19,9691\%$.\ Dla próby treningowej najlepszy wynik uzyskał \textit{Two-Class Boosted Decision Tree} z wynikiem $100,00\%$, a najgorszy \textit{Two-Class Average Perceptron} z wynikiem $97,4502\%$.\ Wyniki dopasowania dla poszczególnych prób zostały przedstawione na \refsource{tabeli}{tab:acc-res} oraz na \refsource{wykresie}{fig:acc-res}.
+
+\begin{table}[H]
+    \centering
+    \captionsourceb{Wynik dopasowania algorytmów.}{Kolorem zielonym określono najlepszy wynik w kolumnie.\ Kolorem czerwonym określono najgorszy wynik w kolumnie.}{Opracowanie własne}
+    \resizebox{\textwidth}{!}{%
+        \begin{NiceTabular}{|l|r|r|r||r|}[hvlines]
+            & \multicolumn{4}{c|}{\textbf{Wynik dopasowania}} \\
+            \textbf{Algorytm}                & \textbf{Próba 1}                  & \textbf{Próba 2}                  & \textbf{Próba 3}                  & \textbf{Próba testowa}             \\
+            Two-Class Support Vector Machine & $80,3002\%$                       & $80,3002\%$                       & $80,3002\%$                       & $99,9167\%$                        \\
+            Two-Class Boosted Decision Tree  & $83,8482\%$                       & $83,8482\%$                       & $83,8482\%$                       & \cellcolor{lightgreen}$100,0000\%$ \\
+            Two-Class Decision Forest        & $83,1725\%$                       & $83,1725\%$                       & $83,1725\%$                       & $99,9960\%$                        \\
+            Two-Class Neural Network         & $84,7332\%$                       & $84,7332\%$                       & $84,7332\%$                       & $99,2682\%$                        \\
+            Two-Class Average Perceptron     & \cellcolor{lightgreen}$85,7768\%$ & \cellcolor{lightgreen}$85,7768\%$      & \cellcolor{lightgreen}$85,7768\%$       & \cellcolor{lightred}$97,4502\%$             \\
+            Gaussian Naive Base - with GA    & $80,3004\%$                       & $80,3004\%$                       & $80,3004\%$                       & $98,8013\%$                        \\
+            DANet                            & \cellcolor{lightred}$19,9691\%$   & \cellcolor{lightred}$19,7899\%$   & \cellcolor{lightred}$19,7899\%$      & $99,9823\%$            \\
+        \end{NiceTabular}%
+    }
+    \label{tab:acc-res}
+\end{table}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{images/acc-res}
+    \captionsource{Dokładność algorytmów}{Opracowanie własne}
+    \label{fig:acc-res}
+\end{figure}
+
+\subsection{Wyniki precyzji}
+Najlepszy wynik precyzji dla danych testowych uzyskał algorytm \textit{Two-Class Neural Network} ($85,9776\%$).\ Najgorszy wynik uzyskał algorytm \textit{Two-Class Support Vector Machine} ($80,3003\%$).\ Dla próby treningowej najlepszy wynik uzyskał \textit{Two-Class Boosted Decision Tree} ($100\%$), a najgorszy \textit{Two-Class Average Perceptron} ($94,5\%$).\ Wyniki precyzji dla poszczególnych prób zostały przedstawione w \refsource{tabeli}{tab:acc-prec} oraz na wykresie \refsource{wykresie}{fig:prec-res}.
+
+\begin{table}[H]
+    \centering
+    \captionsourceb{Wynik precyzji algorytmów.}{Kolorem zielonym określono najlepszy wynik w kolumnie.\ Kolorem czerwonym określono najgorszy wynik w kolumnie.}{Opracowanie własne}
+    \resizebox{\textwidth}{!}{%
+        \begin{NiceTabular}{|l|r|r|r||r|}[hvlines]
+            \hline
+            & \multicolumn{4}{c|}{\textbf{Wynik precyzji}} \\
+            \textbf{Algorytm}                & \textbf{Próba 1}                  & \textbf{Próba 2}                  & \textbf{Próba 3}                  & \textbf{Próba testowa}             \\
+            Two-Class Support Vector Machine & \cellcolor{lightred}$80,3003\%$   & \cellcolor{lightred}$80,3003\%$   & \cellcolor{lightred}$80,3003\%$   & $99,8742\%$            \\
+            Two-Class Boosted Decision Tree  & $83,5016\%$                       & $83,5016\%$                       & $83,5016\%$                       & \cellcolor{lightgreen}$100,0000\%$ \\
+            Two-Class Decision Forest        & $82,6752\%$                       & $82,6752\%$                       & $82,6752\%$                       & $99,9908\%$                        \\
+            Two-Class Neural Network         & \cellcolor{lightgreen}$85,9776\%$ & \cellcolor{lightgreen}$85,9776\%$ & \cellcolor{lightgreen}$85,9776\%$ & $99,8972\%$            \\
+            Two-Class Average Perceptron     & $84,9806\%$                       & $84,9806\%$                       & $84,9806\%$                       & \cellcolor{lightred}$94,5000\%$    \\
+            Gaussian Naive Base - with GA    & $85,7768\%$                       & $80,3004\%$                       & $80,3004\%$                       & $99,8531\%$                        \\
+            DANet                            & $82,7536\%$                       & $85,9516\%$                       & $85,9516\%$                       & $99,9887\%$                        \\
+        \end{NiceTabular}%
+    }
+    \label{tab:acc-prec}
+\end{table}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{images/prec-res}
+    \captionsource{Precyzja algorytmów}{Opracowanie własne}
+    \label{fig:prec-res}
+\end{figure}
+
+\subsection{Wyniki czułości}
+Najlepszy wynik czułości dla danych testowych uzyskał algorytm \textit{Gaussian Naive Base - with GA} ($100,00\%$).\ Najgorszy wynik uzyskał algorytm \textit{DANet} ($0,4239\%$).\ Dla próby treningowej najlepszy wynik uzyskał \textit{Two-Class Boosted Decision Tree} oraz \textit{Two-Class Decision Forest} ($100\%$), a najgorszy \textit{Gaussian Naive Base - with GA} ($97,3741\%$).\ Wyniki czułości dla poszczególnych prób zostały przedstawione w \refsource{tabeli}{tab:acc-rec} oraz na wykresie \refsource{wykresie}{fig:rec-res}.
+
+\begin{table}[H]
+    \centering
+    \captionsourceb{Wynik czułości algorytmów.}{Kolorem zielonym określono najlepszy wynik w kolumnie.\ Kolorem czerwonym określono najgorszy wynik w kolumnie.}{Opracowanie własne}
+    \resizebox{\textwidth}{!}{%
+        \begin{NiceTabular}{|l|r|r|r||r|}[hvlines]
+
+            & \multicolumn{4}{c|}{\textbf{Wynik czułości}} \\
+            \textbf{Algorytm}                & \textbf{Próba 1}                   & \textbf{Próba 2}                   & \textbf{Próba 3}                   & \textbf{Próba testowa}             \\
+            Two-Class Support Vector Machine & $99,9998\%$                        & $99,9998\%$                        & $99,9998\%$                        & $99,9335\%$                        \\
+            Two-Class Boosted Decision Tree  & $99,5563\%$                        & $99,5563\%$                        & $99,5563\%$                        & \cellcolor{lightgreen}$100,0000\%$ \\
+            Two-Class Decision Forest        & $99,9996\%$                        & $99,9996\%$                        & $99,9996\%$                        & \cellcolor{lightgreen}$100,0000\%$ \\
+            Two-Class Neural Network         & $96,7705\%$                        & $96,7705\%$                        & $96,7705\%$                        & $98,4107\%$                        \\
+            Two-Class Average Perceptron     & $99,9531\%$                        & $99,9531\%$                        & $99,9531\%$                        & $99,9253\%$                        \\
+            Gaussian Naive Base - with GA    & \cellcolor{lightgreen}$100,0000\%$ & \cellcolor{lightgreen}$100,0000\%$ & \cellcolor{lightgreen}$100,0000\%$ & \cellcolor{lightred}$97,3741\%$            \\
+            DANet                            & \cellcolor{lightred}$0,4239\%$     & \cellcolor{lightred}$0,1343\%$     & \cellcolor{lightred}$0,1343\%$     & $99,9703\%$            \\
+        \end{NiceTabular}%
+    }
+    \label{tab:acc-rec}
+\end{table}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{images/rec-res}
+    \captionsource{Czułość algorytmów}{Opracowanie własne}
+    \label{fig:rec-res}
+\end{figure}
+
+\subsection{Wyniki f1}
+Najlepszy wynik F1 dla danych testowych uzyskał algorytm \textit{Two-Class Average Perceptron} ($91,8606\%$).\ Najgorszy wynik uzyskał algorytm \textit{DANet} ($0,8434\%$).\ Dla próby treningowej najlepszy wynik uzyskał \textit{Two-Class Boosted Decision Tree} ($100\%$), a najgorszy \textit{Two-Class Average Perceptron} ($97,1370\%$).\ Wyniki precyzji dla poszczególnych prób zostały przedstawione w \refsource{tabeli}{tab:acc-f1} oraz na wykresie \refsource{wykresie}{fig:f1-res}.
+
+\begin{table}[H]
+    \centering
+    \captionsourceb{Wynik F1 algorytmów.}{Kolorem zielonym określono najlepszy wynik w kolumnie.\ Kolorem czerwonym określono najgorszy wynik w kolumnie.}{Opracowanie własne}
+    \resizebox{\textwidth}{!}{%
+        \begin{NiceTabular}{|l|r|r|r||r|}[hvlines]
+
+            & \multicolumn{4}{c|}{\textbf{Wynik F1}} \\
+            \textbf{Algorytm}                & \textbf{Próba 1}                  & \textbf{Próba 2}                  & \textbf{Próba 3}                  & \textbf{Próba testowa}             \\
+            Two-Class Support Vector Machine & $89,0739\%$                       & $89,0739\%$                       & $89,0739\%$                       & $99,9038\%$                        \\
+            Two-Class Boosted Decision Tree  & $90,8249\%$                       & $90,8249\%$                       & $90,8249\%$                       & \cellcolor{lightgreen}$100,0000\%$ \\
+            Two-Class Decision Forest        & $90,5159\%$                       & $90,5159\%$                       & $90,5159\%$                       & $99,9954\%$                        \\
+            Two-Class Neural Network         & $91,0553\%$                       & $91,0553\%$                       & $91,0553\%$                       & $99,1484\%$                        \\
+            Two-Class Average Perceptron     & \cellcolor{lightgreen}$91,8608\%$ & \cellcolor{lightgreen}$91,8608\%$ & \cellcolor{lightgreen}$91,8608\%$ & \cellcolor{lightred}$97,1370\%$            \\
+            Gaussian Naive Base - with GA    & $89,0740\%$                       & $89,0740\%$                       & $89,0740\%$                       & $98,5980\%$                        \\
+            DANet                            & \cellcolor{lightred}$0,8434\%$    & \cellcolor{lightred}$0,2682\%$    & \cellcolor{lightred}$0,2682\%$    & $99,9795\%$            \\
+        \end{NiceTabular}%
+    }
+    \label{tab:acc-f1}
+\end{table}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{images/f1-res}
+    \captionsource{F1 algorytmów}{Opracowanie własne}
+    \label{fig:f1-res}
+\end{figure}
+
+\subsection{Wyniki AUC}
+Najlepszy wynik precyzji dla danych testowych uzyskał algorytm \textit{Two-Class AveragePerceptron} ($79,1892\%$).\ Najgorszy wynik uzyskał algorytm \textit{Two-Class Support Vector Machine} ($49,999\%$).\ Dla próby treningowej najlepszy wynik uzyskał \textit{Two-Class Boosted Decision Tree} oraz \textit{Two-Class Decision Forest} ($100\%$), a najgorszy \textit{Gaussiaon Naive Base - with GA} ($99,9437\%$).\ Wyniki precyzji dla poszczególnych prób zostały przedstawione w \refsource{tabeli}{tab:acc-auc} oraz na wykresie \refsource{wykresie}{fig:auc-res}.
+
+\begin{table}[H]
+    \centering
+    \captionsourceb{Wynik AUC algorytmów.}{Kolorem zielonym określono najlepszy wynik w kolumnie.\ Kolorem czerwonym określono najgorszy wynik w kolumnie.}{Opracowanie własne}
+    \resizebox{\textwidth}{!}{%
+        \begin{NiceTabular}{|l|r|r|r||r|}[hvlines]
+
+            & \multicolumn{4}{c|}{\textbf{Wynik AUC}} \\
+            \textbf{Algorytm}                & \textbf{Próba 1}                  & \textbf{Próba 2}                  & \textbf{Próba 3}                  & \textbf{Próba testowa} \\
+            Two-Class Support Vector Machine & \cellcolor{lightred}$49,9999\%$   & \cellcolor{lightred}$49,9999\%$ & \cellcolor{lightred}$49,9999\%$     & $99,9974\%$            \\
+            Two-Class Boosted Decision Tree  & $69,9089\%$                       & $69,9089\%$                       & $69,9089\%$                       & \cellcolor{lightgreen}$100,0000\%$           \\
+            Two-Class Decision Forest        & $63,5244\%$                       & $63,5244\%$                       & $63,5244\%$                       & \cellcolor{lightgreen}$100,0000\%$           \\
+            Two-Class Neural Network         & $72,1864\%$                       & $72,1864\%$                       & $72,1864\%$                       & $99,9867\%$            \\
+            Two-Class Average Perceptron     & \cellcolor{lightgreen}$79,1892\%$ & \cellcolor{lightgreen}$79,1892\%$ & \cellcolor{lightgreen}$79,1892\%$ & $99,9808\%$            \\
+            Gaussian Naive Base - with GA    & $50,0000\%$                       & $50,0000\%$                       & $50,0000\%$                       & \cellcolor{lightred}$99,9437\%$            \\
+            DANet                            & $50,4435\%$                       & $76,7282\%$                       & $76,7282\%$                       & $99,9993\%$            \\
+        \end{NiceTabular}%
+    }
+    \label{tab:acc-auc}
+\end{table}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{images/auc-res}
+    \captionsource{AUC algorytmów}{Opracowanie własne}
+    \label{fig:auc-res}
+\end{figure}
+
+
+\section{Analiza wyników}
+Do analizy wyników wykorzystano protokół metodologii badawczej, który został opisany w \refsource{tabeli}{tab:met-bad} w \refsource{podrozdziale}{sec:met}.\ W celu weryfikacji przyjętych hipotez wykonano testy t-Studenta.\ Test t-studenta służy do analizy średniej arytmetycznej oraz odchylenia standardowego dwóch grup.\ Pozwala na rozpoznanie czy dwie grupy są różne istotnie statystycznie~\cite{tstudent}.
+
+\begin{table}[H]
+    \centering
+    \captionsource{Założenia wykorzystywane do analizy statystycznej danych}{Opracowanie własne}
+    \begin{tabular}{|l|c|}
+        \hline
+        \textbf{Założenie} & \textbf{Wartość} \\ \hline
+        Przedział ufności  & $95\%$           \\ \hline
+        $\alpha$           & $0,05$           \\ \hline
+        Liczba elementów   & $7$              \\ \hline
+    \end{tabular}
+    \label{tab:stat}
+\end{table}
+
+\begin{itemize}
+    \item \textbf{Hipoteza $H_0$: Nie ma istotnej różnicy pomiędzy wynikami ''dopasowania'' próby testowej i treningowej}
+
+    Wykorzystując statystyczny test t Studenta dla prób zależnych dla danych z \refsource{tabeli}{tab:acc-res} wyznaczono wartość:
+    \begin{equation}*\label{eq:test-t}
+        t = \frac{\overline{d}}{sd_d} * \sqrt{n} = \frac{0,2533}{0,2245} * \sqrt{7} = 2,9852
+    \end{equation}
+    gdzie:
+    \begin{itemize}
+        \item $\overline{d}$ - średnia różnic w próbie
+        \item $sd_d$ - odchylenie standardowe
+        \item n - liczebność próby
+    \end{itemize}
+    Następnie bazując na tabeli rozkładu wartości dla t-Studenta
+    \begin{table}
+        \centering
+        \captionsource{Tabela rozkładu wartości dla t-Studenta}{\cite{Naukowiec.org}}
+        \begin{tabular}{|r|l|l|l|l|l|l|l|l|l|}
+            \hline
+            \textbf{k p} & \textbf{0,5} & \textbf{0,2} & \textbf{0,1} & \textbf{0,05} & \textbf{0,02} & \textbf{0,01} & \textbf{0,005} & \textbf{0,002} & \textbf{0,001} \\ \hline
+            1 & 1 & 3,0777 & 6,3138 & 12,7062 & 31,8205 & 63,657 & 127,32 & 318,31 & 636,62 \\ \hline
+            2 & 0,8165 & 1,8856 & 2,92 & 4,3029 & 6,9646 & 9,9248 & 14,089 & 22,327 & 31,599 \\ \hline
+            3 & 0,7649 & 1,6377 & 2,3534 & 3,1824 & 4,5407 & 5,8409 & 7,4533 & 10,215 & 12,924 \\ \hline
+            4 & 0,7407 & 1,5332 & 2,1318 & 2,7764 & 3,7469 & 4,6041 & 5,5976 & 7,1732 & 8,6103 \\ \hline
+            5 & 0,7267 & 1,4759 & 2,015 & 2,5706 & 3,3649 & 4,0321 & 4,7733 & 5,8934 & 6,8688 \\ \hline
+            6 & 0,7176 & 1,4398 & 1,9432 & 2,4469 & 3,1427 & 3,7074 & 4,3168 & 5,2076 & 5,9688 \\ \hline
+            7 & 0,7111 & 1,419 & 1,8946 & 2,3646 & 2,998 & 3,4995 & 4,0293 & 4,7853 & 5,4079 \\ \hline
+        \end{tabular}
+        \label{tab:p-val}
+    \end{table}
+   Można zauważyć, że dla 6 punktów swobody: $0,02 < p-value < 0,05$.\ Oznacza to, że zmienna $p-value < \alpha$, dzięki czemu można odrzucić hipotezę $H_0$.\ Wyniki tej analizy określają, że widać istotne różnice pomiędzy danymi z próby testowej i treningowej.\ Największą różnicę widać w rezultacie algorytmu \textit{DANet}, który uzyskał w próbie testowej $19,9691\%$ dopasowania, a w próbie treningowej $99,9823\%$.\\
+
+    \item \textbf{Hipoteza $H_0$: Nie ma istotnej różnicy pomiędzy wynikami ''dopasowania'' prób testowych}
+
+    Za pomocą testu t Studenta dla prób zależnych określono porównano dane w próbach testowych z \refsource{tabeli}{tab:acc-res}.\ Uzyskane wyniki, przedstawione w \refsource{tabeli}{tab:acc-p-stat}, pozwalają zachować Hipotezę $H_0$, stwierdzającą, że pomiędzy danymi w poszczególnych próbach testowych nie ma istotnych różnic.
+
+    \begin{table}[H]
+        \centering
+        \captionsource{Wyniki testu t Studenta dla poszczególnych prób testowych}{Opracowanie własne}
+        \begin{tabular}{|c|c|c|}
+            \hline
+            \multicolumn{3}{|c|}{$H_0$ Brak istotnych różnic między wynikami dla $\alpha = 0,05$} \\ \hline
+            \textbf{Relacja}                  & \textbf{P-value} & \textbf{Rezultat}     \\\hline
+            Próba 2 $\leftrightarrow$ Próba 3 & $0,5 > \alpha$   & Brak istotnych różnic \\ \hline
+            Próba 2 $\leftrightarrow$ Próba 1 & $0,5 > \alpha$   & Brak istotnych różnic \\ \hline
+            Próba 3 $\leftrightarrow$ Próba 1 & $0,5 > \alpha$   & Brak istotnych różnic \\ \hline
+        \end{tabular}
+        \label{tab:acc-p-stat}
+    \end{table}
+
+    \item \textbf{Hipoteza $H_0$: Wynik dopasowania algorytmów nie przekracza dolnej granicy przedziału ufności}
+
+
+    Przedział ufności dla dokładności algorytmów wyniósł $17,7218$ dla $\alpha = 0.05$.\ Biorąc pod uwagę ten fakt można stwierdzić, że dokładność algorytmu DANet jest poniżej dolnej granicy.\ Dolna granica przedziału ufności wynosi $56,2925\%$, zaś DANet uzyskał $19,9691\%$ oraz poprawnie zaklasyfikował jedynie $565273$ wpisów.\ Oznacza to, że można odrzucić $H_0$, ponieważ jeden algorytm przekracza dolny próg granicy ufności
+
+\end{itemize}
+
+
+\section{Wnioski}
+
+Microsoft Wyszedł naprzeciw potrzebom użytkowników przygotowując zestaw prekonfigurowanych algorytmów klasyfikacyjnych.\ Możliwości narzędzia Azure ML pozwalają na odpowiadanie na konkretne potrzeby przy relatywnie niewielkich kosztach.\ To nie oznacza jednak, że tworzenie autorskich rozwiązań mija się z celem.\ Jak ukazano na \refsource{wykresie}{fig:predict-result} autorskie rozwiązania również mają rację bytu.\ Wykorzystanie połączenia algorytmu genetycznego i klasyfikatora naiwnego Bayesa z rozkładem normalnym pozwala na uzyskanie zbliżonych wyników do algorytmu utworzone przez giganta technologicznego.\ Różnica około 5 punktów procentowych między najlepszym algorytmem a algorytmem GAGNB ukazuje niewielką różnicę w jakości algorytmu.\ Dodatkowo wciąż trudno korzysta się z rozwiązań takich jak DANet, które są nieprzetestowane na innych zbiorach niż tych przygotowanych z algorytmem.
+\\ \\
+Dodatkowo korzystanie z tego typu prostych rozwiązań autorskich pozwala na prototypownie rozwiązań biznesowych opartych o klasyfikację danych.\ Samo wykorzystanie algorytmu genetycznego z algorytmem GNB umożliwia skupienie się na tworzenie ogólnego rozwiązania.\ Nie wymaga to wcześniejszej znajomości zbioru oraz pozwala na korzystanie z programów klasyfikacyjnych lokalnie nie ponosząc kosztów wykorzystania platformy chmurowej.\ Kolejnym atutem utworzonego przez autora rozwiązania jest zmniejszenie kosztów lokalnego użytkowania.\ Co zostało spowodowane zmniejszeniem wymiarowości zbioru danych do klasyfikacji poprzez wykorzystanie jedynie wytypowanych kolumn.
+\\ \\
+Doświadczenie to ukazuje, że wciąż należy próbować tworzyć wydajniejsze i dokładniejsze rozwiązania, lecz nie zaprzecza faktu iż rozwiązania ogólnie dostępne są na bardzo wysokim poziomie.\ Uzyskano dokładność z zakresu $[80\%, 85\%]$ przy czym plik testowy był 12 krotnie większy od pliku treningowego.
+
+
 
 
 
