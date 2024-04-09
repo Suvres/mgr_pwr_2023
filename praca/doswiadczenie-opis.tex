@@ -45,7 +45,7 @@ W celu oceny jakości algorytmów klasyfikacji określono następujący protokó
         \begin{enumerate}
             \item Nie ma istotnej różnicy pomiędzy wynikami próby testowej i treningowej.
             \item Nie ma istotnej różnicy pomiędzy wynikami prób testowych.
-            \item Wynik dopasowania algorytmów nie przekracza dolnej granicy przedziału ufności dla próby testowej
+            \item Wynik dopasowania algorytmów w \textit{Próbie 1} nie przekracza dolnej granicy przedziału ufności dla próby testowej
         \end{enumerate}                                                                                                                                \\ \hline
     \end{tabular}
     \label{tab:met-bad}
@@ -422,6 +422,7 @@ Poniżej na \refsource{rysunku}{fig:predict-result} zostały przedstawione wynik
     \vfill
 \end{landscape}
 
+
 \section{Analiza uzyskanych wyników}
 Aby uzyskać realne wyniki podczas porównywania poszczególnych algorytmów zastosowano zbiór treningowy opisany w \refsource{tabeli}{tab:trening-data-label} oraz zbiór testowy opisany w \refsource{tabeli}{tab:res-test}.
 
@@ -595,7 +596,7 @@ Do analizy wyników wykorzystano protokół metodologii badawczej, który zosta�
     \item \textbf{Hipoteza $H_0$: Nie ma istotnej różnicy pomiędzy wynikami ''dopasowania'' próby testowej i treningowej}
 
     Wykorzystując statystyczny test t Studenta dla prób zależnych dla danych z \refsource{tabeli}{tab:acc-res} wyznaczono wartość:
-    \begin{equation}*\label{eq:test-t}
+    \begin{equation}\label{eq:test-t}
         t = \frac{\overline{d}}{sd_d} * \sqrt{n} = \frac{0,2533}{0,2245} * \sqrt{7} = 2,9852
     \end{equation}
     gdzie:
@@ -604,48 +605,78 @@ Do analizy wyników wykorzystano protokół metodologii badawczej, który zosta�
         \item $sd_d$ - odchylenie standardowe
         \item n - liczebność próby
     \end{itemize}
-    Następnie bazując na tabeli rozkładu wartości dla t-Studenta
-    \begin{table}
+    \begin{table}[H]
         \centering
-        \captionsource{Tabela rozkładu wartości dla t-Studenta}{\cite{Naukowiec.org}}
-        \begin{tabular}{|r|l|l|l|l|l|l|l|l|l|}
+        \captionsource{Tabela rozkładu wartości dla t-Studenta}{\cite{Gerstman}}
+        \begin{tabular}{|c|l|l|l|l|l|l|l|l|l|}
             \hline
-            \textbf{k p} & \textbf{0,5} & \textbf{0,2} & \textbf{0,1} & \textbf{0,05} & \textbf{0,02} & \textbf{0,01} & \textbf{0,005} & \textbf{0,002} & \textbf{0,001} \\ \hline
-            1 & 1 & 3,0777 & 6,3138 & 12,7062 & 31,8205 & 63,657 & 127,32 & 318,31 & 636,62 \\ \hline
-            2 & 0,8165 & 1,8856 & 2,92 & 4,3029 & 6,9646 & 9,9248 & 14,089 & 22,327 & 31,599 \\ \hline
-            3 & 0,7649 & 1,6377 & 2,3534 & 3,1824 & 4,5407 & 5,8409 & 7,4533 & 10,215 & 12,924 \\ \hline
-            4 & 0,7407 & 1,5332 & 2,1318 & 2,7764 & 3,7469 & 4,6041 & 5,5976 & 7,1732 & 8,6103 \\ \hline
-            5 & 0,7267 & 1,4759 & 2,015 & 2,5706 & 3,3649 & 4,0321 & 4,7733 & 5,8934 & 6,8688 \\ \hline
-            6 & 0,7176 & 1,4398 & 1,9432 & 2,4469 & 3,1427 & 3,7074 & 4,3168 & 5,2076 & 5,9688 \\ \hline
-            7 & 0,7111 & 1,419 & 1,8946 & 2,3646 & 2,998 & 3,4995 & 4,0293 & 4,7853 & 5,4079 \\ \hline
+            \textbf{\diagbox{n}{p-value}} & \textbf{0,5} & \textbf{0,2}  & \textbf{0,1} & \textbf{0,05} & \textbf{0,02} & \textbf{0,01} \\ \hline
+            \textbf{1} & 0 & 1,37638192 & 3,07768354 & 6,313751515  & 15,89454484 & 31,82052 \\ \hline
+            \textbf{2} & 0 & 1,060660172 & 1,88561808 & 2,91998558 & 4,848732214  & 6,964557 \\ \hline
+            \textbf{3} & 0 & 0,978472312 & 1,63774435 & 2,353363435 & 3,48190876 & 4,540703 \\ \hline
+            \textbf{4} & 0 & 0,940964577  & 1,53320627 & 2,131846786 & 2,998527873 & 3,746947  \\ \hline
+            \textbf{5} & 0 & 0,91954378 & 1,47588405 & 2,015048373 & 2,756508522 & 3,36493 \\ \hline
+            \textbf{6} & 0 & 0,905703285 & 1,43975575 & 1,943180281 & 2,612241847 & 3,142668 \\ \hline
+            \textbf{7} & 0 & 0,896029644 & 1,41492393 & 1,894578605 & 2,516752424 & 2,997952 \\ \hline
         \end{tabular}
         \label{tab:p-val}
+        gdzie:
+        \begin{itemize}
+            \item \textbf{n} - ilość punktów swobody
+            \item \textbf{p} - wartość p-value
+        \end{itemize}
     \end{table}
-   Można zauważyć, że dla 6 punktów swobody: $0,02 < p-value < 0,05$.\ Oznacza to, że zmienna $p-value < \alpha$, dzięki czemu można odrzucić hipotezę $H_0$.\ Wyniki tej analizy określają, że widać istotne różnice pomiędzy danymi z próby testowej i treningowej.\ Największą różnicę widać w rezultacie algorytmu \textit{DANet}, który uzyskał w próbie testowej $19,9691\%$ dopasowania, a w próbie treningowej $99,9823\%$.\\
+    Następnie bazując na \refsource{tabeli}{tab:p-val} obrazującej rozkład wartości \textit{t} dla \textit{n} punktów swobody w \textit{p-value} znaleziono wartość p-value odpowiadającej otrzymanemu wynikowi.\ Dla 6 punktów swobody: $0,02 < p-value < 0,05$.\ Oznacza to, że zmienna $p-value < \alpha$, dzięki czemu można odrzucić hipotezę $H_0$.\ Wyniki tej analizy określają, że widać istotne różnice pomiędzy danymi z próby testowej i treningowej.\ Największą różnicę widać w rezultacie algorytmu \textit{DANet}, który uzyskał w próbie testowej $19,9691\%$ dopasowania, a w próbie treningowej $99,9823\%$.\\
 
     \item \textbf{Hipoteza $H_0$: Nie ma istotnej różnicy pomiędzy wynikami ''dopasowania'' prób testowych}
+    Korzystając z \refsource{wzoru}{eq:test-t}, wykonano obliczenia dla poszczególnych relacji przedstawionych w \refsource{tabeli}{tab:acc-p-stat}.
+    \begin{equation}\label{eq:t-p1}
+        t_1 = \frac{0}{0} * \sqrt{7} = 0
+    \end{equation}
+    \begin{equation}\label{eq:t-p2}
+        t_2 = \frac{0,000256}{0,000627} * \sqrt{7} = 1,0801
+    \end{equation}
+    \begin{equation}\label{eq:t-p3}
+        t_3 = \frac{0,000256}{0,000627} * \sqrt{7} = 1,0801
+    \end{equation}
 
-    Za pomocą testu t Studenta dla prób zależnych określono porównano dane w próbach testowych z \refsource{tabeli}{tab:acc-res}.\ Uzyskane wyniki, przedstawione w \refsource{tabeli}{tab:acc-p-stat}, pozwalają zachować Hipotezę $H_0$, stwierdzającą, że pomiędzy danymi w poszczególnych próbach testowych nie ma istotnych różnic.
+    Wyniki równań zostały przedstawione w \refsource{tabeli}{tab:acc-p-stat} w kolumnie \textit{wartość t}.
 
     \begin{table}[H]
         \centering
         \captionsource{Wyniki testu t Studenta dla poszczególnych prób testowych}{Opracowanie własne}
-        \begin{tabular}{|c|c|c|}
+        \begin{tabular}{|c|c|r|c|P{30mm}|}
             \hline
-            \multicolumn{3}{|c|}{$H_0$ Brak istotnych różnic między wynikami dla $\alpha = 0,05$} \\ \hline
-            \textbf{Relacja}                  & \textbf{P-value} & \textbf{Rezultat}     \\\hline
-            Próba 2 $\leftrightarrow$ Próba 3 & $0,5 > \alpha$   & Brak istotnych różnic \\ \hline
-            Próba 2 $\leftrightarrow$ Próba 1 & $0,5 > \alpha$   & Brak istotnych różnic \\ \hline
-            Próba 3 $\leftrightarrow$ Próba 1 & $0,5 > \alpha$   & Brak istotnych różnic \\ \hline
+            \multicolumn{5}{|c|}{$H_0$ Brak istotnych różnic między wynikami dla $\alpha = 0,05$} \\ \hline
+            \textbf{L.p.} & \textbf{Relacja} & \textbf{Wartość \textit{t}} & \textbf{P-value} & \textbf{Rezultat}     \\\hline
+            \textbf{1} & Próba 2 $\leftrightarrow$ Próba 3 & $0$ & $0,5$   & $p-value > \alpha$ \newline Brak istotnych różnic \\ \hline
+            \textbf{2} & Próba 2 $\leftrightarrow$ Próba 1 &  $1,0801$  & $0,2 < p-value < 0,5$ & $p-value > \alpha$ \newline Brak istotnych różnic \\ \hline
+            \textbf{3} & Próba 3 $\leftrightarrow$ Próba 1 &   $1,0801$ & $0,2 < p-value < 0,5$ & $p-value > \alpha$ \newline Brak istotnych różnic \\ \hline
         \end{tabular}
         \label{tab:acc-p-stat}
     \end{table}
+    Za pomocą testu t Studenta dla prób zależnych określono porównano dane w próbach testowych z \refsource{tabeli}{tab:acc-res}.\ Uzyskane wyniki, przedstawione w \refsource{tabeli}{tab:acc-p-stat}, pozwalają zachować Hipotezę $H_0$, stwierdzającą, że pomiędzy danymi w poszczególnych próbach testowych nie ma istotnych różnic. \\
 
-    \item \textbf{Hipoteza $H_0$: Wynik dopasowania algorytmów nie przekracza dolnej granicy przedziału ufności}
+    \item \textbf{Hipoteza $H_0$: Wynik dopasowania algorytmów w \textit{Próbie 1} nie przekracza dolnej granicy przedziału ufności}
+    Za pomocą \textbf{równań}~\ref{eq:uf},~\ref{eq:uf-d} obliczono wartość ufności dla zbioru wyników dopasowań w Próbie 1 oraz dolną granicę ufności.
 
+    \begin{equation}\label{eq:uf}
+        u = 1,96 * \frac{\sigma}{\sqrt{n}}= 0,7401-1,96*\frac{0,2392}{\sqrt{7}} = 0,177202 \approx 0,1772
+    \end{equation}
+    \begin{equation}\label{eq:uf-d}
+        u_d = \overline{X} - u = 0,7401 - 0,1772 = 0,5629
+    \end{equation}
+    gdzie:
+    \begin{itemize}
+        \item $u$ - Ufność
+        \item $u_d$ - dolna granica przedziału ufności
+        \item $\overline{X}$ - średnia
+        \item $1,96$ - kwantyl rozkładu normalnego standardowego dla $\alpha/2 \rightarrow 2,5\%$
+        \item $\sigma$ - odchylenie standardowe
+        \item $n$ - liczebność próby
+    \end{itemize}
 
-    Przedział ufności dla dokładności algorytmów wyniósł $17,7218$ dla $\alpha = 0.05$.\ Biorąc pod uwagę ten fakt można stwierdzić, że dokładność algorytmu DANet jest poniżej dolnej granicy.\ Dolna granica przedziału ufności wynosi $56,2925\%$, zaś DANet uzyskał $19,9691\%$ oraz poprawnie zaklasyfikował jedynie $565273$ wpisów.\ Oznacza to, że można odrzucić $H_0$, ponieważ jeden algorytm przekracza dolny próg granicy ufności
-
+    Ufności dla dokładności algorytmów wyrażona w procentach wyniósła $17,72\%$ dla $\alpha = 0.05$.\ Biorąc pod uwagę ten fakt, można stwierdzić, że dokładność algorytmu DANet jest poniżej dolnej granicy.\ Dolna granica przedziału ufności wyrażona w procentach wynosi $56,29\%$, zaś DANet uzyskał $19,9691\%$ oraz poprawnie zaklasyfikował jedynie $565273$ wpisów.\ Oznacza to, że można odrzucić $H_0$, ponieważ jeden algorytm przekracza dolny próg granicy ufności.
 \end{itemize}
 
 

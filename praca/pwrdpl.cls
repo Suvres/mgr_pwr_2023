@@ -76,7 +76,7 @@
 \RequirePackage[none]{hyphenat}
 % \RequirePackage[all]{nowidow}
 % \usepackage[hyphenation]{impnattypo}
-
+\RequirePackage{diagbox}
 
 
 \RequirePackage[font=small, labelfont=bf, labelsep=period]{caption}
