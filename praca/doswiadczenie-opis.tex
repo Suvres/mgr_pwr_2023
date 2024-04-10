@@ -596,7 +596,8 @@ Do analizy wyników wykorzystano protokół metodologii badawczej, który zosta�
     \item \textbf{Hipoteza $H_0$: Nie ma istotnej różnicy pomiędzy wynikami ''dopasowania'' próby testowej i treningowej}
 
     Wykorzystując statystyczny test t Studenta dla prób zależnych dla danych z \refsource{tabeli}{tab:acc-res} wyznaczono wartość:
-    \begin{equation}\label{eq:test-t}
+    \begin{equation}
+        \label{eq:test-t}
         t = \frac{\overline{d}}{sd_d} * \sqrt{n} = \frac{0,2533}{0,2245} * \sqrt{7} = 2,9852
     \end{equation}
     gdzie:
@@ -610,14 +611,14 @@ Do analizy wyników wykorzystano protokół metodologii badawczej, który zosta�
         \captionsource{Tabela rozkładu wartości dla t-Studenta}{\cite{Gerstman}}
         \begin{tabular}{|c|l|l|l|l|l|l|l|l|l|}
             \hline
-            \textbf{\diagbox{n}{p-value}} & \textbf{0,5} & \textbf{0,2}  & \textbf{0,1} & \textbf{0,05} & \textbf{0,02} & \textbf{0,01} \\ \hline
-            \textbf{1} & 0 & 1,37638192 & 3,07768354 & 6,313751515  & 15,89454484 & 31,82052 \\ \hline
-            \textbf{2} & 0 & 1,060660172 & 1,88561808 & 2,91998558 & 4,848732214  & 6,964557 \\ \hline
-            \textbf{3} & 0 & 0,978472312 & 1,63774435 & 2,353363435 & 3,48190876 & 4,540703 \\ \hline
-            \textbf{4} & 0 & 0,940964577  & 1,53320627 & 2,131846786 & 2,998527873 & 3,746947  \\ \hline
-            \textbf{5} & 0 & 0,91954378 & 1,47588405 & 2,015048373 & 2,756508522 & 3,36493 \\ \hline
-            \textbf{6} & 0 & 0,905703285 & 1,43975575 & 1,943180281 & 2,612241847 & 3,142668 \\ \hline
-            \textbf{7} & 0 & 0,896029644 & 1,41492393 & 1,894578605 & 2,516752424 & 2,997952 \\ \hline
+            \textbf{\diagbox{n}{p-value}} & \textbf{0,5} & \textbf{0,2} & \textbf{0,1} & \textbf{0,05} & \textbf{0,02} & \textbf{0,01} \\ \hline
+            \textbf{1}                    & 0            & 1,37638192   & 3,07768354   & 6,313751515   & 15,89454484   & 31,82052      \\ \hline
+            \textbf{2}                    & 0            & 1,060660172  & 1,88561808   & 2,91998558    & 4,848732214   & 6,964557      \\ \hline
+            \textbf{3}                    & 0            & 0,978472312  & 1,63774435   & 2,353363435   & 3,48190876    & 4,540703      \\ \hline
+            \textbf{4}                    & 0            & 0,940964577  & 1,53320627   & 2,131846786   & 2,998527873   & 3,746947      \\ \hline
+            \textbf{5}                    & 0            & 0,91954378   & 1,47588405   & 2,015048373   & 2,756508522   & 3,36493       \\ \hline
+            \textbf{6}                    & 0            & 0,905703285  & 1,43975575   & 1,943180281   & 2,612241847   & 3,142668      \\ \hline
+            \textbf{7}                    & 0            & 0,896029644  & 1,41492393   & 1,894578605   & 2,516752424   & 2,997952      \\ \hline
         \end{tabular}
         \label{tab:p-val}
         gdzie:
@@ -630,13 +631,16 @@ Do analizy wyników wykorzystano protokół metodologii badawczej, który zosta�
 
     \item \textbf{Hipoteza $H_0$: Nie ma istotnej różnicy pomiędzy wynikami ''dopasowania'' prób testowych}
     Korzystając z \refsource{wzoru}{eq:test-t}, wykonano obliczenia dla poszczególnych relacji przedstawionych w \refsource{tabeli}{tab:acc-p-stat}.
-    \begin{equation}\label{eq:t-p1}
+    \begin{equation}
+        \label{eq:t-p1}
         t_1 = \frac{0}{0} * \sqrt{7} = 0
     \end{equation}
-    \begin{equation}\label{eq:t-p2}
+    \begin{equation}
+        \label{eq:t-p2}
         t_2 = \frac{0,000256}{0,000627} * \sqrt{7} = 1,0801
     \end{equation}
-    \begin{equation}\label{eq:t-p3}
+    \begin{equation}
+        \label{eq:t-p3}
         t_3 = \frac{0,000256}{0,000627} * \sqrt{7} = 1,0801
     \end{equation}
 
@@ -648,10 +652,10 @@ Do analizy wyników wykorzystano protokół metodologii badawczej, który zosta�
         \begin{tabular}{|c|c|r|c|P{30mm}|}
             \hline
             \multicolumn{5}{|c|}{$H_0$ Brak istotnych różnic między wynikami dla $\alpha = 0,05$} \\ \hline
-            \textbf{L.p.} & \textbf{Relacja} & \textbf{Wartość \textit{t}} & \textbf{P-value} & \textbf{Rezultat}     \\\hline
-            \textbf{1} & Próba 2 $\leftrightarrow$ Próba 3 & $0$ & $0,5$   & $p-value > \alpha$ \newline Brak istotnych różnic \\ \hline
-            \textbf{2} & Próba 2 $\leftrightarrow$ Próba 1 &  $1,0801$  & $0,2 < p-value < 0,5$ & $p-value > \alpha$ \newline Brak istotnych różnic \\ \hline
-            \textbf{3} & Próba 3 $\leftrightarrow$ Próba 1 &   $1,0801$ & $0,2 < p-value < 0,5$ & $p-value > \alpha$ \newline Brak istotnych różnic \\ \hline
+            \textbf{L.p.} & \textbf{Relacja}                  & \textbf{Wartość \textit{t}} & \textbf{P-value}      & \textbf{Rezultat}                                 \\\hline
+            \textbf{1}    & Próba 2 $\leftrightarrow$ Próba 3 & $0$                         & $0,5$                 & $p-value > \alpha$ \newline Brak istotnych różnic \\ \hline
+            \textbf{2}    & Próba 2 $\leftrightarrow$ Próba 1 & $1,0801$                    & $0,2 < p-value < 0,5$ & $p-value > \alpha$ \newline Brak istotnych różnic \\ \hline
+            \textbf{3}    & Próba 3 $\leftrightarrow$ Próba 1 & $1,0801$                    & $0,2 < p-value < 0,5$ & $p-value > \alpha$ \newline Brak istotnych różnic \\ \hline
         \end{tabular}
         \label{tab:acc-p-stat}
     \end{table}
@@ -660,10 +664,12 @@ Do analizy wyników wykorzystano protokół metodologii badawczej, który zosta�
     \item \textbf{Hipoteza $H_0$: Wynik dopasowania algorytmów w \textit{Próbie 1} nie przekracza dolnej granicy przedziału ufności}
     Za pomocą \textbf{równań}~\ref{eq:uf},~\ref{eq:uf-d} obliczono wartość ufności dla zbioru wyników dopasowań w Próbie 1 oraz dolną granicę ufności.
 
-    \begin{equation}\label{eq:uf}
+    \begin{equation}
+        \label{eq:uf}
         u = 1,96 * \frac{\sigma}{\sqrt{n}}= 0,7401-1,96*\frac{0,2392}{\sqrt{7}} = 0,177202 \approx 0,1772
     \end{equation}
-    \begin{equation}\label{eq:uf-d}
+    \begin{equation}
+        \label{eq:uf-d}
         u_d = \overline{X} - u = 0,7401 - 0,1772 = 0,5629
     \end{equation}
     gdzie:
@@ -682,14 +688,14 @@ Do analizy wyników wykorzystano protokół metodologii badawczej, który zosta�
 
 \section{Wnioski}
 
+Analiza wyników wykazała, że algorytm utworzony w ramach pracy inżynierskiej~\cite{Blyszcz2022}, może konkurować z algorytmami dostarczonymi przez platformę Microsoft Azure.\ Jego dokładność jest bardzo zbliżona do dokładności uzyskanych przez pozostałe algorytmy.\ Zostało to przedstawione w \refsource{tabeli}{tab:acc-res}.\ Wyniki uzyskane przez algorytm \textit{Gaussian Naive Base - with GA} wynoszą $80,3004\%$.\ Są one zbliżone do dokładności uzyskanej przy użyciu algorytmu \textit{Two-Class Support Vectore Machine} ($80,3002\%$).\ Wskazuje to na to, że przy małej próbce danych treningowych, algorytm rozpoznał ponad $80\%$ danych, które znajdują się w danych testowych.\ Bazując na \textbf{tabelach}~\textbf{\ref{tab:trening-data-label}}~\textbf{\ref{tab:res-test}} różnica wielkości danych treningowych oraz testowych wyniosła:
+\begin{itemize}
+    \item 225805 wierszy w danych treningowych
+    \item 2830743 wierszy w danych testowych
+\end{itemize}
+\\ \\
+Doświadczenie to pokazuje, że wciąż należy próbować tworzyć wydajniejsze i dokładniejsze rozwiązania, lecz nie zaprzecza faktu iż rozwiązania ogólnie dostępne są na bardzo wysokim poziomie.\ Uzyskano dokładność z zakresu $[80\%, 85\%]$ przy czym plik testowy był 12 krotnie większy od pliku treningowego.
+\\ \\
 Microsoft Wyszedł naprzeciw potrzebom użytkowników przygotowując zestaw prekonfigurowanych algorytmów klasyfikacyjnych.\ Możliwości narzędzia Azure ML pozwalają na odpowiadanie na konkretne potrzeby przy relatywnie niewielkich kosztach.\ To nie oznacza jednak, że tworzenie autorskich rozwiązań mija się z celem.\ Jak ukazano na \refsource{wykresie}{fig:predict-result} autorskie rozwiązania również mają rację bytu.\ Wykorzystanie połączenia algorytmu genetycznego i klasyfikatora naiwnego Bayesa z rozkładem normalnym pozwala na uzyskanie zbliżonych wyników do algorytmu utworzone przez giganta technologicznego.\ Różnica około 5 punktów procentowych między najlepszym algorytmem a algorytmem GAGNB ukazuje niewielką różnicę w jakości algorytmu.\ Dodatkowo wciąż trudno korzysta się z rozwiązań takich jak DANet, które są nieprzetestowane na innych zbiorach niż tych przygotowanych z algorytmem.
 \\ \\
 Dodatkowo korzystanie z tego typu prostych rozwiązań autorskich pozwala na prototypownie rozwiązań biznesowych opartych o klasyfikację danych.\ Samo wykorzystanie algorytmu genetycznego z algorytmem GNB umożliwia skupienie się na tworzenie ogólnego rozwiązania.\ Nie wymaga to wcześniejszej znajomości zbioru oraz pozwala na korzystanie z programów klasyfikacyjnych lokalnie nie ponosząc kosztów wykorzystania platformy chmurowej.\ Kolejnym atutem utworzonego przez autora rozwiązania jest zmniejszenie kosztów lokalnego użytkowania.\ Co zostało spowodowane zmniejszeniem wymiarowości zbioru danych do klasyfikacji poprzez wykorzystanie jedynie wytypowanych kolumn.
-\\ \\
-Doświadczenie to ukazuje, że wciąż należy próbować tworzyć wydajniejsze i dokładniejsze rozwiązania, lecz nie zaprzecza faktu iż rozwiązania ogólnie dostępne są na bardzo wysokim poziomie.\ Uzyskano dokładność z zakresu $[80\%, 85\%]$ przy czym plik testowy był 12 krotnie większy od pliku treningowego.
-
-
-
-
-
-
