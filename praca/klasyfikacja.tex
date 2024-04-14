@@ -24,9 +24,9 @@ Macierz pomyłek pokazuje jakie wyniki możemy otrzymać w procesie klasyfikacji
     Wyróżniamy 4 rodzaje rezultatów:
     \begin{itemize}
         \item  \textbf{TP} - prawdziwie pozytywny - przewidywano pozytywny wynik i otrzymano pozytywny wynik,
-        \item \textbf{FN} - fałszywie negatywny - przewidziano negatywny wynik, a otrzymano pozytywny wynik,
-        \item \textbf{FP} - fałszywie pozytywny - przewidziano pozytywny wynik, a otrzymano negatywny wynik,
-        \item \textbf{TN} - prawdziwie negatywny - przewidziano negatywny wynik i otrzymano negatywny wynik.
+        \item \textbf{FN} - fałszywie negatywny - przewidywano negatywny wynik, a otrzymano pozytywny wynik,
+        \item \textbf{FP} - fałszywie pozytywny - przewidywano pozytywny wynik, a otrzymano negatywny wynik,
+        \item \textbf{TN} - prawdziwie negatywny - przewidywano negatywny wynik i otrzymano negatywny wynik.
     \end{itemize}
 
 Opierając się o macierz pomyłek można wyznaczyć następujące metryki:
@@ -67,9 +67,9 @@ Swoistość lub specyficzność pozwala określić ile rzeczywiście uzyskało s
 \begin{equation}\label{math:f1}
    \frac{2*x*y}{x + y}
 \end{equation}
-Parametr F1 pozwala na połączoną ocenę precyzji i czułości.\ Jest to średnia harmoniczna precyzji (\textit{x}) i czułości (\textit{y}). PArametr F1 może być skuteczną metryką oceny w następujących przypadkach:
+Parametr F1 pozwala na połączoną ocenę precyzji i czułości.\ Jest to średnia harmoniczna precyzji (\textit{x}) i czułości (\textit{y}). Parametr F1 może być skuteczną metryką oceny w następujących przypadkach:
 \begin{itemize}
-    \item wyniki fałszywie pozytywne i fałszywie negatywne sąą równie kosztowne
+    \item wyniki fałszywie pozytywne i fałszywie negatywne są równie kosztowne
     \item zwiększenie ilości danych nie zmienia skuteczności wyniku
     \item wynik prawdziwie ujemny jest wysoki~\cite{Agrawal2024}.
 \end{itemize}
@@ -79,7 +79,7 @@ Krzywa ROC-AUC przedstawiona na \refsource{rysunku}{fig:roc-auc}, pozwala na oce
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.5\textwidth]{images/roc-auc}
+    \includegraphics[width=0.8\textwidth]{images/roc-auc}
     \captionsource{Przykład krzywej ROC}{Opracowanie własne}
     \label{fig:roc-auc}
 \end{figure}

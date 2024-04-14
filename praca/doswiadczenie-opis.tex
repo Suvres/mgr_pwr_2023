@@ -169,7 +169,7 @@ Model wykorzystywany w Azure ML został ukazany na \refsource{rysunku}{fig:dt-pi
 Potok jest zbudowany analogicznie do potoku opisanego w \refsource{podsekcji}{subsec:svm}.\ Do bloku treningowego został podłączony model wzmocnionego drzewa decyzyjnego.
 
 \subsection{Two-Class Decision Forest}
-Las decyzyjny to algorytm, którego wynik opiera się o agregację wyników wielu drzew decyzyjnych.\ Uzyskanie wyniku zależy od algorytmu trenowania lasu.\ Przykładowo w klasyfikacji losowym lasem wieloklasowym \trans{ang. Multi-class random forest classification}, każde drzewo głosuje na jedną klasę.\ Klasa, która zostanie wybrana większością głosów, zostaje uznana za wynikową~\cite{Google}.\ Model wykorzystany w Azure ML pokazano na \refsource{modelu}{fig:df-pipe}
+Las decyzyjny to algorytm, którego wynik opiera się o agregację wyników wielu drzew decyzyjnych.\ Uzyskanie wyniku zależy od algorytmu trenowania lasu.\ Przykładowo w klasyfikacji losowym lasem wieloklasowym \trans{ang. Multi-class random forest classification}, każde drzewo głosuje na jedną klasę.\ Klasa, która zostanie wybrana większością głosów, zostaje uznana za wynikową~\cite{Google}.\ Model wykorzystany w Azure ML pokazano na \refsource{modelu}{fig:df-pipe}.
 
 \begin{figure}[H]
     \centering
@@ -674,7 +674,7 @@ Do analizy wyników wykorzystano protokół metodologii badawczej, który zosta�
     \end{equation}
     gdzie:
     \begin{itemize}
-        \item $u$ - Ufność
+        \item $u$ - ufność
         \item $u_d$ - dolna granica przedziału ufności
         \item $\overline{X}$ - średnia
         \item $1,96$ - kwantyl rozkładu normalnego standardowego dla $\alpha/2 \rightarrow 2,5\%$
@@ -693,7 +693,7 @@ Analiza wyników wykazała, że algorytm utworzony w ramach pracy inżynierskiej
     \item 225805 wierszy w danych treningowych
     \item 2830743 wierszy w danych testowych
 \end{itemize}
-\\ \\
+
 Doświadczenie to pokazuje, że wciąż należy próbować tworzyć wydajniejsze i dokładniejsze rozwiązania, lecz nie zaprzecza faktu iż rozwiązania ogólnie dostępne są na bardzo wysokim poziomie.\ Uzyskano dokładność z zakresu $[80\%, 85\%]$ przy czym plik testowy był 12 krotnie większy od pliku treningowego.
 \\ \\
 Microsoft Wyszedł naprzeciw potrzebom użytkowników przygotowując zestaw prekonfigurowanych algorytmów klasyfikacyjnych.\ Możliwości narzędzia Azure ML pozwalają na odpowiadanie na konkretne potrzeby przy relatywnie niewielkich kosztach.\ To nie oznacza jednak, że tworzenie autorskich rozwiązań mija się z celem.\ Jak ukazano na \refsource{wykresie}{fig:predict-result} autorskie rozwiązania również mają rację bytu.\ Wykorzystanie połączenia algorytmu genetycznego i klasyfikatora naiwnego Bayesa z rozkładem normalnym pozwala na uzyskanie zbliżonych wyników do algorytmu utworzone przez giganta technologicznego.\ Różnica około 5 punktów procentowych między najlepszym algorytmem a algorytmem GAGNB ukazuje niewielką różnicę w jakości algorytmu.\ Dodatkowo wciąż trudno korzysta się z rozwiązań takich jak DANet, które są nieprzetestowane na innych zbiorach niż tych przygotowanych z algorytmem.

@@ -284,7 +284,7 @@
 % =============================================================================
 
 \RequirePackage[
-	style=numeric,
+	style=numeric-comp,
 	sorting=none,
 	%
 	% Zastosuj styl wpisu bibliograficznego właściwy językowi publikacji.
