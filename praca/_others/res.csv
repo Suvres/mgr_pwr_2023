@@ -4,5 +4,5 @@ Two-Class Boosted Decision Tree	83,8482%	83,5016%	99,5563%	90,8249%	69,9089%
 Two-Class Decision Forest	83,1725%	82,6752%	99,9996%	90,5159%	63,5244%
 Two-Class Neural Network	84,7332%	85,9776%	96,7705%	91,0553%	72,1864%
 Two-Class Average Perceptron	85,7768%	84,9806%	99,9531%	91,8608%	79,1892%
-Gaussian Naive Base - with GA	80,3004%	80,3004%	100,0000%	89,0740%	50,0000%
+Gaussian Naive Bayes - with GA	80,3004%	80,3004%	100,0000%	89,0740%	50,0000%
 DANET	19,9691%	82,7536%	0,4239%	0,8434%	50,4435%

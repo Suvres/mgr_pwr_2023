@@ -1,8 +1,8 @@
 \chapter{Podsumowanie pracy inżynierskiej}
-W ramach pracy inżynierskiej opracowano autorski algorytm, wykorzystujący algorytm genetyczny oraz klasyfikator Naiwny Bayesa.\ Do badań wykorzystano dane uzyskane z Instytutu Cyberbezpieczeństwa, działającego przy Uniwersytecie Nowy Brunszwik.\ Dane użyto też w niniejszej pracy dyplomowej.\ Zbiór danych został opisany w \refsource{sekcji}{sec:data}.\
+W ramach pracy inżynierskiej opracowano autorski algorytm \textit{Gaussian Naive Bayes - with GA} (\textit{GAGNB}), wykorzystujący algorytm genetyczny oraz klasyfikator Naiwny Bayesa.\ Do badań wykorzystano dane uzyskane z Instytutu Cyberbezpieczeństwa, działającego przy Uniwersytecie Nowy Brunszwik.\ Dane użyto też w niniejszej pracy dyplomowej.\ Zbiór danych został opisany w \refsource{sekcji}{sec:data}.\
 
 \section{Algorytm genetyczny}
-Algorytm genetyczny, który został zastosowany w autorskim rozwiązaniu, to algorytm, który przeszukuje przestrzeń alternatywnych rozwiązań dla danego problemu, by znaleźć najlepszy
+Algorytm genetyczny, który został zastosowany w GAGNB, to algorytm, który przeszukuje przestrzeń alternatywnych rozwiązań dla danego problemu, by znaleźć najlepszy
 wynik~\cite{Kusiak2021}.\ Działanie algorytmu genetycznego jest inspirowane m.in. ewolucją biologiczną, stąd też pochodzą nazwy kolejnych kroków, które zostały przedstawione na \refsource{rysunku}{fig:GA}.
 
 
@@ -44,7 +44,7 @@ Poniżej opisano przebieg algorytmu genetycznego.\ Proces składa się z 6 etap�
 
 
 \section{Klasyfikator Naiwny Bayesa}
-Autorski algorytm w etapie ewaluacji wykorzystuje naiwny klasyfikator Bayesa oparty o rozkład normalny Gaussa (\textit{ang. Gaussian Naive Bayes, GNB}).\ Równanie klasyfikatora oparte jest o twierdzenie Bayesa.\ Opisuje ono prawdopodobieństwo wystąpienia zdarzenia na podstawie znajomości warunków zdarzenia~\cite{Joyce2003}.\ Twierdzenie zostało przedstawione na \refsource{równaniu}{math:bayes}.
+Autorski algorytm GAGNB w etapie ewaluacji wykorzystuje naiwny klasyfikator Bayesa oparty o rozkład normalny Gaussa (\textit{ang. Gaussian Naive Bayes, GNB}).\ Równanie klasyfikatora oparte jest o twierdzenie Bayesa.\ Opisuje ono prawdopodobieństwo wystąpienia zdarzenia na podstawie znajomości warunków zdarzenia~\cite{Joyce2003}.\ Twierdzenie zostało przedstawione na \refsource{równaniu}{math:bayes}.
 
 \begin{equation}\label{math:bayes}
 P(H|X) = \frac{P(X|H) P(H)}{P(X)}
@@ -71,6 +71,17 @@ gdzie:
 \end{itemize}
 
 \section{Systemy wykrywania intruzów}
+Systemy wykrywania intruzów \trans{ang. Intrusion Detection System, IDS} powstały w celu monitorowania sieci komputerowych.\ Ich zadaniem jest, rozpoznawanie szkodliwego ruchu sieciowego, detekcja zagrożeń oraz reagowanie na występujące anomalie.\ Klasyczny model wykrywania intruzów zawiera:
+\begin{itemize}
+\item \textbf{źródła informacji} służące do określenia czy doszło do ataku,
+\item \textbf{moduł analizujący} przetwarzający zebrane dane,
+\item \textbf{moduł odpowiadający} reagujący w określony sposób na wykryte anomalie~\cite{SazzadulHoque2012, Bacer, Blyszcz2022}.
+\end{itemize}
+IDS dzielimy na dwie grupy rozróżnione na podstawie sposobu działania.\ Są to:
+\begin{itemize}
+    \item \textbf{systemy oparte na hoście} \trans{ang. Host Base Intrusion Detection System, HIDS} - służą do zbierania informacji o zdarzeniach systemowych i wykrywania luk w systemach komputerowych,
+    \item \textbf{systemy oparte na sieci komputerowej} \trans{ang. Network Base Intrusion Detection System, NIST} - służą do wykrywania szkodliwej aktywności w sieci~\cite{Blyszcz2022, SazzadulHoque2012, chawlaashima}.
+\end{itemize}
 
 \section{Autorski algorytm opracowany w ramach pracy inżynierskiej}
 Celem algorytmu była redukcja wymiarowości danych tabelarycznych, by zwiększyć jakość klasyfikacji danych.\ Uzyskano to poprzez wyznaczenie najistotniejszych cech zbioru.\ Algorytm genetyczny zastosowano w celu przygotowania zbioru prawdopodobnie istotnych kolumn poprzez oznaczenie ich pozycji za pomocą ciągu cyfr 0 i 1.  \ Kolumny oznaczone cyfrą 1 były brane pod uwagę w procesie ewaluacji za pomocą klasyfikatora Naiwnego Bayesa. Cały proces trwał maksymalnie 1000 iteracji lub do momentu uzyskania minimum $90\%$ dopasowania.\ Wynikiem działania autorskiego algorytmu jest zbiór kolumn istotnych w procesie klasyfikowania.W celu sprawdzenia jakości  własnego rozwiązania wykorzystano następujące metody statystyczne:

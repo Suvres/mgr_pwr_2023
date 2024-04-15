@@ -441,7 +441,7 @@ Najlepszy wynik dopasowania dla danych testowych uzyskał algorytm \textit{Two-C
             Two-Class Decision Forest        & $83,1725\%$                       & $83,1725\%$                       & $83,1725\%$                       & $99,9960\%$                        \\
             Two-Class Neural Network         & $84,7332\%$                       & $84,7332\%$                       & $84,7332\%$                       & $99,2682\%$                        \\
             Two-Class Average Perceptron     & \cellcolor{lightgreen}$85,7768\%$ & \cellcolor{lightgreen}$85,7768\%$      & \cellcolor{lightgreen}$85,7768\%$       & \cellcolor{lightred}$97,4502\%$             \\
-            Gaussian Naive Base - with GA    & $80,3004\%$                       & $80,3004\%$                       & $80,3004\%$                       & $98,8013\%$                        \\
+            Gaussian Naive Bayes - with GA    & $80,3004\%$                       & $80,3004\%$                       & $80,3004\%$                       & $98,8013\%$                        \\
             DANet                            & \cellcolor{lightred}$19,9691\%$   & \cellcolor{lightred}$19,7899\%$   & \cellcolor{lightred}$19,7899\%$      & $99,9823\%$            \\
         \end{NiceTabular}%
     }
@@ -471,7 +471,7 @@ Najlepszy wynik precyzji dla danych testowych uzyskał algorytm \textit{Two-Clas
             Two-Class Decision Forest        & $82,6752\%$                       & $82,6752\%$                       & $82,6752\%$                       & $99,9908\%$                        \\
             Two-Class Neural Network         & \cellcolor{lightgreen}$85,9776\%$ & \cellcolor{lightgreen}$85,9776\%$ & \cellcolor{lightgreen}$85,9776\%$ & $99,8972\%$            \\
             Two-Class Average Perceptron     & $84,9806\%$                       & $84,9806\%$                       & $84,9806\%$                       & \cellcolor{lightred}$94,5000\%$    \\
-            Gaussian Naive Base - with GA    & $85,7768\%$                       & $80,3004\%$                       & $80,3004\%$                       & $99,8531\%$                        \\
+            Gaussian Naive Bayes - with GA    & $85,7768\%$                       & $80,3004\%$                       & $80,3004\%$                       & $99,8531\%$                        \\
             DANet                            & $82,7536\%$                       & $85,9516\%$                       & $85,9516\%$                       & $99,9887\%$                        \\
         \end{NiceTabular}%
     }
@@ -486,7 +486,7 @@ Najlepszy wynik precyzji dla danych testowych uzyskał algorytm \textit{Two-Clas
 \end{figure}
 
 \subsection{Wyniki czułości}
-Najlepszy wynik czułości dla danych testowych uzyskał algorytm \textit{Gaussian Naive Base - with GA} ($100,00\%$).\ Najgorszy wynik uzyskał algorytm \textit{DANet} ($0,4239\%$).\ Dla próby treningowej najlepszy wynik uzyskał \textit{Two-Class Boosted Decision Tree} oraz \textit{Two-Class Decision Forest} ($100\%$), a najgorszy \textit{Gaussian Naive Base - with GA} ($97,3741\%$).\ Wyniki czułości dla poszczególnych prób zostały przedstawione w \refsource{tabeli}{tab:acc-rec} oraz na wykresie \refsource{wykresie}{fig:rec-res}.
+Najlepszy wynik czułości dla danych testowych uzyskał algorytm \textit{Gaussian Naive Bayes - with GA} ($100,00\%$).\ Najgorszy wynik uzyskał algorytm \textit{DANet} ($0,4239\%$).\ Dla próby treningowej najlepszy wynik uzyskał \textit{Two-Class Boosted Decision Tree} oraz \textit{Two-Class Decision Forest} ($100\%$), a najgorszy \textit{Gaussian Naive Bayes - with GA} ($97,3741\%$).\ Wyniki czułości dla poszczególnych prób zostały przedstawione w \refsource{tabeli}{tab:acc-rec} oraz na wykresie \refsource{wykresie}{fig:rec-res}.
 
 \begin{table}[H]
     \centering
@@ -501,7 +501,7 @@ Najlepszy wynik czułości dla danych testowych uzyskał algorytm \textit{Gaussi
             Two-Class Decision Forest        & $99,9996\%$                        & $99,9996\%$                        & $99,9996\%$                        & \cellcolor{lightgreen}$100,0000\%$ \\
             Two-Class Neural Network         & $96,7705\%$                        & $96,7705\%$                        & $96,7705\%$                        & $98,4107\%$                        \\
             Two-Class Average Perceptron     & $99,9531\%$                        & $99,9531\%$                        & $99,9531\%$                        & $99,9253\%$                        \\
-            Gaussian Naive Base - with GA    & \cellcolor{lightgreen}$100,0000\%$ & \cellcolor{lightgreen}$100,0000\%$ & \cellcolor{lightgreen}$100,0000\%$ & \cellcolor{lightred}$97,3741\%$            \\
+            Gaussian Naive Bayes - with GA    & \cellcolor{lightgreen}$100,0000\%$ & \cellcolor{lightgreen}$100,0000\%$ & \cellcolor{lightgreen}$100,0000\%$ & \cellcolor{lightred}$97,3741\%$            \\
             DANet                            & \cellcolor{lightred}$0,4239\%$     & \cellcolor{lightred}$0,1343\%$     & \cellcolor{lightred}$0,1343\%$     & $99,9703\%$            \\
         \end{NiceTabular}%
     }
@@ -531,7 +531,7 @@ Najlepszy wynik F1 dla danych testowych uzyskał algorytm \textit{Two-Class Aver
             Two-Class Decision Forest        & $90,5159\%$                       & $90,5159\%$                       & $90,5159\%$                       & $99,9954\%$                        \\
             Two-Class Neural Network         & $91,0553\%$                       & $91,0553\%$                       & $91,0553\%$                       & $99,1484\%$                        \\
             Two-Class Average Perceptron     & \cellcolor{lightgreen}$91,8608\%$ & \cellcolor{lightgreen}$91,8608\%$ & \cellcolor{lightgreen}$91,8608\%$ & \cellcolor{lightred}$97,1370\%$            \\
-            Gaussian Naive Base - with GA    & $89,0740\%$                       & $89,0740\%$                       & $89,0740\%$                       & $98,5980\%$                        \\
+            Gaussian Naive Bayes - with GA    & $89,0740\%$                       & $89,0740\%$                       & $89,0740\%$                       & $98,5980\%$                        \\
             DANet                            & \cellcolor{lightred}$0,8434\%$    & \cellcolor{lightred}$0,2682\%$    & \cellcolor{lightred}$0,2682\%$    & $99,9795\%$            \\
         \end{NiceTabular}%
     }
@@ -561,7 +561,7 @@ Najlepszy wynik precyzji dla danych testowych uzyskał algorytm \textit{Two-Clas
             Two-Class Decision Forest        & $63,5244\%$                       & $63,5244\%$                       & $63,5244\%$                       & \cellcolor{lightgreen}$100,0000\%$           \\
             Two-Class Neural Network         & $72,1864\%$                       & $72,1864\%$                       & $72,1864\%$                       & $99,9867\%$            \\
             Two-Class Average Perceptron     & \cellcolor{lightgreen}$79,1892\%$ & \cellcolor{lightgreen}$79,1892\%$ & \cellcolor{lightgreen}$79,1892\%$ & $99,9808\%$            \\
-            Gaussian Naive Base - with GA    & $50,0000\%$                       & $50,0000\%$                       & $50,0000\%$                       & \cellcolor{lightred}$99,9437\%$            \\
+            Gaussian Naive Bayes - with GA    & $50,0000\%$                       & $50,0000\%$                       & $50,0000\%$                       & \cellcolor{lightred}$99,9437\%$            \\
             DANet                            & $50,4435\%$                       & $76,7282\%$                       & $76,7282\%$                       & $99,9993\%$            \\
         \end{NiceTabular}%
     }
@@ -682,20 +682,12 @@ Do analizy wyników wykorzystano protokół metodologii badawczej, który zosta�
         \item $n$ - liczebność próby
     \end{itemize}
 
-    Ufności dla dokładności algorytmów wyrażona w procentach wyniósła $17,72\%$ dla $\alpha = 0.05$.\ Biorąc pod uwagę ten fakt, można stwierdzić, że dokładność algorytmu DANet jest poniżej dolnej granicy.\ Dolna granica przedziału ufności wyrażona w procentach wynosi $56,29\%$, zaś DANet uzyskał $19,9691\%$ oraz poprawnie zaklasyfikował jedynie $565273$ wpisów.\ Oznacza to, że można odrzucić $H_0$, ponieważ jeden algorytm przekracza dolny próg granicy ufności.
+    Ufności dla dokładności algorytmów wyrażona w procentach wyniósła $17,72\%$ dla $\alpha = 0.05$.\ Biorąc pod uwagę ten fakt, można stwierdzić, że dokładność algorytmu DANet jest poniżej dolnej granicy.\ Dolna granica przedziału ufności wyrażona w procentach wynosi $56,29\%$, zaś DANet uzyskał $19,9691\%$ oraz poprawnie zaklasyfikował jedynie $565273$ wpisów.\ Oznacza to, że można odrzucić $H_0$, ponieważ jeden algorytm przekracza dolny próg granicy ufności. \\
 \end{itemize}
-
-
-\section{Wnioski}
-
-Analiza wyników wykazała, że algorytm utworzony w ramach pracy inżynierskiej~\cite{Blyszcz2022}, może konkurować z algorytmami dostarczonymi przez platformę Microsoft Azure.\ Jego dokładność jest bardzo zbliżona do dokładności uzyskanych przez pozostałe algorytmy.\ Zostało to przedstawione w \refsource{tabeli}{tab:acc-res}.\ Wyniki uzyskane przez algorytm \textit{Gaussian Naive Base - with GA} wynoszą $80,3004\%$.\ Są one zbliżone do dokładności uzyskanej przy użyciu algorytmu \textit{Two-Class Support Vectore Machine} ($80,3002\%$).\ Wskazuje to na to, że przy małej próbce danych treningowych, algorytm rozpoznał ponad $80\%$ danych, które znajdują się w danych testowych.\ Bazując na \textbf{tabelach}~\textbf{\ref{tab:trening-data-label}}~\textbf{\ref{tab:res-test}} różnica wielkości danych treningowych oraz testowych wyniosła:
+Analiza wyników wykazała, że algorytm utworzony w ramach pracy inżynierskiej~\cite{Blyszcz2022}, może konkurować z algorytmami dostarczonymi przez platformę Microsoft Azure.\ Jego dokładność jest bardzo zbliżona do dokładności uzyskanych przez pozostałe algorytmy.\ Zostało to przedstawione w \refsource{tabeli}{tab:acc-res}.\ Wyniki uzyskane przez algorytm \textit{Gaussian Naive Bayes - with GA} wynoszą $80,3004\%$.\ Są one zbliżone do dokładności uzyskanej przy użyciu algorytmu \textit{Two-Class Support Vectore Machine} ($80,3002\%$).\ Wskazuje to na to, że przy małej próbce danych treningowych, algorytm rozpoznał ponad $80\%$ danych, które znajdują się w danych testowych.\ Bazując na \textbf{tabelach}~\textbf{\ref{tab:trening-data-label}}~\textbf{\ref{tab:res-test}} różnica wielkości danych treningowych oraz testowych wyniosła:
 \begin{itemize}
     \item 225805 wierszy w danych treningowych
     \item 2830743 wierszy w danych testowych
 \end{itemize}
 
 Doświadczenie to pokazuje, że wciąż należy próbować tworzyć wydajniejsze i dokładniejsze rozwiązania, lecz nie zaprzecza faktu iż rozwiązania ogólnie dostępne są na bardzo wysokim poziomie.\ Uzyskano dokładność z zakresu $[80\%, 85\%]$ przy czym plik testowy był 12 krotnie większy od pliku treningowego.
-\\ \\
-Microsoft Wyszedł naprzeciw potrzebom użytkowników przygotowując zestaw prekonfigurowanych algorytmów klasyfikacyjnych.\ Możliwości narzędzia Azure ML pozwalają na odpowiadanie na konkretne potrzeby przy relatywnie niewielkich kosztach.\ To nie oznacza jednak, że tworzenie autorskich rozwiązań mija się z celem.\ Jak ukazano na \refsource{wykresie}{fig:predict-result} autorskie rozwiązania również mają rację bytu.\ Wykorzystanie połączenia algorytmu genetycznego i klasyfikatora naiwnego Bayesa z rozkładem normalnym pozwala na uzyskanie zbliżonych wyników do algorytmu utworzone przez giganta technologicznego.\ Różnica około 5 punktów procentowych między najlepszym algorytmem a algorytmem GAGNB ukazuje niewielką różnicę w jakości algorytmu.\ Dodatkowo wciąż trudno korzysta się z rozwiązań takich jak DANet, które są nieprzetestowane na innych zbiorach niż tych przygotowanych z algorytmem.
-\\ \\
-Dodatkowo korzystanie z tego typu prostych rozwiązań autorskich pozwala na prototypownie rozwiązań biznesowych opartych o klasyfikację danych.\ Samo wykorzystanie algorytmu genetycznego z algorytmem GNB umożliwia skupienie się na tworzenie ogólnego rozwiązania.\ Nie wymaga to wcześniejszej znajomości zbioru oraz pozwala na korzystanie z programów klasyfikacyjnych lokalnie nie ponosząc kosztów wykorzystania platformy chmurowej.\ Kolejnym atutem utworzonego przez autora rozwiązania jest zmniejszenie kosztów lokalnego użytkowania.\ Co zostało spowodowane zmniejszeniem wymiarowości zbioru danych do klasyfikacji poprzez wykorzystanie jedynie wytypowanych kolumn.

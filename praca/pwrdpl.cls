@@ -284,6 +284,7 @@
 % =============================================================================
 
 \RequirePackage[
+	% zastosowanie kompresji numerów czyli zamiast [1,2,3] jest [1-3]
 	style=numeric-comp,
 	sorting=none,
 	%
