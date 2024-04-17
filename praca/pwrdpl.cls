@@ -130,7 +130,7 @@
 
 		\hrule
 
-		\vspace*{4mm}
+		\vspace*{3mm}
 		\noindent {
 			\begin{tabular}{l l}
 			Kierunek: & \textbf{Informatyka Techniczna (ITE)} \\
@@ -138,20 +138,20 @@
 			\end{tabular}
 		}
 
-		\vspace*{25mm}
-		{\Huge\scshape{\@thesistype}}
-		\vspace*{25mm}
+		\vspace*{15mm}
+		{\LARGE\scshape{\@thesistype}}
+		\vspace*{15mm}
 
-		{\LARGE
+		{\Large
 			\IfStrEqCase{\ThesisLanguage}{%
 				{pl}{\textbf{\@titlePL}}
 				{en}{\textbf{\@titleEN}}
 			}
 		}
 
-		\vspace*{20mm}
+		\vspace*{8mm}
 		{\large inż. Bartosz Błyszcz}\linebreak
-		\vspace*{20mm}\linebreak
+		\vspace*{4mm}\linebreak
 
 		{\large Opiekun pracy\\\vspace*{1mm}\textbf{dr inż. Tomasz Babczyński}}\linebreak
 
