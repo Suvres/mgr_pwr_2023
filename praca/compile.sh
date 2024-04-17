@@ -50,7 +50,7 @@ ln -s ../images images
 
 
 main=$(basename $main .tex)
-xelatex $main && biber $main && xelatex $main && xelatex $main;
+pdflatex $main && biber $main && pdflatex $main && pdflatex $main;
 
 cp main.pdf ../main.pdf
 cd ..

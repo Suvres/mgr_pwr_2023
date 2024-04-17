@@ -24,8 +24,14 @@
 	\clearpage
 	\include{skroty}
 
-	\clearpage
 	\tableofcontents
+	\clearpage
+
+	\renewcommand*{\listfigurename}{Wykaz rysunków}
+	\renewcommand*{\listtablename}{Wykaz tabel}
+	\listoffigures
+	\clearpage
+	\listoftables
 
 	\sloppy
 	\setnowidow
@@ -39,13 +45,6 @@
 	\include{doswiadczenie-opis}
 	\include{rozwoj}
 
-	\printbibliography
-
-	\renewcommand*{\listfigurename}{Wykaz rysunków}
-	\renewcommand*{\listtablename}{Wykaz tabel}
-	\listoffigures
-	\clearpage
-	\listoftables
-
+	\printbibliography[title={Literatura}]
 
 \end{document}

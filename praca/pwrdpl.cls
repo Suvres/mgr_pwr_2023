@@ -33,9 +33,10 @@
 
 % \show\ThesisLanguage
 
-\RequirePackage{fontspec}
-\setmainfont{Times New Roman}
-\setsansfont{TeX Gyre Heros}
+%\RequirePackage{fontspec}
+\RequirePackage{tgtermes}
+%%\setmainfont{Times New Roman}
+%\setsansfont{TeX Gyre Heros}
 
 % Lista wszystkich języków stanowiących języki pozycji bibliograficznych użytych w pracy.
 % (Zgodnie z zasadami tworzenia bibliografii każda pozycja powinna zostać utworzona zgodnie z zasadami języka, w którym dana publikacja została napisana.)
@@ -467,18 +468,18 @@
 %    Konfiguracja kapitalików dla Times New Roman
 % ----------------------------------------------------------------------------
 
-\newfontfamily\tgtermes{TeX Gyre Termes}
-\makeatletter
-  \begingroup
-    \tgtermes
-    \DeclareFontShape{\f@encoding}{\rmdefault}{m}{sc}{%
-      <-> ssub * \f@family/m/sc}{}
-    \DeclareFontShape{\f@encoding}{\rmdefault}{bx}{sc}{%
-      <-> ssub * \f@family/bx/sc}{}
-      \DeclareFontShape{\f@encoding}{\rmdefault}{b}{sc}{%
-      <-> ssub * \f@family/b/sc}{}
-  \endgroup
-\makeatother
+%\newfontfamily\tgtermes{TeX Gyre Termes}
+%\makeatletter
+%  \begingroup
+%    \tgtermes
+%    \DeclareFontShape{\f@encoding}{\rmdefault}{m}{sc}{%
+%      <-> ssub * \f@family/m/sc}{}
+%    \DeclareFontShape{\f@encoding}{\rmdefault}{bx}{sc}{%
+%      <-> ssub * \f@family/bx/sc}{}
+%      \DeclareFontShape{\f@encoding}{\rmdefault}{b}{sc}{%
+%      <-> ssub * \f@family/b/sc}{}
+%  \endgroup
+%\makeatother
 
 
 
