@@ -415,7 +415,7 @@ Poniżej na \refsource{rysunku}{fig:predict-result} zostały przedstawione wynik
 Aby uzyskać realne wyniki podczas porównywania poszczególnych algorytmów zastosowano zbiór treningowy opisany w \refsource{tabeli}{tab:trening-data-label} oraz zbiór testowy opisany w \refsource{tabeli}{tab:res-test}.
 
 \subsection{Wyniki dopasowania}
-Najlepszy wynik dopasowania dla danych testowych uzyskał algorytm \textit{Two-Class Average Perceptron}, który poprawnie rozpoznał $85,7768\%$ próbek.\ Najgorszy wynik uzyskał algorytm \textit{DANet} z dopasowaniem rzędu: $19,9691\%$.\ Dla próby treningowej najlepszy wynik uzyskał \textit{Two-Class Boosted Decision Tree} z wynikiem $100,00\%$, a najgorszy \textit{Two-Class Average Perceptron} z wynikiem $97,4502\%$.\ Wyniki dopasowania dla poszczególnych prób zostały przedstawione na \refsource{tabeli}{tab:acc-res} oraz na \refsource{wykresie}{fig:acc-res}.
+Najlepszy wynik dopasowania dla danych testowych uzyskał algorytm \textit{Two-Class Average Perceptron}, który poprawnie rozpoznał $85,7768\%$ próbek.\ Najgorszy wynik uzyskał algorytm \textit{DANet} z dopasowaniem rzędu: $19,9691\%$.\ W tej próbie algorytm GAGNB uzyskał $80,3004\%$ dopasowania.\ Dla próby treningowej najlepszy wynik uzyskał \textit{Two-Class Boosted Decision Tree} z wynikiem $100,00\%$, a najgorszy \textit{Two-Class Average Perceptron} z wynikiem $97,4502\%$.\ Algorytm GAGNB uzyskał $98,8013\%$\ Wyniki dopasowania dla poszczególnych prób zostały przedstawione na \refsource{tabeli}{tab:acc-res} oraz na \refsource{wykresie}{fig:acc-res}.
 
 \begin{table}[H]
     \centering
@@ -444,7 +444,7 @@ Najlepszy wynik dopasowania dla danych testowych uzyskał algorytm \textit{Two-C
 \end{figure}
 
 \subsection{Wyniki precyzji}
-Najlepszy wynik precyzji dla danych testowych uzyskał algorytm \textit{Two-Class Neural Network} ($85,9776\%$).\ Najgorszy wynik uzyskał algorytm \textit{Two-Class Support Vector Machine} ($80,3003\%$).\ Dla próby treningowej najlepszy wynik uzyskał \textit{Two-Class Boosted Decision Tree} ($100\%$), a najgorszy \textit{Two-Class Average Perceptron} ($94,5\%$).\ Wyniki precyzji dla poszczególnych prób zostały przedstawione w \refsource{tabeli}{tab:acc-prec} oraz na wykresie \refsource{wykresie}{fig:prec-res}.
+Najlepszy wynik precyzji dla danych testowych uzyskał algorytm \textit{Two-Class Neural Network} ($85,9776\%$).\ Najgorszy wynik uzyskał algorytm \textit{Two-Class Support Vector Machine} ($80,3003\%$).\ Algorytm GAGNB uzyskał $85,7758\%$.\ Dla próby treningowej najlepszy wynik uzyskał \textit{Two-Class Boosted Decision Tree} ($100\%$), a najgorszy \textit{Two-Class Average Perceptron} ($94,5\%$). GAGNB uzyskał $99,8531\%$.\ Wyniki precyzji dla poszczególnych prób zostały przedstawione w \refsource{tabeli}{tab:acc-prec} oraz na wykresie \refsource{wykresie}{fig:prec-res}.
 
 \begin{table}[H]
     \centering
@@ -474,7 +474,7 @@ Najlepszy wynik precyzji dla danych testowych uzyskał algorytm \textit{Two-Clas
 \end{figure}
 
 \subsection{Wyniki czułości}
-Najlepszy wynik czułości dla danych testowych uzyskał algorytm \textit{Gaussian Naive Bayes - with GA} ($100,00\%$).\ Najgorszy wynik uzyskał algorytm \textit{DANet} ($0,4239\%$).\ Dla próby treningowej najlepszy wynik uzyskał \textit{Two-Class Boosted Decision Tree} oraz \textit{Two-Class Decision Forest} ($100\%$), a najgorszy \textit{Gaussian Naive Bayes - with GA} ($97,3741\%$).\ Wyniki czułości dla poszczególnych prób zostały przedstawione w \refsource{tabeli}{tab:acc-rec} oraz na wykresie \refsource{wykresie}{fig:rec-res}.
+Najlepszy wynik czułości dla danych testowych uzyskał algorytm \textit{Gaussian Naive Bayes - with GA} ($100,00\%$).\ Najgorszy wynik uzyskał algorytm \textit{DANet} ($0,4239\%$).\ Algorytm GAGNB uzyskał $100\%$\ Dla próby treningowej najlepszy wynik uzyskał \textit{Two-Class Boosted Decision Tree} oraz \textit{Two-Class Decision Forest} ($100\%$), a najgorszy \textit{Gaussian Naive Bayes - with GA} ($97,3741\%$).\ Wyniki czułości dla poszczególnych prób zostały przedstawione w \refsource{tabeli}{tab:acc-rec} oraz na wykresie \refsource{wykresie}{fig:rec-res}.
 
 \begin{table}[H]
     \centering
@@ -504,7 +504,7 @@ Najlepszy wynik czułości dla danych testowych uzyskał algorytm \textit{Gaussi
 \end{figure}
 
 \subsection{Wyniki F1}
-Najlepszy wynik F1 dla danych testowych uzyskał algorytm \textit{Two-Class Average Perceptron} ($91,8606\%$).\ Najgorszy wynik uzyskał algorytm \textit{DANet} ($0,8434\%$).\ Dla próby treningowej najlepszy wynik uzyskał \textit{Two-Class Boosted Decision Tree} ($100\%$), a najgorszy \textit{Two-Class Average Perceptron} ($97,1370\%$).\ Wyniki precyzji dla poszczególnych prób zostały przedstawione w \refsource{tabeli}{tab:acc-f1} oraz na wykresie \refsource{wykresie}{fig:f1-res}.
+Najlepszy wynik F1 dla danych testowych uzyskał algorytm \textit{Two-Class Average Perceptron} ($91,8606\%$).\ Najgorszy wynik uzyskał algorytm \textit{DANet} ($0,8434\%$).\ Algorytm GAGNB uzyskał $89,0741\%$.\ Dla próby treningowej najlepszy wynik uzyskał \textit{Two-Class Boosted Decision Tree} ($100\%$), a najgorszy \textit{Two-Class Average Perceptron} ($97,1370\%$). GAGNB uzyskał $98,5980\%$.\ Wyniki precyzji dla poszczególnych prób zostały przedstawione w \refsource{tabeli}{tab:acc-f1} oraz na wykresie \refsource{wykresie}{fig:f1-res}.
 
 \begin{table}[H]
     \centering
@@ -534,7 +534,7 @@ Najlepszy wynik F1 dla danych testowych uzyskał algorytm \textit{Two-Class Aver
 \end{figure}
 
 \subsection{Wyniki AUC}
-Najlepszy wynik precyzji dla danych testowych uzyskał algorytm \textit{Two-Class AveragePerceptron} ($79,1892\%$).\ Najgorszy wynik uzyskał algorytm \textit{Two-Class Support Vector Machine} ($49,999\%$).\ Dla próby treningowej najlepszy wynik uzyskał \textit{Two-Class Boosted Decision Tree} oraz \textit{Two-Class Decision Forest} ($100\%$), a najgorszy \textit{Gaussiaon Naive Base - with GA} ($99,9437\%$).\ Wyniki precyzji dla poszczególnych prób zostały przedstawione w \refsource{tabeli}{tab:acc-auc} oraz na wykresie \refsource{wykresie}{fig:auc-res}.
+Najlepszy wynik precyzji dla danych testowych uzyskał algorytm \textit{Two-Class AveragePerceptron} ($79,1892\%$).\ Najgorszy wynik uzyskał algorytm \textit{Two-Class Support Vector Machine} ($49,999\%$). GAGNB uzyskał $50\%$\ Dla próby treningowej najlepszy wynik uzyskał \textit{Two-Class Boosted Decision Tree} oraz \textit{Two-Class Decision Forest} ($100\%$), a najgorszy \textit{Gaussiaon Naive Base - with GA} ($99,9437\%$).\ Wyniki precyzji dla poszczególnych prób zostały przedstawione w \refsource{tabeli}{tab:acc-auc} oraz na wykresie \refsource{wykresie}{fig:auc-res}.
 
 \begin{table}[H]
     \centering
