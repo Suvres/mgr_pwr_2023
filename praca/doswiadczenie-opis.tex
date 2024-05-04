@@ -43,7 +43,7 @@ W celu oceny jakości algorytmów klasyfikacji określono następujący protokó
 
         \textbf{Hipotezy:}                                                                                                                             \\
         \begin{enumerate}
-            \item Nie ma istotnej różnicy pomiędzy wynikami próby testowej i treningowej.
+            \item Nie ma istotnej różnicy pomiędzy wynikami próby testowej i treningowej nr. 1.
             \item Nie ma istotnej różnicy pomiędzy wynikami prób testowych.
             \item Wynik dopasowania algorytmów w \textit{Próbie 1} nie przekracza dolnej granicy przedziału ufności dla próby testowej
         \end{enumerate}                                                                                                                                \\ \hline
@@ -278,11 +278,11 @@ Całe doświadczenie zostało odwzorowane w graficznym potoku narzędzia ,,\text
 Poszczególne kroki przebiegu eksperymentu zostały opisane na kolejnych stronach.
 
 \subsection{Przygotowanie danych}
-W pierwszym kroku dane zostały znormalizowane za pomocą metody \textbf{MinMax}, która przekształca dane numeryczne do wartości w zakresie ${0, 1}$.\ W następnym kroku za pomocą języka Python oraz biblioteką Pandas oraz Numpy zostają zamienione etykiety słowne na wartości \textbf{0} i \textbf{1} oraz następuje zamiana wartości $[NaN, -inf, inf]$ na liczbę $0$.\ Cały proces został zobrazowany na \refsource{diagramie}{fig:norm}
+W pierwszym kroku do normalizacji danych wykorzystano język Python oraz biblioteki Pandas i Numpy.\ Za pomocą wymienionych narzędzi, etykiety słowne zostają zamienione na wartości \textbf{0} i \textbf{1} oraz następuje zamiana wartości $[NaN, -inf, inf]$ na liczbę $0$.\ Cały proces został zobrazowany na \refsource{diagramie}{fig:norm}
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.6\textwidth]{images/norm}
+    \includegraphics[width=0.6\textwidth]{images/data_pipe}
     \captionsource{Potok normalizacji danych}{Opracowanie własne}
     \label{fig:norm}
 \end{figure}
@@ -397,15 +397,37 @@ W analizie porównawczej algorytmów zastosowano następujące metryki klasyfika
     \item AUC
 \end{itemize}
 
-Poniżej na \refsource{rysunku}{fig:predict-result} zostały przedstawione wyniki zbiorcze dla poszczególnych metryk.\ Dodatkowo przedstawiono również wynik pomiaru treningowego, który w większości przypadków jest wyższy od danych testowych.\ Co prawdopodobnie jest spowodowane różnicą w ilości danych testowych i treningowych.\ Dodatkowo w każdej kolumnie oznaczono kolorem zielonym najwyższy wynik dla danej metryki, a kolorem czerwonym najniższy wynik dla danej metryki.
+Poniżej na \textbf{rysunkach:}~\textbf{\ref{fig:predict-result}},~\textbf{\ref{fig:predict-result2}},~\textbf{\ref{fig:predict-result3}} zostały przedstawione wyniki zbiorcze dla poszczególnych metryk.\ Dodatkowo przedstawiono również wynik pomiaru treningowego, który w większości przypadków jest wyższy od danych testowych.\ Co prawdopodobnie jest spowodowane różnicą w ilości danych testowych i treningowych.\ Dodatkowo w każdej kolumnie oznaczono kolorem zielonym najwyższy wynik dla danej metryki, a kolorem czerwonym najniższy wynik dla danej metryki.
 
 \begin{landscape}
     \vspace*{\fill}
     \begin{figure}[H]
         \centering
         \includegraphics[height=0.8\textwidth]{images/predict_result}
-        \captionsource{Wyniki testów algorytmów klasyfikacyjnych na danych testowych}{Opracowanie własne}
+        \captionsource{Wyniki testów algorytmów klasyfikacyjnych na danych testowych dla próby 1}{Opracowanie własne}
         \label{fig:predict-result}
+    \end{figure}
+    \vfill
+\end{landscape}
+
+\begin{landscape}
+    \vspace*{\fill}
+    \begin{figure}[H]
+        \centering
+        \includegraphics[height=0.8\textwidth]{images/predict_result_2}
+        \captionsource{Wyniki testów algorytmów klasyfikacyjnych na danych testowych dla próby 2}{Opracowanie własne}
+        \label{fig:predict-result2}
+    \end{figure}
+    \vfill
+\end{landscape}
+
+\begin{landscape}
+    \vspace*{\fill}
+    \begin{figure}[H]
+        \centering
+        \includegraphics[height=0.8\textwidth]{images/predict_result_3}
+        \captionsource{Wyniki testów algorytmów klasyfikacyjnych na danych testowych dla próby 3}{Opracowanie własne}
+        \label{fig:predict-result3}
     \end{figure}
     \vfill
 \end{landscape}
@@ -415,7 +437,7 @@ Poniżej na \refsource{rysunku}{fig:predict-result} zostały przedstawione wynik
 Aby uzyskać realne wyniki podczas porównywania poszczególnych algorytmów zastosowano zbiór treningowy opisany w \refsource{tabeli}{tab:trening-data-label} oraz zbiór testowy opisany w \refsource{tabeli}{tab:res-test}.
 
 \subsection{Wyniki dopasowania}
-Najlepszy wynik dopasowania dla danych testowych uzyskał algorytm \textit{Two-Class Average Perceptron}, który poprawnie rozpoznał $85,7768\%$ próbek.\ Najgorszy wynik uzyskał algorytm \textit{DANet} z dopasowaniem rzędu: $19,9691\%$.\ W tej próbie algorytm GAGNB uzyskał $80,3004\%$ dopasowania.\ Dla próby treningowej najlepszy wynik uzyskał \textit{Two-Class Boosted Decision Tree} z wynikiem $100,00\%$, a najgorszy \textit{Two-Class Average Perceptron} z wynikiem $97,4502\%$.\ Algorytm GAGNB uzyskał $98,8013\%$\ Wyniki dopasowania dla poszczególnych prób zostały przedstawione na \refsource{tabeli}{tab:acc-res} oraz na \refsource{wykresie}{fig:acc-res}.
+Najlepszy wynik dopasowania dla danych testowych uzyskał algorytm \textit{DANet}, który poprawnie rozpoznał $88,2494\%$ próbek.\ Najgorszy wynik uzyskał algorytm \textit{GAGNB} z dopasowaniem w zbiorze $[72,4470\%; 73,8269\%; 76,2585\%]$.\ Dla próby treningowej najlepszy wynik uzyskał \textit{Two-Class Boosted Decision Tree} z wynikiem $100,00\%$, a najgorszy \textit{GAGNB} z wynikiem $91,4271\%$.\ Wyniki dopasowania dla poszczególnych prób zostały przedstawione na \refsource{tabeli}{tab:acc-res} oraz na \refsource{wykresie}{fig:acc-res}.
 
 \begin{table}[H]
     \centering
@@ -423,14 +445,14 @@ Najlepszy wynik dopasowania dla danych testowych uzyskał algorytm \textit{Two-C
     \resizebox{\textwidth}{!}{%
         \begin{NiceTabular}{|l|r|r|r||r|}[hvlines]
             & \multicolumn{4}{c|}{\textbf{Wynik dopasowania}} \\
-            \textbf{Algorytm}                & \textbf{Próba 1}                  & \textbf{Próba 2}                  & \textbf{Próba 3}                  & \textbf{Próba testowa}             \\
-            Two-Class Support Vector Machine & $80,3002\%$                       & $80,3002\%$                       & $80,3002\%$                       & $99,9167\%$                        \\
-            Two-Class Boosted Decision Tree  & $83,8482\%$                       & $83,8482\%$                       & $83,8482\%$                       & \cellcolor{lightgreen}$100,0000\%$ \\
-            Two-Class Decision Forest        & $83,1725\%$                       & $83,1725\%$                       & $83,1725\%$                       & $99,9960\%$                        \\
-            Two-Class Neural Network         & $84,7332\%$                       & $84,7332\%$                       & $84,7332\%$                       & $99,2682\%$                        \\
-            Two-Class Average Perceptron     & \cellcolor{lightgreen}$85,7768\%$ & \cellcolor{lightgreen}$85,7768\%$      & \cellcolor{lightgreen}$85,7768\%$       & \cellcolor{lightred}$97,4502\%$             \\
-            Gaussian Naive Bayes - with GA    & $80,3004\%$                       & $80,3004\%$                       & $80,3004\%$                       & $98,8013\%$                        \\
-            DANet                            & \cellcolor{lightred}$19,9691\%$   & \cellcolor{lightred}$19,7899\%$   & \cellcolor{lightred}$19,7899\%$      & $99,9823\%$            \\
+            \textbf{Algorytm}                & \textbf{Próba Treningowa}                  & \textbf{Próba 1}                  & \textbf{Próba 2}                  & \textbf{Próba 3}             \\
+            Two-Class Support Vector Machine & $99,9167\%$ & $86,2493\%$ & $86,2493\%$ & $86,2493\%$ \\
+            Two-Class Boosted Decision Tree & \cellcolor{lightgreen}$100,0000\%$ & $84,8348\%$ & $84,8348\%$ & $84,8348\%$ \\
+            Two-Class Decision Forest & $99,9956\%$ & $84,8065\%$ & $84,8065\%$ & $84,8065\%$ \\
+            Two-Class Neural Network & $99,8401\%$ & $87,5759\%$ & $87,5759\%$ & $87,5759\%$ \\
+            Two-Class Average Perceptron & $99,3834\%$ & $87,4238\%$ & $87,4238\%$ & $87,4238\%$ \\
+            Gaussian Naive Base - with GA & \cellcolor{lightred}$91,4271\%$ & \cellcolor{lightred}$76,2585\%$ & \cellcolor{lightred}$73,8269\%$ & \cellcolor{lightred}$72,4470\%$ \\
+            DANET & $99,8893\%$ & \cellcolor{lightgreen}$88,2494\%$ & \cellcolor{lightgreen}$88,2494\%$ & \cellcolor{lightgreen}$88,2494\%$ \\
         \end{NiceTabular}%
     }
     \label{tab:acc-res}
@@ -444,23 +466,22 @@ Najlepszy wynik dopasowania dla danych testowych uzyskał algorytm \textit{Two-C
 \end{figure}
 
 \subsection{Wyniki precyzji}
-Najlepszy wynik precyzji dla danych testowych uzyskał algorytm \textit{Two-Class Neural Network} ($85,9776\%$).\ Najgorszy wynik uzyskał algorytm \textit{Two-Class Support Vector Machine} ($80,3003\%$).\ Algorytm GAGNB uzyskał $85,7758\%$.\ Dla próby treningowej najlepszy wynik uzyskał \textit{Two-Class Boosted Decision Tree} ($100\%$), a najgorszy \textit{Two-Class Average Perceptron} ($94,5\%$). GAGNB uzyskał $99,8531\%$.\ Wyniki precyzji dla poszczególnych prób zostały przedstawione w \refsource{tabeli}{tab:acc-prec} oraz na wykresie \refsource{wykresie}{fig:prec-res}.
+Najlepszy wynik precyzji dla danych testowych uzyskał algorytm \textit{DANet} ($87,4205\%$).\ Najgorszy wynik uzyskał algorytm \textit{Two-Class Decision Forest} ($84,1084\%$).\ Algorytm \textit{GAGNB} uzyskał wyniki: ($[85,0422\%; , 85,4461\%; 86,2876]$).\  Dla próby treningowej najlepszy wynik uzyskał \textit{Two-Class Boosted Decision Tree} ($100,00\%$), a najgorszy \textit{GAGNB} ($94,2285\%$).\ Wyniki precyzji dla poszczególnych prób zostały przedstawione w \refsource{tabeli}{tab:acc-prec} oraz na wykresie \refsource{wykresie}{fig:prec-res}.
 
 \begin{table}[H]
     \centering
     \captionsourceb{Wynik precyzji algorytmów.}{Kolorem zielonym określono najlepszy wynik w kolumnie.\ Kolorem czerwonym określono najgorszy wynik w kolumnie.}{Opracowanie własne}
     \resizebox{\textwidth}{!}{%
         \begin{NiceTabular}{|l|r|r|r||r|}[hvlines]
-            \hline
             & \multicolumn{4}{c|}{\textbf{Wynik precyzji}} \\
-            \textbf{Algorytm}                & \textbf{Próba 1}                  & \textbf{Próba 2}                  & \textbf{Próba 3}                  & \textbf{Próba testowa}             \\
-            Two-Class Support Vector Machine & \cellcolor{lightred}$80,3003\%$   & \cellcolor{lightred}$80,3003\%$   & \cellcolor{lightred}$80,3003\%$   & $99,8742\%$            \\
-            Two-Class Boosted Decision Tree  & $83,5016\%$                       & $83,5016\%$                       & $83,5016\%$                       & \cellcolor{lightgreen}$100,0000\%$ \\
-            Two-Class Decision Forest        & $82,6752\%$                       & $82,6752\%$                       & $82,6752\%$                       & $99,9908\%$                        \\
-            Two-Class Neural Network         & \cellcolor{lightgreen}$85,9776\%$ & \cellcolor{lightgreen}$85,9776\%$ & \cellcolor{lightgreen}$85,9776\%$ & $99,8972\%$            \\
-            Two-Class Average Perceptron     & $84,9806\%$                       & $84,9806\%$                       & $84,9806\%$                       & \cellcolor{lightred}$94,5000\%$    \\
-            Gaussian Naive Bayes - with GA    & $85,7768\%$                       & $80,3004\%$                       & $80,3004\%$                       & $99,8531\%$                        \\
-            DANet                            & $82,7536\%$                       & $85,9516\%$                       & $85,9516\%$                       & $99,9887\%$                        \\
+            \textbf{Algorytm}                & \textbf{Próba Treningowa}                  & \textbf{Próba 1}                  & \textbf{Próba 2}                  & \textbf{Próba 3}             \\
+            Two-Class Support Vector Machine & $99,8742\%$ & $87,1952\%$ & $87,1952\%$ & $87,1952\%$ \\
+            Two-Class Boosted Decision Tree & \cellcolor{lightgreen}$100,0000\%$ & $84,1226\%$ & $84,1226\%$ & $84,1226\%$ \\
+            Two-Class Decision Forest & $99,9898\%$ & \cellcolor{lightred}$84,1083\%$ & \cellcolor{lightred}$84,1083\%$ & \cellcolor{lightred}$84,1083\%$ \\
+            Two-Class Neural Network & $99,9231\%$ & $86,9136\%$ & $86,9136\%$ & $86,9136\%$ \\
+            Two-Class Average Perceptron & $99,8510\%$ & $87,1205\%$ & $87,1205\%$ & $87,1205\%$ \\
+            Gaussian Naive Base - with GA & \cellcolor{lightred}$94,2285\%$ & $85,4461\%$ & $85,0422\%$ & $86,2876\%$ \\
+            DANET & $99,8568\%$ & \cellcolor{lightgreen}$87,4205\%$ & \cellcolor{lightgreen}$87,4205\%$ & \cellcolor{lightgreen}$87,4205\%$ \\
         \end{NiceTabular}%
     }
     \label{tab:acc-prec}
@@ -474,7 +495,7 @@ Najlepszy wynik precyzji dla danych testowych uzyskał algorytm \textit{Two-Clas
 \end{figure}
 
 \subsection{Wyniki czułości}
-Najlepszy wynik czułości dla danych testowych uzyskał algorytm \textit{Gaussian Naive Bayes - with GA} ($100,00\%$).\ Najgorszy wynik uzyskał algorytm \textit{DANet} ($0,4239\%$).\ Tak niski rezultat może wynikaćz małej liczby poprawnie zaklasyfikowanych elementów klasy ,,1''.\ Algorytm GAGNB uzyskał $100\%$\ Dla próby treningowej najlepszy wynik uzyskał \textit{Two-Class Boosted Decision Tree} oraz \textit{Two-Class Decision Forest} ($100\%$), a najgorszy \textit{Gaussian Naive Bayes - with GA} ($97,3741\%$).\ Wyniki czułości dla poszczególnych prób zostały przedstawione w \refsource{tabeli}{tab:acc-rec} oraz na wykresie \refsource{wykresie}{fig:rec-res}.
+Najlepszy wynik czułości dla danych testowych uzyskał algorytm \textit{Two-Class Bosted Decision Tree} ($99,9857\%$).\ Najgorszy wynik uzyskał algorytm \textit{GAGNB} z wynikami należącymi do zbioru $[78,0986\%; 81,7923\%; 84,8940\%]$.\  Dla próby treningowej najlepszy wynik uzyskał \textit{Two-Class Boosted Decision Tree} oraz \textit{Two-Class Decision Forest} ($100,00\%$), a najgorszy \textit{Gaussian Naive Bayes - with GA} ($85,4275\%$).\ Wyniki czułości dla poszczególnych prób zostały przedstawione w \refsource{tabeli}{tab:acc-rec} oraz na wykresie \refsource{wykresie}{fig:rec-res}.
 
 \begin{table}[H]
     \centering
@@ -483,14 +504,14 @@ Najlepszy wynik czułości dla danych testowych uzyskał algorytm \textit{Gaussi
         \begin{NiceTabular}{|l|r|r|r||r|}[hvlines]
 
             & \multicolumn{4}{c|}{\textbf{Wynik czułości}} \\
-            \textbf{Algorytm}                & \textbf{Próba 1}                   & \textbf{Próba 2}                   & \textbf{Próba 3}                   & \textbf{Próba testowa}             \\
-            Two-Class Support Vector Machine & $99,9998\%$                        & $99,9998\%$                        & $99,9998\%$                        & $99,9335\%$                        \\
-            Two-Class Boosted Decision Tree  & $99,5563\%$                        & $99,5563\%$                        & $99,5563\%$                        & \cellcolor{lightgreen}$100,0000\%$ \\
-            Two-Class Decision Forest        & $99,9996\%$                        & $99,9996\%$                        & $99,9996\%$                        & \cellcolor{lightgreen}$100,0000\%$ \\
-            Two-Class Neural Network         & $96,7705\%$                        & $96,7705\%$                        & $96,7705\%$                        & $98,4107\%$                        \\
-            Two-Class Average Perceptron     & $99,9531\%$                        & $99,9531\%$                        & $99,9531\%$                        & $99,9253\%$                        \\
-            Gaussian Naive Bayes - with GA    & \cellcolor{lightgreen}$100,0000\%$ & \cellcolor{lightgreen}$100,0000\%$ & \cellcolor{lightgreen}$100,0000\%$ & \cellcolor{lightred}$97,3741\%$            \\
-            DANet                            & \cellcolor{lightred}$0,4239\%$     & \cellcolor{lightred}$0,1343\%$     & \cellcolor{lightred}$0,1343\%$     & $99,9703\%$            \\
+            \textbf{Algorytm}                & \textbf{Próba Treningowa}                  & \textbf{Próba 1}                  & \textbf{Próba 2}                  & \textbf{Próba 3}             \\
+            Two-Class Support Vector Machine & $99,9335\%$ & $97,1413\%$ & $97,1413\%$ & $97,1413\%$ \\
+            Two-Class Boosted Decision Tree & \cellcolor{lightgreen}$100,0000\%$ & \cellcolor{lightgreen}$99,9857\%$ & \cellcolor{lightgreen}$99,9857\%$ & \cellcolor{lightgreen}$99,9857\%$ \\
+            Two-Class Decision Forest & \cellcolor{lightgreen}$100,0000\%$ & $99,9673\%$ & $99,9673\%$ & $99,9673\%$ \\
+            Two-Class Neural Network & $99,7073\%$ & $99,5112\%$ & $99,5112\%$ & $99,5112\%$ \\
+            Two-Class Average Perceptron & $98,7229\%$ & $98,9698\%$ & $98,9698\%$ & $98,9698\%$ \\
+            Gaussian Naive Base - with GA & \cellcolor{lightred}$85,4275\%$ & \cellcolor{lightred}$84,8940\%$ & \cellcolor{lightred}$81,7923\%$ & \cellcolor{lightred}$78,0986\%$ \\
+            DANET & $99,8874\%$ & $99,7154\%$ & $99,7154\%$ & $99,7154\%$ \\
         \end{NiceTabular}%
     }
     \label{tab:acc-rec}
@@ -504,7 +525,7 @@ Najlepszy wynik czułości dla danych testowych uzyskał algorytm \textit{Gaussi
 \end{figure}
 
 \subsection{Wyniki F1}
-Najlepszy wynik F1 dla danych testowych uzyskał algorytm \textit{Two-Class Average Perceptron} ($91,8606\%$).\ Najgorszy wynik uzyskał algorytm \textit{DANet} ($0,8434\%$).\ Algorytm GAGNB uzyskał $89,0741\%$.\ Dla próby treningowej najlepszy wynik uzyskał \textit{Two-Class Boosted Decision Tree} ($100\%$), a najgorszy \textit{Two-Class Average Perceptron} ($97,1370\%$). GAGNB uzyskał $98,5980\%$.\ Wyniki precyzji dla poszczególnych prób zostały przedstawione w \refsource{tabeli}{tab:acc-f1} oraz na wykresie \refsource{wykresie}{fig:f1-res}.
+Najlepszy wynik F1 dla danych testowych uzyskał algorytm \textit{DANet} ($93,1640\%$).\ Najgorszy wynik uzyskał algorytm \textit{GAGNB} ($[81,9892\%; 83,3856\%; 85,1692\%]$).\ Dla próby treningowej najlepszy wynik uzyskał \textit{Two-Class Boosted Decision Tree} ($100,00\%$), a najgorszy \textit{GAGNB} ($89,6124\%$).\ Wyniki F1 dla poszczególnych prób zostały przedstawione w \refsource{tabeli}{tab:acc-f1} oraz na wykresie \refsource{wykresie}{fig:f1-res}.
 
 \begin{table}[H]
     \centering
@@ -513,14 +534,14 @@ Najlepszy wynik F1 dla danych testowych uzyskał algorytm \textit{Two-Class Aver
         \begin{NiceTabular}{|l|r|r|r||r|}[hvlines]
 
             & \multicolumn{4}{c|}{\textbf{Wynik F1}} \\
-            \textbf{Algorytm}                & \textbf{Próba 1}                  & \textbf{Próba 2}                  & \textbf{Próba 3}                  & \textbf{Próba testowa}             \\
-            Two-Class Support Vector Machine & $89,0739\%$                       & $89,0739\%$                       & $89,0739\%$                       & $99,9038\%$                        \\
-            Two-Class Boosted Decision Tree  & $90,8249\%$                       & $90,8249\%$                       & $90,8249\%$                       & \cellcolor{lightgreen}$100,0000\%$ \\
-            Two-Class Decision Forest        & $90,5159\%$                       & $90,5159\%$                       & $90,5159\%$                       & $99,9954\%$                        \\
-            Two-Class Neural Network         & $91,0553\%$                       & $91,0553\%$                       & $91,0553\%$                       & $99,1484\%$                        \\
-            Two-Class Average Perceptron     & \cellcolor{lightgreen}$91,8608\%$ & \cellcolor{lightgreen}$91,8608\%$ & \cellcolor{lightgreen}$91,8608\%$ & \cellcolor{lightred}$97,1370\%$            \\
-            Gaussian Naive Bayes - with GA    & $89,0740\%$                       & $89,0740\%$                       & $89,0740\%$                       & $98,5980\%$                        \\
-            DANet                            & \cellcolor{lightred}$0,8434\%$    & \cellcolor{lightred}$0,2682\%$    & \cellcolor{lightred}$0,2682\%$    & $99,9795\%$            \\
+            \textbf{Algorytm}                & \textbf{Próba Treningowa}                  & \textbf{Próba 1}                  & \textbf{Próba 2}                  & \textbf{Próba 3}             \\
+            Two-Class Support Vector Machine & $99,9038\%$ & $91,8999\%$ & $91,8999\%$ & $91,8999\%$ \\
+            Two-Class Boosted Decision Tree & \cellcolor{lightgreen}$100,0000\%$ & $91,3708\%$ & $91,3708\%$ & $91,3708\%$ \\
+            Two-Class Decision Forest & $99,9949\%$ & $91,3546\%$ & $91,3546\%$ & $91,3546\%$ \\
+            Two-Class Neural Network & $99,8151\%$ & $92,7867\%$ & $92,7867\%$ & $92,7867\%$ \\
+            Two-Class Average Perceptron & $99,2837\%$ & $92,6679\%$ & $92,6679\%$ & $92,6679\%$ \\
+            Gaussian Naive Base - with GA & \cellcolor{lightred}$89,6124\%$ & \cellcolor{lightred}$85,1692\%$ & \cellcolor{lightred}$83,3856\%$ & \cellcolor{lightred}$81,9892\%$ \\
+            DANET & $99,8721\%$ & \cellcolor{lightgreen}$93,1640\%$ & \cellcolor{lightgreen}$93,1640\%$ & \cellcolor{lightgreen}$93,1640\%$ \\
         \end{NiceTabular}%
     }
     \label{tab:acc-f1}
@@ -534,23 +555,22 @@ Najlepszy wynik F1 dla danych testowych uzyskał algorytm \textit{Two-Class Aver
 \end{figure}
 
 \subsection{Wyniki AUC}
-Najlepszy wynik precyzji dla danych testowych uzyskał algorytm \textit{Two-Class AveragePerceptron} ($79,1892\%$).\ Najgorszy wynik uzyskał algorytm \textit{Two-Class Support Vector Machine} ($49,999\%$). GAGNB uzyskał $50\%$\ Dla próby treningowej najlepszy wynik uzyskał \textit{Two-Class Boosted Decision Tree} oraz \textit{Two-Class Decision Forest} ($100\%$), a najgorszy \textit{Gaussiaon Naive Base - with GA} ($99,9437\%$).\ Wyniki precyzji dla poszczególnych prób zostały przedstawione w \refsource{tabeli}{tab:acc-auc} oraz na wykresie \refsource{wykresie}{fig:auc-res}.
+Najlepszy wynik precyzji dla danych testowych uzyskał algorytm \textit{Two-Class Decision Forest} ($91,1249\%$).\ Najgorszy wynik uzyskał algorytm \textit{GAGNB} ($[61,5753\%; 62,9762\%; 63,7542\%]$).\ Dla próby treningowej najlepszy wynik uzyskał \textit{Two-Class Boosted Decision Tree} oraz \textit{Two-Class Decision Forest} ($100,00\%$), a najgorszy \textit{GAGNB} ($90,7169\%$).\ Wyniki AUC dla poszczególnych prób zostały przedstawione w \refsource{tabeli}{tab:acc-auc} oraz na wykresie \refsource{wykresie}{fig:auc-res}.
 
 \begin{table}[H]
     \centering
     \captionsourceb{Wynik AUC algorytmów.}{Kolorem zielonym określono najlepszy wynik w kolumnie.\ Kolorem czerwonym określono najgorszy wynik w kolumnie.}{Opracowanie własne}
     \resizebox{\textwidth}{!}{%
         \begin{NiceTabular}{|l|r|r|r||r|}[hvlines]
-
             & \multicolumn{4}{c|}{\textbf{Wynik AUC}} \\
-            \textbf{Algorytm}                & \textbf{Próba 1}                  & \textbf{Próba 2}                  & \textbf{Próba 3}                  & \textbf{Próba testowa} \\
-            Two-Class Support Vector Machine & \cellcolor{lightred}$49,9999\%$   & \cellcolor{lightred}$49,9999\%$ & \cellcolor{lightred}$49,9999\%$     & $99,9974\%$            \\
-            Two-Class Boosted Decision Tree  & $69,9089\%$                       & $69,9089\%$                       & $69,9089\%$                       & \cellcolor{lightgreen}$100,0000\%$           \\
-            Two-Class Decision Forest        & $63,5244\%$                       & $63,5244\%$                       & $63,5244\%$                       & \cellcolor{lightgreen}$100,0000\%$           \\
-            Two-Class Neural Network         & $72,1864\%$                       & $72,1864\%$                       & $72,1864\%$                       & $99,9867\%$            \\
-            Two-Class Average Perceptron     & \cellcolor{lightgreen}$79,1892\%$ & \cellcolor{lightgreen}$79,1892\%$ & \cellcolor{lightgreen}$79,1892\%$ & $99,9808\%$            \\
-            Gaussian Naive Bayes - with GA    & $50,0000\%$                       & $50,0000\%$                       & $50,0000\%$                       & \cellcolor{lightred}$99,9437\%$            \\
-            DANet                            & $50,4435\%$                       & $76,7282\%$                       & $76,7282\%$                       & $99,9993\%$            \\
+            \textbf{Algorytm}                & \textbf{Próba Treningowa}                  & \textbf{Próba 1}                  & \textbf{Próba 2}                  & \textbf{Próba 3}             \\
+            Two-Class Support Vector Machine & $99,9973\%$ & $67,2981\%$ & $67,2981\%$ & $67,2981\%$ \\
+            Two-Class Boosted Decision Tree & \cellcolor{lightgreen}$100,0000\%$ & $75,8309\%$ & $75,8309\%$ & $75,8309\%$ \\
+            Two-Class Decision Forest & \cellcolor{lightgreen}$100,0000\%$ & \cellcolor{lightgreen}$91,1249\%$ & \cellcolor{lightgreen}$91,1249\%$ & \cellcolor{lightgreen}$91,1249\%$ \\
+            Two-Class Neural Network & $99,9974\%$ & $73,3927\%$ & $73,3927\%$ & $73,3927\%$ \\
+            Two-Class Average Perceptron & $99,9762\%$ & $75,8459\%$ & $75,8459\%$ & $75,8459\%$ \\
+            Gaussian Naive Base - with GA & \cellcolor{lightred}$90,7169\%$ & \cellcolor{lightred}$62,9762\%$ & \cellcolor{lightred}$61,5753\%$ & \cellcolor{lightred}$63,7542\%$ \\
+            DANET & $99,9969\%$ & $70,3542\%$ & $70,3542\%$ & $70,3542\%$ \\
         \end{NiceTabular}%
     }
     \label{tab:acc-auc}
@@ -581,12 +601,12 @@ Do analizy wyników wykorzystano protokół metodologii badawczej, który zosta�
 \end{table}
 
 \begin{itemize}
-    \item \textbf{Hipoteza $H_0$: Nie ma istotnej różnicy pomiędzy wynikami ''dopasowania'' próby testowej i treningowej}
+    \item \textbf{Hipoteza $H_0$: Nie ma istotnej różnicy pomiędzy wynikami ''dopasowania'' próby testowej i treningowej nr. 1}
 
     Wykorzystując statystyczny test t Studenta dla prób zależnych dla danych z \refsource{tabeli}{tab:acc-res} wyznaczono wartość:
     \begin{equation}
         \label{eq:test-t}
-        t = \frac{\overline{d}}{sd_d} * \sqrt{n} = \frac{0,2533}{0,2245} * \sqrt{7} = 2,9852
+        t = \frac{\overline{d}}{sd_d} * \sqrt{n} = \frac{0,1358}{0,0150} * \sqrt{7} = 23,9527
     \end{equation}
     gdzie:
     \begin{itemize}
@@ -597,40 +617,51 @@ Do analizy wyników wykorzystano protokół metodologii badawczej, który zosta�
     \begin{table}[H]
         \centering
         \captionsource{Tabela rozkładu wartości dla t-Studenta}{\cite{Gerstman}}
-        \begin{tabular}{|c|l|l|l|l|l|l|l|l|l|}
+        \resizebox{\textwidth}{!}{%
+        \begin{tabular}{|c|l|l|l|l|l|l|l|l|l|l|}
             \hline
-            \textbf{\diagbox{n}{p-value}} & \textbf{0,5} & \textbf{0,2} & \textbf{0,1} & \textbf{0,05} & \textbf{0,02} & \textbf{0,01} \\ \hline
-            \textbf{1}                    & 0            & 1,37638192   & 3,07768354   & 6,313751515   & 15,89454484   & 31,82052      \\ \hline
-            \textbf{2}                    & 0            & 1,060660172  & 1,88561808   & 2,91998558    & 4,848732214   & 6,964557      \\ \hline
-            \textbf{3}                    & 0            & 0,978472312  & 1,63774435   & 2,353363435   & 3,48190876    & 4,540703      \\ \hline
-            \textbf{4}                    & 0            & 0,940964577  & 1,53320627   & 2,131846786   & 2,998527873   & 3,746947      \\ \hline
-            \textbf{5}                    & 0            & 0,91954378   & 1,47588405   & 2,015048373   & 2,756508522   & 3,36493       \\ \hline
-            \textbf{6}                    & 0            & 0,905703285  & 1,43975575   & 1,943180281   & 2,612241847   & 3,142668      \\ \hline
-            \textbf{7}                    & 0            & 0,896029644  & 1,41492393   & 1,894578605   & 2,516752424   & 2,997952      \\ \hline
-        \end{tabular}
+            \textbf{\diagbox{n}{p}} & \textbf{0,5} & \textbf{0,2} & \textbf{0,1} & \textbf{0,05} & \textbf{0,02} & \textbf{0,01} & \textbf{0,001} & \textbf{0,00001} & \textbf{0,000001} & \textbf{0,0000001} \\ \hline
+            1 & 0 & 1,37638192 & 3,07768354 & 6,313751515 & 15,89454484 & 31,82052 & 31,82052 & 31830,99 & 318309,9 & 3183098,9 \\ \hline
+            2 & 0 & 1,060660172 & 1,88561808 & 2,91998558 & 4,848732214 & 6,964557 & 6,964557 & 223,6034 & 707,1057 & 2236,0676 \\ \hline
+            3 & 0 & 0,978472312 & 1,63774435 & 2,353363435 & 3,48190876 & 4,540703 & 4,540703 & 47,92773 & 103,2995 & 222,57159 \\ \hline
+            4 & 0 & 0,940964577 & 1,53320627 & 2,131846786 & 2,998527873 & 3,746947 & 3,746947 & 23,33218 & 41,57785 & 73,985758 \\ \hline
+            5 & 0 & 0,91954378 & 1,47588405 & 2,015048373 & 2,756508522 & 3,36493 & 3,36493 & 15,54685 & 24,77103 & 39,34182 \\ \hline
+            6 & 0 & 0,905703285 & 1,43975575 & 1,943180281 & 2,612241847 & 3,142668 & 5,207626 & 12,03165 & 17,83031 & 26,2867 \\ \hline
+            7 & 0 & 0,896029644 & 1,41492393 & 1,894578605 & 2,516752424 & 2,997952 & 2,997952 & 10,10268 & 14,24147 & 19,933902 \\ \hline
+        \end{tabular}%
+        }
         \label{tab:p-val}
+    \end{table}
         gdzie:
         \begin{itemize}
             \item \textbf{n} - ilość punktów swobody
             \item \textbf{p} - wartość p-value
         \end{itemize}
-    \end{table}
-    Następnie bazując na \refsource{tabeli}{tab:p-val} obrazującej rozkład wartości \textit{t} dla \textit{n} punktów swobody w \textit{p-value} znaleziono wartość p-value odpowiadającej otrzymanemu wynikowi.\ Dla 6 punktów swobody: $0,02 < p-value < 0,05$.\ Oznacza to, że zmienna $p-value < \alpha$, dzięki czemu można odrzucić hipotezę $H_0$.\ Wyniki tej analizy określają, że widać istotne różnice pomiędzy danymi z próby testowej i treningowej.\ Największą różnicę widać w rezultacie algorytmu \textit{DANet}, który uzyskał w próbie testowej $19,9691\%$ dopasowania, a w próbie treningowej $99,9823\%$.\\
+    Następnie bazując na \refsource{tabeli}{tab:p-val} obrazującej rozkład wartości \textit{t} dla \textit{n} punktów swobody w \textit{p-value} znaleziono wartość p-value odpowiadającej otrzymanemu wynikowi.\ Dla 6 punktów swobody: $0,000001 < p-value < 0,0000001$.\ Oznacza to, że zmienna $p-value < \alpha$, dzięki czemu można odrzucić hipotezę $H_0$.\ Wyniki tej analizy określają, że widać istotne różnice pomiędzy danymi z próby testowej i treningowej.\ Największą różnicę widać w rezultacie algorytmu \textit{GAGNB}, który uzyskał w próbie testowej $76,2585\%$ dopasowania, a w próbie treningowej $91,4271\%$.\\
 
     \item \textbf{Hipoteza $H_0$: Nie ma istotnej różnicy pomiędzy wynikami ''dopasowania'' prób testowych}
     Korzystając z \refsource{wzoru}{eq:test-t}, wykonano obliczenia dla poszczególnych relacji przedstawionych w \refsource{tabeli}{tab:acc-p-stat}.
     \begin{equation}
         \label{eq:t-p1}
-        t_1 = \frac{0}{0} * \sqrt{7} = 0
+        t_1 = \frac{d_{p2p3}}{sd_{d_{p2p3}}} * \sqrt{n} = \frac{0,0019713}{0,0048287} * \sqrt{7} = 1,0801
     \end{equation}
     \begin{equation}
         \label{eq:t-p2}
-        t_2 = \frac{0,000256}{0,000627} * \sqrt{7} = 1,0801
+        t_2 = \frac{d_{p1p2}}{sd_{p1p2}} * \sqrt{n} = \frac{0,0034737}{0,0085088} * \sqrt{7} = 1,0801
     \end{equation}
     \begin{equation}
         \label{eq:t-p3}
-        t_3 = \frac{0,000256}{0,000627} * \sqrt{7} = 1,0801
+        t_3 = \frac{p1p3}{p1p3} * \sqrt{n} = \frac{0,0054450}{0,0133375} * \sqrt{7} = 1,0801
     \end{equation}
+    gdzie:
+    \begin{itemize}
+        \item $\overline{d}$ - średnia różnic w próbie
+        \item $sd_d$ - odchylenie standardowe
+        \item $n$ - liczebność próby
+        \item $p1$ - próba 1
+        \item $p2$ - próba 2
+        \item $p3$ - próba 3
+    \end{itemize}
 
     Wyniki równań zostały przedstawione w \refsource{tabeli}{tab:acc-p-stat} w kolumnie \textit{wartość t}.
 
@@ -641,7 +672,7 @@ Do analizy wyników wykorzystano protokół metodologii badawczej, który zosta�
             \hline
             \multicolumn{5}{|c|}{$H_0$ Brak istotnych różnic między wynikami dla $\alpha = 0,05$} \\ \hline
             \textbf{L.p.} & \textbf{Relacja}                  & \textbf{Wartość \textit{t}} & \textbf{P-value}      & \textbf{Rezultat}                                 \\\hline
-            \textbf{1}    & Próba 2 $\leftrightarrow$ Próba 3 & $0$                         & $0,5$                 & $p-value > \alpha$ \newline Brak istotnych różnic \\ \hline
+            \textbf{1}    & Próba 2 $\leftrightarrow$ Próba 3 & $1,801$                         & $0,2 < p-value < 0,5$                 & $p-value > \alpha$ \newline Brak istotnych różnic \\ \hline
             \textbf{2}    & Próba 2 $\leftrightarrow$ Próba 1 & $1,0801$                    & $0,2 < p-value < 0,5$ & $p-value > \alpha$ \newline Brak istotnych różnic \\ \hline
             \textbf{3}    & Próba 3 $\leftrightarrow$ Próba 1 & $1,0801$                    & $0,2 < p-value < 0,5$ & $p-value > \alpha$ \newline Brak istotnych różnic \\ \hline
         \end{tabular}
@@ -654,11 +685,11 @@ Do analizy wyników wykorzystano protokół metodologii badawczej, który zosta�
 
     \begin{equation}
         \label{eq:uf}
-        u = 1,96 * \frac{\sigma}{\sqrt{n}}= 0,7401-1,96*\frac{0,2392}{\sqrt{7}} = 0,177202 \approx 0,1772
+        u = 1,96 * \frac{\sigma}{\sqrt{n}} = 1,96*\frac{0,0411}{\sqrt{7}} = 0,0346
     \end{equation}
     \begin{equation}
         \label{eq:uf-d}
-        u_d = \overline{X} - u = 0,7401 - 0,1772 = 0,5629
+        u_d = \overline{X} - u = 0,8506 - 0,0346 = 0,816
     \end{equation}
     gdzie:
     \begin{itemize}
@@ -670,12 +701,13 @@ Do analizy wyników wykorzystano protokół metodologii badawczej, który zosta�
         \item $n$ - liczebność próby
     \end{itemize}
 
-    Ufności dla dokładności algorytmów wyrażona w procentach wyniósła $17,72\%$ dla $\alpha = 0.05$.\ Biorąc pod uwagę ten fakt, można stwierdzić, że dokładność algorytmu DANet jest poniżej dolnej granicy.\ Dolna granica przedziału ufności wyrażona w procentach wynosi $56,29\%$, zaś DANet uzyskał $19,9691\%$ oraz poprawnie zaklasyfikował jedynie $565273$ wpisów.\ Oznacza to, że można odrzucić $H_0$, ponieważ jeden algorytm przekracza dolny próg granicy ufności. \\
+    Ufności dla dokładności algorytmów wyrażona w procentach wyniosła $3,46 p.p.$ dla $\alpha = 0.05$.\ Biorąc pod uwagę ten fakt, można stwierdzić, że dokładność algorytmu GAGNB jest poniżej dolnej granicy.\ Dolna granica przedziału ufności wyrażona w procentach wynosi $81,6\%$, zaś GAGNB uzyskał $76,2585\%$.\ Oznacza to, że można odrzucić $H_0$, ponieważ jeden algorytm przekracza dolny próg granicy ufności. \\
 \end{itemize}
-Analiza wyników wykazała, że algorytm utworzony w ramach pracy inżynierskiej~\cite{Blyszcz2022}, może konkurować z algorytmami dostarczonymi przez platformę Microsoft Azure.\ Jego dokładność jest bardzo zbliżona do dokładności uzyskanych przez pozostałe algorytmy.\ Zostało to przedstawione w \refsource{tabeli}{tab:acc-res}.\ Wyniki uzyskane przez algorytm \textit{Gaussian Naive Bayes - with GA} wynoszą $80,3004\%$.\ Są one zbliżone do dokładności uzyskanej przy użyciu algorytmu \textit{Two-Class Support Vectore Machine} ($80,3002\%$).\ Wskazuje to na to, że przy małej próbce danych treningowych, algorytm rozpoznał ponad $80\%$ danych, które znajdują się w danych testowych.\ Bazując na \textbf{tabelach}~\textbf{\ref{tab:trening-data-label}}~\textbf{\ref{tab:res-test}} różnica wielkości danych treningowych oraz testowych wyniosła:
+
+Analiza wyników wykazała, że algorytm utworzony w ramach pracy inżynierskiej~\cite{Blyszcz2022}, wypada słabo w porównaniu z algorytmami dostarczonymi przez platformę Microsoft Azure.\ Jego dokładność odstaje od dokładności uzyskanych przez pozostałe algorytmy.\ Zostało to przedstawione w \refsource{tabeli}{tab:acc-res}.\ Wyniki uzyskane przez algorytm \textit{Gaussian Naive Bayes - with GA} wynoszą $[72,4470\%; 73,8269\%; 76,2585\%]$.\ Wyniki te są słabsze o około 12-16 p.p. od wyniku uzyskanego przez algorytm DANet.\ Bazując na \textbf{tabelach}~\textbf{\ref{tab:trening-data-label}}~\textbf{\ref{tab:res-test}} różnica wielkości danych treningowych oraz testowych wyniosła:
 \begin{itemize}
     \item 225805 wierszy w danych treningowych
     \item 2830743 wierszy w danych testowych
 \end{itemize}
 
-Doświadczenie to pokazuje, że wciąż należy próbować tworzyć wydajniejsze i dokładniejsze rozwiązania, lecz nie zaprzecza faktu iż rozwiązania ogólnie dostępne są na bardzo wysokim poziomie.\ Uzyskano dokładność z zakresu $[80\%, 85\%]$ przy czym plik testowy był 12 krotnie większy od pliku treningowego.
+Doświadczenie to pokazuje, że wciąż należy próbować tworzyć wydajniejsze i dokładniejsze rozwiązania.\ Nie zaprzecza faktu iż rozwiązania ogólnie dostępne są często wystarczające i dużo tańsze w zastosowaniu i implementacji w porównaniu do całego procesu tworzenia rozwiązań autorskich.
