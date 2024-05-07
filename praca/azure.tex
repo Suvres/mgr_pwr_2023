@@ -1,7 +1,7 @@
 \chapter{Microsoft Azure}
-Jest to rozwiązanie chmurowe udostępnione przez firmę Microsoft.\ Zawiera wiele usług i narzędzi z zakresu zarządzania IT.\ W trakcie rejestracji na platformie nie jest pobierana opłata.\ Opłacie podlega jedynie wykorzystywanie konkretnych usług oraz zasobów platformy \textit{(ang: pay-per-use)}.
+Jest to rozwiązanie chmurowe udostępnione przez firmę Microsoft.\ Zawiera wiele usług i narzędzi z zakresu zarządzania IT.\ W trakcie rejestracji na platformie nie jest pobierana opłata.\ Opłacie podlega jedynie wykorzystywanie konkretnych usług oraz zasobów platformy. \ Jest to model \textit{płatność za użycie} \textit{(ang: pay-per-use)}.
 \\ \\
-Początki platformy sięgają 2008 roku, kiedy do użytku został oddany Windows Azure.\ Narzędzie było zbudowane z modułów Windows NT.\ Windows Azure zawierał ograniczoną liczbę usług w chmurze.\ W kolejnych latach rozbudowano Windows Azure o relacyjne bazy danych SQL Azure oraz obsługę języków takich jak Java czy PHP.\ W 2010 oddano po raz pierwszy platformę do użytku komercyjnego.\ W tej wersji dodano m.in.
+Początki platformy sięgają 2008 roku, kiedy do użytku został oddany Windows Azure.\ Narzędzie było zbudowane z modułów Windows NT.\ Windows Azure zawierał ograniczoną liczbę usług w chmurze.\ W kolejnych latach rozbudowano Windows Azure o relacyjne bazy danych SQL Azure oraz obsługę języków takich jak Java czy PHP.\ W 2010 oddano po raz pierwszy platformę do użytku komercyjnego.\ W tej wersji dodano między innymi:
 \begin{itemize}
 \item .NET Framework 4 związanego z Microsoft SQL Server,
 \item obsługę aplikacji pisanych w wielu językach (takich jak C\#, Java, PHP)
@@ -9,7 +9,7 @@ Początki platformy sięgają 2008 roku, kiedy do użytku został oddany Windows
 \end{itemize}
 Następnie wdrożono oprogramowanie typu open source oraz infrastrukturę definiowaną jako serwis \textit{(ang. Infrastructure-as-a-Service, IaaS)}.\ Zmieniono też nazwę na Microsoft Azure.\ W kolejnej generacji Microsoft zaadaptował rozwiązania Big Data do swojej platformy, umożliwiając korzystanie z języka \textit{R}, połączenie do Power BI, a także umożliwienie połączenia do rozwiązań end-to-end.
 \\ \\
-W czwartej generacji platformy, Microsoft skupił się na rozwiązaniach uczenia maszynowego oraz integracji z bazami danych, dzięki czemu powstało Azure Machine Learning Studio oraz Azure Machine Learning Operations (MLOps).
+W czwartej generacji platformy, Microsoft skupił się na rozwiązaniach uczenia maszynowego oraz integracji z bazami danych, dzięki czemu powstało Azure Machine Learning Studio (Azure ML) oraz Azure Machine Learning Operations (MLOps).
 \\ \\
 Obecnie platforma została wzbogacona o Kubernetesa, dzięki czemu konteneryzacja ułatwiła pracę z klastrami wirtualnymi.\ Wirtualne klastry pozwalają na wydajniejszy i wygodniejszy sposób zarządzania aplikacjami i usługami.\ Dodatkowo zostało udostępnione wiele kombinacji usług technologicznych:
 
@@ -18,12 +18,12 @@ Obecnie platforma została wzbogacona o Kubernetesa, dzięki czemu konteneryzacj
     \item interfejs jako usługa \trans{ang. Infrastucture-as-a-Service, IaaS},
     \item platforma jako usługa \trans{ang. Platfrom-as-a-Service, PaaS}.
 \end{itemize}
-Dzięki powyższym usprawnieniom Microsoft dostarcza platformę przyjazną użytkownikowi, która umożliwia korzystanie z ponad 200 różnych usług opartych m.in. o rozwiązania chmurowe i sztuczną inteligencję~\cite{Roosevelt2022, MicrosoftAzurec, Datashift}.
+Dzięki powyższym usprawnieniom Microsoft dostarcza platformę przyjazną użytkownikowi, która umożliwia korzystanie z ponad 200 różnych usług opartych między innymi o rozwiązania chmurowe i sztuczną inteligencję~\cite{Roosevelt2022, MicrosoftAzurec, Datashift}.
 
 \vfill
 \pagebreak
 
-\refsource{Rysunek}{fig:ms-azure} pokazuje obecny podział usług na platformie Microsoft Azure.\ Można wyróżnić wiele obszarów m.in. z zakresu bezpieczeństwa, zarządzania danymi, usług deweloperskich, analizy danych czy platformy aplikacji.
+\refsource{Rysunek}{fig:ms-azure} pokazuje obecny podział usług na platformie Microsoft Azure.\ Można wyróżnić wiele obszarów między innymi z zakresu bezpieczeństwa, zarządzania danymi, usług deweloperskich, analizy danych czy platformy aplikacji.
 
 \begin{figure}[H]
     \includegraphics[width=\textwidth]{images/ms_azure}
@@ -35,6 +35,8 @@ Dzięki powyższym usprawnieniom Microsoft dostarcza platformę przyjazną użyt
 Infrastruktura globalna Azure składa się z dwóch części: fizycznej infrastruktury oraz globalnej łączności.\ Infrastruktura fizyczna składa się z ponad 200 centrów danych rozmieszczonych na całym świecie, połączonych w jedną globalną sieć.\ Takie rozwiązanie umożliwia wysoką skalowalność i dostępność poszczególnych rozwiązań.\ Cały ruch sieciowy jest utrzymywany w prywatnej sieci Microsoft.\ Pozwala to na zachowanie informacji o adresach IP wewnątrz sieci, a co za tym idzie, informacje te nie trafiają do opinii publicznej~\cite{MicrosoftAzureb}.\\ \\
 
 Na swojej stronie internetowej Microsoft udostępnia wirtualną mapę, umożliwiającą zobaczenie aktualnej sieci Microsoftu oraz jej rozmieszczenie na globie ziemskim.\ Podgląd przedstawiono na \refsource{rysunku}{fig:azure-ic}.
+\vfill
+\pagebreak
 
 \begin{figure}[H]
     \begin{subfigure}[m]{0.7\textwidth}

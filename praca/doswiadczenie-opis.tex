@@ -19,7 +19,8 @@ Algorytmy opisano w kolejnych podrozdziałach.\ Doświadczenie przeprowadzono w 
 \section{Metodologia badawcza}
 \label{sec:met}
 W celu oceny jakości algorytmów klasyfikacji określono następujący protokół metodologii badawczej, który został przedstawiony w \refsource{tabeli}{tab:met-bad}.\ Na początku zdefiniowano problem badawczy, określono do niego pytania badawcze oraz postawiono przewidywane hipotezy.
-
+\vfill
+\pagebreak
 \begin{table}[H]
     \centering
     \captionsource{Metodologia badawcza}{Opracowanie własne}
@@ -433,7 +434,7 @@ Poniżej na \textbf{rysunkach:}~\textbf{\ref{fig:predict-result}},~\textbf{\ref{
 \end{landscape}
 
 
-\section{Analiza uzyskanych wyników}
+\section{Porównanie uzyskanych wyników między algorytmami}
 Aby uzyskać realne wyniki podczas porównywania poszczególnych algorytmów zastosowano zbiór treningowy opisany w \refsource{tabeli}{tab:trening-data-label} oraz zbiór testowy opisany w \refsource{tabeli}{tab:res-test}.
 
 \subsection{Wyniki dopasowania}
@@ -466,7 +467,7 @@ Najlepszy wynik dopasowania dla danych testowych uzyskał algorytm \textit{DANet
 \end{figure}
 
 \subsection{Wyniki precyzji}
-Najlepszy wynik precyzji dla danych testowych uzyskał algorytm \textit{DANet} ($87,4205\%$).\ Najgorszy wynik uzyskał algorytm \textit{Two-Class Decision Forest} ($84,1084\%$).\ Algorytm \textit{GAGNB} uzyskał wyniki: ($[85,0422\%; , 85,4461\%; 86,2876]$).\  Dla próby treningowej najlepszy wynik uzyskał \textit{Two-Class Boosted Decision Tree} ($100,00\%$), a najgorszy \textit{GAGNB} ($94,2285\%$).\ Wyniki precyzji dla poszczególnych prób zostały przedstawione w \refsource{tabeli}{tab:acc-prec} oraz na wykresie \refsource{wykresie}{fig:prec-res}.
+Najlepszy wynik precyzji dla danych testowych uzyskał algorytm \textit{DANet} ($87,4205\%$).\ Najgorszy wynik uzyskał algorytm \textit{Two-Class Decision Forest} ($84,1084\%$).\ Algorytm \textit{GAGNB} uzyskał wyniki: ($[85,0422\%; , 85,4461\%; 86,2876\%]$).\  Dla próby treningowej najlepszy wynik uzyskał \textit{Two-Class Boosted Decision Tree} ($100,00\%$), a najgorszy \textit{GAGNB} ($94,2285\%$).\ Wyniki precyzji dla poszczególnych prób zostały przedstawione w \refsource{tabeli}{tab:acc-prec} oraz na wykresie \refsource{wykresie}{fig:prec-res}.
 
 \begin{table}[H]
     \centering
@@ -667,7 +668,7 @@ Do analizy wyników wykorzystano protokół metodologii badawczej, który zosta�
 
     \begin{table}[H]
         \centering
-        \captionsource{Wyniki testu t Studenta dla poszczególnych prób testowych}{Opracowanie własne}
+        \captionsource{Wyniki testu t-Studenta dla poszczególnych prób testowych}{Opracowanie własne}
         \begin{tabular}{|c|c|r|c|P{30mm}|}
             \hline
             \multicolumn{5}{|c|}{$H_0$ Brak istotnych różnic między wynikami dla $\alpha = 0,05$} \\ \hline

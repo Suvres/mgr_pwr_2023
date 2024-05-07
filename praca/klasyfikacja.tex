@@ -5,9 +5,9 @@
 W uczeniu maszynowym klasyfikacja jest to metoda uczenia nadzorowanego, podczas której model próbuje przewidzieć etykietę obiektu na podstawie jego cech.\ Proces uczenia modelu klasyfikacji jest oparty o dwa zbiory, treningowy i testowy.\ Zbiór treningowy powinien być mniejszy od zbioru testowego.\ Po udanym procesie trenowania modelu następuje proces testowania, na podstawie którego wylicza się odpowiednie metryki pozwalające na ewaluacje modelu.\ W pracy magisterskiej wykorzystano zbiór danych, który posiada dwa typy etykiet [0, 1], dlatego też na tej podstawie zbudowano macierz pomyłek.
 
 \section{Metryki klasyfikacji danych}
-W trakcie ewaluacji algorytmu służącego do klasyfikacji wykorzystuje się metryki klasyfikacji.\ Służą one do przewidywanie etykiet klas na podstawie danych wejściowych.\ W zależności od ilości klas wyjściowych rozróżniamy klasyfikację binarną i wieloklasową.\ W klasyfikacji binarnej występują tylko dwie klasy wyjściowe, a w klasyfikacji wieloklasowej już tych klas jest więcej.\ Przykładem klasyfikacji binarnej jest np. wykrywanie niechcianych wiadomości w skrzynce mailowej.\ Wiadomość przychodzącą możemy określić jako 1 - \textit{,,pozytywną''}, bądź 0 - \textit{,,negatywną''}.\ Istnieje wiele sposobów na oceny klasyfikacji, do których zaliczamy m.in. dokładność, macierz pomyłek czy precyzję~\cite{Agrawal2024}.
+W trakcie ewaluacji algorytmu służącego do klasyfikacji wykorzystuje się metryki klasyfikacji.\ Służą one do przewidywanie etykiet klas na podstawie danych wejściowych.\ W zależności od ilości klas wyjściowych rozróżniamy klasyfikację binarną i wieloklasową.\ W klasyfikacji binarnej występują tylko dwie klasy wyjściowe, a w klasyfikacji wieloklasowej już tych klas jest więcej.\ Przykładem klasyfikacji binarnej jest np. wykrywanie niechcianych wiadomości w skrzynce mailowej.\ Wiadomość przychodzącą możemy określić jako 1 - \textit{,,pozytywną''}, bądź 0 - \textit{,,negatywną''}.\ Istnieje wiele sposobów na oceny klasyfikacji, do których zaliczamy między innymi dokładność, macierz pomyłek czy precyzję~\cite{Agrawal2024}.
 \\ \\
-Macierz pomyłek pokazuje jakie wyniki możemy otrzymać w procesie klasyfikacji.\ Macierz ta została przedstawiona w \refsource{tabeli}{tab:matrix-tn}.\ Jest to miara wydajności problemów klasyfikacji.
+Macierz pomyłek pokazuje jakie wyniki możemy otrzymać w procesie klasyfikacji.\ \refsource{Tabela}{tab:matrix-tn} obrazuje schemat macierzy pomyłek.\ Jest to miara wydajności problemów klasyfikacji.
 
 \begin{table}[H]
     \centering
@@ -32,7 +32,7 @@ Macierz pomyłek pokazuje jakie wyniki możemy otrzymać w procesie klasyfikacji
 Opierając się o macierz pomyłek można wyznaczyć następujące metryki:
 \begin{itemize}
     \item dokładność,
-    \item precyzja,
+    \item precyzję,
     \item czułość,
     \item F1
     \item swoistość
@@ -84,7 +84,7 @@ Krzywa ROC-AUC przedstawiona na \refsource{rysunku}{fig:roc-auc}, pozwala na oce
     \label{fig:roc-auc}
 \end{figure}
 
-Im większa jest wartość AUC tym lepsza wydajność modelu w rozróżnianiu klas pozytywnych i negatywnych.\ Wynik AUC jest z zakresu <0, 1>:
+Im większa jest wartość AUC tym lepsza wydajność modelu w rozróżnianiu klas pozytywnych i negatywnych.\ Wynik AUC jest z zakresu $[0, 1]$:
 \begin{itemize}
     \item AUC = 1 - klasyfikator idealny, który rozróżnia wszystkie punkty,
     \item 0,5 < AUC < 1 - klasyfikator prawie idealny, czyli z dużym prawdopodobieństwem sklasyfikuje poprawnie obiekty

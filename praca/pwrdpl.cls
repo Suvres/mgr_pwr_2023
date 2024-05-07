@@ -57,7 +57,7 @@
 \RequirePackage{amsfonts}
 \RequirePackage{amsmath}
 \RequirePackage{amsthm}
-
+\RequirePackage{tocloft}
 \RequirePackage{graphicx}
 \RequirePackage{rotating}
 \RequirePackage[usenames]{color}
@@ -175,6 +175,19 @@
 	% Obecna strona będzie mieć nr 5.
 	\setcounter{page}{3}
 }
+
+% =========================================================
+% SEC: konfigurowanie listy tabel i obrazów
+% =========================================================
+
+\setlength{\cftafterlottitleskip}{.1in}
+\setlength{\cftafterloftitleskip}{.1in}
+\setlength{\cftaftertoctitleskip}{.1in}
+
+\renewcommand*{\listfigurename}{Wykaz rysunków}
+\renewcommand*{\listtablename}{Wykaz tabel}
+\renewcommand{\contentsname}{Literatura}
+
 
 
 % =============================================================================
