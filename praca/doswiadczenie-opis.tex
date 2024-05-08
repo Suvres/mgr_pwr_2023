@@ -27,7 +27,7 @@ W celu oceny jakości algorytmów klasyfikacji określono następujący protokó
     \begin{tabular}{|L{\textwidth}|}
         \hline
         \textbf{Problem badawczy:}                                                                                                                     \\
-        Czy algorytm klasyfikacji danych utworzony w ramach pracy inżynierskiej może konkurować z rozwiązaniami dostępnymi w środowiskach komercyjnych \\ \hline
+        Czy algorytm klasyfikacji danych utworzony w ramach pracy inżynierskiej może konkurować z rozwiązaniami dostępnymi w środowiskach komercyjnych? \\ \hline
 
         \textbf{Pytania badawcze:}                                                                                                                     \\
         \begin{enumerate}
@@ -38,7 +38,7 @@ W celu oceny jakości algorytmów klasyfikacji określono następujący protokó
                 \item precyzja
                 \item czułość
                 \item F1
-                \item auc
+                \item AUC?
             \end{itemize}
         \end{enumerate}                                                                                                                                \\ \hline
 
@@ -134,7 +134,7 @@ Implementacja algorytmu w Azure Machine Learning zostałą przedstawiona na \ref
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.3\textwidth]{images/svm_pipe}
+    \includegraphics[width=0.4\textwidth]{images/svm_pipe}
     \captionsource{Potok zadań dla modelu \textit{Two-Class Support Vector Machine}}{Opracowanie własne}
     \label{fig:svm-pipe}
 \end{figure}
@@ -142,8 +142,9 @@ Implementacja algorytmu w Azure Machine Learning zostałą przedstawiona na \ref
 Jest to część potoku, która obrazuje schemat działania procesu trenowania i sprawdzania algorytmu.\ Pierwszy kafelek obrazuje model SVM, który jest podłączony do elementu odpowiadającego za trening modelu.\ Do tego samego miejsca sa podłączone dane treningowe.\ Po wykonaniu zadania trenowania następuje przejście do zadania oceniającego model.\ Do tego zadania podłączone są dane testowe.\ Przy pomocy danych testowych następuje ewaluacja modelu.\ Wyniki ewaluacji są przekazywane do zbiorczej tabeli.
 
 \subsection{Two-Class Boosted Decision Tree}
-Jest to algorytm drzewa decyzyjnego oparty o algorytm LightGBM.\ Dzięki zastosowaniu takiego podejścia algorytm działa szybciej oraz ma mniejszą złożoność obliczeniową.\ Algorytm ten działa na zasadzie doboru odpowiedniego liścia, zamiast jak w przypadku klasycznych algorytmów opartych na drzewie, wyboru odpowiedniej warstwy~\cite{LightGBM}.\ Sposób podejścia liściastego został ukazany na \refsource{schemacie}{fig:leaf}.
-
+Jest to algorytm drzewa decyzyjnego oparty o algorytm LightGBM.\ Dzięki zastosowaniu takiego podejścia algorytm działa szybciej oraz ma mniejszą złożoność obliczeniową.\ Algorytm ten działa na zasadzie doboru odpowiedniego liścia, zamiast jak w przypadku klasycznych algorytmów opartych na drzewie, wyboru odpowiedniej warstwy~\cite{LightGBM}.\ Sposób podejścia liściastego został ukazany na \refsource{schemacie}{fig:leaf}.\ Model wykorzystywany w Azure ML został ukazany na \refsource{rysunku}{fig:dt-pipe}.
+\vfill
+\pagebreak
 \begin{figure}[H]
     \begin{subfigure}[m]{\textwidth}
         \includegraphics[width=\textwidth]{images/level-wise}
@@ -155,25 +156,21 @@ Jest to algorytm drzewa decyzyjnego oparty o algorytm LightGBM.\ Dzięki zastoso
     \label{fig:leaf}
 \end{figure}
 
-Model wykorzystywany w Azure ML został ukazany na \refsource{rysunku}{fig:dt-pipe}.
-
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.3\textwidth]{images/dt_pipe}
+    \includegraphics[width=0.4\textwidth]{images/dt_pipe}
     \captionsource{Potok zadań dla modelu \textit{Two-Class Boosted Decision Tree}}{Opracowanie własne}
     \label{fig:dt-pipe}
 \end{figure}
 
 Potok jest zbudowany analogicznie do potoku opisanego w \refsource{podsekcji}{subsec:svm}.\ Do bloku treningowego został podłączony model wzmocnionego drzewa decyzyjnego.
-\vfill
-\pagebreak
 
 \subsection{Two-Class Decision Forest}
 Las decyzyjny to algorytm, którego wynik opiera się o agregację wyników wielu drzew decyzyjnych.\ Uzyskanie wyniku zależy od algorytmu trenowania lasu.\ Przykładowo w klasyfikacji losowym lasem wieloklasowym \trans{ang. Multi-class random forest classification}, każde drzewo głosuje na jedną klasę.\ Klasa, która zostanie wybrana większością głosów, zostaje uznana za wynikową~\cite{Google}.\ Model wykorzystany w Azure ML pokazano na \refsource{modelu}{fig:df-pipe}.
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.3\textwidth]{images/df_pipe}
+    \includegraphics[width=0.4\textwidth]{images/df_pipe}
     \captionsource{Potok zadań dla modelu \textit{Two-Class Decision Forest}}{Opracowanie własne}
     \label{fig:df-pipe}
 \end{figure}
@@ -185,7 +182,7 @@ Jest to sieć neuronowa, która składa się z warstwy wejściowej, trzech warst
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.3\textwidth]{images/nn_pipe}
+    \includegraphics[width=0.4\textwidth]{images/nn_pipe}
     \captionsource{Potok zadań dla modelu \textit{Two-Class Neural Network}}{Opracowanie własne}
     \label{fig:nn-pipe}
 \end{figure}
@@ -197,7 +194,7 @@ Jest to najprostsza odmiana sieci neuronowej, czyli pojedynczy perceptron, któr
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.3\textwidth]{images/ap_pipe}
+    \includegraphics[width=0.4\textwidth]{images/ap_pipe}
     \captionsource{Potok zadań dla modelu \textit{Two-Class Average Perceptron}}{Opracowanie własne}
     \label{fig:ap-pipe}
 \end{figure}
@@ -208,8 +205,8 @@ Potok jest zbudowany analogicznie do potoku opisanego w \refsource{podsekcji}{su
 Algorytm ten polega na połączeniu algorytmu genetycznego (GA) wraz z klasyfikatorem naiwnym Bayesa wykorzystującego rozkład Gaussa (GNB).\ Zadaniem algorytmu genetycznego jest znalezienie najistotniejszych cech w zbiorze tabelarycznym.\ Poszukiwane cechy powinny pozwolić na zmniejszenie wymiarowości danych oraz na zmniejszenie kosztów obsługi samego klasyfikatora.\ Co może zostać uzyskane późniejszych etapach testowania, ze względu na zmniejszoną ilość danych wymaganych do przetworzenia.\ GA wykorzystywał w metodzie \textbf{fitness} algorytm GNB w celu określenia dopasowania danych.\ Zadaniem GNB było znalezienie najlepszej dostępnej kombinacji cech, które pozwalały na uzyskanie najlepszego dopasowania~\cite{Blyszcz2022}.\ Model wykorzystywany w Azure ML różni się od gotowych modeli tym, że dołączono do niego bibliotekę napisaną w języku Python, która zawiera kod wykorzystywany w pracy inżynierskiej autora~\cite{Suvres2023}.
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.3\textwidth]{images/ga_pipe}
-    \captionsource{Potok zadań dla modelu}{Opracowanie własne}
+    \includegraphics[width=0.4\textwidth]{images/ga_pipe}
+    \captionsource{Potok zadań dla modelu \textit{Gaussian Naive Bayes - with GA}}{Opracowanie własne}
     \label{fig:ga-pipe}
 \end{figure}
 
@@ -221,8 +218,7 @@ Potok został stworzony przy wykorzystaniu 3 głównych elementów:
 \end{itemize}
 
 \subsection{DANet}
-Twórcy tego algorytmu wprowadzają dodatkową warstwę abstrakcyjną o nazwie ,,\textit{Abstract Layer}''.\ Warstwy te budują sieć o nazwie ,,\textit{Deep Abstract Network}'' (DANet).\ Zadanie dodatkowych warstw jest grupowanie cech w skorelowanych zbiorach.\ Zbiory te budują sieć powiązań między sobą w formie sieci semantycznej.\ Gdy sieć semantyczna jest zbudowana, to w ostatnim kroku wykonywana jest klasyfikacja w trzywarstwowej sieci perceptronów \trans{ang. Multilayer Perceptron network, MLP}~\cite{Chen2022, Danet}.\ Sposób działania przedstawiono na \refsource{schemacie}{fig:danet-abst}.
-
+Twórcy tego algorytmu wprowadzają dodatkową warstwę abstrakcyjną o nazwie ,,\textit{Abstract Layer}''.\ Warstwy te budują sieć o nazwie ,,\textit{Deep Abstract Network}'' (DANet).\ Zadanie dodatkowych warstw jest grupowanie cech w skorelowanych zbiorach.\ Zbiory te budują sieć powiązań między sobą w formie sieci semantycznej.\ Gdy sieć semantyczna jest zbudowana, to w ostatnim kroku wykonywana jest klasyfikacja w trzywarstwowej sieci perceptronów \trans{ang. Multilayer Perceptron network, MLP}~\cite{Chen2022, Danet}.\ Sposób działania przedstawiono na \refsource{schemacie}{fig:danet-abst}.\ Model znajdujący się z Azure ML został przedstawiony na \refsource{zdjęciu}{fig:danet-pipe}.
 
 \begin{figure}[H]
     \hfill
@@ -239,11 +235,9 @@ Twórcy tego algorytmu wprowadzają dodatkową warstwę abstrakcyjną o nazwie ,
     \label{fig:danet-abst}
 \end{figure}
 
-Model znajdujący się z Azure ML został przedstawiony na \refsource{zdjęciu}{fig:danet-pipe}.
-
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.3\textwidth]{images/danet}
+    \includegraphics[width=0.4\textwidth]{images/danet}
     \captionsource{Potok zadań dla modelu \textit{DANet}}{Opracowanie własne}
     \label{fig:danet-pipe}
 \end{figure}
@@ -259,7 +253,7 @@ Całe doświadczenie zostało odwzorowane w graficznym potoku narzędzia ,,\text
     \begin{figure}[H]
         \centering
         \includegraphics[height=0.9\textwidth]{images/pipeline}
-        \captionsource{Potok zadań}{Opracowanie własne}
+        \captionsource{Potok zadań wykorzystywany w przeprowadzonym doświadczeniu}{Opracowanie własne}
         \label{fig:pipeline}
     \end{figure}
 \end{landscape}
@@ -284,7 +278,7 @@ W pierwszym kroku do normalizacji danych wykorzystano język Python oraz bibliot
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.6\textwidth]{images/data_pipe}
-    \captionsource{Potok normalizacji danych}{Opracowanie własne}
+    \captionsource{Część potoku zajmująca się normalizacją danych}{Opracowanie własne}
     \label{fig:norm}
 \end{figure}
 
