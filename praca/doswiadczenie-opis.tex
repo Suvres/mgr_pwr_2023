@@ -89,7 +89,7 @@ Zbiór danych został przygotowany przez Kanadyjski Instytut Cyberbezpieczeństw
     \item port docelowy,
     \item długość pakietów.
 \end{enumerate}
-Zbiór pozwala na określenie czy ruch sieciowy jest życzliwy \trans{ang. BENING}, czy nieżyczliwy (różne możliwe formy ataku na sieć).\ Dodatkowo dane zostały podzielone na pięć dni roboczych: poniedziałek 3.07.2017 - piątek 7.07.2017.\ Dane z poniedziałku zawierają jedynie ruch życzliwy.\ W pozostałe dni zostały zasymulowane ataki na sieć komputerową~\cite{Blyszcz2022, unbkaggle}.
+Zbiór pozwala na określenie czy ruch sieciowy jest życzliwy \textit{(ang. BENING}, czy nieżyczliwy (różne możliwe formy ataku na sieć).\ Dodatkowo dane zostały podzielone na pięć dni roboczych: poniedziałek 3.07.2017 - piątek 7.07.2017.\ Dane z poniedziałku zawierają jedynie ruch życzliwy.\ W pozostałe dni zostały zasymulowane ataki na sieć komputerową~\cite{Blyszcz2022, unbkaggle}.
 
 
 \section{Algorytmy wykorzystane w doświadczeniu}
@@ -107,8 +107,8 @@ Algorytmy 1 - 5 są dostępne na platformie Microsoft Azure, natomiast algorytm 
 
 Charakterystyczną cechą tych algorytmów jest klasyfikacja ukierunkowana na 2 kategorie wejściowe.\ W tym wypadku są to kategorie ruchu sieciowego:
 \begin{itemize}
-    \item \textbf{BENIGN} \trans{pl. życzliwy},
-    \item \textbf{OTHER} \trans{pl. inne}, gdzie inne to pozostałe typy ruchu sieciowego.
+    \item \textbf{BENIGN} \textit{(pl. życzliwy)},
+    \item \textbf{OTHER} \textit{(pl. inne)}, gdzie inne to pozostałe typy ruchu sieciowego.
 \end{itemize}
 
 W kolejnych podrozdziałach pokrótce scharakteryzowano zastosowane rozwiązania.
@@ -166,7 +166,7 @@ Jest to algorytm drzewa decyzyjnego oparty o algorytm LightGBM.\ Dzięki zastoso
 Potok jest zbudowany analogicznie do potoku opisanego w \refsource{podsekcji}{subsec:svm}.\ Do bloku treningowego został podłączony model wzmocnionego drzewa decyzyjnego.
 
 \subsection{Two-Class Decision Forest}
-Las decyzyjny to algorytm, którego wynik opiera się o agregację wyników wielu drzew decyzyjnych.\ Uzyskanie wyniku zależy od algorytmu trenowania lasu.\ Przykładowo w klasyfikacji losowym lasem wieloklasowym \trans{ang. Multi-class random forest classification}, każde drzewo głosuje na jedną klasę.\ Klasa, która zostanie wybrana większością głosów, zostaje uznana za wynikową~\cite{Google}.\ Model wykorzystany w Azure ML pokazano na \refsource{modelu}{fig:df-pipe}.
+Las decyzyjny to algorytm, którego wynik opiera się o agregację wyników wielu drzew decyzyjnych.\ Uzyskanie wyniku zależy od algorytmu trenowania lasu.\ Przykładowo w klasyfikacji losowym lasem wieloklasowym \textit{(ang. Multi-class random forest classification)}, każde drzewo głosuje na jedną klasę.\ Klasa, która zostanie wybrana większością głosów, zostaje uznana za wynikową~\cite{Google}.\ Model wykorzystany w Azure ML pokazano na \refsource{modelu}{fig:df-pipe}.
 
 \begin{figure}[H]
     \centering
@@ -218,7 +218,7 @@ Potok został stworzony przy wykorzystaniu 3 głównych elementów:
 \end{itemize}
 
 \subsection{DANet}
-Twórcy tego algorytmu wprowadzają dodatkową warstwę abstrakcyjną o nazwie ,,\textit{Abstract Layer}''.\ Warstwy te budują sieć o nazwie ,,\textit{Deep Abstract Network}'' (DANet).\ Zadanie dodatkowych warstw jest grupowanie cech w skorelowanych zbiorach.\ Zbiory te budują sieć powiązań między sobą w formie sieci semantycznej.\ Gdy sieć semantyczna jest zbudowana, to w ostatnim kroku wykonywana jest klasyfikacja w trzywarstwowej sieci perceptronów \trans{ang. Multilayer Perceptron network, MLP}~\cite{Chen2022, Danet}.\ Sposób działania przedstawiono na \refsource{schemacie}{fig:danet-abst}.\ Model znajdujący się z Azure ML został przedstawiony na \refsource{zdjęciu}{fig:danet-pipe}.
+Twórcy tego algorytmu wprowadzają dodatkową warstwę abstrakcyjną o nazwie ,,\textit{Abstract Layer}''.\ Warstwy te budują sieć o nazwie ,,\textit{Deep Abstract Network}'' (DANet).\ Zadanie dodatkowych warstw jest grupowanie cech w skorelowanych zbiorach.\ Zbiory te budują sieć powiązań między sobą w formie sieci semantycznej.\ Gdy sieć semantyczna jest zbudowana, to w ostatnim kroku wykonywana jest klasyfikacja w trzywarstwowej sieci perceptronów \textit{(ang. Multilayer Perceptron network, MLP)}~\cite{Chen2022, Danet}.\ Sposób działania przedstawiono na \refsource{schemacie}{fig:danet-abst}.\ Model znajdujący się z Azure ML został przedstawiony na \refsource{zdjęciu}{fig:danet-pipe}.
 
 \begin{figure}[H]
     \hfill
@@ -446,8 +446,8 @@ Najlepszy wynik dopasowania dla danych testowych uzyskał algorytm \textit{DANet
             Two-Class Decision Forest & $99,9956\%$ & $84,8065\%$ & $84,8065\%$ & $84,8065\%$ \\
             Two-Class Neural Network & $99,8401\%$ & $87,5759\%$ & $87,5759\%$ & $87,5759\%$ \\
             Two-Class Average Perceptron & $99,3834\%$ & $87,4238\%$ & $87,4238\%$ & $87,4238\%$ \\
-            Gaussian Naive Base - with GA & \cellcolor{lightred}$91,4271\%$ & \cellcolor{lightred}$76,2585\%$ & \cellcolor{lightred}$73,8269\%$ & \cellcolor{lightred}$72,4470\%$ \\
             DANET & $99,8893\%$ & \cellcolor{lightgreen}$88,2494\%$ & \cellcolor{lightgreen}$88,2494\%$ & \cellcolor{lightgreen}$88,2494\%$ \\
+            Gaussian Naive Base - with GA & \cellcolor{lightred}$91,4271\%$ & \cellcolor{lightred}$76,2585\%$ & \cellcolor{lightred}$73,8269\%$ & \cellcolor{lightred}$72,4470\%$ \\
         \end{NiceTabular}%
     }
     \label{tab:acc-res}
@@ -475,8 +475,8 @@ Najlepszy wynik precyzji dla danych testowych uzyskał algorytm \textit{DANet} (
             Two-Class Decision Forest & $99,9898\%$ & \cellcolor{lightred}$84,1083\%$ & \cellcolor{lightred}$84,1083\%$ & \cellcolor{lightred}$84,1083\%$ \\
             Two-Class Neural Network & $99,9231\%$ & $86,9136\%$ & $86,9136\%$ & $86,9136\%$ \\
             Two-Class Average Perceptron & $99,8510\%$ & $87,1205\%$ & $87,1205\%$ & $87,1205\%$ \\
-            Gaussian Naive Base - with GA & \cellcolor{lightred}$94,2285\%$ & $85,4461\%$ & $85,0422\%$ & $86,2876\%$ \\
             DANET & $99,8568\%$ & \cellcolor{lightgreen}$87,4205\%$ & \cellcolor{lightgreen}$87,4205\%$ & \cellcolor{lightgreen}$87,4205\%$ \\
+            Gaussian Naive Base - with GA & \cellcolor{lightred}$94,2285\%$ & $85,4461\%$ & $85,0422\%$ & $86,2876\%$ \\
         \end{NiceTabular}%
     }
     \label{tab:acc-prec}
@@ -484,7 +484,7 @@ Najlepszy wynik precyzji dla danych testowych uzyskał algorytm \textit{DANet} (
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=\textwidth]{images/prec_2_wyk}
+    \includegraphics[width=\textwidth]{images/prec-res}
     \captionsource{Precyzja algorytmów}{Opracowanie własne}
     \label{fig:prec-res}
 \end{figure}
@@ -505,8 +505,8 @@ Najlepszy wynik czułości dla danych testowych uzyskał algorytm \textit{Two-Cl
             Two-Class Decision Forest & \cellcolor{lightgreen}$100,0000\%$ & $99,9673\%$ & $99,9673\%$ & $99,9673\%$ \\
             Two-Class Neural Network & $99,7073\%$ & $99,5112\%$ & $99,5112\%$ & $99,5112\%$ \\
             Two-Class Average Perceptron & $98,7229\%$ & $98,9698\%$ & $98,9698\%$ & $98,9698\%$ \\
-            Gaussian Naive Base - with GA & \cellcolor{lightred}$85,4275\%$ & \cellcolor{lightred}$84,8940\%$ & \cellcolor{lightred}$81,7923\%$ & \cellcolor{lightred}$78,0986\%$ \\
             DANET & $99,8874\%$ & $99,7154\%$ & $99,7154\%$ & $99,7154\%$ \\
+            Gaussian Naive Base - with GA & \cellcolor{lightred}$85,4275\%$ & \cellcolor{lightred}$84,8940\%$ & \cellcolor{lightred}$81,7923\%$ & \cellcolor{lightred}$78,0986\%$ \\
         \end{NiceTabular}%
     }
     \label{tab:acc-rec}
@@ -535,8 +535,8 @@ Najlepszy wynik F1 dla danych testowych uzyskał algorytm \textit{DANet} ($93,16
             Two-Class Decision Forest & $99,9949\%$ & $91,3546\%$ & $91,3546\%$ & $91,3546\%$ \\
             Two-Class Neural Network & $99,8151\%$ & $92,7867\%$ & $92,7867\%$ & $92,7867\%$ \\
             Two-Class Average Perceptron & $99,2837\%$ & $92,6679\%$ & $92,6679\%$ & $92,6679\%$ \\
-            Gaussian Naive Base - with GA & \cellcolor{lightred}$89,6124\%$ & \cellcolor{lightred}$85,1692\%$ & \cellcolor{lightred}$83,3856\%$ & \cellcolor{lightred}$81,9892\%$ \\
             DANET & $99,8721\%$ & \cellcolor{lightgreen}$93,1640\%$ & \cellcolor{lightgreen}$93,1640\%$ & \cellcolor{lightgreen}$93,1640\%$ \\
+            Gaussian Naive Base - with GA & \cellcolor{lightred}$89,6124\%$ & \cellcolor{lightred}$85,1692\%$ & \cellcolor{lightred}$83,3856\%$ & \cellcolor{lightred}$81,9892\%$ \\
         \end{NiceTabular}%
     }
     \label{tab:acc-f1}
@@ -564,8 +564,8 @@ Najlepszy wynik precyzji dla danych testowych uzyskał algorytm \textit{Two-Clas
             Two-Class Decision Forest & \cellcolor{lightgreen}$100,0000\%$ & \cellcolor{lightgreen}$91,1249\%$ & \cellcolor{lightgreen}$91,1249\%$ & \cellcolor{lightgreen}$91,1249\%$ \\
             Two-Class Neural Network & $99,9974\%$ & $73,3927\%$ & $73,3927\%$ & $73,3927\%$ \\
             Two-Class Average Perceptron & $99,9762\%$ & $75,8459\%$ & $75,8459\%$ & $75,8459\%$ \\
-            Gaussian Naive Base - with GA & \cellcolor{lightred}$90,7169\%$ & \cellcolor{lightred}$62,9762\%$ & \cellcolor{lightred}$61,5753\%$ & \cellcolor{lightred}$63,7542\%$ \\
             DANET & $99,9969\%$ & $70,3542\%$ & $70,3542\%$ & $70,3542\%$ \\
+            Gaussian Naive Base - with GA & \cellcolor{lightred}$90,7169\%$ & \cellcolor{lightred}$62,9762\%$ & \cellcolor{lightred}$61,5753\%$ & \cellcolor{lightred}$63,7542\%$ \\
         \end{NiceTabular}%
     }
     \label{tab:acc-auc}

@@ -15,11 +15,14 @@ echo -ne "\033]0;▶LaTEX compilation ("$PWD")\007"
 
 for x in *.tex
 do
-	if head -n 1 "$x" | grep -q "documentclass"
+	if cat $x | grep -q "documentclass"
 	then
 		main=$x
+		echo $x
+	  cat $x > _tex/$x
+  else
+	  cat $x | sed 's/ [ ]*/ /g;s/ \([a-zA-Z0-9]\) / \1~ /g' > _tex/$x
 	fi
-	cat $x | sed 's/ [ ]*/ /g;s/ \([a-zA-Z0-9]\) / \1~ /g' > _tex/$x
 
 done
 
@@ -32,7 +35,10 @@ done
 cd _others
 for x in *
 do
-	cp $x ../_tex/$x
+  echo $x
+  if [ -d $x ]; then
+    cp $x ../_tex/
+  fi
 done
 
 cd ..
@@ -44,15 +50,15 @@ then
 	exit 2
 fi
 
-cp ./pwrdpl.cls ./_tex/
+cp ./*.sty ./_tex/
 cd _tex;
 ln -s ../images images
-
+ln -s ../Dictionaries Dictionaries
 
 main=$(basename $main .tex)
 pdflatex $main && biber $main && pdflatex $main && pdflatex $main;
 
-cp main.pdf ../main.pdf
+cp Dyplom.pdf ../Dyplom.pdf
 cd ..
 
 rm -rf _tex

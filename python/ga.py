@@ -146,7 +146,7 @@ def run_evolution(
 
     population, weights = population_sorted_fun(population, fitness_func)
 
-    return population, i
+    return population[0]
 
 
 def ga_simple(dataset1, dataset2):
@@ -155,7 +155,7 @@ def ga_simple(dataset1, dataset2):
     # TODO do zmiany ilość iteracji na 1000
     generations_limit = 1000
     
-    run_evolution(
+    genome = run_evolution(
         populate_func=partial(
             generate_population, size=10, columns=columns
         ),
@@ -164,7 +164,10 @@ def ga_simple(dataset1, dataset2):
         ),
         generation_limit=generations_limit,
     )
-    columns = np.append(columns, "Label")
+    logical_genome = [i == 1 for i in genome]
 
+    columns = np.append(columns[logical_genome], "Label")
+
+    print(columns.size)
     print(columns)
     return columns

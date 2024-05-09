@@ -26,19 +26,21 @@ def simple_gnb(dataset: pd.DataFrame, dataset_test: pd.DataFrame):
     nb.fit(x, y)
 
     y_pred = nb.predict(x_test)
-    y_prob = nb.predict_proba(x_test)[:, 1]
     
     acc = accuracy_score(y_test, y_pred)
     prec = precision_score(y_test, y_pred)
     rec = recall_score(y_test, y_pred)
     f1 = 2 * prec * rec / (rec + prec)
-    auc = roc_auc_score(y_test, y_prob)
+    auc = roc_auc_score(y_test, y_pred)
     
-    return pd.DataFrame({
+    data = pd.DataFrame({
         'model': ['Gaussian Naive Base - with GA'],
         'accuracy': [acc],
         'precision': [prec],
         'recall': [rec],
         'f1': [f1],
         'auc': [auc]
-    }, dtype=np.float)
+    })
+
+    print(data)
+    return data
