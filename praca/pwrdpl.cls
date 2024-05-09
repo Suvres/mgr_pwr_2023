@@ -158,7 +158,10 @@
 
 	\end{center}
 	\vspace{\fill}
-	\noindent{\small{Słowa kluczowe: 3-6 słów}}
+	\noindent{\small{Słowa kluczowe: Klasyfikacja danych, Sieci neuronowe, Platformy Chmurowe, Microsoft Azure, Azure Machine Learning Studio (Azure ML)}}
+
+%	\noindent{\small{Data Classification, Neural Networks, Cloud Platforms, Microsoft Azure, Azure Machine Learning Studio (Azure ML)}}
+
 	\vspace*{6mm}
 	\hrule
 	\vspace*{1mm}
