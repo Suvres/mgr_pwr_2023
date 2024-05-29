@@ -5,7 +5,7 @@
 W uczeniu maszynowym klasyfikacja jest to metoda uczenia nadzorowanego, podczas której model próbuje przewidzieć etykietę obiektu na podstawie jego cech.\ Proces uczenia modelu klasyfikacji jest oparty o dwa zbiory, treningowy i testowy.\ Zbiór treningowy powinien być mniejszy od zbioru testowego.\ Po udanym procesie trenowania modelu następuje proces testowania, na podstawie którego wylicza się odpowiednie metryki pozwalające na ewaluacje modelu.\ W pracy magisterskiej wykorzystano zbiór danych, który posiada dwa typy etykiet [0, 1], dlatego też na tej podstawie zbudowano macierz pomyłek.
 
 \section{Metryki klasyfikacji danych}
-W trakcie ewaluacji algorytmu służącego do klasyfikacji wykorzystuje się metryki klasyfikacji.\ Służą one do przewidywanie etykiet klas na podstawie danych wejściowych.\ W zależności od ilości klas wyjściowych rozróżniamy klasyfikację binarną i wieloklasową.\ W klasyfikacji binarnej występują tylko dwie klasy wyjściowe, a w klasyfikacji wieloklasowej już tych klas jest więcej.\ Przykładem klasyfikacji binarnej jest np. wykrywanie niechcianych wiadomości w skrzynce mailowej.\ Wiadomość przychodzącą możemy określić jako 1 - \textit{,,pozytywną''}, bądź 0 - \textit{,,negatywną''}.\ Istnieje wiele sposobów na oceny klasyfikacji, do których zaliczamy między innymi dokładność, macierz pomyłek czy precyzję~\cite{Agrawal2024}.
+W trakcie ewaluacji algorytmu służącego do klasyfikacji wykorzystuje się metryki klasyfikacji.\ Służą one do przewidywania etykiet klas na podstawie danych wejściowych.\ W zależności od ilości klas wyjściowych rozróżniamy klasyfikację binarną i wieloklasową.\ W klasyfikacji binarnej występują tylko dwie klasy wyjściowe, a w klasyfikacji wieloklasowej już tych klas jest więcej.\ Przykładem klasyfikacji binarnej jest np. wykrywanie niechcianych wiadomości w skrzynce mailowej.\ Wiadomość przychodzącą możemy określić jako 1 - \textit{,,pozytywną''}, bądź 0 - \textit{,,negatywną''}.\ Istnieje wiele sposobów na oceny klasyfikacji, do których zaliczamy między innymi dokładność, macierz pomyłek czy precyzję~\cite{Agrawal2024}.
 \\ \\
 Macierz pomyłek pokazuje jakie wyniki możemy otrzymać w procesie klasyfikacji.\ \refsource{Tabela}{tab:matrix-tn} obrazuje schemat macierzy pomyłek.\ Jest to miara wydajności problemów klasyfikacji.
 
@@ -23,10 +23,10 @@ Macierz pomyłek pokazuje jakie wyniki możemy otrzymać w procesie klasyfikacji
 \end{table}
     Wyróżniamy 4 rodzaje rezultatów:
     \begin{itemize}
-        \item  \textbf{TP} - prawdziwie pozytywny - przewidywano pozytywny wynik i otrzymano pozytywny wynik,
-        \item \textbf{FN} - fałszywie negatywny - przewidywano negatywny wynik, a otrzymano pozytywny wynik,
-        \item \textbf{FP} - fałszywie pozytywny - przewidywano pozytywny wynik, a otrzymano negatywny wynik,
-        \item \textbf{TN} - prawdziwie negatywny - przewidywano negatywny wynik i otrzymano negatywny wynik.
+        \item  \textbf{TP} (\textit{prawdziwie pozytywny}) -- przewidywano pozytywny wynik i otrzymano pozytywny wynik,
+        \item \textbf{FN} (\textit{fałszywie negatywny}) -- przewidywano negatywny wynik, a otrzymano pozytywny wynik,
+        \item \textbf{FP} (\textit{fałszywie pozytywny}) -- przewidywano pozytywny wynik, a otrzymano negatywny wynik,
+        \item \textbf{TN} (\textit{prawdziwie negatywny}) -- przewidywano negatywny wynik i otrzymano negatywny wynik.
     \end{itemize}
 
 Opierając się o macierz pomyłek można wyznaczyć następujące metryki:
@@ -36,7 +36,7 @@ Opierając się o macierz pomyłek można wyznaczyć następujące metryki:
     \item czułość,
     \item F1
     \item swoistość
-    \item ROC - AUC~\cite{Agrawal2024}
+    \item ROC-AUC~\cite{Agrawal2024}
 \end{itemize}
 
 \subsection{Dokładność}
@@ -86,8 +86,8 @@ Krzywa ROC-AUC przedstawiona na \refsource{rysunku}{fig:roc-auc}, pozwala na oce
 
 Im większa jest wartość AUC tym lepsza wydajność modelu w rozróżnianiu klas pozytywnych i negatywnych.\ Wynik AUC jest z zakresu $[0, 1]$:
 \begin{itemize}
-    \item AUC = 1 - klasyfikator idealny, który rozróżnia wszystkie punkty,
-    \item 0,5 < AUC < 1 - klasyfikator prawie idealny, czyli z dużym prawdopodobieństwem sklasyfikuje poprawnie obiekty
-    \item AUC = 0,5 - klasyfikator losowy, oznacza to, że nie ma pewności czy klasyfikator jest w stanie rozpoznać cechy, czy może przypisuje je losowo,
-    \item AUC < 0,5 - klasyfikator gorszy niż klasyfikator losowy~\cite{Algolytics, Agrawal2024}.
+    \item AUC = 1 -- klasyfikator idealny, który rozróżnia wszystkie punkty,
+    \item 0,5 < AUC < 1 -- klasyfikator prawie idealny, czyli z dużym prawdopodobieństwem sklasyfikuje poprawnie obiekty
+    \item AUC = 0,5 -- klasyfikator losowy, oznacza to, że nie ma pewności czy klasyfikator jest w stanie rozpoznać cechy, czy może przypisuje je losowo,
+    \item AUC < 0,5 -- klasyfikator gorszy niż klasyfikator losowy~\cite{Algolytics, Agrawal2024}.
 \end{itemize}

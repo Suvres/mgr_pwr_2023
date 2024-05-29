@@ -20,7 +20,7 @@ Uczenie maszynowe (\textit {ang. Machine Learning, ML}) to dziedzina nauki nad a
 \end{figure}
 
 \subsection{Uczenie nienadzorowane}
-W przypadku uczenia nienadzorowanego algorytm ma sam znaleźć czy występują jakieś wzorce. W porównaniu do uczenia nadzorowanego, tu nie stosuje się zbioru oznaczonego.\ Metodę wykorzystuje się w pracy z danymi, których nie da się zdefiniować np. przy detekcji anomalii, szukaniu wzorców.\ Pozwala to między innymi na segmentację grup czy wykrywanie anormalnych zachowań np zwiększonego zużycia prądu spowodowanego uszkodzeniem urządzenia elektrycznego.\ Wśród algorytmów uczenia nienadzorowanego wyróżniamy dwie główne metody: K-średnie, klasteryzacja.\ Schemat uczenia nienadzorowanego poprzez klasteryzację jest pokazany na \refsource{rysunku}{fig:unspervised}~\cite{AiScience, Mahesh2018}.
+W przypadku uczenia nienadzorowanego algorytm ma sam znaleźć czy występują jakieś wzorce. W porównaniu do uczenia nadzorowanego, tu nie stosuje się zbioru oznaczonego.\ Metodę wykorzystuje się w pracy z danymi, których nie da się zdefiniować np. przy detekcji anomalii, szukaniu wzorców.\ Pozwala to między innymi na segmentację grup czy wykrywanie anormalnych zachowań np. zwiększonego zużycia prądu spowodowanego uszkodzeniem urządzenia elektrycznego.\ Wśród algorytmów uczenia nienadzorowanego wyróżniamy dwie główne metody: K-średnie, klasteryzacja.\ Schemat uczenia nienadzorowanego poprzez klasteryzację jest pokazany na \refsource{rysunku}{fig:unspervised}~\cite{AiScience, Mahesh2018}.
 
 \begin{figure}[H]
     \centering
@@ -40,7 +40,7 @@ W procesie uczenia nadzorowanego stosuje się zbiór posiadający etykiety.\ Mod
     \label{fig:spervised}
 \end{figure}
 
-Algorytmy uczenia nadzorowanego można zastosować między innymi do weryfikacji ruchu sieciowego w celu określenia czy ruch bezpieczny, przez co można to zastosować w systemach wykrywania intruzów (\textit{ang. Intrusion Detection System, IDS}).\ Algorytmy wchodzące w skład uczenia nadzorowanego to między innymi klasyfikator Naiwny Bayesa, drzewo decyzyjne, maszyna wektorów nośnych~\cite{AiScience, Mahesh2018}.
+Algorytmy uczenia nadzorowanego można zastosować między innymi do weryfikacji ruchu sieciowego w celu określenia czy ruch bezpieczny, przez co można to zastosować w systemach wykrywania intruzów (\textit{ang. Intrusion Detection System, IDS}).\ Algorytmy wchodzące w skład uczenia nadzorowanego to między innymi Klasyfikator Naiwny Bayesa, drzewo decyzyjne, maszyna wektorów nośnych~\cite{AiScience, Mahesh2018}.
 
 \subsection{Uczenie częściowo nadzorowane}
 Jednym ze szczególnych przypadków połączenia uczenia nadzorowanego i nienadzorowanego jest uczenie częściowo nadzorowane.\ Wykorzystywane jest w sytuacjach, kiedy istnieje zbyt duży zbiór danych, którego oznaczenie wiązałoby się z zbyt dużymi kosztami czasowymi i finansowymi.\ Wtedy etykietyzowana jest mała próbka danych, która służy do utworzenia modelu.\ Na podstawie takiego modelu oznacza się pozostały zbiór danych.\ Takie rozwiązanie stosuje się między innymi w bankowości, klasyfikowaniu stron internetowych poprzez wyszukiwanie treści na stronie i kategoryzowaniu ich oraz wyznaczaniu trasy GPS~\cite{semiLinkedin, Mahesh2018}.
@@ -82,7 +82,7 @@ Sieć ta potrafi się dostosowywać do danych wejściowych tak, aby uzyskać odp
 
 Sieci neuronowe możemy podzielić na wiele rodzajów. Wśród nich możemy wyróżnić między innymi:
 \begin{itemize}
-    \item \textbf{perceptron} - jest to najstarszy i najprostszy przykład sieci neuronowej złożonej z jednego perceptronu (neuronu).\ Został przedstawiony na \refsource{rysunku}{fig:neuron}.\ Stosuje się go jako punkt wyjściowy do tworzenia bardziej złożonych modeli ANN opartych o warstwy złożone z perceptronów.\ Może on też posłużyć do klasyfikacji binarnej, w której oczekujemy jako wyniku 1 albo 0.
+    \item \textbf{perceptron} -- jest to najstarszy i najprostszy przykład sieci neuronowej złożonej z jednego perceptronu (neuronu).\ Został przedstawiony na \refsource{rysunku}{fig:neuron}.\ Stosuje się go jako punkt wyjściowy do tworzenia bardziej złożonych modeli ANN opartych o warstwy złożone z perceptronów.\ Może on też posłużyć do klasyfikacji binarnej, w której oczekujemy jako wyniku 1 albo 0.
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\textwidth]{images/neuron}
@@ -96,25 +96,25 @@ Sieci neuronowe możemy podzielić na wiele rodzajów. Wśród nich możemy wyr�
     \label{fig:neuron}
 \end{figure}
 
-    \item \textbf{sieci wielowarstwowe perceptronowe} - jest to sieć złożona z wielu warstw połączonych ze sobą neuronów, najprostszy model sieci zaprezentowany na \refsource{rysunku}{fig:neural-network}.\ Składa się z warstwy wejściowej, warstw (jednej bądź wielu) ukrytych oraz warstwy wyjściowej.\ W neurony w tej sieci w porównaniu do perceptronów, mają funkcję aktywacyjną sigmoidalną, ze względu na rozwiązywanie problemów nieliniowych (posiadających więcej rozwiązań niż dwa 0/1).\ Można je zastosować na przykład do klasyfikacji danych;
-    \item \textbf{sieci konwolucyjne (CNN)} - są to sieci służące do rozpoznawania obrazów, nazwa wzięła się od wykonywanej na obrazie operacji konwolucji (splotu).\ Sieci te posiadają dodatkowe warstwy konwolucyjne oraz spłaszczania, które pozwalają zamienić reprezentację obrazu w pojedyncze wartości;
-    \item \textbf{sieci rekurencyjne} - charakteryzują się pętlą zwrotną w warstwie ukrytej.\ Mogą być wykorzystane do generowania tekstu, tłumaczen maszynowych, a także na przykład przewidywania cen rynkowych;
-    \item \textbf{sieci samoorganizujące się} - wykorzystuje uczenie nienadzorowane.\ Składają się jedynie z warstwy wejściowej i wyjściowej.\ Zaś cechą charakterystyczną jest to, że neurony określające podobne klasy znajdują się obok siebie.\ Sieci te mogą być wykorzystywane do podziału klientów na odpowiednie grupy bądź do wskazania, jakim klientom zaproponować karty kredytowe~\cite{IBMNetwork, BartosSOM}.
+    \item \textbf{sieci wielowarstwowe perceptronowe} -- jest to sieć złożona z wielu warstw połączonych ze sobą neuronów, najprostszy model sieci zaprezentowany na \refsource{rysunku}{fig:neural-network}.\ Składa się z warstwy wejściowej, warstw (jednej bądź wielu) ukrytych oraz warstwy wyjściowej.\ W neurony w tej sieci w porównaniu do perceptronów, mają funkcję aktywacyjną sigmoidalną, ze względu na rozwiązywanie problemów nieliniowych (posiadających więcej rozwiązań niż dwa 0/1).\ Można je zastosować na przykład do klasyfikacji danych;
+    \item \textbf{sieci konwolucyjne (CNN)} -- są to sieci służące do rozpoznawania obrazów, nazwa wzięła się od wykonywanej na obrazie operacji konwolucji (splotu).\ Sieci te posiadają dodatkowe warstwy konwolucyjne oraz spłaszczania, które pozwalają zamienić reprezentację obrazu w pojedyncze wartości;
+    \item \textbf{sieci rekurencyjne} -- charakteryzują się pętlą zwrotną w warstwie ukrytej.\ Mogą być wykorzystane do generowania tekstu, tłumaczeń maszynowych, a także na przykład przewidywania cen rynkowych;
+    \item \textbf{sieci samoorganizujące się} -- wykorzystuje uczenie nienadzorowane.\ Składają się jedynie z warstwy wejściowej i wyjściowej.\ Zaś cechą charakterystyczną jest to, że neurony określające podobne klasy znajdują się obok siebie.\ Sieci te mogą być wykorzystywane do podziału klientów na odpowiednie grupy bądź do wskazania, jakim klientom zaproponować karty kredytowe~\cite{IBMNetwork, BartosSOM}.
 \end{itemize}
 
 \section{Głębokie uczenie}
 \label{sec:deeplearn}
-Głębokie sieci neuronowe \textit{(ang. Deep Neural Network, DNN)} to podkategoria uczenia maszynowego.\ Koncentruje się na strukturyzacji uczenia maszynowego, gdzie komputery mogą rozpoznawać wzorce i podejmować decyzje jak ludzie.\ DNN to udoskonalenie podstawowych sieci neuronowych, więc część typów sieci opisanych w \refsource{sekcji}{sec:snn} będzie odnosić się do DNN.\ Do takich sieci należy CNN.\ Głębokie sieci neuronowe to dynamicznie rozwijająca się dziedzina.\ Jest to możliwe dzięki zwiększających się możliwościach technicznych urządzeń, które udostępniają coraz więcej mocy obliczeniowej w coraz niższej cenie.\ Dodatkowy wpływ miały coraz większe zbiory danych, który koszt przechowywania stale maleje.\ Aby uzyskać odpowiednie wyniki z DNN należy wykorzystać ogromne zbiory danych, ponieważ jakoś rezultatu jest proporcjonalna do ilości dostarczonych danych.
+Głębokie sieci neuronowe \textit{(ang. Deep Neural Network, DNN)} to podkategoria uczenia maszynowego.\ Koncentruje się na strukturyzacji uczenia maszynowego, gdzie komputery mogą rozpoznawać wzorce i podejmować decyzje jak ludzie.\ DNN to udoskonalenie podstawowych sieci neuronowych, więc część typów sieci opisanych w \refsource{sekcji}{sec:snn} będzie odnosić się do DNN.\ Do takich sieci należy CNN.\ Głębokie sieci neuronowe to dynamicznie rozwijająca się dziedzina.\ Jest to możliwe dzięki zwiększających się możliwościach technicznych urządzeń, które udostępniają coraz więcej mocy obliczeniowej w coraz niższej cenie.\ Dodatkowy wpływ miały coraz większe zbiory danych, których koszt przechowywania stale maleje.\ Aby uzyskać odpowiednie wyniki z DNN należy wykorzystać ogromne zbiory danych, ponieważ jakość rezultatu jest proporcjonalna do ilości dostarczonych danych.
 \\ \\
 Głębokie sieci neuronowe posiadają wiele warstw z milionami sztucznych neuronów połączonych ze sobą.\ Duża ilość warstw pozwala na zoptymalizowanie procesu rozwiązywania bardziej złożonych problemów.\ Sieci jednowarstwowe mogą tworzyć podstawowe prognozy.\ Sieci głębokie są zdolne do do rozumienia złożonych wzorców oraz relacji przy jednoczesnym zwiększeniu dokładności predykcyjnej~\cite{Crabtree}.\ \refsource{Rysunek}{fig:deep-learn} przedstawia przykład sieci głębokiej.\ Taka sieć składa z warstwy wejściowej, wielu warstw ukrytych i warstwy wyjściowej.
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.5\textwidth]{images/deep-neural-network}
+    \includegraphics[width=0.75\textwidth]{images/deep-neural-network}
     \begin{itemize}
         \item[] $i_x \  \forall x \in [1, 2, 3]$: dane wejściowe
-        \item[] $v_x \ \forall x \in [11, 12, 13, 21, 22, 23, 31, 32, 33]$: neurony w warstwie ukrytej
-        \item[] $o_x \ \forall x \in [1, 2]$: dane wyjściowe
+        \item[] $v_x \ \forall x \in [11, 12, 13, 14, 21, 22, 23, 24, 31, 32, 33, 34, 41, 42, 43, 44, 51, 52, 53, 54]$: neurony w warstwie ukrytej
+        \item[] $o_x \ \forall x \in [1, 2, 3]$: dane wyjściowe
     \end{itemize}
     \captionsource{Schemat prostej głębokiej sieci neuronowej}{Opracowanie własne}
     \label{fig:deep-learn}

@@ -1,8 +1,8 @@
 \chapter{Podsumowanie pracy inżynierskiej}
-W ramach pracy inżynierskiej opracowano autorski algorytm \textit{Gaussian Naive Bayes - with GA} (\textit{GAGNB}), wykorzystujący algorytm genetyczny oraz klasyfikator Naiwny Bayesa.\ Do badań wykorzystano dane uzyskane z Instytutu Cyberbezpieczeństwa, działającego przy Uniwersytecie Nowy Brunszwik.\ Dane użyto też w niniejszej pracy dyplomowej.\ Zbiór danych został opisany w \refsource{sekcji}{sec:data}.\
+W ramach pracy inżynierskiej opracowano autorski algorytm \textit{Gaussian Naive Bayes - with GA} (\textit{GAGNB}), wykorzystujący algorytm genetyczny oraz algorytm Gaussian Naive Bayes (\textit{GNB}).\ Do badań wykorzystano dane uzyskane z Instytutu Cyberbezpieczeństwa, działającego przy Uniwersytecie Nowy Brunszwik.\ Dane użyto też w niniejszej pracy dyplomowej.\ Zbiór danych został opisany w \refsource{sekcji}{sec:data}.\
 
 \section{Algorytm genetyczny}
-Algorytm genetyczny, który został zastosowany w GAGNB, to algorytm, który przeszukuje przestrzeń alternatywnych rozwiązań dla danego problemu, by znaleźć najlepszy
+Algorytm genetyczny jest metodą optymalizacji.\ Może być zastosowany w procesie klasyfikacji danych.\ Algorytm ten przeszukuje przestrzeń alternatywnych rozwiązań dla danego problemu, by znaleźć najlepszy
 wynik~\cite{Kusiak2021}.\ Działanie algorytmu genetycznego jest inspirowane między innymi ewolucją biologiczną, stąd też pochodzą nazwy kolejnych kroków, które zostały przedstawione na \refsource{rysunku}{fig:GA}.
 
 
@@ -34,17 +34,17 @@ wynik~\cite{Kusiak2021}.\ Działanie algorytmu genetycznego jest inspirowane mi�
 \end{figure}
 Poniżej opisano przebieg algorytmu genetycznego.\ Proces składa się z 6 etapów:
 \begin{enumerate}
-    \item \textbf{Inicjalizacja} - metoda inicjująca populację losowych osobników, wykorzystywanych podczas obliczeń;
-    \item \textbf{Ewaluacja} - etap sprawdzenia jakości wygenerowanych danych;
-    \item \textbf{Selekcja} - część algorytmu skupiająca się na wybraniu $n$ najlepszych rozwiązań, które przejdą do następnej populacji;
-    \item \textbf{Rekombinacja} - element tworzący nową populację na bazie poprzedniej populacji.\ Wykorzystuje do tego mechanizm krzyżowania rodziców;
-    \item \textbf{Mutacja} - metoda wprowadzająca zmianę w $n$ losowych miejsc w genomie;
-    \item \textbf{Zamiana} - miejsce wymiany starej populacji na nową~\cite{Sastry2005, Kusiak2021, Blyszcz2022}.
+    \item \textbf{Inicjalizacja} -- metoda inicjująca populację losowych osobników, wykorzystywanych podczas obliczeń;
+    \item \textbf{Ewaluacja} -- etap sprawdzenia jakości wygenerowanych danych;
+    \item \textbf{Selekcja} -- część algorytmu skupiająca się na wybraniu $n$ najlepszych rozwiązań, które przejdą do następnej populacji;
+    \item \textbf{Rekombinacja} -- element tworzący nową populację na bazie poprzedniej populacji.\ Wykorzystuje do tego mechanizm krzyżowania rodziców;
+    \item \textbf{Mutacja} -- metoda wprowadzająca zmianę w $n$ losowych miejsc w genomie;
+    \item \textbf{Zamiana} -- miejsce wymiany starej populacji na nową~\cite{Sastry2005, Kusiak2021, Blyszcz2022}.
 \end{enumerate}
 
 
-\section{Klasyfikator Naiwny Bayesa}
-Autorski algorytm GAGNB w etapie ewaluacji wykorzystuje naiwny klasyfikator Bayesa oparty o rozkład normalny Gaussa (\textit{ang. Gaussian Naive Bayes, GNB}).\ Równanie klasyfikatora oparte jest o twierdzenie Bayesa.\ Opisuje ono prawdopodobieństwo wystąpienia zdarzenia na podstawie znajomości warunków zdarzenia~\cite{Joyce2003}.\ Twierdzenie zostało przedstawione na \refsource{równaniu}{math:bayes}.
+\section{Gaussian Naive Bayes}
+GNB to implementacja klasyfikacji naiwnej Bayesa opartej o rozkład normalny Gaussa.\ Algorytm ten wykorzystuje \textbf{równanie}~\ref{math:gnb} oparte o \textbf{równanie}~\ref{math:bayes}.\ Równanie klasyfikatora opisuje prawdopodobieństwo wystąpienia zdarzenia na podstawie znajomości warunków zdarzenia~\cite{Joyce2003}.\ Twierdzenie zostało przedstawione na \refsource{równaniu}{math:bayes}.
 
 \begin{equation}\label{math:bayes}
 P(H|X) = \frac{P(X|H) P(H)}{P(X)}
@@ -53,22 +53,23 @@ gdzie:
 \begin{itemize}
     \item $H$ oraz $X$ są różnymi zdarzeniami;
     \item $P(X) \neq 0$;
-    \item $P(H|X)$ - prawdopodobieństwo wystąpienia zdarzenia $H$ jeśli zdarzenie $X$ jest prawdziwe;
-    \item $P(X|H)$ - prawdopodobieństwo wystąpienia zdarzenia $X$ jeśli zdarzenie $H$ jest prawdziwe;
+    \item $P(H|X)$ -- prawdopodobieństwo wystąpienia zdarzenia $H$ jeśli zdarzenie $X$ jest prawdziwe;
+    \item $P(X|H)$ -- prawdopodobieństwo wystąpienia zdarzenia $X$ jeśli zdarzenie $H$ jest prawdziwe;
     \item $P(H)$ oraz $P(X)$ to prawdopodobieństwa zaobserwowane, bez żadnych warunków~\cite{Leung2007}.
 \end{itemize}
-
-Równanie wykorzystujące rozkład normalny Gaussa zostało przedstawione na \refsource{równaniu}{math:gnb}.\ W kodzie wykorzystano bibliotekę scikit-learn~\cite{scikit-learn}.\ Posiada ona implementację GNB.
 
 \begin{equation}\label{math:gnb}
     P(x_{i}|y) = \frac{1}{\sqrt{2\pi\sigma_{k}}}e^{-\frac{(x_{i}-\mu_{k})^2}{2\sigma_{k}^{2}}}
 \end{equation}
 gdzie:
 \begin{itemize}
-        \item[] \textbf{$\sigma_{k}^{2}$} - wariancja danych w kolumnie,
-        \item[] \textbf{$\sigma_{k}$} - odchylenie standardowe danych w kolumnie,
-        \item[] \textbf{$\mu$} - średnia wartość w kolumnie~\cite{Leung2007}.
+        \item[] \textbf{$\sigma_{k}^{2}$} -- wariancja danych w kolumnie,
+        \item[] \textbf{$\sigma_{k}$} -- odchylenie standardowe danych w kolumnie,
+        \item[] \textbf{$\mu$} -- średnia wartość w kolumnie~\cite{Leung2007}.
 \end{itemize}
+
+\section{Autorski algorytm opracowany w ramach pracy inżynierskiej}
+Algorytm opracowany w ramach pracy inżynierskiej wykorzystuje w procesie optymalizacji algorytm genetyczny oraz GNB.\ Celem algorytmu była redukcja wymiarowości danych tabelarycznych, by zwiększyć jakość klasyfikacji danych.\ Uzyskano to poprzez wyznaczenie najistotniejszych cech zbioru.\ Algorytm genetyczny zastosowano w celu przygotowania zbioru prawdopodobnie istotnych kolumn poprzez oznaczenie ich pozycji za pomocą ciągu cyfr 0 i 1.  \ Kolumny oznaczone cyfrą 1 były brane pod uwagę w procesie ewaluacji za pomocą GNB.\ Cały proces trwał maksymalnie 1000 iteracji lub do momentu uzyskania minimum $90\%$ dopasowania.\ Wynikiem działania autorskiego algorytmu jest zbiór kolumn istotnych w procesie klasyfikowania.
 
 \section{Systemy wykrywania intruzów}
 Systemy wykrywania intruzów \textit{(ang. Intrusion Detection System, IDS)} powstały w celu monitorowania sieci komputerowych.\ Ich zadaniem jest, rozpoznawanie szkodliwego ruchu sieciowego, detekcja zagrożeń oraz reagowanie na występujące anomalie.\ Klasyczny model wykrywania intruzów zawiera:
@@ -83,8 +84,10 @@ IDS dzielimy na dwie grupy rozróżnione na podstawie sposobu działania.\ Są t
     \item \textbf{systemy oparte na sieci komputerowej} \textit{(ang. Network Base Intrusion Detection System, NIST)} - służą do wykrywania szkodliwej aktywności w sieci~\cite{Blyszcz2022, SazzadulHoque2012, chawlaashima}.
 \end{itemize}
 
-\section{Autorski algorytm opracowany w ramach pracy inżynierskiej}
-Celem algorytmu była redukcja wymiarowości danych tabelarycznych, by zwiększyć jakość klasyfikacji danych.\ Uzyskano to poprzez wyznaczenie najistotniejszych cech zbioru.\ Algorytm genetyczny zastosowano w celu przygotowania zbioru prawdopodobnie istotnych kolumn poprzez oznaczenie ich pozycji za pomocą ciągu cyfr 0 i 1.  \ Kolumny oznaczone cyfrą 1 były brane pod uwagę w procesie ewaluacji za pomocą klasyfikatora Naiwnego Bayesa. Cały proces trwał maksymalnie 1000 iteracji lub do momentu uzyskania minimum $90\%$ dopasowania.\ Wynikiem działania autorskiego algorytmu jest zbiór kolumn istotnych w procesie klasyfikowania.W celu sprawdzenia jakości  własnego rozwiązania wykorzystano następujące metody statystyczne:
+
+\section{Omówienie  wyników uzyskanych w pracy inżynierskiej}
+W celu sprawdzenia jakości własnego rozwiązania wykorzystano następujące metody statystyczne:
+
 \begin{itemize}
     \item \textbf{metoda ANOVA} - analiza wariancji,
     \item \textbf{współczynnik korelacji Pearsona} - współczynnik określający zależność liniową pomiędzy zmiennymi losowymi,
@@ -134,5 +137,5 @@ Analiza wykazała, że wyniki uzyskane za pomocą metod statystycznych były gor
     \label{fig:mond}
 \end{figure}
 
-Analizując powyższe wyniki można zauważyć, że najwyższe dopasowanie uzyskał autorski algorytm a najniższe - zbiór kolumn wyznaczonych metodą współczynników korelacji Pearsona.\ Świadczy to o wysokiej jakości, opracowanego w pracy inżynierskiej, algorytmu.
+Analizując powyższe wyniki można zauważyć, że najwyższe dopasowanie uzyskał autorski algorytm a najniższe - zbiór kolumn wyznaczonych metodą współczynników korelacji Pearsona.\ Świadczy to o wysokiej jakości opracowanego w pracy inżynierskiej algorytmu.
 
