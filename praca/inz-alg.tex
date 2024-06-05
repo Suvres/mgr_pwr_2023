@@ -1,9 +1,9 @@
-\chapter{Podsumowanie pracy inżynierskiej}
-W ramach pracy inżynierskiej opracowano autorski algorytm \textit{Gaussian Naive Bayes - with GA} (\textit{GAGNB}), wykorzystujący algorytm genetyczny oraz algorytm Gaussian Naive Bayes (\textit{GNB}).\ Do badań wykorzystano dane uzyskane z Instytutu Cyberbezpieczeństwa, działającego przy Uniwersytecie Nowy Brunszwik.\ Dane użyto też w niniejszej pracy dyplomowej.\ Zbiór danych został opisany w \refsource{sekcji}{sec:data}.\
+\chapter{Streszczenie pracy inżynierskiej}
+W ramach pracy inżynierskiej opracowano autorski algorytm \textit{Gaussian Naive Bayes - with GA} (\textit{GAGNB}), wykorzystujący algorytm genetyczny oraz algorytm Gaussian Naive Bayes (\textit{GNB}). Do badań wykorzystano dane uzyskane z Instytutu Cyberbezpieczeństwa, działającego przy Uniwersytecie Nowy Brunszwik. Dane użyto też w niniejszej pracy dyplomowej. Zbiór danych został opisany w \refsource{sekcji}{sec:data}.
 
 \section{Algorytm genetyczny}
-Algorytm genetyczny jest metodą optymalizacji.\ Może być zastosowany w procesie klasyfikacji danych.\ Algorytm ten przeszukuje przestrzeń alternatywnych rozwiązań dla danego problemu, by znaleźć najlepszy
-wynik~\cite{Kusiak2021}.\ Działanie algorytmu genetycznego jest inspirowane między innymi ewolucją biologiczną, stąd też pochodzą nazwy kolejnych kroków, które zostały przedstawione na \refsource{rysunku}{fig:GA}.
+Algorytm genetyczny jest metodą optymalizacji. Może być zastosowany w procesie klasyfikacji danych. Algorytm ten przeszukuje przestrzeń alternatywnych rozwiązań dla danego problemu, by znaleźć najlepszy
+wynik~\cite{Kusiak2021}. Działanie algorytmu genetycznego jest inspirowane między innymi ewolucją biologiczną, stąd też pochodzą nazwy kolejnych kroków, które zostały przedstawione na \refsource{rysunku}{fig:GA}.
 
 
 \begin{figure}[H]
@@ -32,19 +32,20 @@ wynik~\cite{Kusiak2021}.\ Działanie algorytmu genetycznego jest inspirowane mi�
     \captionsource{Schemat algorytmu genetycznego}{Opracowanie własne na podstawie:~\cite{Sastry2005,Kusiak2021, Blyszcz2022}}
     \label{fig:GA}
 \end{figure}
-Poniżej opisano przebieg algorytmu genetycznego.\ Proces składa się z 6 etapów:
+Poniżej opisano przebieg algorytmu genetycznego. Proces składa się z 6 etapów:
 \begin{enumerate}
     \item \textbf{Inicjalizacja} -- metoda inicjująca populację losowych osobników, wykorzystywanych podczas obliczeń;
     \item \textbf{Ewaluacja} -- etap sprawdzenia jakości wygenerowanych danych;
     \item \textbf{Selekcja} -- część algorytmu skupiająca się na wybraniu $n$ najlepszych rozwiązań, które przejdą do następnej populacji;
-    \item \textbf{Rekombinacja} -- element tworzący nową populację na bazie poprzedniej populacji.\ Wykorzystuje do tego mechanizm krzyżowania rodziców;
+    \item \textbf{Rekombinacja} -- element tworzący nową populację na bazie poprzedniej populacji. Wykorzystuje do tego mechanizm krzyżowania rodziców;
     \item \textbf{Mutacja} -- metoda wprowadzająca zmianę w $n$ losowych miejsc w genomie;
     \item \textbf{Zamiana} -- miejsce wymiany starej populacji na nową~\cite{Sastry2005, Kusiak2021, Blyszcz2022}.
 \end{enumerate}
 
 
 \section{Gaussian Naive Bayes}
-GNB to implementacja klasyfikacji naiwnej Bayesa opartej o rozkład normalny Gaussa.\ Algorytm ten wykorzystuje \textbf{równanie}~\ref{math:gnb} oparte o \textbf{równanie}~\ref{math:bayes}.\ Równanie klasyfikatora opisuje prawdopodobieństwo wystąpienia zdarzenia na podstawie znajomości warunków zdarzenia~\cite{Joyce2003}.\ Twierdzenie zostało przedstawione na \refsource{równaniu}{math:bayes}.
+GNB to implementacja klasyfikacji naiwnej Bayesa opartej o rozkład normalny Gaussa.
+Twierdzenie Bayesa zostało przedstawione na \refsource{równaniu}{math:bayes}. Algorytm GNB wykorzystuje funkcję gęstości prawdopodobieństwa do wyliczenia szansy na przynależność od odpowiedniej klasy. Funkcja została opisana za pomocą \refsource{równania}{math:gnb}~\cite{Joyce2003}.
 
 \begin{equation}\label{math:bayes}
 P(H|X) = \frac{P(X|H) P(H)}{P(X)}
@@ -59,26 +60,39 @@ gdzie:
 \end{itemize}
 
 \begin{equation}\label{math:gnb}
-    P(x_{i}|y) = \frac{1}{\sqrt{2\pi\sigma_{k}}}e^{-\frac{(x_{i}-\mu_{k})^2}{2\sigma_{k}^{2}}}
+    P(x_{i}|y) = \frac{1}{\sqrt{2\pi\sigma_{y}}}e^{-\frac{(x_{i}-\mu_{y})^2}{2\sigma_{y}^{2}}}
 \end{equation}
 gdzie:
 \begin{itemize}
-        \item[] \textbf{$\sigma_{k}^{2}$} -- wariancja danych w kolumnie,
-        \item[] \textbf{$\sigma_{k}$} -- odchylenie standardowe danych w kolumnie,
-        \item[] \textbf{$\mu$} -- średnia wartość w kolumnie~\cite{Leung2007}.
+        \item[] \textbf{$x_{i}$} -- wartość znajdująca się w kolumnie
+        \item[] \textbf{$y$} -- reprezentacja klasy w danej kolumnie
+        \item[] \textbf{$\sigma_{y}^{2}$} -- wariancja danych w kolumnie dla danej klasy,
+        \item[] \textbf{$\sigma_{y}$} -- odchylenie standardowe danych w kolumnie dla danej klasy,
+        \item[] \textbf{$\mu_{y}$} -- średnia wartość w kolumnie dla danej klasy~\cite{Leung2007}.
 \end{itemize}
 
+Algorytm \textit{Gaussian Naive Bayes} wykorzystuje funkcję gęstości prawdopodobieństwa do obliczania $P(x_i)$ dla każdej klasy. Algorytm po wyliczeniu wszystkich składowych wymnaża poszczególne wartości dla danej klasy (\refsource{równanie}{math:gnb2}). Jednakże z powodu częstego mnożenia bardzo małych liczb może powodować błędy z zaokrąglaniem podczas obliczeń komputerowych, dlatego stosuje się sumę logarytmów poszczególnych wartości (\refsource{równanie}{math:gnb3}). Klasa z najwyższym wynikiem prawdopodobieństwa jest klasą wynikową~\cite{GNBalg}.
+
+\begin{equation}\label{math:gnb2}
+P(x_1,x_2,x_3,...,x_n|A) = \prod_{i=1}^{n}P(x_i|A)
+\end{equation}
+
+\begin{equation}\label{math:gnb3}
+log(P(x_1,x_2,x_3,...,x_n|A)) = \sum_{i=1}^{n}log(P(x_i|A))
+\end{equation}
+
+
 \section{Autorski algorytm opracowany w ramach pracy inżynierskiej}
-Algorytm opracowany w ramach pracy inżynierskiej wykorzystuje w procesie optymalizacji algorytm genetyczny oraz GNB.\ Celem algorytmu była redukcja wymiarowości danych tabelarycznych, by zwiększyć jakość klasyfikacji danych.\ Uzyskano to poprzez wyznaczenie najistotniejszych cech zbioru.\ Algorytm genetyczny zastosowano w celu przygotowania zbioru prawdopodobnie istotnych kolumn poprzez oznaczenie ich pozycji za pomocą ciągu cyfr 0 i 1.  \ Kolumny oznaczone cyfrą 1 były brane pod uwagę w procesie ewaluacji za pomocą GNB.\ Cały proces trwał maksymalnie 1000 iteracji lub do momentu uzyskania minimum $90\%$ dopasowania.\ Wynikiem działania autorskiego algorytmu jest zbiór kolumn istotnych w procesie klasyfikowania.
+Algorytm opracowany w ramach pracy inżynierskiej wykorzystuje w procesie optymalizacji algorytm genetyczny oraz GNB. Celem algorytmu była redukcja wymiarowości danych tabelarycznych, by zwiększyć jakość klasyfikacji danych. Uzyskano to poprzez wyznaczenie najistotniejszych cech zbioru. Algorytm genetyczny zastosowano w celu przygotowania zbioru prawdopodobnie istotnych kolumn poprzez oznaczenie ich pozycji za pomocą ciągu cyfr 0 i 1.  \ Kolumny oznaczone cyfrą 1 były brane pod uwagę w procesie ewaluacji za pomocą GNB. Cały proces trwał maksymalnie 1000 iteracji lub do momentu uzyskania minimum $90\%$ dopasowania. Wynikiem działania autorskiego algorytmu jest zbiór kolumn istotnych w procesie klasyfikowania.
 
 \section{Systemy wykrywania intruzów}
-Systemy wykrywania intruzów \textit{(ang. Intrusion Detection System, IDS)} powstały w celu monitorowania sieci komputerowych.\ Ich zadaniem jest, rozpoznawanie szkodliwego ruchu sieciowego, detekcja zagrożeń oraz reagowanie na występujące anomalie.\ Klasyczny model wykrywania intruzów zawiera:
+Systemy wykrywania intruzów \textit{(ang. Intrusion Detection System, IDS)} powstały w celu monitorowania sieci komputerowych. Ich zadaniem jest, rozpoznawanie szkodliwego ruchu sieciowego, detekcja zagrożeń oraz reagowanie na występujące anomalie. Klasyczny model wykrywania intruzów zawiera:
 \begin{itemize}
 \item \textbf{źródła informacji} służące do określenia czy doszło do ataku,
 \item \textbf{moduł analizujący} przetwarzający zebrane dane,
 \item \textbf{moduł odpowiadający} reagujący w określony sposób na wykryte anomalie~\cite{SazzadulHoque2012, Bacer, Blyszcz2022}.
 \end{itemize}
-IDS dzielimy na dwie grupy rozróżnione na podstawie sposobu działania.\ Są to:
+IDS dzielimy na dwie grupy rozróżnione na podstawie sposobu działania. Są to:
 \begin{itemize}
     \item \textbf{systemy oparte na hoście} \textit{(ang. Host Base Intrusion Detection System, HIDS)} - służą do zbierania informacji o zdarzeniach systemowych i wykrywania luk w systemach komputerowych,
     \item \textbf{systemy oparte na sieci komputerowej} \textit{(ang. Network Base Intrusion Detection System, NIST)} - służą do wykrywania szkodliwej aktywności w sieci~\cite{Blyszcz2022, SazzadulHoque2012, chawlaashima}.
@@ -94,7 +108,7 @@ W celu sprawdzenia jakości własnego rozwiązania wykorzystano następujące me
     \item \textbf{współczynnik korelacji rang Spearmana} - współczynnik korelacji rang Pearsona, dla danych po ustaleniu rang.
 \end{itemize}
 
-Analiza wykazała, że wyniki uzyskane za pomocą metod statystycznych były gorsze niż autorskiego algorytmu.\ Rezultaty badań przedstawia \refsource{tabela}{tab:monday-workingHours} oraz \refsource{wykres}{fig:mond}.\
+Analiza wykazała, że wyniki uzyskane za pomocą metod statystycznych były gorsze niż autorskiego algorytmu. Rezultaty badań przedstawia \refsource{tabela}{tab:monday-workingHours} oraz \refsource{wykres}{fig:mond}.\
 
 \begin{table}[H]
     \centering
@@ -118,7 +132,7 @@ Analiza wykazała, że wyniki uzyskane za pomocą metod statystycznych były gor
     \label{tab:monday-workingHours}
 \end{table}
 
-\refsource{Wykres}{fig:mond}.\ przedstawia wyniki dokładności.\ Zastosowano następujące opisy:
+\refsource{Wykres}{fig:mond}. przedstawia wyniki dokładności. Zastosowano następujące opisy:
 \begin{itemize}
     \item \textbf{GNB} - dopasowanie danych w podstawowym zbiorze;
     \item \textbf{GA\_GNB 1} - dopasowanie danych w pierwszej próbie wykorzystania algorytmu autora;
@@ -137,5 +151,5 @@ Analiza wykazała, że wyniki uzyskane za pomocą metod statystycznych były gor
     \label{fig:mond}
 \end{figure}
 
-Analizując powyższe wyniki można zauważyć, że najwyższe dopasowanie uzyskał autorski algorytm a najniższe - zbiór kolumn wyznaczonych metodą współczynników korelacji Pearsona.\ Świadczy to o wysokiej jakości opracowanego w pracy inżynierskiej algorytmu.
+Analizując powyższe wyniki można zauważyć, że najwyższe dopasowanie uzyskał autorski algorytm a najniższe - zbiór kolumn wyznaczonych metodą współczynników korelacji Pearsona. Świadczy to o wysokiej jakości opracowanego w pracy inżynierskiej algorytmu.
 
