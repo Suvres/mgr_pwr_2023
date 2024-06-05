@@ -44,8 +44,10 @@ Poniżej opisano przebieg algorytmu genetycznego. Proces składa się z 6 etapó
 
 
 \section{Gaussian Naive Bayes}
-GNB to implementacja klasyfikacji naiwnej Bayesa opartej o rozkład normalny Gaussa.
-Twierdzenie Bayesa zostało przedstawione na \refsource{równaniu}{math:bayes}. Algorytm GNB wykorzystuje funkcję gęstości prawdopodobieństwa do wyliczenia szansy na przynależność od odpowiedniej klasy. Funkcja została opisana za pomocą \refsource{równania}{math:gnb}~\cite{Joyce2003}.
+GNB to implementacja klasyfikatora naiwnego Bayesa opartego o rozkład normalny Gaussa.
+Twierdzenie Bayesa zostało przedstawione na \refsource{równaniu}{math:bayes}.
+\vfill
+\pagebreak
 
 \begin{equation}\label{math:bayes}
 P(H|X) = \frac{P(X|H) P(H)}{P(X)}
@@ -58,7 +60,8 @@ gdzie:
     \item $P(X|H)$ -- prawdopodobieństwo wystąpienia zdarzenia $X$ jeśli zdarzenie $H$ jest prawdziwe;
     \item $P(H)$ oraz $P(X)$ to prawdopodobieństwa zaobserwowane, bez żadnych warunków~\cite{Leung2007}.
 \end{itemize}
-
+\ \\
+Algorytm GNB wykorzystuje funkcję gęstości prawdopodobieństwa do wyliczenia szansy na przynależność od odpowiedniej klasy. Funkcja została opisana za pomocą \refsource{równania}{math:gnb}~\cite{Joyce2003}.
 \begin{equation}\label{math:gnb}
     P(x_{i}|y) = \frac{1}{\sqrt{2\pi\sigma_{y}}}e^{-\frac{(x_{i}-\mu_{y})^2}{2\sigma_{y}^{2}}}
 \end{equation}
@@ -70,17 +73,18 @@ gdzie:
         \item[] \textbf{$\sigma_{y}$} -- odchylenie standardowe danych w kolumnie dla danej klasy,
         \item[] \textbf{$\mu_{y}$} -- średnia wartość w kolumnie dla danej klasy~\cite{Leung2007}.
 \end{itemize}
-
-Algorytm \textit{Gaussian Naive Bayes} wykorzystuje funkcję gęstości prawdopodobieństwa do obliczania $P(x_i)$ dla każdej klasy. Algorytm po wyliczeniu wszystkich składowych wymnaża poszczególne wartości dla danej klasy (\refsource{równanie}{math:gnb2}). Jednakże z powodu częstego mnożenia bardzo małych liczb może powodować błędy z zaokrąglaniem podczas obliczeń komputerowych, dlatego stosuje się sumę logarytmów poszczególnych wartości (\refsource{równanie}{math:gnb3}). Klasa z najwyższym wynikiem prawdopodobieństwa jest klasą wynikową~\cite{GNBalg}.
+\ \\
+Algorytm \textit{Gaussian Naive Bayes} wykorzystuje funkcję gęstości prawdopodobieństwa do obliczania $P(x_i)$ dla każdej klasy. Algorytm po wyliczeniu wszystkich składowych wymnaża poszczególne wartości dla danej klasy (\refsource{równanie}{math:gnb2}).
 
 \begin{equation}\label{math:gnb2}
 P(x_1,x_2,x_3,...,x_n|A) = \prod_{i=1}^{n}P(x_i|A)
 \end{equation}
+\ \\
+Jednakże z powodu częstego mnożenia bardzo małych liczb może powodować błędy z zaokrąglaniem podczas obliczeń komputerowych, dlatego stosuje się sumę logarytmów poszczególnych wartości (\refsource{równanie}{math:gnb3}). Klasa z najwyższym wynikiem prawdopodobieństwa jest klasą wynikową~\cite{GNBalg}.
 
 \begin{equation}\label{math:gnb3}
 log(P(x_1,x_2,x_3,...,x_n|A)) = \sum_{i=1}^{n}log(P(x_i|A))
 \end{equation}
-
 
 \section{Autorski algorytm opracowany w ramach pracy inżynierskiej}
 Algorytm opracowany w ramach pracy inżynierskiej wykorzystuje w procesie optymalizacji algorytm genetyczny oraz GNB. Celem algorytmu była redukcja wymiarowości danych tabelarycznych, by zwiększyć jakość klasyfikacji danych. Uzyskano to poprzez wyznaczenie najistotniejszych cech zbioru. Algorytm genetyczny zastosowano w celu przygotowania zbioru prawdopodobnie istotnych kolumn poprzez oznaczenie ich pozycji za pomocą ciągu cyfr 0 i 1.  \ Kolumny oznaczone cyfrą 1 były brane pod uwagę w procesie ewaluacji za pomocą GNB. Cały proces trwał maksymalnie 1000 iteracji lub do momentu uzyskania minimum $90\%$ dopasowania. Wynikiem działania autorskiego algorytmu jest zbiór kolumn istotnych w procesie klasyfikowania.
