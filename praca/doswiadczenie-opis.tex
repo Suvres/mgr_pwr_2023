@@ -44,9 +44,9 @@ W celu oceny jakości algorytmów klasyfikacji określono następujący protokó
 
         \textbf{Hipotezy:}                                                                                                                             \\
         \begin{enumerate}
-            \item Nie ma istotnej różnicy pomiędzy wynikami próby testowej i treningowej nr. 1.
             \item Nie ma istotnej różnicy pomiędzy wynikami prób testowych.
-            \item Wynik dopasowania algorytmów w \textit{Próbie 1} nie przekracza dolnej granicy przedziału ufności dla próby testowej
+            \item Nie ma istotnej różnicy pomiędzy wynikami próby testowej i treningowej.
+            \item Wynik dopasowania algorytmów w nie przekracza dolnej granicy przedziału ufności dla próby testowej
         \end{enumerate}                                                                                                                                \\ \hline
     \end{tabular}
     \label{tab:met-bad}
@@ -104,13 +104,13 @@ W trakcie eksperymentu zastosowano różne algorytmy klasyfikacji danych, by mó
     \item DANet.
 \end{enumerate}
 Algorytmy 1 - 5 są dostępne na platformie Microsoft Azure, natomiast algorytm 6 to rozwiązanie udostępnione przez jednego z autorów pracy ,,\textit{DANets: Deep Abstract Networks for Tabular Data Classification and Regression}''~\cite{Chen2022} na platformie Github~\cite{Danet}.
-
+\\ \\
 Charakterystyczną cechą tych algorytmów jest klasyfikacja ukierunkowana na 2 kategorie wejściowe. W tym wypadku są to kategorie ruchu sieciowego:
 \begin{itemize}
     \item \textbf{BENIGN} \textit{(pl. życzliwy)},
     \item \textbf{OTHER} \textit{(pl. inne)}, gdzie inne to pozostałe typy ruchu sieciowego.
 \end{itemize}
-
+\ \\
 W kolejnych podrozdziałach pokrótce scharakteryzowano zastosowane rozwiązania.
 
 \subsection{Two-Class Support Vector Machine}\label{subsec:svm}
@@ -129,7 +129,7 @@ Algorytm SVM ma za zadanie znaleźć hiperpłaszczyznę w przestrzeni K-wymiarow
     \captionsource{Schemat SVM}{\cite{Statsoft}}
     \label{fig:svm}
 \end{figure}
-
+\ \\
 Implementacja algorytmu w Azure Machine Learning zostałą przedstawiona na \refsource{rysunku}{fig:svm-pipe}.
 
 \begin{figure}[H]
@@ -162,7 +162,7 @@ Jest to algorytm drzewa decyzyjnego oparty o algorytm LightGBM. Dzięki zastosow
     \captionsource{Potok zadań dla modelu \textit{Two-Class Boosted Decision Tree}}{Opracowanie własne}
     \label{fig:dt-pipe}
 \end{figure}
-
+\ \\
 Potok jest zbudowany analogicznie do potoku opisanego w \refsource{podsekcji}{subsec:svm}. Do bloku treningowego został podłączony model wzmocnionego drzewa decyzyjnego.
 
 \subsection{Two-Class Decision Forest}
@@ -174,7 +174,7 @@ Las decyzyjny to algorytm, którego wynik opiera się o agregację wyników wiel
     \captionsource{Potok zadań dla modelu \textit{Two-Class Decision Forest}}{Opracowanie własne}
     \label{fig:df-pipe}
 \end{figure}
-
+\ \\
 Potok został zbudowany analogicznie do potoku opisanego w \refsource{podsekcji}{subsec:svm}. Do bloku treningowego został podłączony model lasu decyzyjnego.
 
 \subsection{Two-class Neural Network}
@@ -186,7 +186,7 @@ Jest to sieć neuronowa, która składa się z warstwy wejściowej, trzech warst
     \captionsource{Potok zadań dla modelu \textit{Two-Class Neural Network}}{Opracowanie własne}
     \label{fig:nn-pipe}
 \end{figure}
-
+\ \\
 Potok jest zbudowany analogicznie do potoku opisanego w \refsource{podsekcji}{subsec:svm}. Do bloku treningowego został podłączony model sieci neuronowej.
 
 \subsection{Two-Class Average Perceptron}
@@ -198,7 +198,7 @@ Jest to najprostsza odmiana sieci neuronowej, czyli pojedynczy perceptron, któr
     \captionsource{Potok zadań dla modelu \textit{Two-Class Average Perceptron}}{Opracowanie własne}
     \label{fig:ap-pipe}
 \end{figure}
-
+\ \\
 Potok jest zbudowany analogicznie do potoku opisanego w \refsource{podsekcji}{subsec:svm}. Do bloku treningowego został podłączony model klasycznego perceptronu.
 
 \subsection{Gausian Naive Bayes - with GA}
@@ -209,7 +209,7 @@ Algorytm ten polega na połączeniu algorytmu genetycznego (GA) wraz z Gaussian 
     \captionsource{Potok zadań dla modelu \textit{Gaussian Naive Bayes - with GA}}{Opracowanie własne}
     \label{fig:ga-pipe}
 \end{figure}
-
+\ \\
 Potok został stworzony przy wykorzystaniu 3 głównych elementów:
 \begin{itemize}
     \item \textbf{my\_lib} - jest to blok danych zawierających archiwum \textit{.zip}, w którym znajduje się biblioteka odpowiadająca za algorytm wykorzystywany w doświadczeniu,
@@ -300,7 +300,7 @@ Potok zadań wykorzystujący algorytmy dostarczone przez Microsoft Azure został
     \captionsource{Potok zadań dla algorytmów klasyfikacyjnych}{Opracowanie własne}
     \label{fig:ms-pipe}
 \end{figure}
-
+\ \\
 Algorytmy dostarczone w ramach pracy badawczej składają się z:
 \begin{itemize}
     \item \textbf{biblioteka Python} - archiwum o rozszerzeniu \textbf{.zip}, które zawiera w sobie odpowiednie pliki napisane w języku Python
@@ -336,8 +336,7 @@ Aby zweryfikować działanie całego procesu klasyfikacji wykorzystano znormaliz
     \item F1
     \item AUC.
 \end{itemize}
-
-
+\ \\
 Analizując wykres można zauważyć, że uzyskane wyniki znajdują się w przedziale $[94\%, 100\%]$ w każdej metryce co pokazuje jakość każdego z algorytmów, a także to, że algorytmy poradziły sobie niemal bezbłędnie w rozpoznawaniu ruchu sieciowego, na którym były uczone. Zbiór, który wykorzystano do trenowania oraz testowania danych zawierał w sobie 225805 wpisów z czego 97718 należało do klasy ,,\textbf{1}'', zaś 128087 należało do klasy ,,\textbf{0}''. Liczba klas wyjściowych wynosi \textit{2}, przez wzgląd na to, że jest to klasyfikacja binarna, która klasyfikuje dane jako \textit{1} albo \textit{0}.
 
 \begin{table}[H]
@@ -352,7 +351,7 @@ Analizując wykres można zauważyć, że uzyskane wyniki znajdują się w przed
         \textbf{Suma}  & 225805                    \\ \hline
     \end{tabular}
 \end{table}
-
+\ \\
 Bazując na tym zbiorze oraz uzyskanych wynikach udało się udowodnić poprawność działania procesu klasyfikacji wieloma algorytmami genetycznymi.
 
 \begin{landscape}
@@ -382,7 +381,7 @@ Aby uzyskać realne wyniki podczas porównywania poszczególnych algorytmów zas
         \textbf{Suma}  & 2830743                   \\ \hline
     \end{tabular}
 \end{table}
-
+\ \\
 W analizie porównawczej algorytmów zastosowano następujące metryki klasyfikacji jak:
 \begin{itemize}
     \item dopasowanie
@@ -391,7 +390,7 @@ W analizie porównawczej algorytmów zastosowano następujące metryki klasyfika
     \item F1
     \item AUC
 \end{itemize}
-
+\ \\
 Poniżej na \textbf{rysunkach:}~\textbf{\ref{fig:predict-result}},~\textbf{\ref{fig:predict-result2}},~\textbf{\ref{fig:predict-result3}} zostały przedstawione wyniki zbiorcze dla poszczególnych metryk. Dodatkowo przedstawiono również wynik pomiaru treningowego, który w większości przypadków jest wyższy od danych testowych. Co prawdopodobnie jest spowodowane różnicą w ilości danych testowych i treningowych. Dodatkowo w każdej kolumnie oznaczono kolorem zielonym najwyższy wynik dla danej metryki, a kolorem czerwonym najniższy wynik dla danej metryki.
 
 \begin{landscape}
@@ -596,46 +595,8 @@ Do analizy wyników wykorzystano protokół metodologii badawczej, który zosta�
 \end{table}
 
 \begin{itemize}
-    \item \textbf{Hipoteza $H_0$: Nie ma istotnej różnicy pomiędzy wynikami ,,dopasowania'' próby testowej i treningowej nr. 1}
-
-    Wykorzystując statystyczny test t~-~Studenta dla prób zależnych dla danych z \refsource{tabeli}{tab:acc-res} wyznaczono wartość:
-    \begin{equation}
-        \label{eq:test-t}
-        t = \frac{\overline{d}}{sd_d} * \sqrt{n} = \frac{0,1358}{0,0150} * \sqrt{7} = 23,9527
-    \end{equation}
-    gdzie:
-    \begin{itemize}
-        \item $\overline{d}$ -- średnia różnic w próbie
-        \item $sd_d$ -- odchylenie standardowe
-        \item $n$ -- liczebność próby
-    \end{itemize}
-    \begin{table}[H]
-        \centering
-        \captionsource{Tabela rozkładu wartości dla t~-~Studenta}{\cite{Gerstman}}
-        \resizebox{\textwidth}{!}{%
-        \begin{tabular}{|c|l|l|l|l|l|l|l|l|l|l|}
-            \hline
-            \textbf{\diagbox{n}{p}} & \textbf{0,5} & \textbf{0,2} & \textbf{0,1} & \textbf{0,05} & \textbf{0,02} & \textbf{0,01} & \textbf{0,001} & \textbf{0,00001} & \textbf{0,000001} & \textbf{0,0000001} \\ \hline
-            1 & 0 & 1,37638192 & 3,07768354 & 6,313751515 & 15,89454484 & 31,82052 & 31,82052 & 31830,99 & 318309,9 & 3183098,9 \\ \hline
-            2 & 0 & 1,060660172 & 1,88561808 & 2,91998558 & 4,848732214 & 6,964557 & 6,964557 & 223,6034 & 707,1057 & 2236,0676 \\ \hline
-            3 & 0 & 0,978472312 & 1,63774435 & 2,353363435 & 3,48190876 & 4,540703 & 4,540703 & 47,92773 & 103,2995 & 222,57159 \\ \hline
-            4 & 0 & 0,940964577 & 1,53320627 & 2,131846786 & 2,998527873 & 3,746947 & 3,746947 & 23,33218 & 41,57785 & 73,985758 \\ \hline
-            5 & 0 & 0,91954378 & 1,47588405 & 2,015048373 & 2,756508522 & 3,36493 & 3,36493 & 15,54685 & 24,77103 & 39,34182 \\ \hline
-            6 & 0 & 0,905703285 & 1,43975575 & 1,943180281 & 2,612241847 & 3,142668 & 5,207626 & 12,03165 & 17,83031 & 26,2867 \\ \hline
-            7 & 0 & 0,896029644 & 1,41492393 & 1,894578605 & 2,516752424 & 2,997952 & 2,997952 & 10,10268 & 14,24147 & 19,933902 \\ \hline
-        \end{tabular}%
-        }
-        \label{tab:p-val}
-    \end{table}
-        gdzie:
-        \begin{itemize}
-            \item \textbf{n} - ilość punktów swobody
-            \item \textbf{p} - wartość p-value
-        \end{itemize}
-    Następnie bazując na \refsource{tabeli}{tab:p-val} obrazującej rozkład wartości \textit{t} dla \textit{n} punktów swobody w \textit{p-value} znaleziono wartość p-value odpowiadającej otrzymanemu wynikowi. Dla 6 punktów swobody: $0,000001 < p-value < 0,0000001$. Oznacza to, że zmienna $p-value < \alpha$, dzięki czemu można odrzucić hipotezę $H_0$. Wyniki tej analizy określają, że widać istotne różnice pomiędzy danymi z próby testowej i treningowej. Największą różnicę widać w rezultacie algorytmu \textit{GAGNB}, który uzyskał w próbie testowej $76,2585\%$ dopasowania, a w próbie treningowej $91,4271\%$.\\
-
-    \item \textbf{Hipoteza $H_0$: Nie ma istotnej różnicy pomiędzy wynikami ,,dopasowania'' prób testowych}
-    Korzystając z \refsource{wzoru}{eq:test-t}, wykonano obliczenia dla poszczególnych relacji przedstawionych w \refsource{tabeli}{tab:acc-p-stat}.
+    \item \textbf{Hipoteza $H_0$: Nie ma istotnej różnicy pomiędzy wynikami ,,dopasowania'' prób testowych} \\
+    Korzystając ze statystycznego testu t~-~Studenta dla prób zależnych, wykonano obliczenia dla poszczególnych relacji przedstawionych w \refsource{tabeli}{tab:acc-p-stat}.
     \begin{equation}
         \label{eq:t-p1}
         t_1 = \frac{d_{p2p3}}{sd_{d_{p2p3}}} * \sqrt{n} = \frac{0,0019713}{0,0048287} * \sqrt{7} = 1,0801
@@ -657,8 +618,31 @@ Do analizy wyników wykorzystano protokół metodologii badawczej, który zosta�
         \item $p2$ -- próba 2
         \item $p3$ -- próba 3
     \end{itemize}
-
-    Wyniki równań zostały przedstawione w \refsource{tabeli}{tab:acc-p-stat} w kolumnie \textit{wartość t}.
+    \refsource{Tabela}{tab:p-val} przedstawia rozkład wartości \textit{t} dla \textit{n} punktów swobody w \textit{p-value}.
+    \begin{table}[H]
+        \centering
+        \captionsource{Tabela rozkładu wartości dla t~-~Studenta}{\cite{Gerstman}}
+        \resizebox{\textwidth}{!}{%
+            \begin{tabular}{|c|l|l|l|l|l|l|l|l|l|l|}
+                \hline
+                \textbf{\diagbox{n}{p}} & \textbf{0,5} & \textbf{0,2} & \textbf{0,1} & \textbf{0,05} & \textbf{0,02} & \textbf{0,01} & \textbf{0,001} & \textbf{0,00001} & \textbf{0,000001} & \textbf{0,0000001} \\ \hline
+                1 & 0 & 1,37638192 & 3,07768354 & 6,313751515 & 15,89454484 & 31,82052 & 31,82052 & 31830,99 & 318309,9 & 3183098,9 \\ \hline
+                2 & 0 & 1,060660172 & 1,88561808 & 2,91998558 & 4,848732214 & 6,964557 & 6,964557 & 223,6034 & 707,1057 & 2236,0676 \\ \hline
+                3 & 0 & 0,978472312 & 1,63774435 & 2,353363435 & 3,48190876 & 4,540703 & 4,540703 & 47,92773 & 103,2995 & 222,57159 \\ \hline
+                4 & 0 & 0,940964577 & 1,53320627 & 2,131846786 & 2,998527873 & 3,746947 & 3,746947 & 23,33218 & 41,57785 & 73,985758 \\ \hline
+                5 & 0 & 0,91954378 & 1,47588405 & 2,015048373 & 2,756508522 & 3,36493 & 3,36493 & 15,54685 & 24,77103 & 39,34182 \\ \hline
+                6 & 0 & 0,905703285 & 1,43975575 & 1,943180281 & 2,612241847 & 3,142668 & 5,207626 & 12,03165 & 17,83031 & 26,2867 \\ \hline
+                7 & 0 & 0,896029644 & 1,41492393 & 1,894578605 & 2,516752424 & 2,997952 & 2,997952 & 10,10268 & 14,24147 & 19,933902 \\ \hline
+            \end{tabular}%
+        }
+        \label{tab:p-val}
+    \end{table}
+    gdzie:
+    \begin{itemize}
+        \item \textbf{n} - ilość punktów swobody
+        \item \textbf{p} - wartość p-value
+    \end{itemize}
+    Wyniki równań zostały przedstawione w \refsource{tabeli}{tab:acc-p-stat} w kolumnie \textit{wartość t}. Wartość \textit{p-value} dla każdego porównania została opisana na podstawie \refsource{tabeli}{tab:p-val}.
 
     \begin{table}[H]
         \centering
@@ -675,8 +659,22 @@ Do analizy wyników wykorzystano protokół metodologii badawczej, który zosta�
     \end{table}
     Za pomocą testu t~-~Studenta dla prób zależnych określono porównano dane w próbach testowych z \refsource{tabeli}{tab:acc-res}. Uzyskane wyniki, przedstawione w \refsource{tabeli}{tab:acc-p-stat}, pozwalają zachować Hipotezę $H_0$, stwierdzającą, że pomiędzy danymi w poszczególnych próbach testowych nie ma istotnych różnic. \\
 
-    \item \textbf{Hipoteza $H_0$: Wynik dopasowania algorytmów w \textit{Próbie 1} nie przekracza dolnej granicy przedziału ufności}
-    Za pomocą \textbf{równań}~\ref{eq:uf},~\ref{eq:uf-d} obliczono wartość ufności dla zbioru wyników dopasowań w Próbie 1 oraz dolną granicę ufności.
+    \item \textbf{Hipoteza $H_0$: Nie ma istotnej różnicy pomiędzy wynikami ,,dopasowania'' próby testowej i treningowej} \\
+    Przez to, że dane pomiędzy próbami testowymi nie posiadają różnic istotnych statystycznie, do poniższej analizy wykorzystano dane z próby testowej nr 1. Wykorzystując znów statystyczny test t~-~Studenta dla prób zależnych dla danych z \refsource{tabeli}{tab:acc-res} wyznaczono wartość:
+    \begin{equation}
+        \label{eq:test-t}
+        t = \frac{\overline{d}}{sd_d} * \sqrt{n} = \frac{0,1358}{0,0150} * \sqrt{7} = 23,9527
+    \end{equation}
+    gdzie:
+    \begin{itemize}
+        \item $\overline{d}$ -- średnia różnic w próbie
+        \item $sd_d$ -- odchylenie standardowe
+        \item $n$ -- liczebność próby
+    \end{itemize}
+    Następnie bazując na \refsource{tabeli}{tab:p-val}  znaleziono wartość p-value odpowiadającej otrzymanemu wynikowi. Dla 6 punktów swobody: $0,000001 < p-value < 0,0000001$. Oznacza to, że zmienna $p-value < \alpha$, dzięki czemu można odrzucić hipotezę $H_0$. Wyniki tej analizy określają, że widać istotne różnice pomiędzy danymi z próby testowej i treningowej. Największą różnicę widać w rezultacie algorytmu \textit{GAGNB}, który uzyskał w próbie testowej $76,2585\%$ dopasowania, a w próbie treningowej $91,4271\%$.\\
+
+    \item \textbf{Hipoteza $H_0$: Wynik dopasowania algorytmów nie przekracza dolnej granicy przedziału ufności dla prób testowych}\\
+    Do sprawdzenia tej hipotezy wykorzystano rezultaty otrzymane w próbie testowej numer 1. Zostało to podyktowane brakiem istotnych różnic pomiędzy wynikami prób testowych. Za pomocą \textbf{równań}~\ref{eq:uf},~\ref{eq:uf-d} obliczono wartość ufności dla zbioru wyników dopasowań w próbie nr 1 oraz dolną granicę ufności.
 
     \begin{equation}
         \label{eq:uf}
@@ -698,11 +696,7 @@ Do analizy wyników wykorzystano protokół metodologii badawczej, który zosta�
 
     Ufności dla dokładności algorytmów wyrażona w procentach wyniosła $3,46 p.p.$ dla $\alpha = 0.05$. Biorąc pod uwagę ten fakt, można stwierdzić, że dokładność algorytmu GAGNB jest poniżej dolnej granicy. Dolna granica przedziału ufności wyrażona w procentach wynosi $81,6\%$, zaś GAGNB uzyskał $76,2585\%$. Oznacza to, że można odrzucić $H_0$, ponieważ jeden algorytm przekracza dolny próg granicy ufności. \\
 \end{itemize}
-
-Analiza wyników wykazała, że algorytm utworzony w ramach pracy inżynierskiej~\cite{Blyszcz2022}, wypada słabo w porównaniu z algorytmami dostarczonymi przez platformę Microsoft Azure. Jego dokładność odstaje od dokładności uzyskanych przez pozostałe algorytmy. Zostało to przedstawione w \refsource{tabeli}{tab:acc-res}. Wyniki uzyskane przez algorytm \textit{Gaussian Naive Bayes - with GA} wynoszą $[72,4470\%; 73,8269\%; 76,2585\%]$. Wyniki te są słabsze o około 12-16 p.p. od wyniku uzyskanego przez algorytm DANet. Bazując na \textbf{tabelach}~\textbf{\ref{tab:trening-data-label}}~\textbf{\ref{tab:res-test}} różnica wielkości danych treningowych oraz testowych wyniosła:
-\begin{itemize}
-    \item 225805 wierszy w danych treningowych
-    \item 2830743 wierszy w danych testowych
-\end{itemize}
-
-Doświadczenie to pokazuje, że wciąż należy próbować tworzyć wydajniejsze i dokładniejsze rozwiązania. Nie zaprzecza faktu iż rozwiązania ogólnie dostępne są często wystarczające i dużo tańsze w zastosowaniu i implementacji w porównaniu do całego procesu tworzenia rozwiązań autorskich.
+\ \\
+Analiza wyników wykazała, że algorytm utworzony w ramach pracy inżynierskiej~\cite{Blyszcz2022}, wypada gorzej w porównaniu z algorytmami dostarczonymi przez platformę Microsoft Azure. Jego dokładność odstaje od dokładności uzyskanych przez pozostałe algorytmy. Zostało to przedstawione w \refsource{tabeli}{tab:acc-res}. Wyniki uzyskane przez algorytm \textit{Gaussian Naive Bayes - with GA} wynoszą $[72,4470\%; 73,8269\%; 76,2585\%]$. Wyniki te są słabsze o około 12-16 p.p. od wyniku uzyskanego przez algorytm DANet. Występująca różnica pomiędzy obecnymi wynikami GAGNB a wynikami uzyskanymi w pracy inżynierskiej (\refsource{sekcja}{sec:inz-rez-pod}) są związane z rozmiarem wykorzystanych danych testowych. W testach w ramach pracy inżynierskiej wykorzystywano kilka mniejszych zbiorów danych, symbolizujące poszczególne dni robocze pracy w biurze (\refsource{sekcja}{sec:data}). W ramach pracy magisterskiej, przez wzgląd na kosztowność przeprowadzanych doświadczeń, sprawdzono poszczególne algorytmy na pojedynczym zbiorczym pliku zawierającym złączone dane testowe.
+\\ \\
+Doświadczenie to pokazuje, że wciąż należy próbować tworzyć wydajniejsze i dokładniejsze rozwiązania. Nie zaprzecza faktu, iż rozwiązania ogólnie dostępne są często wystarczające i dużo tańsze w zastosowaniu i implementacji w porównaniu do całego procesu tworzenia rozwiązań autorskich.

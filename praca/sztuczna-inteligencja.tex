@@ -39,7 +39,7 @@ W procesie uczenia nadzorowanego stosuje się zbiór posiadający etykiety. Mode
     \captionsource{Uczenie nadzorowane}{\cite{Mahesh2018}}
     \label{fig:spervised}
 \end{figure}
-
+\ \\
 Algorytmy uczenia nadzorowanego można zastosować między innymi do weryfikacji ruchu sieciowego w celu określenia czy ruch bezpieczny, przez co można to zastosować w systemach wykrywania intruzów (\textit{ang. Intrusion Detection System, IDS}). Algorytmy wchodzące w skład uczenia nadzorowanego to między innymi Klasyfikator Naiwny Bayesa, drzewo decyzyjne, maszyna wektorów nośnych~\cite{AiScience, Mahesh2018}.
 
 \subsection{Uczenie częściowo nadzorowane}
@@ -54,7 +54,7 @@ Uczenie przez wzmocnienie jest najbliższe ludzkiemu uczeniu się. Ten przypadek
     \captionsource{Uczenie przez wzmocnienie}{\cite{Mahesh2018}}
     \label{fig:reinforcemenet}
 \end{figure}
-
+\ \\
 Uczenie przez wzmocnienie jest wykorzystywane między innymi w trenowaniu pojazdów autonomicznych. Sztuczna inteligencja znajduje się np. w środowisku miejskim i zbiera dane z otoczenia. SI jest nagradzane za wybór lepszych tras do jazdy, czyli dróg asfaltowych zamiast polnych~\cite{AiScience, Mahesh2018}.
 
 
@@ -74,12 +74,11 @@ Sztuczna sieć neuronowa to model uczenia maszynowego, który podejmuje decyzje 
     \captionsource{Schemat sieci neuronowej}{Opracowanie własne}
     \label{fig:neural-network}
 \end{figure}
-
-
+\ \\
 Warstwa wejściowa za pomocą węzłów wejściowych przyjmuje i przetwarza dane wejściowe. Dane są analizowane i przeliczane, a następnie przekazywane do warstwy ukrytej. Sieci mogą posiadać dużą ilość warstw ukrytych. Jeśli posiadają tych warstw znaczną ilość, zaczyna się je określać jako głębokie sieci neuronowe. Głębokie sieci neuronowe zostały opisane w \refsource{sekcji}{sec:deeplearn}. Po przejściu danych przez warstwy ukryte trafiają do warstwy końcowej, a następnie zwracany jest wynik obliczeń. W warstwie wyjściowej może być $n$ węzłów, gdzie $n \geq 1$. W przypadku klasyfikacji binarnej (0/1) otrzymamy jeden wynik, a w przypadku klasyfikacji wieloklasowej wyników będzie więcej.
 \\ \\
 Sieć ta potrafi się dostosowywać do danych wejściowych tak, aby uzyskać odpowiedni wynik. W tym celu wykonuje wtedy proces uczenia, stosując do tego na przykład algorytm wstecznej propagacji wag. Algorytm ten dostosowuje wagi, którymi opisano poszczególne połączenia do neuronu. Wagi nadają rangę wejścia, co oznacza, że im wyższa waga tym ważniejsze połączenie. W zależności od problemu istnieje wiele różnych sieci, które można zastosować. Jednym z trudniejszych rzeczy w doborze sieci jest dobór warstw ukrytych oraz ilości neuronów, ponieważ dobór jest oparty o własną wiedzę i doświadczenie twórcy.
-
+\\ \\
 Sieci neuronowe możemy podzielić na wiele rodzajów. Wśród nich możemy wyróżnić między innymi:
 \begin{itemize}
     \item \textbf{perceptron} -- jest to najstarszy i najprostszy przykład sieci neuronowej złożonej z jednego perceptronu (neuronu). Został przedstawiony na \refsource{rysunku}{fig:neuron}. Stosuje się go jako punkt wyjściowy do tworzenia bardziej złożonych modeli ANN opartych o warstwy złożone z perceptronów. Może on też posłużyć do klasyfikacji binarnej, w której oczekujemy jako wyniku 1 albo 0.
@@ -119,5 +118,5 @@ Głębokie sieci neuronowe posiadają wiele warstw z milionami sztucznych neuron
     \captionsource{Schemat prostej głębokiej sieci neuronowej}{Opracowanie własne}
     \label{fig:deep-learn}
 \end{figure}
-
+\ \\
 Głęboka sieć neuronowa posiada bardzo dużo zastosowań, w których skład wchodzi między innymi generowanie treści, Deepfake, analiza obrazów, wskazywanie obiektów na obrazach, projektowanie leków, czatboty. Jest to udoskonalenie podstawowych sieci neuronowych~\cite{MicrosoftDeep2023}.
