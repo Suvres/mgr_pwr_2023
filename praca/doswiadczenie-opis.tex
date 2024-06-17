@@ -190,7 +190,7 @@ Jest to sieć neuronowa, która składa się z warstwy wejściowej, trzech warst
 Potok jest zbudowany analogicznie do potoku opisanego w \refsource{podsekcji}{subsec:svm}. Do bloku treningowego został podłączony model sieci neuronowej.
 
 \subsection{Two-Class Average Perceptron}
-Jest to najprostsza odmiana sieci neuronowej, czyli pojedynczy perceptron, który jest matematycznym modelem neuronu. Składa się on z \textit{n} wejść, takiej samej ilości wag, progu $\Theta$, sumatora, funkcji aktywującej i wyjścia. Został zobrazowany na \refsource{schemacie}{fig:neuron}. Może służyć za prosty klasyfikator binarny albo za regresor. Model wykorzystany w Azure ML ukazano na \refsource{zdjęciu}{fig:ap-pipe}.
+Jest to najprostsza odmiana sieci neuronowej, czyli pojedynczy perceptron, który jest matematycznym modelem neuronu. Składa się on z \textit{n} wejść, takiej samej ilości wag, progu $\Theta$, sumatora, funkcji aktywującej i wyjścia. Został zobrazowany na \refsource{schemacie}{fig:neuron}. Może służyć za prosty klasyfikator binarny albo za regresor. Model wykorzystany w Azure ML ukazano na \refsource{rysunku}{fig:ap-pipe}.
 
 \begin{figure}[H]
     \centering
@@ -218,7 +218,7 @@ Potok został stworzony przy wykorzystaniu 3 głównych elementów:
 \end{itemize}
 
 \subsection{DANet}
-Twórcy tego algorytmu wprowadzają dodatkową warstwę abstrakcyjną o nazwie ,,\textit{Abstract Layer}''. Warstwy te budują sieć o nazwie ,,\textit{Deep Abstract Network}'' (DANet). Zadanie dodatkowych warstw jest grupowanie cech w skorelowanych zbiorach. Zbiory te budują sieć powiązań między sobą w formie sieci semantycznej. Gdy sieć semantyczna jest zbudowana, to w ostatnim kroku wykonywana jest klasyfikacja w trzywarstwowej sieci perceptronów \textit{(ang. Multilayer Perceptron network, MLP)}~\cite{Chen2022, Danet}. Sposób działania przedstawiono na \refsource{schemacie}{fig:danet-abst}. Model znajdujący się z Azure ML został przedstawiony na \refsource{zdjęciu}{fig:danet-pipe}.
+Twórcy tego algorytmu wprowadzają dodatkową warstwę abstrakcyjną o nazwie ,,\textit{Abstract Layer}''. Warstwy te budują sieć o nazwie ,,\textit{Deep Abstract Network}'' (DANet). Zadanie dodatkowych warstw jest grupowanie cech w skorelowanych zbiorach. Zbiory te budują sieć powiązań między sobą w formie sieci semantycznej. Gdy sieć semantyczna jest zbudowana, to w ostatnim kroku wykonywana jest klasyfikacja w trzywarstwowej sieci perceptronów \textit{(ang. Multilayer Perceptron network, MLP)}~\cite{Chen2022, Danet}. Sposób działania przedstawiono na \refsource{schemacie}{fig:danet-abst}. Model znajdujący się z Azure ML został przedstawiony na \refsource{rysunku}{fig:danet-pipe}.
 
 \begin{figure}[H]
     \hfill
@@ -246,7 +246,7 @@ Twórcy tego algorytmu wprowadzają dodatkową warstwę abstrakcyjną o nazwie ,
 \section{Programistyczne środowisko badawcze}
 Analizę porównawczą algorytmów wykonano na platformie Microsoft Azure. Wykorzystano usługę Azure Machine Learning Studio. Wybrano to rozwiązanie, ponieważ umożliwia uniezależnienie obliczeń od komputera lokalnego. Dodatkowo, w łatwy sposób pozwala tworzyć skomplikowane potoki zadań, składające się z komponentów wielokrotnego użytku. Każdy komponent uruchamia się w środowisku odizolowanym od pozostałych operacji. Dzieje się tak dzięki wykorzystaniu wielowęzłowych klastrów obliczeniowych, bazujących na oprogramowaniu Docker. Klastry te mogą skalować się w zależności od potrzeb oraz dostępnej jednostki~\cite{MicrosoftLearn2023}.
 \\ \\
-Całe doświadczenie zostało odwzorowane w graficznym potoku narzędzia ,,\textit{Projektant}'' oraz przedstawione na \refsource{zdjęciu}{fig:pipeline}.
+Całe doświadczenie zostało odwzorowane w graficznym potoku narzędzia ,,\textit{Projektant}'' oraz przedstawione na \refsource{rysunku}{fig:pipeline}.
 
 \begin{landscape}
     \centering

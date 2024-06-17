@@ -56,8 +56,8 @@ gdzie:
 \begin{itemize}
     \item $H$ oraz $X$ są różnymi zdarzeniami;
     \item $P(X) \neq 0$;
-    \item $P(H|X)$ -- prawdopodobieństwo wystąpienia zdarzenia $H$ jeśli zdarzenie $X$ jest prawdziwe;
-    \item $P(X|H)$ -- prawdopodobieństwo wystąpienia zdarzenia $X$ jeśli zdarzenie $H$ jest prawdziwe;
+    \item $P(H|X)$ -- prawdopodobieństwo wystąpienia zdarzenia $H$ jeśli zdarzenie $X$ wystąpiło;
+    \item $P(X|H)$ -- prawdopodobieństwo wystąpienia zdarzenia $X$ jeśli zdarzenie $H$ wystąpiło;
     \item $P(H)$ oraz $P(X)$ to prawdopodobieństwa zaobserwowane, bez żadnych warunków~\cite{Leung2007}.
 \end{itemize}
 \ \\
@@ -67,11 +67,11 @@ Algorytm GNB wykorzystuje funkcję gęstości prawdopodobieństwa do wyliczenia 
 \end{equation}
 gdzie:
 \begin{itemize}
-        \item[] \textbf{$x_{i}$} -- wartość znajdująca się w kolumnie
-        \item[] \textbf{$y$} -- reprezentacja klasy w danej kolumnie
-        \item[] \textbf{$\sigma_{y}^{2}$} -- wariancja danych w kolumnie dla danej klasy,
-        \item[] \textbf{$\sigma_{y}$} -- odchylenie standardowe danych w kolumnie dla danej klasy,
-        \item[] \textbf{$\mu_{y}$} -- średnia wartość w kolumnie dla danej klasy~\cite{Leung2007}.
+        \item[] \textbf{$x_{i}$} -- wartość cechy
+        \item[] \textbf{$y$} -- reprezentacja klasy dla danej cechy
+        \item[] \textbf{$\sigma_{y}^{2}$} -- wariancja wartości cechy dla danej klasy,
+        \item[] \textbf{$\sigma_{y}$} -- odchylenie standardowe wartości cechy dla danej klasy,
+        \item[] \textbf{$\mu_{y}$} -- średnia wartość cechy dla danej klasy~\cite{Leung2007}.
 \end{itemize}
 \ \\
 Algorytm \textit{Gaussian Naive Bayes} wykorzystuje funkcję gęstości prawdopodobieństwa do obliczania $P(x_i)$ dla każdej klasy. Algorytm po wyliczeniu wszystkich składowych wymnaża poszczególne wartości dla danej klasy (\refsource{równanie}{math:gnb2}).
@@ -87,7 +87,7 @@ log(P(x_1,x_2,x_3,...,x_n|A)) = \sum_{i=1}^{n}log(P(x_i|A))
 \end{equation}
 
 \section{Autorski algorytm opracowany w ramach pracy inżynierskiej}
-Algorytm opracowany w ramach pracy inżynierskiej wykorzystuje w procesie optymalizacji algorytm genetyczny oraz GNB. Celem algorytmu była redukcja wymiarowości danych tabelarycznych, by zwiększyć jakość klasyfikacji danych. Uzyskano to poprzez wyznaczenie najistotniejszych cech zbioru. Algorytm genetyczny zastosowano w celu przygotowania zbioru prawdopodobnie istotnych kolumn poprzez oznaczenie ich pozycji za pomocą ciągu cyfr 0 i 1.  \ Kolumny oznaczone cyfrą 1 były brane pod uwagę w procesie ewaluacji za pomocą GNB. Cały proces trwał maksymalnie 1000 iteracji lub do momentu uzyskania minimum $90\%$ dopasowania. Wynikiem działania autorskiego algorytmu jest zbiór kolumn istotnych w procesie klasyfikowania.
+Algorytm opracowany w ramach pracy inżynierskiej wykorzystuje w procesie optymalizacji algorytm genetyczny oraz GNB. Celem algorytmu była redukcja wymiarowości danych tabelarycznych, by zwiększyć jakość klasyfikacji danych. Uzyskano to poprzez wyznaczenie najistotniejszych cech zbioru. Algorytm genetyczny zastosowano w celu przygotowania zbioru prawdopodobnie istotnych cech poprzez oznaczenie ich pozycji za pomocą ciągu cyfr 0 i 1. Cechy oznaczone cyfrą 1 były brane pod uwagę w procesie ewaluacji za pomocą GNB. Cały proces trwał maksymalnie 1000 iteracji lub do momentu uzyskania minimum $90\%$ dopasowania. Wynikiem działania autorskiego algorytmu jest zbiór cech istotnych w procesie klasyfikowania.
 
 \section{Systemy wykrywania intruzów}
 Systemy wykrywania intruzów \textit{(ang. Intrusion Detection System, IDS)} powstały w celu monitorowania sieci komputerowych. Ich zadaniem jest, rozpoznawanie szkodliwego ruchu sieciowego, detekcja zagrożeń oraz reagowanie na występujące anomalie. Klasyczny model wykrywania intruzów zawiera:
@@ -155,5 +155,5 @@ Analiza wykazała, że wyniki uzyskane za pomocą metod statystycznych były gor
     \label{fig:mond}
 \end{figure}
 
-Analizując powyższe wyniki można zauważyć, że najwyższe dopasowanie uzyskał autorski algorytm a najniższe - zbiór kolumn wyznaczonych metodą współczynników korelacji Pearsona. Świadczy to o wysokiej jakości opracowanego w pracy inżynierskiej algorytmu.
+Analizując powyższe wyniki można zauważyć, że najwyższe dopasowanie uzyskał autorski algorytm a najniższe - zbiór cech wyznaczonych metodą współczynników korelacji Pearsona. Świadczy to o wysokiej jakości opracowanego w pracy inżynierskiej algorytmu.
 
